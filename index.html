@@ -88,9 +88,9 @@
         <button onclick="downloadThisHtmlFile()" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-xl text-xs font-extrabold shadow-sm transition">
           📄 ดาวน์โหลดไฟล์ HTML นี้
         </button>
-        <a href="#" onclick="return openCoaPrint(null, event)" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-bold">
-          📜 ตัวอย่าง COA
-        </a>
+        <button onclick="openCoaModal()" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-extrabold shadow-sm transition items-center gap-1">
+  📄 ตัวอย่าง COA/COE
+</button>
         <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl border border-slate-200">
           ☰
         </button>
@@ -1777,6 +1777,14 @@
     }
 
     window.onload = fetchAndRenderData;
+
+    function openCoaModal() {
+  document.getElementById('coaModal').classList.remove('hidden');
+}
+
+function closeCoaModal() {
+  document.getElementById('coaModal').classList.add('hidden');
+}
   </script>
 
   <!-- Modal สำหรับเลือกดาวน์โหลดตัวอย่าง COA / COE -->
