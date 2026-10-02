@@ -108,7 +108,7 @@
           </h2>
           <p class="text-emerald-100 text-sm sm:text-base leading-relaxed font-light">
             สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช มุ่งมั่นยกระดับมาตรฐานจริยธรรมการวิจัยในคนตามหลักสากล
-            เชื่อมโยงข้อมูลตรงจากฐานข้อมูลทะเบียนโครงการวิจัยทั้งหมดในชีต "ออกเลขโครงการ" (ปี 2560 - 2569)
+            เชื่อมโยงข้อมูลตรงจากฐานข้อมูลทะเบียนโครงการวิจัยทั้งหมดในชีต "ออกเลขโครงการ"
           </p>
 
           <div class="bg-white p-2 rounded-2xl shadow-xl max-w-xl flex flex-col sm:flex-row items-center gap-2 border-2 border-amber-300">
@@ -128,7 +128,7 @@
 
           <div class="flex flex-wrap items-center gap-2 text-xs text-emerald-200 pt-2">
             <span class="text-amber-300 font-bold">ตัวอย่างค้นหาด่วน:</span>
-            <button onclick="quickSearch('FF71-01-14')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">FF71-01-14 (ปี 2569)</button>
+            <button onclick="quickSearch('FF71-01-14')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">FF71-01-14</button>
             <button onclick="quickSearch('66-011')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">66-011</button>
             <button onclick="quickSearch('65-001')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">65-001</button>
           </div>
@@ -261,13 +261,13 @@
       </div>
     </section>
 
-    <!-- TAB 4: REGISTRY (จัดหมวดหมู่รายปี + 22 หัวข้อ) -->
+    <!-- TAB 4: REGISTRY -->
     <section id="tab-registry" class="hidden space-y-6">
       <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm space-y-4">
         <div class="flex flex-wrap justify-between items-center gap-4">
           <div>
             <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-              📊 ข้อมูลตรงจาก Google Sheets (จัดกลุ่มตามปี พ.ศ.)
+              📊 ข้อมูลเฉพาะปี พ.ศ. ที่เป็นตัวเลขเท่านั้น
             </span>
             <h2 class="text-2xl font-extrabold text-slate-900 font-heading mt-2">สมุดทะเบียนประวัติการเสนอโครงร่างวิจัย</h2>
           </div>
@@ -367,37 +367,43 @@
           row.split(',').map(cell => cell.replace(/^"(.*)"$/, '$1').trim())
         );
 
-        allProjects = rows.slice(1).map(r => ({
-          year: cleanVal(r[0]),
-          projectCode: cleanVal(r[1]),
-          docDate: cleanVal(r[2]),
-          researcher: cleanVal(r[3]),
-          phone: cleanVal(r[4]),
-          dept: cleanVal(r[5]),
-          advisor: cleanVal(r[6]),
-          subject: cleanVal(r[7]),
-          type: cleanVal(r[8]),
-          reviewerName: cleanVal(r[9]),
-          reviewDate: cleanVal(r[10]),
-          status: cleanVal(r[11]),
-          approveDate: cleanVal(r[12]),
-          coaNumber: cleanVal(r[13]),
-          expireDate: cleanVal(r[14]),
-          coaRenewal2: cleanVal(r[15]),
-          officer: cleanVal(r[16]),
-          amendDocNo: cleanVal(r[17]),
-          amendCount1: cleanVal(r[18]),
-          amendReceiveDate: cleanVal(r[19]),
-          renewDocNo: cleanVal(r[20]),
-          renewCount1: cleanVal(r[21]),
-          
-          // Raw strings for searching
-          rawYear: rawVal(r[0]),
-          rawCode: rawVal(r[1]),
-          rawResearcher: rawVal(r[3]),
-          rawSubject: rawVal(r[7]),
-          rawCoa: rawVal(r[13])
-        })).filter(p => p.rawCode !== '' || p.rawSubject !== '');
+        allProjects = rows.slice(1).map(r => {
+          const yearStr = rawVal(r[0]);
+          return {
+            year: cleanVal(r[0]),
+            projectCode: cleanVal(r[1]),
+            docDate: cleanVal(r[2]),
+            researcher: cleanVal(r[3]),
+            phone: cleanVal(r[4]),
+            dept: cleanVal(r[5]),
+            advisor: cleanVal(r[6]),
+            subject: cleanVal(r[7]),
+            type: cleanVal(r[8]),
+            reviewerName: cleanVal(r[9]),
+            reviewDate: cleanVal(r[10]),
+            status: cleanVal(r[11]),
+            approveDate: cleanVal(r[12]),
+            coaNumber: cleanVal(r[13]),
+            expireDate: cleanVal(r[14]),
+            coaRenewal2: cleanVal(r[15]),
+            officer: cleanVal(r[16]),
+            amendDocNo: cleanVal(r[17]),
+            amendCount1: cleanVal(r[18]),
+            amendReceiveDate: cleanVal(r[19]),
+            renewDocNo: cleanVal(r[20]),
+            renewCount1: cleanVal(r[21]),
+            
+            // Raw strings for searching and filtering
+            rawYear: yearStr,
+            rawCode: rawVal(r[1]),
+            rawResearcher: rawVal(r[3]),
+            rawSubject: rawVal(r[7]),
+            rawCoa: rawVal(r[13])
+          };
+        }).filter(p => {
+          // คัดกรองเฉพาะตัวเลข พ.ศ. (ตัวเลข 4 หลัก เช่น 2560-2569)
+          return /^\d{4}$/.test(p.rawYear);
+        });
 
         renderStats();
         renderGroupedData(allProjects);
@@ -427,7 +433,7 @@
       // Group by Year
       const grouped = {};
       dataList.forEach(item => {
-        const y = item.rawYear !== '' ? item.rawYear : 'ไม่ระบุปี พ.ศ.';
+        const y = item.rawYear;
         if (!grouped[y]) grouped[y] = [];
         grouped[y].push(item);
       });
