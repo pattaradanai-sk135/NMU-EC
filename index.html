@@ -113,7 +113,6 @@
 
     <!-- TAB 1: HOME -->
     <section id="tab-home" class="space-y-8">
-      <!-- Hero Section -->
       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-950 text-white p-6 sm:p-12 shadow-xl border border-emerald-700">
         <div class="max-w-3xl space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-700/60 border border-emerald-500/40 text-amber-300 text-xs font-bold">
@@ -167,7 +166,7 @@
         <div onclick="switchTab('forms')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
           <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xl mb-3">📂</div>
           <h3 class="font-bold text-slate-900 text-sm mb-1">ดาวน์โหลดแบบฟอร์ม</h3>
-          <p class="text-xs text-slate-500">NMU-IRB-01 ถึง NMU-IRB-08 เอกสาร PIS และ ICF</p>
+          <p class="text-xs text-slate-500">แยกกลุ่มอาจารย์ นักศึกษา และบุคคลภายนอก</p>
         </div>
         <div onclick="switchTab('drive')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
           <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-xl mb-3 border border-emerald-200">📁</div>
@@ -197,84 +196,9 @@
           </div>
         </div>
       </div>
-
-      <!-- Meeting Schedule & Announcements Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="lg:col-span-1 bg-gradient-to-br from-white to-amber-50/50 rounded-3xl p-6 border border-amber-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-2">
-                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold">
-                  📅
-                </div>
-                <div>
-                  <h3 class="font-bold text-slate-900 text-base">ปฏิทินการประชุมคณะกรรมการ</h3>
-                  <p class="text-[11px] text-slate-500">สำนักงานอธิการบดี พ.ศ. 2569</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="space-y-2.5 text-xs">
-              <div class="p-3 bg-white rounded-2xl border-2 border-amber-300 shadow-sm">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-bold text-emerald-900">การประชุม คกก. EC ครั้งที่ 10/2569</span>
-                  <span class="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 text-[10px] font-extrabold">รอบปัจจุบัน</span>
-                </div>
-                <div class="text-sm font-extrabold text-slate-900">วันพุธที่ 14 ตุลาคม 2569</div>
-                <div class="text-rose-700 font-semibold mt-0.5 text-[11px]">
-                  ปิดรับข้อเสนอโครงร่าง: วันพุธที่ 30 กันยายน 2569
-                </div>
-              </div>
-              <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-bold text-slate-800">การประชุม คกก. EC ครั้งที่ 11/2569</span>
-                  <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">เปิดรับ</span>
-                </div>
-                <div class="text-sm font-bold text-slate-800">วันพุธที่ 11 พฤศจิกายน 2569</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2">
-            <button
-              onclick="openMeetingCalendarModal()"
-              class="w-full py-2.5 px-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition"
-            >
-              <span>📅 ดูตารางประชุมฉบับเต็มทั้งปี 2569 ↗</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="lg:col-span-2 bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm space-y-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="font-bold text-slate-900 text-base">
-                ขั้นตอนและข้อกำหนดการเสนอโครงร่างวิจัย (Full Board Review)
-              </h3>
-              <p class="text-xs text-slate-500">สำนักงานคณะกรรมการจริยธรรมการวิจัยในคน (NMU-IRB)</p>
-            </div>
-            <span class="text-2xl">🏛️</span>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-emerald-900 block">⏰ เวลาการประชุม</span>
-              <p class="text-slate-600 text-[11px]">09.30 – 12.00 น. จัดขึ้นเดือนละ 1 ครั้งตามปฏิทิน</p>
-            </div>
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-emerald-900 block">🏢 สถานที่ประชุม</span>
-              <p class="text-slate-600 text-[11px]">ห้องประชุม สนธ. ชั้น 6 อาคารสารพัดช่าง หรือ Cisco Webex</p>
-            </div>
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-rose-800 block">📝 เกณฑ์การส่งเอกสาร</span>
-              <p class="text-slate-600 text-[11px]">ล่วงหน้าก่อนวันประชุมไม่น้อยกว่า 15 วันทำการ</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- TAB 2: TRACKING (เพิ่มช่องรหัสผ่านส่วนตัวนักวิจัย) -->
+    <!-- TAB 2: TRACKING -->
     <section id="tab-tracking" class="hidden space-y-6">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-300">
@@ -458,11 +382,169 @@
       </div>
     </section>
 
-    <!-- TAB 5: FORMS -->
-    <section id="tab-forms" class="hidden space-y-4 text-center py-12 bg-white rounded-3xl border">
-      <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ดาวน์โหลดแบบฟอร์ม NMU-IRB</h2>
-      <p class="text-xs text-slate-500">แบบฟอร์มเสนอโครงร่างวิจัย แบบยินยอม และแบบรายงานความก้าวหน้า</p>
-      <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="inline-block px-6 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow">เปิดโฟลเดอร์แบบฟอร์ม Google Drive ↗</a>
+    <!-- TAB 5: FORMS (ปรับปรุงการแยกประเภทผู้ใช้งาน) -->
+    <section id="tab-forms" class="hidden space-y-8">
+      <div class="text-center space-y-2">
+        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
+          📥 ศูนย์ดาวน์โหลดแบบฟอร์ม NMU-IRB
+        </span>
+        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">คลังแบบฟอร์มขอรับการพิจารณาจริยธรรมการวิจัยในคน</h2>
+        <p class="text-xs text-slate-500">เลือกแบบฟอร์มที่ถูกต้องตามสถานะของผู้ยื่นคำขอ</p>
+      </div>
+
+      <!-- Category Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Group 1: อาจารย์ / บุคลากร -->
+        <div class="bg-white rounded-3xl p-6 border border-emerald-200 shadow-sm flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 border-b pb-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl shrink-0">
+                👨‍🏫
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">สำหรับ อาจารย์ / บุคลากร</h3>
+                <p class="text-[11px] text-slate-500">นักวิจัยสังกัดมหาวิทยาลัยนวมินทราธิราช</p>
+              </div>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-slate-700">
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-emerald-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">NMU-IRB-01 (แบบเสนอโครงร่าง)</strong>
+                  <span class="text-[11px] text-slate-500">แบบฟอร์มเสนอขอรับการพิจารณาจริยธรรม</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-emerald-700 text-white rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-emerald-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">NMU-IRB-02 (ชี้แจงผู้มีส่วนร่วม)</strong>
+                  <span class="text-[11px] text-slate-500">เอกสารชี้แจงข้อมูลแก่ผู้ร่วมโครงการ (PIS)</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-emerald-700 text-white rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-emerald-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">NMU-IRB-03 (หนังสือยินยอม ICF)</strong>
+                  <span class="text-[11px] text-slate-500">แบบยินยอมโดยสมัครใจเข้าร่วมการวิจัย</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-emerald-700 text-white rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-emerald-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">NMU-IRB-05 (รายงานความก้าวหน้า)</strong>
+                  <span class="text-[11px] text-slate-500">แบบรายงานประจำปี / ขอต่ออายุใบรับรอง</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-emerald-700 text-white rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-center rounded-xl text-xs font-bold shadow transition">
+            📂 เปิดโฟลเดอร์แบบฟอร์มอาจารย์ ↗
+          </a>
+        </div>
+
+        <!-- Group 2: นักศึกษา -->
+        <div class="bg-white rounded-3xl p-6 border border-amber-200 shadow-sm flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 border-b pb-4">
+              <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xl shrink-0">
+                🎓
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">สำหรับ นักศึกษา</h3>
+                <p class="text-[11px] text-slate-500">ป.ตรี / ป.โท / ป.เอก และแพทย์ฝึกหัด</p>
+              </div>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-slate-700">
+              <li class="p-3 bg-amber-50/50 rounded-2xl border border-amber-200">
+                <strong class="block text-amber-900 mb-1">📌 ข้อกำหนดสำคัญสำหรับนักศึกษา:</strong>
+                <p class="text-[11px] text-slate-600 leading-relaxed">
+                  ต้องมี <b>อาจารย์ที่ปรึกษาหลัก</b> ลงนามรับรองในแบบฟอร์ม NMU-IRB-01 และมีเอกสารอนุมัติเค้าโครงวิทยานิพนธ์แนบประกอบ
+                </p>
+              </li>
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-amber-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">แบบฟอร์มคำขอสำหรับนักศึกษา</strong>
+                  <span class="text-[11px] text-slate-500">ชุดแบบฟอร์มเสนอวิทยานิพนธ์/สารนิพนธ์</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-amber-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">หนังสือรับรองจากอาจารย์ที่ปรึกษา</strong>
+                  <span class="text-[11px] text-slate-500">Advisor Endorsement Form</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-amber-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">Checklist ตรวจสอบเอกสารนักศึกษา</strong>
+                  <span class="text-[11px] text-slate-500">รายการเช็กความครบถ้วนก่อนส่ง</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="w-full py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 text-center rounded-xl text-xs font-bold shadow transition">
+            📂 เปิดโฟลเดอร์แบบฟอร์มนักศึกษา ↗
+          </a>
+        </div>
+
+        <!-- Group 3: บุคคลภายนอก -->
+        <div class="bg-white rounded-3xl p-6 border border-teal-200 shadow-sm flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 border-b pb-4">
+              <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xl shrink-0">
+                🌐
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">สำหรับ บุคคลภายนอก</h3>
+                <p class="text-[11px] text-slate-500">นักวิจัยร่วม/สถาบันภายนอก/ภาคเอกชน</p>
+              </div>
+            </div>
+
+            <ul class="space-y-2.5 text-xs text-slate-700">
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-teal-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">หนังสือขอความอนุเคราะห์พิจารณา</strong>
+                  <span class="text-[11px] text-slate-500">จากหน่วยงานต้นสังกัดภายนอก</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-teal-700 text-white rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-teal-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">ข้อตกลงการใช้วัตถุชีวภาพ (MTA)</strong>
+                  <span class="text-[11px] text-slate-500">Material Transfer Agreement</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-teal-700 text-white rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-teal-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">ข้อตกลงการแบ่งปันข้อมูล (DTA)</strong>
+                  <span class="text-[11px] text-slate-500">Data Transfer Agreement</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-teal-700 text-white rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+              <li class="p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-teal-300 transition flex items-center justify-between">
+                <div>
+                  <strong class="block text-slate-900">อัตราค่าธรรมเนียมการพิจารณา</strong>
+                  <span class="text-[11px] text-slate-500">ประกาศอัตราค่าธรรมเนียมวิจัยภายนอก</span>
+                </div>
+                <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="px-2.5 py-1 bg-teal-700 text-white rounded-lg font-bold text-[11px] shadow-xs">ดาวน์โหลด</a>
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="w-full py-2.5 bg-teal-800 hover:bg-teal-900 text-white text-center rounded-xl text-xs font-bold shadow transition">
+            📂 เปิดโฟลเดอร์เอกสารบุคคลภายนอก ↗
+          </a>
+        </div>
+
+      </div>
     </section>
 
     <!-- TAB 6: DRIVE -->
@@ -502,7 +584,7 @@
   <div id="emailModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
       <div class="flex items-center justify-between border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900">✉️️ ส่งอีเมลแจ้งเตือนนักวิจัย (Email Notification)</h3>
+        <h3 class="font-bold text-base text-slate-900">✉️ ส่งอีเมลแจ้งเตือนนักวิจัย (Email Notification)</h3>
         <button onclick="closeEmailModal()" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
       </div>
       <div class="space-y-3 text-xs">
@@ -558,7 +640,7 @@
   <!-- Script Logic -->
   <script>
     const GOOGLE_SHEET_JSON = 'https://docs.google.com/spreadsheets/d/1EfhsAv5hYXI0JqVI5McSOGwbQ57YddAQVdMe6umpKug/gviz/tq?tqx=out:json&sheet=%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3';
-    const DEFAULT_PASSWORD = '123456'; // รหัสผ่านส่วนตัวนักวิจัยเริ่มต้น
+    const DEFAULT_PASSWORD = '123456';
 
     let allProjects = [];
 
@@ -767,7 +849,6 @@
       renderRegistryTable(filtered);
     }
 
-    // ตรวจสอบทั้งรหัสโครงการ และ Password
     function executeSearchProject() {
       const query = document.getElementById('trackingCodeInput').value.trim().toLowerCase();
       const pwd = document.getElementById('trackingPasswordInput').value.trim();
