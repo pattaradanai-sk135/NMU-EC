@@ -429,8 +429,10 @@
           🛡️ ระบบตรวจสอบสถานะโครงการ
         </span>
         <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ติดตามสถานะโครงการและการประเมินจริยธรรม</h2>
+        <p class="text-xs text-slate-500">กรุณากรอกรหัสโครงการ/ชื่อผู้วิจัย พร้อมรหัสผ่านส่วนตัวเพื่อเข้าดูข้อมูล</p>
       </div>
 
+      <!-- ฟอร์มกรอกรหัสผ่าน -->
       <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-sm max-w-2xl mx-auto space-y-4">
         <div class="space-y-3">
           <div>
@@ -448,42 +450,44 @@
             <input
               type="password"
               id="trackingPasswordInput"
-              placeholder="กรอกรหัสผ่านส่วนตัว (เริ่มต้น: 123456)"
+              placeholder="กรอกรหัสผ่านส่วนตัว"
               class="w-full px-4 py-2.5 text-sm border-2 border-emerald-200 rounded-xl font-mono focus:border-emerald-600 focus:outline-none"
             />
-            <p class="text-[11px] text-slate-400 mt-1">🔑 *รหัสผ่านทดสอบเบื้องต้นใช้: <span class="font-mono text-emerald-700 font-bold">123456</span></p>
+            <p class="text-[11px] text-slate-400 mt-1">🔑 *รหัสผ่านทดสอบระบบใช้: <span class="font-mono text-emerald-700 font-bold">123456</span></p>
           </div>
 
           <button
             onclick="executeSearchProject()"
-            class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md transition mt-2"
+            class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md transition mt-2 flex items-center justify-center gap-2"
           >
-            🔒 ยืนยันรหัสผ่านและตรวจสอบสถานะ
+            <span>🔒 ยืนยันรหัสผ่านและตรวจสอบสถานะ</span>
           </button>
         </div>
 
-        <div id="trackingError" class="hidden p-3 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200 font-medium"></div>
+        <!-- กล่องแจ้งเตือนข้อผิดพลาด (ซ่อนเป็นค่าเริ่มต้น) -->
+        <div id="trackingError" class="hidden p-3.5 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200 font-semibold flex items-center gap-2"></div>
       </div>
 
-      <div id="trackingResultCard" class="hidden max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow space-y-6">
-        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b">
+      <!-- การ์ดแสดงผลข้อมูลโครงการ (ซ่อนอยู่ตลอดจนกว่าจะยืนยันรหัสผ่านถูกต้อง) -->
+      <div id="trackingResultCard" class="hidden max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-md space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
           <div>
             <div class="flex items-center gap-2 mb-1">
               <span id="resCode" class="font-mono text-xs font-bold px-2.5 py-0.5 rounded bg-emerald-800 text-white"></span>
               <span id="resCoa" class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300"></span>
             </div>
-            <h3 id="resSubject" class="font-bold text-base text-slate-900"></h3>
+            <h3 id="resSubject" class="font-bold text-base text-slate-900 leading-snug"></h3>
           </div>
           <div id="resStatusBadge"></div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl">
-          <div><strong class="text-slate-800">หัวหน้าโครงการ:</strong> <span id="resResearcher"></span></div>
-          <div><strong class="text-slate-800">สังกัด:</strong> <span id="resDept"></span></div>
-          <div><strong class="text-slate-800">อาจารย์ที่ปรึกษา:</strong> <span id="resAdvisor"></span></div>
-          <div><strong class="text-slate-800">ประเภทการพิจารณา:</strong> <span id="resType"></span></div>
-          <div><strong class="text-slate-800">วันที่ออกเลข:</strong> <span id="resDate"></span></div>
-          <div><strong class="text-slate-800">วันที่อนุมัติ/รับรอง:</strong> <span id="resApproveDate"></span></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-600 bg-slate-50 p-4.5 rounded-2xl border border-slate-100">
+          <div><strong class="text-slate-800 block mb-0.5">หัวหน้าโครงการ:</strong> <span id="resResearcher" class="text-slate-900 font-medium"></span></div>
+          <div><strong class="text-slate-800 block mb-0.5">สังกัด:</strong> <span id="resDept" class="text-slate-900 font-medium"></span></div>
+          <div><strong class="text-slate-800 block mb-0.5">อาจารย์ที่ปรึกษา:</strong> <span id="resAdvisor" class="text-slate-900 font-medium"></span></div>
+          <div><strong class="text-slate-800 block mb-0.5">ประเภทการพิจารณา:</strong> <span id="resType" class="text-slate-900 font-medium"></span></div>
+          <div><strong class="text-slate-800 block mb-0.5">วันที่ออกเลข:</strong> <span id="resDate" class="text-slate-900 font-medium"></span></div>
+          <div><strong class="text-slate-800 block mb-0.5">วันที่อนุมัติ/รับรอง:</strong> <span id="resApproveDate" class="text-slate-900 font-medium"></span></div>
         </div>
       </div>
     </section>
@@ -1620,70 +1624,61 @@
       renderRegistryTable(filtered);
     }
 
-    function executeSearchProject() {
+   function executeSearchProject() {
       const query = document.getElementById('trackingCodeInput').value.trim().toLowerCase();
       const pwd = document.getElementById('trackingPasswordInput').value.trim();
       const errBox = document.getElementById('trackingError');
       const resCard = document.getElementById('trackingResultCard');
 
       errBox.classList.add('hidden');
+      resCard.classList.add('hidden');
       
       if (!query) {
-        errBox.innerText = '⚠️ กรุณาพิมพ์รหัสโครงการ หรือ ชื่อผู้วิจัย';
+        errBox.innerHTML = '⚠️ <strong>กรุณากรอกข้อมูล:</strong> โปรดระบุรหัสโครงการ หรือ ชื่อผู้วิจัยก่อนทำรายการ';
         errBox.classList.remove('hidden');
-        resCard.classList.add('hidden');
         return;
       }
 
       if (!pwd) {
-        errBox.innerText = '🔒 กรุณากรอกรหัสผ่านส่วนตัวของนักวิจัย';
+        errBox.innerHTML = '🔒 <strong>ต้องระบุรหัสผ่าน:</strong> โปรดกรอกรหัสผ่านส่วนตัวของนักวิจัย (รหัสผ่านคือ 123456)';
         errBox.classList.remove('hidden');
-        resCard.classList.add('hidden');
         return;
       }
 
       if (pwd !== DEFAULT_PASSWORD) {
-        errBox.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบรหัสผ่านอีกครั้ง (รหัสเริ่มต้นคือ 123456)';
+        errBox.innerHTML = '❌ <strong>รหัสผ่านไม่ถูกต้อง:</strong> กรุณาตรวจสอบรหัสผ่านอีกครั้ง (รหัสผ่านปัจจุบันคือ 123456)';
         errBox.classList.remove('hidden');
-        resCard.classList.add('hidden');
         return;
       }
 
       const match = allProjects.find(p => p.rawCode.toLowerCase().includes(query) || p.rawResearcher.toLowerCase().includes(query));
 
       if (match) {
-        document.getElementById('resCode').innerHTML = match.projectCode || '-';
-        document.getElementById('resCoa').innerHTML = match.coaNumber || '-';
-        document.getElementById('resSubject').innerHTML = match.subject || '(ไม่มีข้อมูลชื่อโครงการ)';
-        document.getElementById('resResearcher').innerHTML = match.researcher || '(ไม่มีข้อมูลผู้วิจัย)';
-        document.getElementById('resDept').innerHTML = match.dept || '-';
-        document.getElementById('resAdvisor').innerHTML = match.advisor || '-';
-        document.getElementById('resType').innerHTML = match.type || '-';
-        document.getElementById('resDate').innerHTML = match.docDate || '-';
-        document.getElementById('resApproveDate').innerHTML = match.approveDate || '-';
+        document.getElementById('resCode').innerText = match.projectCode || '-';
+        document.getElementById('resCoa').innerText = match.coaNumber || '-';
+        document.getElementById('resSubject').innerText = match.subject || '(ไม่มีข้อมูลชื่อโครงการ)';
+        document.getElementById('resResearcher').innerText = match.researcher || '(ไม่มีข้อมูลผู้วิจัย)';
+        document.getElementById('resDept').innerText = match.dept || '-';
+        document.getElementById('resAdvisor').innerText = match.advisor || '-';
+        document.getElementById('resType').innerText = match.type || '-';
+        document.getElementById('resDate').innerText = match.docDate || '-';
+        document.getElementById('resApproveDate').innerText = match.approveDate || '-';
         
         document.getElementById('resStatusBadge').innerHTML = match.rawCoa !== '' ? 
-          '<span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs rounded-full">อนุมัติแล้ว (Approved)</span>' : 
-          '<span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold text-xs rounded-full">อยู่ระหว่างประเมิน</span>';
+          '<span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs rounded-full border border-emerald-200">อนุมัติแล้ว (Approved)</span>' : 
+          '<span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold text-xs rounded-full border border-amber-200">อยู่ระหว่างประเมิน</span>';
 
         resCard.classList.remove('hidden');
       } else {
-        errBox.innerText = 'ไม่พบข้อมูลโครงการที่ระบุ';
+        errBox.innerHTML = '🔍 <strong>ไม่พบข้อมูล:</strong> ไม่พบโครงการที่ตรงกับรหัสหรือชื่อผู้วิจัยที่คุณระบุ';
         errBox.classList.remove('hidden');
-        resCard.classList.add('hidden');
       }
-    }
-
-    function trackFromHome() {
-      const val = document.getElementById('homeTrackInput').value;
-      switchTab('tracking');
-      document.getElementById('trackingCodeInput').value = val;
     }
 
     function quickSearch(code) {
       switchTab('tracking');
       document.getElementById('trackingCodeInput').value = code;
-      document.getElementById('trackingPasswordInput').value = '123456';
+      document.getElementById('trackingPasswordInput').value = DEFAULT_PASSWORD;
       executeSearchProject();
     }
 
