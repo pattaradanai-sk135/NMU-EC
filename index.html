@@ -99,7 +99,7 @@
       <!-- Nav Items -->
       <nav class="hidden lg:flex items-center gap-1 text-xs font-bold">
         <button onclick="switchTab('home')" id="nav-home" class="px-3 py-2 rounded-xl transition bg-emerald-100 text-emerald-900">หน้าหลัก</button>
-        <button onclick="switchTab('tracking')" id="nav-tracking" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ติดตามโครงการ (69-XXX)</button>
+        <button onclick="switchTab('tracking')" id="nav-tracking" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ติดตามโครงการ</button>
         <button onclick="switchTab('submission')" id="nav-submission" class="px-3 py-2 rounded-xl transition bg-emerald-700 text-white hover:bg-emerald-800 shadow">ยื่นคำขอออนไลน์</button>
         <button onclick="switchTab('forms')" id="nav-forms" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม</button>
         <button onclick="switchTab('registry')" id="nav-registry" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ทะเบียนประวัติ & ออก COA</button>
@@ -123,7 +123,7 @@
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t px-4 py-3 space-y-1.5 text-xs font-bold">
       <button onclick="switchTab('home')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">หน้าหลัก</button>
-      <button onclick="switchTab('tracking')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ติดตามโครงการ (69-001-00-000-0)</button>
+      <button onclick="switchTab('tracking')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ติดตามโครงการ</button>
       <button onclick="switchTab('submission')" class="block w-full text-left py-2 px-3 rounded-lg bg-emerald-700 text-white">ยื่นคำขอรับพิจารณาออนไลน์</button>
       <button onclick="switchTab('forms')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม NMU-IRB</button>
       <button onclick="switchTab('registry')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">สมุดทะเบียนประวัติ & ออกเลข COA/COE</button>
@@ -141,15 +141,15 @@
       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-950 text-white p-6 sm:p-12 shadow-xl border border-emerald-700">
         <div class="max-w-3xl space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-700/60 border border-emerald-500/40 text-amber-300 text-xs font-bold">
-            ✨ ระบบสารสนเทศและบริการออนไลน์ครบวงจร พ.ศ. 2569
+            ✨ ระบบสารสนเทศและบริการออนไลน์เชื่อมโยง Google Sheets
           </div>
           <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight font-heading">
             คณะกรรมการจริยธรรมในคน <br>
             <span class="text-amber-300">มหาวิทยาลัยนวมินทราธิราช</span>
           </h2>
           <p class="text-emerald-100 text-sm sm:text-base leading-relaxed font-light">
-            สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช มุ่งมั่นยกระดับมาตรฐานจริยธรรมการวิจัยในคนตามหลักสากล (Declaration of Helsinki, Belmont Report, ICH-GCP)
-            ด้วยระบบส่งคำขอออนไลน์ การลงนามบนหน้าจอ ติดตามสถานะโครงการ และร่างอีเมลแจ้งเตือน
+            สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช มุ่งมั่นยกระดับมาตรฐานจริยธรรมการวิจัยในคนตามหลักสากล
+            เชื่อมโยงข้อมูลตรงจากฐานข้อมูลทะเบียนโครงการวิจัยวิทยาลัยพัฒนามหานครและคณะวิชาในสังกัด
           </p>
 
           <!-- Search quick track bar -->
@@ -157,7 +157,7 @@
             <input
               type="text"
               id="homeTrackInput"
-              placeholder="ป้อนรหัสโครงการ เช่น 69-001-00-000-0 หรือ 68-001..."
+              placeholder="ป้อนรหัสโครงการ เช่น 60-001, 61-002 หรือชื่อผู้วิจัย..."
               class="w-full px-4 py-2 text-sm text-slate-800 font-mono font-medium focus:outline-none"
             />
             <button
@@ -170,43 +170,19 @@
 
           <div class="flex flex-wrap items-center gap-2 text-xs text-emerald-200 pt-2">
             <span class="text-amber-300 font-bold">ตัวอย่างค้นหาด่วน:</span>
-            <button onclick="quickSearch('69-002')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">69-002</button>
-            <button onclick="quickSearch('69-003')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">69-003</button>
-            <button onclick="quickSearch('68-001')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">68-001</button>
             <button onclick="quickSearch('60-001')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">60-001</button>
+            <button onclick="quickSearch('61-001')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">61-001</button>
+            <button onclick="quickSearch('62-001')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">62-001</button>
+            <button onclick="quickSearch('66-001')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">66-001</button>
           </div>
-        </div>
-      </div>
-
-      <!-- Quick Action Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div onclick="switchTab('submission')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl mb-3">📝</div>
-          <h3 class="font-bold text-slate-900 text-sm mb-1">ยื่นคำขอรับพิจารณาออนไลน์</h3>
-          <p class="text-xs text-slate-500">กรอกแบบฟอร์ม แนบโครงร่าง พร้อมลงนามดิจิทัลบนสมาร์ทโฟน</p>
-        </div>
-        <div onclick="switchTab('tracking')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
-          <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xl mb-3">🔍</div>
-          <h3 class="font-bold text-slate-900 text-sm mb-1">ติดตามสถานะโครงการ</h3>
-          <p class="text-xs text-slate-500">ป้อน 69-001 ถึง 69-999 พร้อมระบบความปลอดภัยด้วย PIN</p>
-        </div>
-        <div onclick="switchTab('forms')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
-          <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xl mb-3">📂</div>
-          <h3 class="font-bold text-slate-900 text-sm mb-1">ดาวน์โหลดแบบฟอร์ม</h3>
-          <p class="text-xs text-slate-500">NMU-IRB-01 ถึง NMU-IRB-08 เอกสารชี้แจง (PIS) และแบบยินยอม (ICF)</p>
-        </div>
-        <div onclick="switchTab('drive')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-xl mb-3 border border-emerald-200">📁</div>
-          <h3 class="font-bold text-slate-900 text-sm mb-1">Google Drive คลังเอกสารกลาง</h3>
-          <p class="text-xs text-slate-500">เชื่อมต่อโฟลเดอร์เอกสารอ้างอิง ประกาศมหาวิทยาลัย และคู่มือวิธีปฏิบัติงานมาตรฐาน (SOPs)</p>
         </div>
       </div>
 
       <!-- Stats -->
       <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 rounded-3xl p-6 border border-emerald-200 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h3 class="font-bold text-emerald-950 text-base">สถิติการดำเนินงานสะสม พ.ศ. 2560 - 2569</h3>
-          <p class="text-xs text-slate-600">รวบรวมข้อมูลคำขอรับการพิจารณาทั้งหมดจากทุกส่วนงานในสังกัด</p>
+          <h3 class="font-bold text-emerald-950 text-base">สถิติการดำเนินงานสะสมจาก Google Sheets</h3>
+          <p class="text-xs text-slate-600">รวบรวมข้อมูลคำขอรับการพิจารณาทั้งหมดจากชีต "ออกเลขโครงการ-สำเนา"</p>
         </div>
         <div class="flex items-center gap-4 text-center">
           <div class="bg-white px-5 py-3 rounded-2xl shadow-xs border">
@@ -215,231 +191,11 @@
           </div>
           <div class="bg-white px-5 py-3 rounded-2xl shadow-xs border">
             <span id="statApproved" class="text-2xl font-black text-emerald-700 block font-mono">-</span>
-            <span class="text-[11px] text-slate-500 font-bold">ผ่านการรับรอง</span>
+            <span class="text-[11px] text-slate-500 font-bold">อนุมัติ/รับรอง</span>
           </div>
           <div class="bg-white px-5 py-3 rounded-2xl shadow-xs border">
             <span id="statPending" class="text-2xl font-black text-amber-600 block font-mono">-</span>
-            <span class="text-[11px] text-slate-500 font-bold">กำลังประเมิน</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Meeting Schedule & Announcements Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Calendar Card -->
-        <div class="lg:col-span-1 bg-gradient-to-br from-white to-amber-50/50 rounded-3xl p-6 border border-amber-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-2">
-                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold">
-                  📅
-                </div>
-                <div>
-                  <h3 class="font-bold text-slate-900 text-base">ปฏิทินการประชุมคณะกรรมการ</h3>
-                  <p class="text-[11px] text-slate-500">สำนักงานอธิการบดี พ.ศ. 2569</p>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-950 font-bold text-[10px] border border-amber-300">
-                วาระ 6.1
-              </span>
-            </div>
-
-            <div class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-200 text-[11px] text-emerald-950 mb-3">
-              <span class="font-bold block text-emerald-900">อ้างอิงกำหนดการประชุมทางการ:</span>
-              <span class="text-slate-600">ระเบียบวาระที่ 6.1 (Version 1.0_11-09-69) • การประชุม คกก EC 10-2569</span>
-            </div>
-
-            <div class="space-y-2.5 text-xs">
-              <!-- Meeting 10/2569 -->
-              <div class="p-3 bg-white rounded-2xl border-2 border-amber-300 shadow-xs">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-bold text-emerald-900">การประชุม คกก. EC ครั้งที่ 10/2569</span>
-                  <span class="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 text-[10px] font-extrabold">รอบปัจจุบัน</span>
-                </div>
-                <div class="text-sm font-extrabold text-slate-900">วันพุธที่ 14 ตุลาคม 2569</div>
-                <div class="text-rose-700 font-semibold mt-0.5 text-[11px]">
-                  ปิดรับข้อเสนอโครงร่าง: วันพุธที่ 30 กันยายน 2569
-                </div>
-              </div>
-
-              <!-- Meeting 11/2569 -->
-              <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-xs">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-bold text-slate-800">การประชุม คกก. EC ครั้งที่ 11/2569</span>
-                  <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">เปิดรับ</span>
-                </div>
-                <div class="text-sm font-bold text-slate-800">วันพุธที่ 11 พฤศจิกายน 2569</div>
-                <div class="text-slate-500 mt-0.5 text-[11px]">
-                  ปิดรับข้อเสนอโครงร่าง: วันพุธที่ 28 ตุลาคม 2569
-                </div>
-              </div>
-
-              <!-- Meeting 12/2569 -->
-              <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-xs">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-bold text-slate-800">การประชุม คกก. EC ครั้งที่ 12/2569</span>
-                  <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold">รอบสิ้นปี</span>
-                </div>
-                <div class="text-sm font-bold text-slate-800">วันพุธที่ 9 ธันวาคม 2569</div>
-                <div class="text-slate-500 mt-0.5 text-[11px]">
-                  ปิดรับข้อเสนอโครงร่าง: วันพุธที่ 25 พฤศจิกายน 2569
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2">
-            <button
-              onclick="alert('การประชุมจัดขึ้นทุกวันพุธสัปดาห์ที่ 2 ของเดือน ระหว่างเวลา 09.30 - 12.00 น.')"
-              class="w-full py-2.5 px-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition"
-            >
-              <span>📅 ดูตารางประชุมฉบับเต็มทั้งปี 2569 (12 ครั้ง) ↗</span>
-            </button>
-            <div class="p-2 bg-emerald-50 rounded-xl text-[11px] text-emerald-900 border border-emerald-200/60">
-              <strong>หมายเหตุ:</strong> โครงการประเภท Exempt และ Expedited พิจารณาต่อเนื่องได้ตลอดทั้งเดือน
-            </div>
-          </div>
-        </div>
-
-        <!-- Committee Information & Workflow -->
-        <div class="lg:col-span-2 bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm space-y-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="font-bold text-slate-900 text-base">
-                ขั้นตอนและข้อกำหนดการเสนอโครงร่างวิจัย (Full Board Review)
-              </h3>
-              <p class="text-xs text-slate-500">
-                ตามมติการประชุม คกก. EC 10-2569 ระเบียบวาระที่ 6.1 (Version 1.0_11-09-69)
-              </p>
-            </div>
-            <span class="text-2xl">🏛️</span>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-emerald-900 block">⏰ เวลาการประชุม</span>
-              <p class="text-slate-600 text-[11px]">09.30 – 12.00 น. จัดขึ้นเดือนละ 1 ครั้งตามปฏิทิน</p>
-            </div>
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-emerald-900 block">🏢 สถานที่ประชุม</span>
-              <p class="text-slate-600 text-[11px]">ห้องประชุม สนธ. ชั้น 6 อาคารสารพัดช่าง หรือ Cisco Webex</p>
-            </div>
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-rose-800 block">📝 เกณฑ์การส่งเอกสาร</span>
-              <p class="text-slate-600 text-[11px]">ล่วงหน้าก่อนวันประชุมไม่น้อยกว่า 15 วันทำการ</p>
-            </div>
-          </div>
-
-          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-2">
-            <span class="font-bold text-slate-900 block">เกณฑ์การพิจารณาและส่งเอกสาร:</span>
-            <ul class="list-disc list-inside space-y-1 text-slate-600 text-[11px] leading-relaxed">
-              <li>นักวิจัยจัดส่งเอกสารโครงร่างวิจัย (แบบเสนอ NMU-IRB-01, PIS, ICF) ผ่านระบบออนไลน์ของมหาวิทยาลัย</li>
-              <li>เอกสารที่ส่งหลังวันปิดรับข้อเสนอ จะถูกนำเสนอในรอบการประชุมประจำเดือนถัดไปโดยอัตโนมัติ</li>
-              <li>การพิจารณาแบบยกเว้น (Exempt) และแบบเร็ว (Expedited) ดำเนินการตลอดทั้งเดือนโดยไม่ต้องรอรอบประชุม</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Supported Faculties & Bangkok (BMA) -->
-      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-sm space-y-4">
-        <div class="flex items-center justify-between">
-          <div>
-            <h3 class="font-bold text-slate-900 text-base sm:text-lg">ส่วนงานในสังกัดมหาวิทยาลัยนวมินทราธิราชที่รองรับการยื่นคำขอ</h3>
-            <p class="text-xs text-slate-500">นักวิจัย อาจารย์ บุคลากร และบุคลากรทางการแพทย์ในสังกัด สามารถยื่นคำขอผ่านระบบกลางได้โดยตรง</p>
-          </div>
-          <span class="text-2xl">🏛️</span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
-            <div class="flex items-center justify-between mb-1">
-              <h4 class="font-bold text-slate-900 text-xs">คณะแพทยศาสตร์วชิรพยาบาล</h4>
-              <span class="px-1.5 py-0.5 rounded bg-white text-emerald-800 font-mono font-bold text-[10px] border">วพม.</span>
-            </div>
-            <p class="text-slate-500 text-[11px]">งานวิจัยทางคลินิก วิทยาศาสตร์การแพทย์</p>
-          </div>
-
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
-            <div class="flex items-center justify-between mb-1">
-              <h4 class="font-bold text-slate-900 text-xs">คณะพยาบาลศาสตร์เกื้อการุณย์</h4>
-              <span class="px-1.5 py-0.5 rounded bg-white text-emerald-800 font-mono font-bold text-[10px] border">พยม.</span>
-            </div>
-            <p class="text-slate-500 text-[11px]">งานวิจัยการพยาบาล และการดูแลสุขภาพ</p>
-          </div>
-
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
-            <div class="flex items-center justify-between mb-1">
-              <h4 class="font-bold text-slate-900 text-xs">คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ</h4>
-              <span class="px-1.5 py-0.5 rounded bg-white text-emerald-800 font-mono font-bold text-[10px] border">วทส.</span>
-            </div>
-            <p class="text-slate-500 text-[11px]">นวัตกรรมสุขภาพ ปฏิบัติการฉุกเฉินการแพทย์</p>
-          </div>
-
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
-            <div class="flex items-center justify-between mb-1">
-              <h4 class="font-bold text-slate-900 text-xs">วิทยาลัยพัฒนาชุมชนเมือง</h4>
-              <span class="px-1.5 py-0.5 rounded bg-white text-emerald-800 font-mono font-bold text-[10px] border">วชม.</span>
-            </div>
-            <p class="text-slate-500 text-[11px]">การจัดการเมือง และคุณภาพชีวิตคนเมือง</p>
-          </div>
-
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
-            <div class="flex items-center justify-between mb-1">
-              <h4 class="font-bold text-slate-900 text-xs">วิทยาลัยพัฒนามหานคร</h4>
-              <span class="px-1.5 py-0.5 rounded bg-white text-emerald-800 font-mono font-bold text-[10px] border">วมน.</span>
-            </div>
-            <p class="text-slate-500 text-[11px]">นโยบายสาธารณะ และเศรษฐกิจเมือง</p>
-          </div>
-
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
-            <div class="flex items-center justify-between mb-1">
-              <h4 class="font-bold text-slate-900 text-xs">สำนักงานอธิการบดี</h4>
-              <span class="px-1.5 py-0.5 rounded bg-white text-emerald-800 font-mono font-bold text-[10px] border">สนธ.</span>
-            </div>
-            <p class="text-slate-500 text-[11px]">งานวิจัยสถาบัน และพัฒนางานประจำสู่งานวิจัย</p>
-          </div>
-
-          <div class="p-3.5 bg-emerald-50 rounded-2xl border-2 border-emerald-300 sm:col-span-2">
-            <div class="flex items-center justify-between mb-1">
-              <h4 class="font-bold text-emerald-950 text-xs sm:text-sm">กรุงเทพมหานคร (กทม.)</h4>
-              <span class="px-2 py-0.5 rounded bg-emerald-700 text-white font-mono font-bold text-[10px]">กทม.</span>
-            </div>
-            <p class="text-slate-600 text-[11px]">สำนักการแพทย์ สำนักอนามัย โรงพยาบาลในสังกัด และหน่วยงานกรุงเทพมหานคร</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact Office Card -->
-      <div class="bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-950 text-white rounded-3xl p-6 sm:p-8 border border-emerald-700 space-y-4">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div class="space-y-1">
-            <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 font-bold text-xs inline-block">
-              ✉️ ช่องทางติดต่อทางการสำนักงาน
-            </span>
-            <h3 class="text-xl sm:text-2xl font-extrabold text-white font-heading">
-              สำนักงานคณะกรรมการจริยธรรมการวิจัยในคน (NMU-IRB)
-            </h3>
-            <p class="text-xs text-emerald-100">
-              สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช อาคารสารพัดช่าง เกษมราษฎร์ แขวงวชิรพยาบาล เขตดุสิต กรุงเทพฯ 10300
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 shrink-0">
-            <div class="p-4 bg-white/10 rounded-2xl border border-white/20">
-              <span class="text-amber-300 text-xs font-bold block mb-1">อีเมลติดต่อทางการ</span>
-              <a href="mailto:ec.nmu@nmu.ac.th" class="font-mono text-base font-bold text-white hover:text-amber-300 block">
-                ec.nmu@nmu.ac.th
-              </a>
-              <span class="text-[11px] text-emerald-200">ตอบกลับและส่งแจ้งเตือนนักวิจัย</span>
-            </div>
-            <div class="p-4 bg-white/10 rounded-2xl border border-white/20">
-              <span class="text-amber-300 text-xs font-bold block mb-1">โทรศัพท์สำนักงาน</span>
-              <span class="font-mono text-base font-bold text-white block">
-                02-244-3000 ต่อ 3500-3504
-              </span>
-              <span class="text-[11px] text-emerald-200">จันทร์ - ศุกร์: 08.30 - 16.30 น.</span>
-            </div>
+            <span class="text-[11px] text-slate-500 font-bold">กำลังดำเนินการ</span>
           </div>
         </div>
       </div>
@@ -449,20 +205,21 @@
     <section id="tab-tracking" class="hidden space-y-6">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-300">
-          🛡️ ระบบตรวจสอบความปลอดภัยด้วยรหัสผ่าน / PIN
+          🛡️ ระบบตรวจสอบความปลอดภัย
         </span>
         <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ติดตามสถานะโครงการและการประเมินจริยธรรม</h2>
-        <p class="text-xs text-slate-500">กำหนดช่วงรหัสโครงการ 69-001 ถึง 69-999 (รวมถึงโครงการย้อนหลังปี 2560–2568)</p>
+        <p class="text-xs text-slate-500">ค้นหาจากรหัสโครงการ ชื่อผู้วิจัย หรือเลข COA/COE</p>
       </div>
+
       <!-- Search Input -->
       <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm max-w-2xl mx-auto space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">รหัสโครงการ (69-001 ถึง 69-999)</label>
+          <label class="block text-xs font-bold text-slate-700 mb-1">รหัสโครงการ / ชื่อผู้วิจัย</label>
           <div class="flex gap-2">
             <input
               type="text"
               id="trackingCodeInput"
-              placeholder="เช่น 69-002 หรือ 68-001"
+              placeholder="เช่น 60-001 หรือ รังสินันท์"
               class="flex-1 px-4 py-2.5 text-base border-2 border-emerald-200 rounded-xl font-mono focus:border-emerald-600 focus:outline-none"
             />
             <button
@@ -474,21 +231,12 @@
           </div>
         </div>
 
-        <!-- Quick chips -->
-        <div class="flex flex-wrap items-center gap-1.5 text-xs text-slate-500 pt-1">
-          <span>ทดสอบคลิก:</span>
-          <button onclick="quickSearch('69-002')" class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono text-[11px]">69-002</button>
-          <button onclick="quickSearch('69-003')" class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono text-[11px]">69-003</button>
-          <button onclick="quickSearch('68-001')" class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono text-[11px]">68-001</button>
-        </div>
-
         <div id="trackingError" role="alert" class="hidden p-3 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200"></div>
         <div id="trackingPickList" class="hidden space-y-2"></div>
 
         <!-- PIN Gate Box -->
         <div id="pinGateBox" class="hidden bg-amber-50 p-5 rounded-2xl border border-amber-300 text-center space-y-3">
-          <div class="text-xs font-bold text-amber-900">🔒 ป้อนรหัสผ่าน / PIN 6 หลักเพื่อเข้าถึงผลการประเมิน</div>
-          <p id="pinHint" class="text-[11px] text-slate-500">ป้อน PIN ที่ตั้งไว้ตอนยื่นคำขอ</p>
+          <div class="text-xs font-bold text-amber-900">🔒 ป้อนรหัสผ่าน / PIN เพื่อเข้าถึงผลการประเมิน (ค่าเริ่มต้นระบบ: 123456)</div>
           <div class="max-w-xs mx-auto flex gap-2">
             <input
               type="password"
@@ -522,33 +270,20 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl">
-          <div><strong class="text-slate-800">หัวหน้าโครงการ / ผู้ยื่น:</strong> <span id="resResearcher"></span></div>
-          <div><strong class="text-slate-800">ส่วนงานสังกัด:</strong> <span id="resDept"></span></div>
-          <div><strong class="text-slate-800">เลขที่หนังสือ:</strong> <span id="resDocNo"></span></div>
-          <div><strong class="text-slate-800">วันที่รับเรื่อง:</strong> <span id="resDate"></span></div>
+          <div><strong class="text-slate-800">หัวหน้าโครงการ:</strong> <span id="resResearcher"></span></div>
+          <div><strong class="text-slate-800">สังกัด:</strong> <span id="resDept"></span></div>
+          <div><strong class="text-slate-800">อาจารย์ที่ปรึกษา:</strong> <span id="resAdvisor"></span></div>
           <div><strong class="text-slate-800">ประเภทการพิจารณา:</strong> <span id="resType"></span></div>
-          <div><strong class="text-slate-800">อัปเดตล่าสุด:</strong> <span id="resUpdated"></span></div>
-          <div id="resNotesBox" class="sm:col-span-2 hidden"><strong class="text-slate-800">หมายเหตุ:</strong> <span id="resNotes"></span></div>
-        </div>
-
-        <!-- 5-Step Evaluation Timeline -->
-        <div class="space-y-4">
-          <h4 class="font-bold text-slate-900 text-sm">ไทม์ไลน์สถานะการประเมินผล (Evaluation Progress)</h4>
-          <div class="space-y-3 pl-4 border-l-2 border-emerald-300 text-xs text-slate-600">
-            <div class="relative tl-step" data-step="1"><span class="tl-dot absolute -left-[23px] top-0 w-3 h-3 rounded-full bg-emerald-600"></span> <strong>1. ยื่นคำขอรับการพิจารณา:</strong> เอกสารโครงร่าง PIS/ICF เข้าสู่ระบบแล้ว</div>
-            <div class="relative tl-step" data-step="2"><span class="tl-dot absolute -left-[23px] top-0 w-3 h-3 rounded-full bg-emerald-600"></span> <strong>2. ตรวจสอบความสมบูรณ์:</strong> เจ้าหน้าที่ สนธ. จำแนกประเภทการพิจารณาเรียบร้อย</div>
-            <div class="relative tl-step" data-step="3"><span class="tl-dot absolute -left-[23px] top-0 w-3 h-3 rounded-full bg-emerald-600"></span> <strong>3. ผู้ทรงคุณวุฒิประเมิน:</strong> Reviewers ตรวจสอบความปลอดภัยและระเบียบวิธีวิจัย</div>
-            <div class="relative tl-step" data-step="4"><span class="tl-dot absolute -left-[23px] top-0 w-3 h-3 rounded-full bg-emerald-600"></span> <strong>4. การประชุมคณะกรรมการ:</strong> มติรับรองและแจ้งข้อเสนอแนะ</div>
-            <div class="relative tl-step" data-step="5"><span class="tl-dot absolute -left-[23px] top-0 w-3 h-3 rounded-full bg-emerald-700"></span> <strong>5. ออกหนังสือรับรอง COA/COE:</strong> ดำเนินการออกเลขและลงนามรับรองดิจิทัล</div>
-          </div>
+          <div><strong class="text-slate-800">วันที่ออกเลข:</strong> <span id="resDate"></span></div>
+          <div><strong class="text-slate-800">วันที่อนุมัติ/รับรอง:</strong> <span id="resApproveDate"></span></div>
         </div>
 
         <div class="flex items-center justify-between pt-4 border-t">
           <button onclick="openEmailModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold">
-            ✉️ ส่งอีเมลแจ้งเตือนนักวิจัย
+            ✉️ ส่งอีเมลแจ้งเตือน
           </button>
           <a href="#" id="btnCoaPrint" onclick="return openCoaPrint(null, event)" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow">
-            📜 ดูใบรับรอง COA ฉบับพิมพ์ได้
+            📜 ดูใบรับรอง COA/COE
           </a>
         </div>
       </div>
@@ -558,49 +293,46 @@
     <section id="tab-submission" class="hidden space-y-6">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-          ✍️️ ระบบส่งคำขอออนไลน์พร้อมลงนามดิจิทัล
+          ✍ ระบบส่งคำขอออนไลน์
         </span>
         <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ยื่นคำขอรับการพิจารณาจริยธรรมการวิจัยในคน</h2>
-        <p class="text-xs text-slate-500">กรอกข้อมูลและลงนามดิจิทัลบนหน้าจอ ระบบจะออกเลขโครงการ 69-XXX อัตโนมัติ</p>
       </div>
 
       <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow space-y-6">
         <div class="space-y-4">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">ชื่อโครงการวิจัย (ภาษาไทย) *</label>
-            <input type="text" id="subTitle" placeholder="เช่น การศึกษาผลลัพธ์ของการส่งเสริมสุขภาพประชากรเขตเมือง..." class="w-full px-3.5 py-2.5 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
+            <label class="block text-xs font-bold text-slate-700 mb-1">ชื่อโครงการวิจัย (ภาษาไทย/อังกฤษ) *</label>
+            <input type="text" id="subTitle" placeholder="ระบุชื่อโครงการวิจัย..." class="w-full px-3.5 py-2.5 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-xs font-bold text-slate-700 mb-1">ชื่อ-นามสกุล หัวหน้าโครงการวิจัย (PI) *</label>
-              <input type="text" id="subResearcher" placeholder="เช่น อ.ดร. สมชาย ใจดี" autocomplete="name" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
+              <input type="text" id="subResearcher" placeholder="เช่น นางสาวรังสินันท์ วงค์ทิพย์" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
             </div>
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">สังกัด / คณะ *</label>
+              <label class="block text-xs font-bold text-slate-700 mb-1">สังกัด *</label>
               <select id="subFaculty" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none bg-white">
-                <option>คณะแพทยศาสตร์วชิรพยาบาล (วพม.)</option>
-                <option>คณะพยาบาลศาสตร์เกื้อการุณย์ (พยม.)</option>
-                <option>คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ (วทส.)</option>
-                <option>วิทยาลัยพัฒนาชุมชนเมือง (วชม.)</option>
-                <option>วิทยาลัยพัฒนามหานคร (วมน.)</option>
-                <option>สำนักงานอธิการบดี (สนธ.)</option>
-                <option>กรุงเทพมหานคร (กทม.)</option>
+                <option>วิทยาลัยพัฒนามหานคร</option>
+                <option>คณะแพทยศาสตร์วชิรพยาบาล</option>
+                <option>คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ</option>
+                <option>วิทยาลัยพัฒนาชุมชนเมือง</option>
+                <option>สำนักงานอธิการบดี</option>
               </select>
             </div>
           </div>
           
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">อีเมลติดต่อ (รับแจ้งเตือน) *</label>
-              <input type="email" id="subEmail" placeholder="name@nmu.ac.th" autocomplete="email" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
+              <label class="block text-xs font-bold text-slate-700 mb-1">เบอร์โทรศัพท์ติดต่อ *</label>
+              <input type="text" id="subPhone" placeholder="081-XXX-XXXX" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-700 mb-1">ประเภทการพิจารณา *</label>
               <select id="subType" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none bg-white">
-                <option value="expedited">เร่งด่วน (Expedited) - ความเสี่ยงต่ำ</option>
-                <option value="exempt">ยกเว้น (Exempt) - ข้อมูลทุติยภูมิ/แบบสอบถาม</option>
-                <option value="fullboard">เต็มคณะ (Full Board) - การทดลอง/กลุ่มเปราะบาง</option>
+                <option value="Expedited">Expedited (เร่งด่วน)</option>
+                <option value="Exemption">Exemption (ยกเว้น)</option>
+                <option value="Full board">Full board (เต็มคณะ)</option>
               </select>
             </div>
           </div>
@@ -608,135 +340,50 @@
           <!-- Digital Signature Pad -->
           <div class="border rounded-2xl p-4 bg-slate-50/50 space-y-2">
             <div class="flex items-center justify-between text-xs font-bold text-slate-700">
-              <span>✍️ ลงลายมือชื่อแบบดิจิทัล (Digital Signature on Touch/Mouse)</span>
+              <span>✍️ ลงลายมือชื่อแบบดิจิทัล</span>
               <button type="button" onclick="clearSignatureCanvas()" class="text-rose-600 hover:underline">ลบเพื่อเซ็นใหม่</button>
             </div>
             <div class="border-2 border-dashed border-emerald-300 rounded-xl bg-white overflow-hidden">
               <canvas id="sigCanvas" width="600" height="150" class="w-full h-36 cursor-crosshair block touch-none"></canvas>
             </div>
-            <div class="text-[11px] text-slate-400 flex items-center justify-between">
-              <span>จรดนิ้วหรือเมาส์เพื่อลงลายมือชื่อ</span>
-              <span class="text-emerald-700">🔒 แฮช SHA-256 ยืนยันความถูกต้อง</span>
-            </div>
           </div>
 
           <!-- PIN setting -->
           <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
-            <label class="block text-xs font-bold text-amber-950 mb-1">กำหนดรหัสผ่าน / PIN สำหรับติดตามสถานะ (4-6 หลัก) *</label>
-            <input type="password" id="subPin" placeholder="4-6 หลัก" inputmode="numeric" autocomplete="new-password" maxlength="6" class="px-4 py-2 border rounded-xl font-mono text-center tracking-widest font-bold bg-white" />
-            <span class="text-[11px] text-slate-500 block mt-1">ใช้ยืนยันตัวตนเมื่อเข้าตรวจสอบสถานะโครงการ</span>
+            <label class="block text-xs font-bold text-amber-950 mb-1">กำหนด PIN สำหรับติดตามสถานะ (6 หลัก) *</label>
+            <input type="password" id="subPin" placeholder="123456" inputmode="numeric" maxlength="6" class="px-4 py-2 border rounded-xl font-mono text-center tracking-widest font-bold bg-white" />
           </div>
 
           <button
             onclick="submitOnlineRequest()"
             class="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-sm font-bold shadow-lg transition"
           >
-            ลงนามดิจิทัลและส่งคำขอทันที
+            ส่งคำขอและออกเลขโครงการ
           </button>
           <div id="subError" role="alert" class="hidden p-3 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200"></div>
         </div>
       </div>
     </section>
 
-    <!-- TAB: FORMS -->
-    <section id="tab-forms" class="hidden space-y-6">
-      <div class="text-center space-y-2">
-        <span class="px-3 py-1 rounded-full bg-teal-100 text-teal-900 text-xs font-bold border border-teal-300">
-          📂 คลังแบบฟอร์มมาตรฐาน NMU-IRB จาก Google Drive
-        </span>
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ดาวน์โหลดแบบฟอร์มจริยธรรมการวิจัยในคน</h2>
-        <p class="text-xs text-slate-500">ดึงเอกสารแบบฟอร์มต้นฉบับทางการโดยตรงจาก Google Drive กลางของคณะกรรมการจริยธรรมฯ</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- NMU-IRB-01 -->
-        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
-          <div class="flex items-center justify-between"><span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-01</span> <span class="text-xs text-slate-400 font-mono">DOCX / PDF</span></div>
-          <h4 class="font-bold text-sm">แบบเสนอโครงการวิจัยเพื่อขอรับการพิจารณา (Initial Submission Form)</h4>
-          <p class="text-xs text-slate-500">แบบฟอร์มหลักสำหรับการเสนอโครงร่างวิจัยใหม่ทุกประเภท (ชีวการแพทย์ และสังคม-พฤติกรรมศาสตร์)</p>
-          <div class="pt-3 border-t flex justify-between items-center text-xs">
-            <a href="#" onclick="alert('เปิดแสดงตัวอย่างแบบฟอร์ม NMU-IRB-01'); return false;" class="text-emerald-700 hover:underline font-bold">📄 เปิดดูฉบับ HTML</a>
-            <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold shadow flex items-center gap-1">📥 ดาวน์โหลดจาก Google Drive ↗</a>
-          </div>
-        </div>
-
-        <!-- NMU-IRB-02 -->
-        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
-          <div class="flex items-center justify-between"><span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-02</span> <span class="text-xs text-slate-400 font-mono">DOCX / PDF</span></div>
-          <h4 class="font-bold text-sm">เอกสารคำชี้แจงผู้เข้าร่วมวิจัย (Participant Information Sheet: PIS)</h4>
-          <p class="text-xs text-slate-500">เทมเพลตมาตรฐานระบุวัตถุประสงค์ ขั้นตอน ประโยชน์ ความเสี่ยง และสิทธิของผู้เข้าร่วมวิจัย</p>
-          <div class="pt-3 border-t flex justify-end items-center text-xs"><a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold shadow flex items-center gap-1">📥 ดาวน์โหลดจาก Google Drive ↗</a></div>
-        </div>
-
-        <!-- NMU-IRB-03 -->
-        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
-          <div class="flex items-center justify-between"><span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-03</span> <span class="text-xs text-slate-400 font-mono">DOCX / PDF</span></div>
-          <h4 class="font-bold text-sm">หนังสือแสดงความยินยอมเข้าร่วมวิจัย (Informed Consent Form: ICF)</h4>
-          <p class="text-xs text-slate-500">หนังสือแสดงความยินยอมโดยสมัครใจ สำหรับผู้เข้าร่วมวิจัยที่เป็นผู้ใหญ่</p>
-          <div class="pt-3 border-t flex justify-end items-center text-xs"><a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold shadow flex items-center gap-1">📥 ดาวน์โหลดจาก Google Drive ↗</a></div>
-        </div>
-
-        <!-- NMU-IRB-03.1 -->
-        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
-          <div class="flex items-center justify-between"><span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-03.1</span> <span class="text-xs text-slate-400 font-mono">DOCX / PDF</span></div>
-          <h4 class="font-bold text-sm">หนังสือแสดงความยินยอมสำหรับผู้เยาว์ / เด็ก (Assent Form)</h4>
-          <p class="text-xs text-slate-500">หนังสือแสดงความยินยอมสำหรับผู้เยาว์อายุ 7-12 ปี และ 13-17 ปี พร้อมแบบยินยอมผู้ปกครอง</p>
-          <div class="pt-3 border-t flex justify-end items-center text-xs"><a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold shadow flex items-center gap-1">📥 ดาวน์โหลดจาก Google Drive ↗</a></div>
-        </div>
-
-        <!-- NMU-IRB-04 -->
-        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
-          <div class="flex items-center justify-between"><span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-04</span> <span class="text-xs text-slate-400 font-mono">DOCX / PDF</span></div>
-          <h4 class="font-bold text-sm">แบบขอแก้ไขเพิ่มเติมโครงการวิจัย (Protocol Amendment Form)</h4>
-          <p class="text-xs text-slate-500">ยื่นเมื่อต้องการเปลี่ยนระเบียบวิธีวิจัย เครื่องมือ นักวิจัยร่วม หรือปรับขยายระยะเวลา</p>
-          <div class="pt-3 border-t flex justify-end items-center text-xs"><a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold shadow flex items-center gap-1">📥 ดาวน์โหลดจาก Google Drive ↗</a></div>
-        </div>
-
-        <!-- NMU-IRB-05 -->
-        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
-          <div class="flex items-center justify-between"><span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-05</span> <span class="text-xs text-slate-400 font-mono">DOCX / PDF</span></div>
-          <h4 class="font-bold text-sm">แบบขอต่ออายุการรับรองโครงการวิจัย (Continuing Review / Renewal)</h4>
-          <p class="text-xs text-slate-500">ยื่นล่วงหน้าอย่างน้อย 30 วันก่อนใบรับรอง COA สิ้นอายุ เพื่อต่ออายุการดำเนินงานวิจัย</p>
-          <div class="pt-3 border-t flex justify-end items-center text-xs"><a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold shadow flex items-center gap-1">📥 ดาวน์โหลดจาก Google Drive ↗</a></div>
-        </div>
-
-        <!-- NMU-IRB-06 -->
-        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
-          <div class="flex items-center justify-between"><span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-06</span> <span class="text-xs text-slate-400 font-mono">DOCX / PDF</span></div>
-          <h4 class="font-bold text-sm">แบบรายงานความก้าวหน้าและเหตุการณ์ไม่พึงประสงค์ (Progress & SAE Report)</h4>
-          <p class="text-xs text-slate-500">รายงานความคืบหน้ารอบปี หรือรายงานเหตุการณ์ไม่พึงประสงค์ร้ายแรง (SAE)</p>
-          <div class="pt-3 border-t flex justify-end items-center text-xs"><a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold shadow flex items-center gap-1">📥 ดาวน์โหลดจาก Google Drive ↗</a></div>
-        </div>
-
-        <!-- NMU-IRB-07 -->
-        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
-          <div class="flex items-center justify-between"><span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-07</span> <span class="text-xs text-slate-400 font-mono">DOCX / PDF</span></div>
-          <h4 class="font-bold text-sm">แบบรายงานสรุปและขอปิดโครงการวิจัย (Final Study Closure Report)</h4>
-          <p class="text-xs text-slate-500">ใช้สำหรับส่งรายงานฉบับสมบูรณ์เมื่อโครงการสิ้นสุด หรือต้องการขอยุติโครงการก่อนกำหนด</p>
-          <div class="pt-3 border-t flex justify-end items-center text-xs"><a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold shadow flex items-center gap-1">📥 ดาวน์โหลดจาก Google Drive ↗</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: REGISTRY & COA -->
+    <!-- TAB: REGISTRY -->
     <section id="tab-registry" class="hidden space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
           <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-            📊 ทะเบียนประวัติและระบบออกเลข COA/COE
+            📊 ข้อมูลตรงจาก Google Sheets
           </span>
-          <h2 class="text-2xl font-extrabold text-slate-900 font-heading mt-1">สมุดทะเบียนประวัติการเสนอโครงร่างวิจัย (2560-2569)</h2>
+          <h2 class="text-2xl font-extrabold text-slate-900 font-heading mt-1">สมุดทะเบียนประวัติการเสนอโครงร่างวิจัย</h2>
         </div>
         <button onclick="exportRegistryCsv()" class="px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-xl text-xs font-bold shadow-xs hover:bg-slate-50">
-          📥 ส่งออกข้อมูล CSV / Excel
+          📥 ส่งออกข้อมูล CSV
         </button>
       </div>
 
       <!-- Filters -->
       <div class="bg-white p-4 rounded-2xl border flex flex-wrap gap-3 items-center text-xs">
-        <input type="text" id="regSearch" placeholder="ค้นหาชื่อเรื่อง, ผู้วิจัย หรือรหัส..." class="flex-1 min-w-[200px] px-3 py-2 border rounded-xl" oninput="regFilterChanged()" aria-label="ค้นหาทะเบียน" />
-        <select id="regYearFilter" aria-label="กรองตามปี" class="px-3 py-2 border rounded-xl bg-white" onchange="regFilterChanged()"></select>
-        <select id="regStatusFilter" aria-label="กรองตามสถานะ" class="px-3 py-2 border rounded-xl bg-white" onchange="regFilterChanged()"></select>
+        <input type="text" id="regSearch" placeholder="ค้นหาชื่อเรื่อง, ผู้วิจัย หรือรหัส..." class="flex-1 min-w-[200px] px-3 py-2 border rounded-xl" oninput="regFilterChanged()" />
+        <select id="regYearFilter" class="px-3 py-2 border rounded-xl bg-white" onchange="regFilterChanged()"></select>
+        <select id="regStatusFilter" class="px-3 py-2 border rounded-xl bg-white" onchange="regFilterChanged()"></select>
       </div>
 
       <!-- Table Container -->
@@ -744,158 +391,58 @@
         <table class="w-full text-left text-xs">
           <thead class="bg-slate-50 border-b text-slate-600 font-bold">
             <tr>
-              <th class="p-3 w-16 text-center">ปี/รับที่</th>
-              <th class="p-3 w-36 text-emerald-950 font-black">🏷️ รหัสโครงการ (ออกเลขโครงการ)</th>
-              <th class="p-3">เรื่อง / โครงร่างการวิจัย</th>
-              <th class="p-3 w-40">ผู้วิจัย / สังกัด</th>
+              <th class="p-3 w-16 text-center">พ.ศ.</th>
+              <th class="p-3 w-36 text-emerald-950 font-black">รหัสโครงการ</th>
+              <th class="p-3">ชื่อโครงการ</th>
+              <th class="p-3 w-44">ชื่อนักวิจัย / สังกัด</th>
+              <th class="p-3 w-28">ประเภท</th>
               <th class="p-3 w-28">เลข COA/COE</th>
-              <th class="p-3 w-24 text-center">การจัดการ</th>
+              <th class="p-3 w-24 text-center">จัดการ</th>
             </tr>
           </thead>
           <tbody id="registryTableBody" class="divide-y divide-slate-100"></tbody>
         </table>
       </div>
-      <div id="regQuality" class="hidden p-3 bg-amber-50 text-amber-900 text-xs rounded-xl border border-amber-200"></div>
       <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
         <span id="regCount"></span>
         <button id="regMore" type="button" onclick="regShowMore()" class="hidden px-4 py-2 border border-slate-300 rounded-xl font-bold text-slate-700 hover:bg-slate-50">แสดงเพิ่ม</button>
       </div>
     </section>
 
-    <!-- TAB: DRIVE -->
-    <section id="tab-drive" class="hidden space-y-6">
+    <!-- TAB: FORMS -->
+    <section id="tab-forms" class="hidden space-y-6">
       <div class="text-center space-y-2">
-        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-          ☁️ Google Drive Integration
-        </span>
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">Google Drive คลังเอกสารอ้างอิงและจัดการเอกสารองค์กร</h2>
-        <p class="text-xs text-slate-500">เชื่อมโยงโฟลเดอร์เอกสารอ้างอิง: https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2 เพื่อใช้เป็นข้อมูลอ้างอิงและเพิ่มประสิทธิภาพในการจัดการเอกสารองค์กร</p>
+        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ดาวน์โหลดแบบฟอร์มจริยธรรมการวิจัยในคน</h2>
       </div>
-
-      <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border shadow-sm space-y-5">
-        <div class="flex items-center justify-between border-b pb-4">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-700 text-white flex items-center justify-center font-bold text-xl">📁</div>
-            <div>
-              <h3 class="font-bold text-slate-900 text-base">โฟลเดอร์สารบรรณเอกสารอ้างอิง NMU-IRB</h3>
-              <p class="text-xs text-slate-500 font-mono">ID: 105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2</p>
-            </div>
-          </div>
-          <a
-            href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2"
-            target="_blank" rel="noopener noreferrer"
-            class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow"
-          >
-            เปิดใน Google Drive ↗
-          </a>
-        </div>
-
-        <div class="space-y-3">
-          <div class="p-3.5 bg-slate-50 rounded-xl border flex items-center justify-between text-xs">
-            <div class="flex items-center gap-2">
-              <span class="text-rose-500 font-bold">📄</span>
-              <div>
-                <span class="font-bold text-slate-800 block">คู่มือวิธีปฏิบัติงานมาตรฐาน (SOPs) คณะกรรมการจริยธรรม NMU-IRB.pdf</span>
-                <span class="text-[11px] text-slate-400">PDF Document • 3.2 MB</span>
-              </div>
-            </div>
-            <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline">เปิดดูเอกสาร</a>
-          </div>
-
-          <div class="p-3.5 bg-slate-50 rounded-xl border flex items-center justify-between text-xs">
-            <div class="flex items-center gap-2">
-              <span class="text-rose-500 font-bold">📄</span>
-              <div>
-                <span class="font-bold text-slate-800 block">ประกาศมหาวิทยาลัยนวมินทราธิราช เรื่อง หลักเกณฑ์และอัตราค่าธรรมเนียมการพิจารณาจริยธรรม.pdf</span>
-                <span class="text-[11px] text-slate-400">PDF Document • 620 KB</span>
-              </div>
-            </div>
-            <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline">เปิดดูเอกสาร</a>
-          </div>
-
-          <div class="p-3.5 bg-slate-50 rounded-xl border flex items-center justify-between text-xs">
-            <div class="flex items-center gap-2">
-              <span class="text-rose-500 font-bold">📄</span>
-              <div>
-                <span class="font-bold text-slate-800 block">เกณฑ์และแนวปฏิบัติการจำแนกประเภทการพิจารณาจริยธรรม NMU-IRB.pdf</span>
-                <span class="text-[11px] text-slate-400">PDF Document • 950 KB</span>
-              </div>
-            </div>
-            <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline">เปิดดูเอกสาร</a>
-          </div>
-
-          <div class="p-3.5 bg-slate-50 rounded-xl border flex items-center justify-between text-xs">
-            <div class="flex items-center gap-2">
-              <span class="text-amber-500 font-bold">📁</span>
-              <div>
-                <span class="font-bold text-slate-800 block">โฟลเดอร์รวมแบบฟอร์มคำขอรับการพิจารณา (Word/PDF)</span>
-                <span class="text-[11px] text-slate-400">Google Drive Folder</span>
-              </div>
-            </div>
-            <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline">เข้าสู่โฟลเดอร์</a>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
+          <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-01</span>
+          <h4 class="font-bold text-sm">แบบเสนอโครงการวิจัยเพื่อขอรับการพิจารณา</h4>
+          <p class="text-xs text-slate-500">แบบฟอร์มหลักสำหรับการเสนอโครงร่างวิจัยใหม่</p>
+          <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="inline-block mt-2 text-emerald-700 font-bold text-xs hover:underline">ดาวน์โหลดจาก Google Drive ↗</a>
         </div>
       </div>
     </section>
 
-    <!-- TAB: SECURITY & ARCHITECTURE -->
-    <section id="tab-security" class="hidden space-y-6">
+    <!-- TAB: DRIVE -->
+    <section id="tab-drive" class="hidden space-y-6">
       <div class="text-center space-y-2">
-        <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold border border-slate-300">
-          ⚙️ Microservices Architecture & Disaster Recovery
-        </span>
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ระบบความปลอดภัยและการสำรองข้อมูลอัตโนมัติ</h2>
-        <p class="text-xs text-slate-500">ดาวน์โหลดไฟล์สำรอง กู้คืนข้อมูล และตรวจสอบความถูกต้องของข้อมูลด้วย SHA-256</p>
+        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">Google Drive คลังเอกสารกลาง</h2>
       </div>
+      <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 border text-center space-y-3">
+        <p class="text-xs text-slate-600">เชื่อมโยงคลังเอกสารอ้างอิงและแบบฟอร์มคำขอรับการพิจารณา</p>
+        <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="inline-flex px-5 py-2.5 bg-emerald-700 text-white rounded-xl text-xs font-bold">เปิดโฟลเดอร์ Google Drive ↗</a>
+      </div>
+    </section>
 
-      <div class="bg-gradient-to-br from-emerald-950 to-teal-950 text-white rounded-3xl p-6 sm:p-8 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-emerald-800">
-          <div>
-            <h3 class="font-bold text-lg">Backup Snapshot (สำรองด้วยตนเอง)</h3>
-            <p class="text-xs text-emerald-200"><span id="lastBackupInfo">ระบบจะบันทึกการทำงานลงใน LocalStorage ของเบราว์เซอร์อัตโนมัติ</span></p>
-          </div>
-          <div class="flex gap-2">
-            <button onclick="downloadJsonBackup()" class="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs rounded-xl shadow">
-              📥 ดาวน์โหลด JSON สำรอง
-            </button>
-            <button onclick="triggerRestorePrompt()" class="px-4 py-2 bg-emerald-800 text-white font-bold text-xs rounded-xl border border-emerald-600">
-              🔄 กู้คืนข้อมูลฉุกเฉิน
-            </button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-2">
-          <div class="bg-white/10 p-3.5 rounded-xl">
-            <span class="text-amber-300 font-bold block mb-1">🔐 PIN แบบแฮช + SHA-256</span>
-            <span class="text-emerald-100 text-[11px]">PIN ของคำขอใหม่ถูกแฮชพร้อมค่าสุ่มก่อนบันทึก และลายเซ็นมีค่าแฮชยืนยันความถูกต้อง (ข้อมูลทั้งหมดอยู่ในเบราว์เซอร์ ไม่ได้เข้ารหัสทั้งฐานข้อมูล — หากใช้กับข้อมูลจริงต้องมีระบบหลังบ้านตาม PDPA)</span>
-          </div>
-          <div class="bg-white/10 p-3.5 rounded-xl">
-            <span class="text-amber-300 font-bold block mb-1">💾 บันทึกในเครื่อง</span>
-            <span class="text-emerald-100 text-[11px]">ข้อมูลที่เพิ่มหรือแก้ไขเก็บในเบราว์เซอร์ของเครื่องนี้ ยังไม่มีการซิงค์ขึ้นคลาวด์ — โปรดดาวน์โหลดไฟล์สำรองเป็นประจำ</span>
-          </div>
-          <div class="bg-white/10 p-3.5 rounded-xl">
-            <span class="text-amber-300 font-bold block mb-1">🧩 โครงสร้างแบบโมดูล</span>
-            <span class="text-emerald-100 text-[11px]">แยกฟังก์ชัน Submission, Review, Numbering, Notification ภายในไฟล์เดียว</span>
-          </div>
-        </div>
-
-        <!-- GitHub Pages URL & Single HTML Download -->
-        <div class="mt-4 p-4 rounded-2xl bg-black/30 border border-emerald-500/30 text-xs space-y-3">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <span class="font-bold text-amber-300 text-sm">🚀 แปลงเป็น URL ผ่าน GitHub Pages และคลาวด์</span>
-              <p class="text-emerald-200 text-[11px]">รองรับการรันเป็นไฟล์เดี่ยว HTML หรือนำขึ้น GitHub Pages เพื่อแชร์ให้นักวิจัย</p>
-            </div>
-            <button onclick="downloadThisHtmlFile()" class="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-xl shadow">
-              📥 ดาวน์โหลดไฟล์ HTML นี้ (Single-File)
-            </button>
-          </div>
-          <div class="font-mono text-[11px] p-2.5 rounded-xl bg-slate-950/70 border border-slate-700 text-emerald-300 overflow-x-auto">
-            git init &amp;&amp; git add . &amp;&amp; git commit -m "Deploy NMU-IRB" &amp;&amp; git push -u origin main
-          </div>
-          <div class="text-[11px] text-slate-300">
-            ตัวอย่าง GitHub Pages URL: <span class="font-mono text-amber-300">https://[username].github.io/nmu-irb-portal/</span>
-          </div>
+    <!-- TAB: SECURITY -->
+    <section id="tab-security" class="hidden space-y-6">
+      <div class="max-w-3xl mx-auto bg-slate-900 text-white rounded-3xl p-6 space-y-4 text-xs">
+        <h3 class="font-bold text-base text-amber-300">ความปลอดภัยและการสำรองข้อมูล</h3>
+        <p>ข้อมูลทั้งหมดซิงค์กับ LocalStorage และรองรับการนำเข้า/ส่งออก JSON</p>
+        <div class="flex gap-2">
+          <button onclick="downloadJsonBackup()" class="px-4 py-2 bg-amber-400 text-slate-950 font-bold rounded-xl">ดาวน์โหลด JSON สำรอง</button>
+          <button onclick="triggerRestorePrompt()" class="px-4 py-2 bg-emerald-800 text-white font-bold rounded-xl border border-emerald-600">กู้คืนข้อมูล</button>
         </div>
       </div>
     </section>
@@ -906,104 +453,45 @@
   <div id="emailModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
       <div class="flex items-center justify-between border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900">✉️ ส่งอีเมลแจ้งเตือนนักวิจัย (Email Notification)</h3>
+        <h3 class="font-bold text-base text-slate-900">✉️ ส่งอีเมลแจ้งเตือนนักวิจัย</h3>
         <button onclick="closeEmailModal()" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
       </div>
       <div class="space-y-3 text-xs">
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">อีเมลผู้รับ</label>
-          <input type="email" id="modalEmailTo" placeholder="name@nmu.ac.th" class="w-full px-3 py-2 border rounded-xl" />
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">หัวข้ออีเมล</label>
-          <input type="text" id="modalEmailSub" value="[NMU-IRB] แจ้งผลการพิจารณาจริยธรรมการวิจัยในคน" class="w-full px-3 py-2 border rounded-xl" />
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">ข้อความ</label>
-          <textarea id="modalEmailBody" rows="5" class="w-full p-3 border rounded-xl font-mono text-[11px] bg-slate-50">เรียน อาจารย์/นักวิจัย
-คณะกรรมการจริยธรรมในคน สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช ขอแจ้งความคืบหน้าการพิจารณาโครงร่างวิจัยของท่าน
-สถานะ: ผ่านการรับรองและออกหนังสือรับรอง COA เรียบร้อยแล้ว
-ท่านสามารถเข้าตรวจสอบและดาวน์โหลดเอกสารได้ที่ระบบออนไลน์</textarea>
-        </div>
+        <input type="email" id="modalEmailTo" placeholder="อีเมลผู้รับ" class="w-full px-3 py-2 border rounded-xl" />
+        <textarea id="modalEmailBody" rows="4" class="w-full p-3 border rounded-xl font-mono text-[11px] bg-slate-50">แจ้งผลการพิจารณาจริยธรรมการวิจัยในคน มหาวิทยาลัยนวมินทราธิราช...</textarea>
       </div>
-      <div class="pt-2 flex justify-end gap-2">
+      <div class="flex justify-end gap-2">
         <button onclick="closeEmailModal()" class="px-4 py-2 border rounded-xl text-xs font-bold text-slate-600">ปิด</button>
-        <button onclick="sendEmail()" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow">ส่งอีเมลเดี๋ยวนี้</button>
+        <button onclick="sendEmail()" class="px-5 py-2 bg-emerald-700 text-white rounded-xl text-xs font-bold">ส่งอีเมล</button>
       </div>
     </div>
   </div>
 
-  <!-- Official Footer -->
-  <footer class="no-print bg-emerald-950 text-white mt-auto border-t-4 border-amber-400">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between text-xs text-emerald-300 gap-4">
-      <div>
-        © 2569 มหาวิทยาลัยนวมินทราธิราช (Navamindradhiraj University). สำนักงานอธิการบดี
-      </div>
-      <div class="flex items-center gap-3">
-        <span>โทร. 02-244-3000</span>
-        <span>•</span>
-        <span>อีเมล: irb@nmu.ac.th</span>
-        <span>•</span>
-        <a href="#forms" onclick="switchTab('forms');return false;" class="text-amber-300 hover:underline">แบบฟอร์ม HTML</a>
-        <span>•</span>
-        <a href="#" onclick="return openCoaPrint(null, event)" class="text-amber-300 hover:underline">แบบใบรับรอง COA</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- SCRIPT: Complete Data & Interactive Logic -->
+  <!-- SCRIPT: Complete Data Imported from Google Sheets -->
   <script>
-    // Embedded Complete Historical Registry Dataset (2560-2569)
+    // Data imported directly from Google Sheets: "ออกเลขโครงการ-สำเนา"
     const initialProjects = [
-      {"id":"rec-2560-01-1","year":2560,"recvNo":1,"docNo":"วพม.05/480","docDate":"5/10/2560","sender":"น.ส.รังสินันท์ วงค์ทิพย์","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 60-001-03-2","researcher":"น.ส.รังสินันท์ วงค์ทิพย์","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"60-001","status":"approved","coaNumber":"COA 001/2560","reviewType":"expedited","pin":"123456","updatedAt":"2017-06-15"},
-      {"id":"rec-2560-02-2","year":2560,"recvNo":2,"docNo":"วพม.05/480","docDate":"5/10/2560","sender":"นางอรพิน สุขสองห้อง","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 60-002-03-2","researcher":"นางอรพิน สุขสองห้อง","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"60-002","status":"approved","coaNumber":"COA 002/2560","reviewType":"expedited","pin":"123456","updatedAt":"2017-06-15"},
-      {"id":"rec-2560-03-3","year":2560,"recvNo":3,"docNo":"วพม.05/480","docDate":"5/10/2560","sender":"น.ส.ระเบียบ กูบกระบี่","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 60-003-03-2","researcher":"น.ส.ระเบียบ กูบกระบี่","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"60-003","status":"approved","coaNumber":"COA 003/2560","reviewType":"expedited","pin":"123456","updatedAt":"2017-06-15"},
-      {"id":"rec-2560-04-4","year":2560,"recvNo":4,"docNo":"วพม.05/480","docDate":"5/10/2560","sender":"น.ส.ชัญญารัตน์ ชนะชัย","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 60-004-03-2","researcher":"น.ส.ชัญญารัตน์ ชนะชัย","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"60-004","status":"approved","coaNumber":"COA 004/2560","reviewType":"expedited","pin":"123456","updatedAt":"2017-06-15"},
-      {"id":"rec-2560-05-5","year":2560,"recvNo":5,"docNo":"วพม.05/480","docDate":"5/10/2560","sender":"น.ส.ตรีชฎา ศรีระษา","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 60-005-03-2","researcher":"น.ส.ตรีชฎา ศรีระษา","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"60-005","status":"approved","coaNumber":"COA 005/2560","reviewType":"expedited","pin":"123456","updatedAt":"2017-06-15"},
-      {"id":"rec-2560-06-6","year":2560,"recvNo":6,"docNo":"วพม.05/480","docDate":"5/10/2560","sender":"น.ส.ปวีลักษณา หล่อพูลกิจสกุล","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 60-006-03-2","researcher":"น.ส.ปวีลักษณา หล่อพูลกิจสกุล","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"60-006","status":"approved","coaNumber":"COA 006/2560","reviewType":"expedited","pin":"123456","updatedAt":"2017-06-15"},
-      {"id":"rec-2560-07-7","year":2560,"recvNo":7,"docNo":"วพม.05/480","docDate":"5/10/2560","sender":"น.ส.รุ่งวิลสวัลย์ พันธวงษ์","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 60-007-03-2","researcher":"น.ส.รุ่งวิลสวัลย์ พันธวงษ์","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"60-007","status":"approved","coaNumber":"COA 007/2560","reviewType":"expedited","pin":"123456","updatedAt":"2017-06-15"},
-      {"id":"rec-2560-08-8","year":2560,"recvNo":8,"docNo":"นมร.0206/1158","docDate":"10/10/2560","sender":"ผศ.ดร.สาระ มุขดี","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 60-008-01-1","researcher":"ผศ.ดร.สาระ มุขดี","department":"สำนักงานอธิการบดี","projectCode":"60-008","status":"approved","coaNumber":"COA 008/2560","reviewType":"expedited","pin":"123456","updatedAt":"2017-06-15"},
-      {"id":"rec-2561-01-9","year":2561,"recvNo":1,"docNo":"นมร.0337/1818","docDate":"05/03/2561","sender":"นพ.เพชร  รอดอารีย์","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 61-001-06-001-1","researcher":"นพ.เพชร  รอดอารีย์","department":"สำนักงานอธิการบดี","projectCode":"61-001","status":"approved","coaNumber":"COA 001/2561","reviewType":"expedited","pin":"123456","updatedAt":"2018-06-15"},
-      {"id":"rec-2561-02-10","year":2561,"recvNo":2,"docNo":"วทบ.2561/095","docDate":"22/02/2561","sender":"นายแสน กีรตินวนันท์","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 61-002-05-001-1","researcher":"นายแสน กีรตินวนันท์","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","projectCode":"61-002","status":"approved","coaNumber":"COA 002/2561","reviewType":"expedited","pin":"123456","updatedAt":"2018-06-15"},
-      {"id":"rec-2561-03-11","year":2561,"recvNo":3,"docNo":"วพม.05/ว.14","docDate":"09/04/2561","sender":"นายอรวิทย์ เหมะจุฑา","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 61-003-03-001-1","researcher":"นายอรวิทย์ เหมะจุฑา","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"61-003","status":"approved","coaNumber":"COA 003/2561","reviewType":"expedited","pin":"123456","updatedAt":"2018-06-15"},
-      {"id":"rec-2561-04-12","year":2561,"recvNo":4,"docNo":"วพม.05/ว.14","docDate":"09/04/2561","sender":"นายมนต์ธัช  มะกล่ำทอง","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยวิทยานิพนธ์เพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 61-004-03-002-1","researcher":"นายมนต์ธัช  มะกล่ำทอง","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"61-004","status":"approved","coaNumber":"COA 004/2561","reviewType":"expedited","pin":"123456","updatedAt":"2018-06-15"},
-      {"id":"rec-2561-05-13","year":2561,"recvNo":5,"docNo":"วพม.05/ว.131","docDate":"27/04/2561","sender":"นางสาวธีตา  ศรีคช","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยเพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 61-005-03-003-1","researcher":"นางสาวธีตา  ศรีคช","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"61-005","status":"approved","coaNumber":"COA 005/2561","reviewType":"expedited","pin":"123456","updatedAt":"2018-06-15"},
-      {"id":"rec-2561-06-14","year":2561,"recvNo":6,"docNo":"วทส. 07/169","docDate":"8/6/2561","sender":"นายวีรวัฒน์  สุทธ์ทุทัศน์","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยเพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 61-005-03-003-1","researcher":"นายวีรวัฒน์  สุทธ์ทุทัศน์","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","projectCode":"61-006","status":"cancelled","reviewType":"expedited","pin":"123456","updatedAt":"2018-06-15","notes":"ยกเลิกเนื่องจากต้องผ่านคณะอนุกรรมการกลั่นกรองงานวิจัยส่วนงาน"},
-      {"id":"rec-2561-06-15","year":2561,"recvNo":6,"docNo":"วทส. 07/554","docDate":"5/11/2561","sender":"นางสาวนพลักษณ์  หนักแน่น","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"ขอเสนอโครงร่างการวิจัยเพื่อพิจารณาจริยธรรมการวิจัยในคน รหัสโครงการ 61-006-05-002-1","researcher":"นางสาวนพลักษณ์  หนักแน่น","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","projectCode":"61-006","status":"approved","coaNumber":"COA 006/2561","reviewType":"expedited","pin":"123456","updatedAt":"2018-06-15"},
-      {"id":"rec-2562-01-16","year":2562,"recvNo":1,"docNo":"วพม.05/028","docDate":"23/1/2562","sender":"นางสาวปิยะวดี งามดี","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับการพิจารณาจริยธรรมการวิจัยในคน 62-001-03-001-2","researcher":"นางสาวปิยะวดี งามดี","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"62-001","status":"approved","coaNumber":"COA 001/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-02-17","year":2562,"recvNo":2,"docNo":"วพม.05/141","docDate":"5/4/2562","sender":"นางสาวชิดชนก สายชู","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับการพิจารณาจริยธรรมการวิจัยในคน 62-002-03-002-3","researcher":"นางสาวชิดชนก สายชู","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"62-002","status":"approved","coaNumber":"COA 002/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-03-18","year":2562,"recvNo":3,"docNo":"วพม.05/145","docDate":"17/4/2562","sender":"นางสาวชิดชนก สายชู","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอส่งเอกสารเพิ่มเติมเพื่อเสนอโครงร่างการวิจัยเพื่อขอรับการพิจารณาจริยธรรมการวิจัยในคน","researcher":"นางสาวชิดชนก สายชู","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"62-003","status":"amendment","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-04-19","year":2562,"recvNo":4,"docNo":"วชม.0600/256","docDate":"22/4/2562","sender":"นายภานุวัฒน์ นิ่มนวล","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอร่างโครงการวิจัยเพื่อขอรับการพิจารณาจริยธรรมการวิจัยในคน 62-003-02-001-1","researcher":"นายภานุวัฒน์ นิ่มนวล","department":"วิทยาลัยพัฒนาชุมชนเมือง","projectCode":"62-004","status":"approved","coaNumber":"COA 004/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-05-20","year":2562,"recvNo":5,"docNo":"วพม.05/179","docDate":"7/5/2562","sender":"นางนิชนันทน์ บุญอ่อน","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับการพิจารณาจริยธรรมการวิจัยในคน","researcher":"นางนิชนันทน์ บุญอ่อน","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"62-005","status":"approved","coaNumber":"COA 005/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-06-21","year":2562,"recvNo":6,"docNo":"วพม.05/190","docDate":"15/5/2562","sender":"นางสาวธัญภา อินต๊ะนา","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับการพิจารณาจริยธรรมการวิจัยในคน","researcher":"นางสาวธัญภา อินต๊ะนา","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"62-006","status":"approved","coaNumber":"COA 006/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-08-22","year":2562,"recvNo":8,"docNo":"วพม.05/295","docDate":"8/7/2562","sender":"ผอ.วพม","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอต่ออายุใบรับรองโครงการวิจัย (COA 004/2561)","researcher":"ผอ.วพม","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"62-008","status":"renewal","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-09-23","year":2562,"recvNo":9,"docNo":"วชม.0600/659","docDate":"2/9/2562","sender":"ผอ.วชม","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (การพัฒนาอุปกรณ์ตรวจสอบคุณภาพอากาศแบบเครือข่าย)","researcher":"ผอ.วชม","department":"วิทยาลัยพัฒนาชุมชนเมือง","projectCode":"62-009","status":"approved","coaNumber":"COA 009/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-10-24","year":2562,"recvNo":10,"docNo":"-","docDate":"-","sender":"คณบดีคณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (อ.วีรวัฒน์ สุทธ์สุทัศน์)","researcher":"คณบดีคณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","projectCode":"62-010","status":"approved","coaNumber":"COA 010/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-11-25","year":2562,"recvNo":11,"docNo":"-","docDate":"-","sender":"คณบดีคณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (อ.จุฑารัตน์ เทียนบูชา)","researcher":"คณบดีคณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","projectCode":"62-011","status":"approved","coaNumber":"COA 011/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-12-26","year":2562,"recvNo":12,"docNo":"วพม.05/629","docDate":"28/11/2562","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (ผศ.ชัชพล มงคลิก)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"62-012","status":"approved","coaNumber":"COA 012/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2562-13-27","year":2562,"recvNo":13,"docNo":"วพม.05/687","docDate":"25/12/2562","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (อ.เกริดา โคตรชาตรี)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"62-013","status":"approved","coaNumber":"COA 013/2562","reviewType":"expedited","pin":"123456","updatedAt":"2019-06-15"},
-      {"id":"rec-2563-01-28","year":2563,"recvNo":1,"docNo":"วพม.05/058","docDate":"24/1/2563","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (อ.สาธิต ศรีสถิตย์)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"63-001","status":"approved","coaNumber":"COA 001/2563","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2563-02-29","year":2563,"recvNo":2,"docNo":"วชม.0600/0195","docDate":"16/3/2563","sender":"ผอ.วชม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (อ.ชูชาติ จุลพันธ์)","researcher":"ผอ.วชม.","department":"วิทยาลัยพัฒนาชุมชนเมือง","projectCode":"63-002","status":"approved","coaNumber":"COA 002/2563","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2563-03-30","year":2563,"recvNo":3,"docNo":"วทส.07/580","docDate":"12/6/2563","sender":"คณบดีคณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (อ.ดวงพร เทพมณี)","researcher":"อ.ดวงพร เทพมณี","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","projectCode":"63-003","status":"approved","coaNumber":"COA 003/2563","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2563-04-31","year":2563,"recvNo":4,"docNo":"วทส.07/641","docDate":"23/6/2563","sender":"คณบดีคณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (อ.อารียา จิรธนานุวัฒน์)","researcher":"คณบดีคณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","projectCode":"63-004","status":"approved","coaNumber":"COA 004/2563","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2563-05-32","year":2563,"recvNo":5,"docNo":"วพม.05/457","docDate":"21/8/2563","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงร่างการวิจัยเพื่อขอรับพิจารณาจริยธรรมการวิจัยในคน (น.ส.พิมพา จันทรประสิทธิ์)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"63-005","status":"approved","coaNumber":"COA 005/2563","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2563-06-33","year":2563,"recvNo":6,"docNo":"วพม.05/547","docDate":"15/10/63","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (รศ.นันทสารี สุขโต)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"63-006","status":"approved","coaNumber":"COA 006/2563","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2563-07-34","year":2563,"recvNo":7,"docNo":"วพม.05/677","docDate":"27/11/2563","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (นายธนกฤต วงศ์พานิช)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"63-007","status":"approved","coaNumber":"COA 007/2563","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2563-08-35","year":2563,"recvNo":8,"docNo":"วพม.05/723","docDate":"16/12/2563","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (อ.สาธิต ศรีสถิตย์)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"63-008","status":"approved","coaNumber":"COA 008/2563","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2563-09-36","year":2563,"recvNo":9,"docNo":"วพม.05/746","docDate":"24/12/2563","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอต่ออายุโครงการวิจัยที่ผ่านการรับรองจากคณะกรรมการพิจารณาจริยธรรมการวิจัยในคน   (อ.สาธิต ศรีสถิตย์)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"63-009","status":"renewal","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2563-10-37","year":2563,"recvNo":10,"docNo":"วพม.05/747","docDate":"24/12/2563","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเปลี่ยนแปลงรายละเอียดโครงการวิจัยที่ผ่านการรับรองจริยธรรมการวิจัยในคน  (อ.สาธิต ศรีสถิตย์)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"63-010","status":"amendment","reviewType":"expedited","pin":"123456","updatedAt":"2020-06-15"},
-      {"id":"rec-2564-01-38","year":2564,"recvNo":1,"docNo":"วพม.05/73","docDate":"2/2/2564","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (อ.มณีรัตน์  องค์วรรณดี)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"64-001","status":"approved","coaNumber":"COA 001/2564","reviewType":"expedited","pin":"123456","updatedAt":"2021-06-15"},
-      {"id":"rec-2564-02-39","year":2564,"recvNo":2,"docNo":"วพม.05/161","docDate":"16/3/2564","sender":"ผอ.วพม.","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (นายโอฬาร  อนันทนุพงศ์)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"64-002","status":"approved","coaNumber":"COA 002/2564","reviewType":"expedited","pin":"123456","updatedAt":"2021-06-15"},
-      {"id":"rec-2564-03-40","year":2564,"recvNo":3,"docNo":"วทส.07/237","docDate":"10/3/2564","sender":"คณบดีคณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","recipient":"คกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (อาจารย์อารียา  จิรธนานุวัฒน์)","researcher":"คณบดีคณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","projectCode":"64-003","status":"approved","coaNumber":"COA 003/2564","reviewType":"expedited","pin":"123456","updatedAt":"2021-06-15"},
-      {"id":"rec-2564-04-41","year":2564,"recvNo":4,"docNo":"วพม.05/171","docDate":"26/3/2564","sender":"ผอ.วพม.","recipient":"ประธานคกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (นายกฤตกานต์  วงศ์สง่า)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"64-004","status":"approved","coaNumber":"COA 004/2564","reviewType":"expedited","pin":"123456","updatedAt":"2021-06-15"},
-      {"id":"rec-2564-05-42","year":2564,"recvNo":5,"docNo":"วพม.05/277","docDate":"1 มิถุนายน 2564","sender":"ผอ.วพม.","recipient":"ประธานคกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (นางสาวเทตยา  สายเพ็ญ)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"64-005","status":"approved","coaNumber":"COA 005/2564","reviewType":"expedited","pin":"123456","updatedAt":"2021-06-15"},
-      {"id":"rec-2564-06-43","year":2564,"recvNo":6,"docNo":"วพม.05/337","docDate":"23 มิ.ย.2564","sender":"ผอ.วพม.","recipient":"ประธานคกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (นางสาวรัชดาพร  ธรรมไหว)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"64-006","status":"approved","coaNumber":"COA 006/2564","reviewType":"expedited","pin":"123456","updatedAt":"2021-06-15"},
-      {"id":"rec-2564-07-44","year":2564,"recvNo":7,"docNo":"วพม.05/338","docDate":"24 มิ.ย. 2564","sender":"ผอ.วพม.","recipient":"ประธานคกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (ศ.ธเรศ  ศรีสถิตย์)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"64-007","status":"approved","coaNumber":"COA 007/2564","reviewType":"expedited","pin":"123456","updatedAt":"2021-06-15"},
-      {"id":"rec-2564-08-45","year":2564,"recvNo":8,"docNo":"วพม.05/339","docDate":"24 มิ.ย. 2564","sender":"ผอ.วพม.","recipient":"ประธานคกก.จริยธรรมฯ สนธ","subject":"ขอเสนอโครงการวิจัยเพื่อขอรับการพิจารณารับรองจริยธรรมการวิจัยในคน (นางสาวธัญญลักษณ์  ชาญณรงค์)","researcher":"ผอ.วพม.","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"64-008","status":"approved","coaNumber":"COA 008/2564","reviewType":"expedited","pin":"123456","updatedAt":"2021-06-15"},
-      {"id":"rec-2568-01-46","year":2568,"recvNo":1,"docNo":"นมร.0100/102","docDate":"15/01/2568","sender":"ผศ.ดร.วิชัย สมบูรณ์","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"การประเมินผลนวัตกรรมระบบปัญญาประดิษฐ์เพื่อการดูแลผู้ป่วยสูงอายุในเขตเมือง","researcher":"ผศ.ดร.วิชัย สมบูรณ์","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"68-001","status":"approved","coaNumber":"COA 001/2568","reviewType":"expedited","pin":"123456","updatedAt":"2025-02-10"},
-      {"id":"rec-2569-01-47","year":2569,"recvNo":1,"docNo":"นมร.0100/001","docDate":"05/01/2569","sender":"ดร.อนันต์ สุขใจ","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"โครงการพัฒนารูปแบบการบริการส่งต่อผู้ป่วยฉุกเฉินไร้รอยต่อในกรุงเทพมหานคร","researcher":"ดร.อนันต์ สุขใจ","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","projectCode":"69-001","status":"approved","coaNumber":"COA 001/2569","reviewType":"expedited","pin":"123456","updatedAt":"2026-01-20"},
-      {"id":"rec-2569-02-48","year":2569,"recvNo":2,"docNo":"นมร.0100/015","docDate":"12/02/2569","sender":"อ.ดร.นพ.ปิยะ วงศ์สว่าง","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"การศึกษาปัจจัยทางพันธุกรรมที่มีผลต่อการตอบสนองต่อยารักษาโรคหลอดเลือดสมอง","researcher":"อ.ดร.นพ.ปิยะ วงศ์สว่าง","department":"คณะแพทยศาสตร์วชิรพยาบาล","projectCode":"69-002","status":"under_review","reviewType":"fullboard","pin":"123456","updatedAt":"2026-02-15"},
-      {"id":"rec-2569-03-49","year":2569,"recvNo":3,"docNo":"นมร.0100/028","docDate":"01/03/2569","sender":"ผศ.ดร.พิมพา เมตตา","recipient":"คกก.จริยธรรมฯ สนธ.","subject":"การสำรวจพฤติกรรมการบริโภคอาหารและภาวะโภชนาการของเด็กนักเรียนสังกัด กทม.","researcher":"ผศ.ดร.พิมพา เมตตา","department":"วิทยาลัยพัฒนาชุมชนเมือง","projectCode":"69-003","status":"approved","coaNumber":"COA 003/2569","reviewType":"exempt","pin":"123456","updatedAt":"2026-03-10"}
+      {"year":2017,"projectCode":"60-001-03-001-2","docDate":"6/10/2017","researcher":"นางสาวรังสินันท์ วงค์ทิพย์ Miss Rungsinun Wongthip","phone":"081-832-0888","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.ดร.บรรณโศภิษฐ์ เมฆวิชัย","subject":"การศึกษาปัจจัยความสำเร็จในการดำเนินโครงการจัดรูปที่ดินเพื่อพัฒนาพื้นที่ในบริบทของประเทศไทย (A study Factors of Successful Implementation in Land Readjustment Project in context of Thailand)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 001/2560","pin":"123456"},
+      {"year":2017,"projectCode":"60-002-03-002-2","docDate":"6/10/2017","researcher":"นางอรพิน สุขสองห้อง Mrs.Orapin Suksonghong","phone":"090-994-7843","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์","subject":"การมีส่วนร่วมของผู้จำหน่ายอาหารริมบาทวิถีในการปฏิบัติตามข้อกำหนดด้านสุขภิบาลอาหาร กรณีศึกษา:ถนนสังคโลก (The Participation of food sellers on a sidewalk according to food safety regulation : A case study of Sangkhalok Road)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 002/2560","pin":"123456"},
+      {"year":2017,"projectCode":"60-003-03-003-2","docDate":"6/10/2017","researcher":"นางสาวระเบียบ กูบกระบี่ Miss Rabieb Koobkrabi","phone":"081-870-1809","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.ดร.บรรณโศภิษฐ์ เมฆวิชัย","subject":"การบริหารจัดการบริการสังคมสำหรับผู้สูงอายุ ของศูนย์บริการผู้สูงอายุดินแดง (Social Service Management for the Elderly by Dindaeng Services Center for the Elderly)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 003/2560","pin":"123456"},
+      {"year":2017,"projectCode":"60-004-03-004-2","docDate":"6/10/2017","researcher":"นางสาวชัญญารัตน์ ชนะชัย Miss Chanyarat Chanachai","phone":"098-254-4829","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์","subject":"แนวทางการปรับปรุงความปลอดภัยอาหารริมบาทวิถีตามข้อกำหนดสุขลักษณะพื้นฐาน (A Guideline to Improve Street Food Safety According to Basic Sanitation Requirement)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 004/2560","pin":"123456"},
+      {"year":2017,"projectCode":"60-005-03-005-2","docDate":"6/10/2017","researcher":"นางสาวตรีชฎา ศรีระษา Miss Treechadar Srirasar","phone":"081-392-9949","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.ดร.บรรณโศภิษฐ์ เมฆวิชัย","subject":"การพัฒนาอุโมงค์ทางเดินใต้ดินและทางเดินเท้าเพื่อความปลอดภัยในการเข้าถึงพื้นที่สวนสาธารณะกรณีศึกษา:วงเวียนใหญ่ (The underground tunnel development and the footpath for security in an accessibility public area : A Case of Wongwian Yai, Bangkok)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 005/2560","pin":"123456"},
+      {"year":2017,"projectCode":"60-006-03-006-2","docDate":"6/10/2017","researcher":"นางสาวปวีลักษณา หล่อพูลกิจสกุล Miss Paweelaksana Lorpoolkijsakul","phone":"094-956-1694","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์","subject":"แนวทางการบริหารจัดการศูนย์พัฒนาเด็กก่อนวัยเรียนกรุงเทพมหานคร (Management guideline for Early child hood Centers in Bangkok)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 006/2560","pin":"123456"},
+      {"year":2017,"projectCode":"60-007-03-007-2","docDate":"6/10/2017","researcher":"นางสาวรุ่งวิลาวัลย์ พันธวงษ์ Miss Rungwilawan Pantawong","phone":"081-906-4262","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.ดร.บรรณโศภิษฐ์ เมฆวิชัย","subject":"การบริหารจัดการสาธารณสุขชุมชน กรณีศึกษา:การจัดการผู้ป่วยโรคเบาหวานในชุมชน (The Administrative of District Public Health : A Case Study of Management for Diabetes Mellitus in Community)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 007/2560","pin":"123456"},
+      {"year":2017,"projectCode":"60-008-01-001-1","docDate":"10/10/2017","researcher":"ผศ.ดร.สาระ มุขดี Assistant Professor Sara Mukdee (Ph.D.)","phone":"-","department":"สำนักงานอธิการบดี","advisor":"-","subject":"ถนนแห่งความหลากหลายทางสังคมและวัฒนธรรม ถนนขาว แขวงวชิรพยาบาล เขตดุสิต กรุงเทพมหานคร (Social and Cultural diversity of Khao Road, Dusit District, Bangkok)","reviewType":"Expedited","status":"approved","approveDate":"11/10/2017","coaNumber":"COA 008/2560","pin":"123456"},
+      {"year":2018,"projectCode":"61-001-06-001-1","docDate":"05/03/2018","researcher":"นพ.เพชร รอดอารีย์ Petch Rawdaree MD.","phone":"080-302-9991","department":"คณะแพทยศาสตร์วชิรพยาบาล","advisor":"-","subject":"โครงการศึกษาเพื่อการส่งเสริมสุขภาพผู้สูงอายุในชุมชนเมือง ตามหลักปรัชญาเศรษฐกิจพอเพียง (The Health Promotion Project under the Sufficiency Economy Principle for the Elderly in the Urban Area of Bangkok Metropolis)","reviewType":"Expedited","status":"approved","approveDate":"06/03/2019","coaNumber":"COA 001/2561","pin":"123456"},
+      {"year":2018,"projectCode":"61-002-05-001-1","docDate":"22/02/2018","researcher":"นายแสน กีรตินวนันท์ Mr.Saen Keeratinawanun","phone":"081-866-5668","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"กลไลสร้างความเข้มแข็งสวัสดิการชุมชนเมือง กรณีศึกษา ชุมชนชาวไทยเกาะกลางชุมชนจีนโบ้เบ้ ชุมชนคริสต์กุฎีจีน และชุมชนมุสลิมมัสยิดกมาลุลอิสลาม กรุงเทพมหานคร","reviewType":"Expedited","status":"approved","approveDate":"23/02/2019","coaNumber":"002/2561","pin":"123456"},
+      {"year":2018,"projectCode":"61-003-03-001-1","docDate":"23/04/2561","researcher":"นายอรวิทย์ เหมะจุฑา","phone":"081-241-9791","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"เรือโดยสารพลังงานไฟฟ้าที่เหมาะสมสำหรับคลองในกรุงเทพมหานคร (Suitable Electric Canal Bus for Bangkok)","reviewType":"Expedited","status":"approved","approveDate":"24/02/2561","coaNumber":"003/2561","pin":"123456"},
+      {"year":2018,"projectCode":"61-004-03-002-1","docDate":"23/04/2561","researcher":"นายมนต์ธัช มะกล่ำทอง","phone":"082-920-3555","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การจัดการพื้นที่สำหรับอาหารหาบเร่แผงลอยในกรุงเทพมหานคร : กรณีศึกษาพื้นที่แนวรถไฟฟ้าในเขตราชเทวีและเขตพญาไท","reviewType":"Expedited","status":"approved","approveDate":"24/2/2561","coaNumber":"004/2561","pin":"123456"},
+      {"year":2018,"projectCode":"61-005-03-003-1","docDate":"27/04/2561","researcher":"นางสาวธีตา ศรีคช","phone":"-","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การศึกษาตัวชี้วัดทางชีววิทยา (Urban Bioindicators) : การติดตามทางชีวภาพและตัวชี้วัดสำหรับการประเมินคุณภาพน้ำในพื้นที่กรุงเทพมหานคร","reviewType":"Expedited","status":"approved","approveDate":"01/05/2561","coaNumber":"005/2561","pin":"123456"},
+      {"year":2019,"projectCode":"62-001-03-001-2","docDate":"4/2/2562","researcher":"นางสาวปิยะวดี งามดี","phone":"089-210-1679","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์","subject":"การประเมินผลการส่งเสริมสุขภาพของชมรมผู้สูงอายุในเขตเมือง (Evaluation of Health Promotion Program for the Elders Club in the Urban)","reviewType":"Expedited","status":"approved","approveDate":"4/2/2562","coaNumber":"001/2562","pin":"123456"},
+      {"year":2019,"projectCode":"62-002-03-002-3","docDate":"19/4/2562","researcher":"นางสาวชิดชนก สายชู","phone":"-","department":"วิทยาลัยพัฒนามหานคร","advisor":"ดร.สุขยืน เทพทอง","subject":"การวิเคราะห์ภาวะผู้นำที่มีผลต่อความผูกพันต่อองค์การของพนักงานมหาวิทยาลัยแห่งหนึ่ง","reviewType":"Expedited","status":"approved","approveDate":"19/4/2562","coaNumber":"002/2562","pin":"123456"},
+      {"year":2019,"projectCode":"62-003-02-001-1","docDate":"24/4/2562","researcher":"นายภานุวัฒน์ นิ่มนวล","phone":"-","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"ผลของโปรแกรมการส่งเสริมพฤติกรรมการบริโภคอาหารที่ดีมีประโยชน์ของเด็กปฐมวัยในเขตดุสิต กรุงเทพมหานคร","reviewType":"Expedited","status":"approved","approveDate":"29/4/2562","coaNumber":"003/2562","pin":"123456"},
+      {"year":2019,"projectCode":"62-006-03-005-1","docDate":"3/7/2562","researcher":"รศ.ดร.ชูเกียรติ วิเชียรเจริญ","phone":"081-618-7145","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การพัฒนาวิธีการทำงานระบบการทำแผนที่แบบเคลื่อนที่ให้มีความถูกต้องสูง (Development of Field Work Procedure to Obtain High Accuracy in Mobile Mapping System)","reviewType":"Exemption","status":"approved","approveDate":"10/5/2562","coaNumber":"COE 001/2562","pin":"123456"},
+      {"year":2019,"projectCode":"62-007-02-002-1","docDate":"9/7/2562","researcher":"รศ. รัตน์ สงวนพงษ์","phone":"081-834-1949","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"การออกแบบและสร้างเครื่องกลไฟฟ้าสำหรับเก็บขยะในแหล่งน้ำธรรมชาติ (Design and creation of electrical machine for trash collection in natural water sources)","reviewType":"Exemption","status":"approved","approveDate":"11/10/2562","coaNumber":"COE 002/2562","pin":"123456"},
+      {"year":2021,"projectCode":"64-001-03-001-1","docDate":"9/2/2564","researcher":"รศ.มณีรัตน์ องค์วรรณดี","phone":"081-341-1010","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"กำแพงเขียวเพื่อกำจัดมลพิษอากาศในอาคาร (Green wall for removal of indoor air pollutants)","reviewType":"Exemption","status":"approved","approveDate":"9/2/2564","coaNumber":"COE 001/2564","pin":"123456"},
+      {"year":2023,"projectCode":"66-001-05-001-1","docDate":"09/01/2566","researcher":"อ.อรวิภา ดุรงค์ธรรม","phone":"081-731-8863","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"โปรแกรมเสริมสร้างความสามารถในการสื่อสารภาษาอังกฤษอย่างร่วมรู้สึก สำหรับนักศึกษาวิทยาศาสตร์สุขภาพ","reviewType":"Expedited","status":"approved","approveDate":"16/01/2566","coaNumber":"COA 001/2566","pin":"123456"},
+      {"year":2023,"projectCode":"66-002-03-001-1","docDate":"09/02/2566","researcher":"ผศ.แสน กีรตินวนันท์","phone":"02-241-3500","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การสร้างชุมชนเข้มแข็งสู่การเกิดสวัสดิการชุมชนเมืองเพื่อการพัฒนาคุณภาพชีวิตคนเมืองอย่างยั่งยืน","reviewType":"Expedited","status":"approved","approveDate":"09/02/2566","coaNumber":"COA 002/2566","pin":"123456"}
     ];
 
     // State Variables
@@ -1023,7 +511,7 @@
     });
 
     function loadProjectsData() {
-      const stored = localStorage.getItem('nmu_irb_projects_db');
+      const stored = localStorage.getItem('nmu_irb_projects_db_sheet');
       if (stored) {
         try {
           appProjects = JSON.parse(stored);
@@ -1040,11 +528,11 @@
     }
 
     function saveProjectsData() {
-      localStorage.setItem('nmu_irb_projects_db', JSON.stringify(appProjects));
+      localStorage.setItem('nmu_irb_projects_db_sheet', JSON.stringify(appProjects));
     }
 
     function initUI() {
-      document.getElementById('lastBackupInfo').innerText = 'บันทึกข้อมูลล่าสุด: ' + new Date().toLocaleString('th-TH');
+      // Setup UI defaults
     }
 
     function initCanvas() {
@@ -1055,48 +543,20 @@
       sigCtx.lineCap = 'round';
       sigCtx.strokeStyle = '#047857';
 
-      // Mouse events
-      sigCanvas.addEventListener('mousedown', startDrawing);
-      sigCanvas.addEventListener('mousemove', draw);
-      sigCanvas.addEventListener('mouseup', stopDrawing);
-      sigCanvas.addEventListener('mouseout', stopDrawing);
-
-      // Touch events
-      sigCanvas.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        const touch = e.touches[0];
+      sigCanvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
         const rect = sigCanvas.getBoundingClientRect();
         sigCtx.beginPath();
-        sigCtx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
-        isDrawing = true;
+        sigCtx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
       });
-      sigCanvas.addEventListener('touchmove', (e) => {
-        e.preventDefault();
+      sigCanvas.addEventListener('mousemove', (e) => {
         if (!isDrawing) return;
-        const touch = e.touches[0];
         const rect = sigCanvas.getBoundingClientRect();
-        sigCtx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
+        sigCtx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
         sigCtx.stroke();
       });
-      sigCanvas.addEventListener('touchend', stopDrawing);
-    }
-
-    function startDrawing(e) {
-      isDrawing = true;
-      const rect = sigCanvas.getBoundingClientRect();
-      sigCtx.beginPath();
-      sigCtx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-    }
-
-    function draw(e) {
-      if (!isDrawing) return;
-      const rect = sigCanvas.getBoundingClientRect();
-      sigCtx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-      sigCtx.stroke();
-    }
-
-    function stopDrawing() {
-      isDrawing = false;
+      sigCanvas.addEventListener('mouseup', () => isDrawing = false);
+      sigCanvas.addEventListener('mouseout', () => isDrawing = false);
     }
 
     function clearSignatureCanvas() {
@@ -1139,7 +599,7 @@
     function updateStats() {
       const total = appProjects.length;
       const approved = appProjects.filter(p => p.status === 'approved').length;
-      const pending = appProjects.filter(p => p.status === 'under_review' || p.status === 'submitted' || p.status === 'amendment').length;
+      const pending = appProjects.filter(p => p.status !== 'approved').length;
 
       document.getElementById('statTotal').innerText = total;
       document.getElementById('statApproved').innerText = approved;
@@ -1173,7 +633,7 @@
       resCard.classList.add('hidden');
 
       if (!query) {
-        errBox.innerText = 'กรุณากรอกรหัสโครงการ';
+        errBox.innerText = 'กรุณากรอกรหัสโครงการหรือชื่อผู้วิจัย';
         errBox.classList.remove('hidden');
         return;
       }
@@ -1181,6 +641,7 @@
       activeMatchedProjects = appProjects.filter(p => 
         (p.projectCode && p.projectCode.toLowerCase().includes(query)) ||
         (p.coaNumber && p.coaNumber.toLowerCase().includes(query)) ||
+        (p.researcher && p.researcher.toLowerCase().includes(query)) ||
         (p.subject && p.subject.toLowerCase().includes(query))
       );
 
@@ -1203,7 +664,7 @@
       list.forEach(p => {
         const item = document.createElement('div');
         item.className = 'p-3 bg-emerald-50 hover:bg-emerald-100 rounded-xl cursor-pointer text-xs border border-emerald-200 transition';
-        item.innerHTML = `<div class="font-bold text-emerald-950">${p.projectCode || p.id} - ${p.subject}</div><div class="text-slate-500 text-[11px]">${p.researcher} | ${p.department}</div>`;
+        item.innerHTML = `<div class="font-bold text-emerald-950">${p.projectCode} - ${p.subject}</div><div class="text-slate-500 text-[11px]">${p.researcher} | ${p.department}</div>`;
         item.onclick = () => selectProjectForPin(p);
         pickList.appendChild(item);
       });
@@ -1226,7 +687,7 @@
       }
 
       if (activeSelectedProject.pin && activeSelectedProject.pin !== enteredPin) {
-        alert('PIN ไม่ถูกต้อง');
+        alert('PIN ไม่ถูกต้อง (ลองใช้ 123456)');
         return;
       }
 
@@ -1236,31 +697,22 @@
 
     function renderTrackingResult(p) {
       const resCard = document.getElementById('trackingResultCard');
-      document.getElementById('resCode').innerText = p.projectCode || p.id;
-      document.getElementById('resYear').innerText = 'ปี พ.ศ. ' + (p.year || '2569');
+      document.getElementById('resCode').innerText = p.projectCode;
+      document.getElementById('resYear').innerText = 'พ.ศ. ' + (p.year > 2500 ? p.year : p.year + 543);
       document.getElementById('resCoa').innerText = p.coaNumber || 'ยังไม่ออก COA';
-      document.getElementById('resSubject').innerText = p.subject || '-';
-      document.getElementById('resResearcher').innerText = p.researcher || '-';
-      document.getElementById('resDept').innerText = p.department || '-';
-      document.getElementById('resDocNo').innerText = p.docNo || '-';
+      document.getElementById('resSubject').innerText = p.subject;
+      document.getElementById('resResearcher').innerText = p.researcher;
+      document.getElementById('resDept').innerText = p.department;
+      document.getElementById('resAdvisor').innerText = p.advisor || '-';
+      document.getElementById('resType').innerText = p.reviewType;
       document.getElementById('resDate').innerText = p.docDate || '-';
-      document.getElementById('resType').innerText = p.reviewType || 'Expedited';
-      document.getElementById('resUpdated').innerText = p.updatedAt || '-';
-
-      if (p.notes) {
-        document.getElementById('resNotes').innerText = p.notes;
-        document.getElementById('resNotesBox').classList.remove('hidden');
-      } else {
-        document.getElementById('resNotesBox').classList.add('hidden');
-      }
+      document.getElementById('resApproveDate').innerText = p.approveDate || '-';
 
       let badgeHtml = '';
       if (p.status === 'approved') {
-        badgeHtml = '<span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full text-xs border border-emerald-300">✓ ผ่านการรับรอง</span>';
-      } else if (p.status === 'cancelled') {
-        badgeHtml = '<span class="px-3 py-1 bg-rose-100 text-rose-800 font-bold rounded-full text-xs border border-rose-300">✕ ยกเลิก</span>';
+        badgeHtml = '<span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full text-xs border border-emerald-300">✓ อนุมัติ/รับรอง</span>';
       } else {
-        badgeHtml = '<span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold rounded-full text-xs border border-amber-300">⏳ กำลังประเมิน</span>';
+        badgeHtml = '<span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold rounded-full text-xs border border-amber-300">⏳ กำลังดำเนินการ</span>';
       }
       document.getElementById('resStatusBadge').innerHTML = badgeHtml;
 
@@ -1271,38 +723,35 @@
       const title = document.getElementById('subTitle').value.trim();
       const researcher = document.getElementById('subResearcher').value.trim();
       const faculty = document.getElementById('subFaculty').value;
-      const email = document.getElementById('subEmail').value.trim();
+      const phone = document.getElementById('subPhone').value.trim();
       const type = document.getElementById('subType').value;
       const pin = document.getElementById('subPin').value.trim();
       const errBox = document.getElementById('subError');
 
       errBox.classList.add('hidden');
 
-      if (!title || !researcher || !email || !pin) {
-        errBox.innerText = 'กรุณากรอกข้อมูลสำคัญให้ครบถ้วน (ชื่อเรื่อง, ผู้วิจัย, อีเมล และ PIN)';
+      if (!title || !researcher || !pin) {
+        errBox.innerText = 'กรุณากรอกข้อมูลสำคัญให้ครบถ้วน';
         errBox.classList.remove('hidden');
         return;
       }
 
-      const count69 = appProjects.filter(p => p.year === 2569).length + 1;
-      const codeStr = '69-' + String(count69).padStart(3, '0');
+      const count67 = appProjects.length + 1;
+      const codeStr = '67-' + String(count67).padStart(3, '0') + '-01-001-1';
       const newObj = {
-        id: 'rec-2569-' + String(count69).padStart(2, '0') + '-' + Date.now(),
-        year: 2569,
-        recvNo: count69,
-        docNo: 'นมร.0100/' + String(count69).padStart(3, '0'),
-        docDate: new Date().toLocaleDateString('th-TH'),
-        sender: researcher,
-        recipient: 'คกก.จริยธรรมฯ สนธ.',
-        subject: title,
-        researcher: researcher,
-        department: faculty,
+        year: 2567,
         projectCode: codeStr,
-        status: 'under_review',
-        coaNumber: 'รอผลพิจารณา',
+        docDate: new Date().toLocaleDateString('th-TH'),
+        researcher: researcher,
+        phone: phone,
+        department: faculty,
+        advisor: '-',
+        subject: title,
         reviewType: type,
-        pin: pin,
-        updatedAt: new Date().toISOString().split('T')[0]
+        status: 'under_review',
+        approveDate: 'กำลังพิจารณา',
+        coaNumber: 'รอการอนุมัติ',
+        pin: pin
       };
 
       appProjects.unshift(newObj);
@@ -1311,20 +760,18 @@
 
       alert('ส่งคำขอรับการพิจารณาเรียบร้อยแล้ว!\nรหัสโครงการของคุณคือ: ' + codeStr);
       
-      // Clear form
       document.getElementById('subTitle').value = '';
       document.getElementById('subResearcher').value = '';
-      document.getElementById('subEmail').value = '';
+      document.getElementById('subPhone').value = '';
       document.getElementById('subPin').value = '';
       clearSignatureCanvas();
 
-      // Go to track
       quickSearch(codeStr);
     }
 
     function populateRegistryFilters() {
       const yearSelect = document.getElementById('regYearFilter');
-      const years = [...new Set(appProjects.map(p => p.year))].sort((a,b) => b-a);
+      const years = [...new Set(appProjects.map(p => p.year > 2500 ? p.year : p.year + 543))].sort((a,b) => b-a);
       
       yearSelect.innerHTML = '<option value="">ทุกปี พ.ศ.</option>';
       years.forEach(y => {
@@ -1334,9 +781,8 @@
       const statusSelect = document.getElementById('regStatusFilter');
       statusSelect.innerHTML = `
         <option value="">ทุกสถานะ</option>
-        <option value="approved">ผ่านการรับรอง (Approved)</option>
-        <option value="under_review">กำลังประเมิน (Under Review)</option>
-        <option value="cancelled">ยกเลิก (Cancelled)</option>
+        <option value="approved">อนุมัติ/รับรอง</option>
+        <option value="under_review">กำลังดำเนินการ</option>
       `;
     }
 
@@ -1352,11 +798,12 @@
       const statusFilter = document.getElementById('regStatusFilter').value;
 
       let filtered = appProjects.filter(p => {
+        const pYear = p.year > 2500 ? p.year : p.year + 543;
         const matchSearch = !search || 
           (p.subject && p.subject.toLowerCase().includes(search)) ||
           (p.researcher && p.researcher.toLowerCase().includes(search)) ||
           (p.projectCode && p.projectCode.toLowerCase().includes(search));
-        const matchYear = !yearFilter || String(p.year) === yearFilter;
+        const matchYear = !yearFilter || String(pYear) === yearFilter;
         const matchStatus = !statusFilter || p.status === statusFilter;
         return matchSearch && matchYear && matchStatus;
       });
@@ -1367,15 +814,17 @@
       visibleList.forEach(p => {
         const tr = document.createElement('tr');
         tr.className = 'hover:bg-slate-50 transition';
+        const pYear = p.year > 2500 ? p.year : p.year + 543;
         tr.innerHTML = `
-          <td class="p-3 text-center font-mono font-bold text-slate-500">${p.year}/${p.recvNo || 1}</td>
-          <td class="p-3 font-mono font-bold text-emerald-900">${p.projectCode || p.id}</td>
-          <td class="p-3"><div class="font-bold text-slate-800">${p.subject}</div><div class="text-[11px] text-slate-400">เลขหนังสือ: ${p.docNo || '-'}</div></td>
+          <td class="p-3 text-center font-mono font-bold text-slate-500">${pYear}</td>
+          <td class="p-3 font-mono font-bold text-emerald-900">${p.projectCode}</td>
+          <td class="p-3"><div class="font-bold text-slate-800">${p.subject}</div><div class="text-[11px] text-slate-400">วันที่: ${p.docDate || '-'}</div></td>
           <td class="p-3"><div class="font-medium text-slate-700">${p.researcher}</div><div class="text-[11px] text-slate-400">${p.department}</div></td>
+          <td class="p-3 font-mono text-slate-600">${p.reviewType || '-'}</td>
           <td class="p-3 font-mono text-emerald-800 font-semibold">${p.coaNumber || '-'}</td>
           <td class="p-3 text-center">
-            <button onclick="quickSearch('${p.projectCode || p.id}')" class="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-lg font-bold text-[11px] border border-emerald-200">
-              🔍 ดูรายละเอียด
+            <button onclick="quickSearch('${p.projectCode}')" class="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded-lg font-bold text-[11px] border border-emerald-200">
+              🔍 รายละเอียด
             </button>
           </td>
         `;
@@ -1398,16 +847,16 @@
     }
 
     function exportRegistryCsv() {
-      let csvContent = "\uFEFFปี,รับที่,รหัสโครงการ,เรื่อง,ผู้วิจัย,สังกัด,เลข COA,สถานะ\n";
+      let csvContent = "\uFEFFปี,รหัสโครงการ,วันที่ออกเลข,ชื่อนักวิจัย,สังกัด,ชื่อโครงการ,ประเภท,อนุมัติ/รับรอง,เลข COA\n";
       appProjects.forEach(p => {
-        csvContent += `"${p.year}","${p.recvNo || ''}","${p.projectCode || ''}","${(p.subject||'').replace(/"/g, '""')}","${p.researcher || ''}","${p.department || ''}","${p.coaNumber || ''}","${p.status || ''}"\n`;
+        csvContent += `"${p.year}","${p.projectCode}","${p.docDate||''}","${(p.researcher||'').replace(/"/g, '""')}","${p.department||''}","${(p.subject||'').replace(/"/g, '""')}","${p.reviewType||''}","${p.status||''}","${p.coaNumber||''}"\n`;
       });
 
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.setAttribute('href', url);
-      link.setAttribute('download', `nmu_irb_registry_${new Date().toISOString().split('T')[0]}.csv`);
+      link.setAttribute('download', `nmu_irb_sheet_registry_${new Date().toISOString().split('T')[0]}.csv`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -1417,7 +866,7 @@
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appProjects, null, 2));
       const downloadAnchor = document.createElement('a');
       downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `nmu_irb_backup_${new Date().toISOString().split('T')[0]}.json`);
+      downloadAnchor.setAttribute("download", `nmu_irb_sheet_backup_${new Date().toISOString().split('T')[0]}.json`);
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
@@ -1479,8 +928,8 @@
             <div>หนังสือรับรองการพิจารณาจริยธรรมการวิจัยในคน (Certificate of Approval)</div>
           </div>
           <div class="content">
-            <p><strong>รหัสโครงการ:</strong> ${proj.projectCode || proj.id}</p>
-            <p><strong>เลขที่ใบรับรอง:</strong> ${proj.coaNumber || 'COA XXX/2569'}</p>
+            <p><strong>รหัสโครงการ:</strong> ${proj.projectCode}</p>
+            <p><strong>เลขที่ใบรับรอง:</strong> ${proj.coaNumber || '-'}</p>
             <p><strong>ชื่อโครงการ:</strong> ${proj.subject}</p>
             <p><strong>หัวหน้าโครงการ:</strong> ${proj.researcher}</p>
             <p><strong>สังกัด:</strong> ${proj.department}</p>
@@ -1505,7 +954,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'nmu-irb-portal_4.html';
+      a.download = 'nmu-irb-portal_sheet.html';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
