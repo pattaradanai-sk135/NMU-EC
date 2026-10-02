@@ -48,7 +48,7 @@
         <span class="hidden md:inline text-emerald-100">สำนักงานคณะกรรมการจริยธรรมในคน สำนักงานอธิการบดี (NMU-IRB)</span>
       </div>
       <div class="flex items-center gap-4 text-[11px]">
-        <span class="text-amber-300">🔒 ยืนยันตัวตนด้วย PIN</span>
+        <span class="text-amber-300">🔒 ยืนยันตัวตนด้วย PIN/Password</span>
         <span class="text-emerald-300">🌐 ดึงข้อมูล Real-time ด้วย Google JSON API</span>
         <button onclick="openEmailModal()" class="text-amber-300 hover:text-white font-bold transition">✉️ แจ้งเตือนอีเมล</button>
       </div>
@@ -111,7 +111,7 @@
   <!-- Main Container -->
   <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 flex-1">
 
-    <!-- TAB 1: HOME (หน้าหลักรูปแบบเดิมสมบูรณ์) -->
+    <!-- TAB 1: HOME -->
     <section id="tab-home" class="space-y-8">
       <!-- Hero Section -->
       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-950 text-white p-6 sm:p-12 shadow-xl border border-emerald-700">
@@ -152,7 +152,7 @@
         </div>
       </div>
 
-      <!-- Quick Action Cards (4 ฟีเจอร์หลักเหมือนเดิม) -->
+      <!-- Quick Action Cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div onclick="switchTab('submission')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
           <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl mb-3">📝</div>
@@ -162,7 +162,7 @@
         <div onclick="switchTab('tracking')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
           <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xl mb-3">🔍</div>
           <h3 class="font-bold text-slate-900 text-sm mb-1">ติดตามสถานะโครงการ</h3>
-          <p class="text-xs text-slate-500">ค้นหาด้วยรหัสโครงการ หรือชื่อผู้วิจัย พร้อมระบบ PIN</p>
+          <p class="text-xs text-slate-500">ค้นหาด้วยรหัสโครงการ หรือชื่อผู้วิจัย พร้อมระบบ Password ส่วนตัว</p>
         </div>
         <div onclick="switchTab('forms')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
           <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xl mb-3">📂</div>
@@ -198,7 +198,7 @@
         </div>
       </div>
 
-      <!-- Meeting Schedule & Announcements Section (ปฏิทิน และ ขั้นตอนการเสนอโครงร่าง) -->
+      <!-- Meeting Schedule & Announcements Section -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="lg:col-span-1 bg-gradient-to-br from-white to-amber-50/50 rounded-3xl p-6 border border-amber-200 shadow-sm space-y-4 flex flex-col justify-between">
           <div>
@@ -274,7 +274,7 @@
       </div>
     </section>
 
-    <!-- TAB 2: TRACKING -->
+    <!-- TAB 2: TRACKING (เพิ่มช่องรหัสผ่านส่วนตัวนักวิจัย) -->
     <section id="tab-tracking" class="hidden space-y-6">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-300">
@@ -283,25 +283,38 @@
         <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ติดตามสถานะโครงการและการประเมินจริยธรรม</h2>
       </div>
 
-      <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm max-w-2xl mx-auto space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">รหัสโครงการ / ชื่อผู้วิจัย</label>
-          <div class="flex gap-2">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-sm max-w-2xl mx-auto space-y-4">
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">1. รหัสโครงการ / ชื่อผู้วิจัย *</label>
             <input
               type="text"
               id="trackingCodeInput"
               placeholder="เช่น FF71-01-14, ลักขณาวัลย์ หรือ 69-001"
-              class="flex-1 px-4 py-2.5 text-base border-2 border-emerald-200 rounded-xl font-mono focus:border-emerald-600 focus:outline-none"
+              class="w-full px-4 py-2.5 text-sm border-2 border-emerald-200 rounded-xl font-mono focus:border-emerald-600 focus:outline-none"
             />
-            <button
-              onclick="executeSearchProject()"
-              class="px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow"
-            >
-              ค้นหา
-            </button>
           </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">2. รหัสผ่านส่วนตัวของนักวิจัย (Password) *</label>
+            <input
+              type="password"
+              id="trackingPasswordInput"
+              placeholder="กรอกรหัสผ่านส่วนตัว (เริ่มต้น: 123456)"
+              class="w-full px-4 py-2.5 text-sm border-2 border-emerald-200 rounded-xl font-mono focus:border-emerald-600 focus:outline-none"
+            />
+            <p class="text-[11px] text-slate-400 mt-1">🔑 *รหัสผ่านทดสอบเบื้องต้นใช้: <span class="font-mono text-emerald-700 font-bold">123456</span></p>
+          </div>
+
+          <button
+            onclick="executeSearchProject()"
+            class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs sm:text-sm font-bold shadow-md transition mt-2"
+          >
+            🔒 ยืนยันรหัสผ่านและตรวจสอบสถานะ
+          </button>
         </div>
-        <div id="trackingError" class="hidden p-3 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200"></div>
+
+        <div id="trackingError" class="hidden p-3 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200 font-medium"></div>
       </div>
 
       <div id="trackingResultCard" class="hidden max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow space-y-6">
@@ -489,7 +502,7 @@
   <div id="emailModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
       <div class="flex items-center justify-between border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900">✉️ ส่งอีเมลแจ้งเตือนนักวิจัย (Email Notification)</h3>
+        <h3 class="font-bold text-base text-slate-900">✉️️ ส่งอีเมลแจ้งเตือนนักวิจัย (Email Notification)</h3>
         <button onclick="closeEmailModal()" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
       </div>
       <div class="space-y-3 text-xs">
@@ -545,6 +558,7 @@
   <!-- Script Logic -->
   <script>
     const GOOGLE_SHEET_JSON = 'https://docs.google.com/spreadsheets/d/1EfhsAv5hYXI0JqVI5McSOGwbQ57YddAQVdMe6umpKug/gviz/tq?tqx=out:json&sheet=%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3';
+    const DEFAULT_PASSWORD = '123456'; // รหัสผ่านส่วนตัวนักวิจัยเริ่มต้น
 
     let allProjects = [];
 
@@ -753,14 +767,31 @@
       renderRegistryTable(filtered);
     }
 
+    // ตรวจสอบทั้งรหัสโครงการ และ Password
     function executeSearchProject() {
       const query = document.getElementById('trackingCodeInput').value.trim().toLowerCase();
+      const pwd = document.getElementById('trackingPasswordInput').value.trim();
       const errBox = document.getElementById('trackingError');
       const resCard = document.getElementById('trackingResultCard');
 
       errBox.classList.add('hidden');
+      
       if (!query) {
-        errBox.innerText = 'กรุณาพิมพ์รหัสโครงการ หรือ ชื่อผู้วิจัย';
+        errBox.innerText = '⚠️ กรุณาพิมพ์รหัสโครงการ หรือ ชื่อผู้วิจัย';
+        errBox.classList.remove('hidden');
+        resCard.classList.add('hidden');
+        return;
+      }
+
+      if (!pwd) {
+        errBox.innerText = '🔒 กรุณากรอกรหัสผ่านส่วนตัวของนักวิจัย';
+        errBox.classList.remove('hidden');
+        resCard.classList.add('hidden');
+        return;
+      }
+
+      if (pwd !== DEFAULT_PASSWORD) {
+        errBox.innerText = '❌ รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบรหัสผ่านอีกครั้ง (รหัสเริ่มต้นคือ 123456)';
         errBox.classList.remove('hidden');
         resCard.classList.add('hidden');
         return;
@@ -795,12 +826,12 @@
       const val = document.getElementById('homeTrackInput').value;
       switchTab('tracking');
       document.getElementById('trackingCodeInput').value = val;
-      executeSearchProject();
     }
 
     function quickSearch(code) {
       switchTab('tracking');
       document.getElementById('trackingCodeInput').value = code;
+      document.getElementById('trackingPasswordInput').value = '123456';
       executeSearchProject();
     }
 
