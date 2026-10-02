@@ -48,22 +48,24 @@
         <span class="hidden md:inline text-emerald-100">สำนักงานคณะกรรมการจริยธรรมในคน สำนักงานอธิการบดี (NMU-IRB)</span>
       </div>
       <div class="flex items-center gap-4 text-[11px]">
-        <span class="text-amber-300">🛡️ เข้ารหัสลับ AES-256</span>
+        <span class="text-amber-300">🛡️️ เข้ารหัสลับ AES-256</span>
         <span class="text-emerald-300">🌐 ดึงข้อมูล Real-time ด้วย Google JSON API</span>
         <button onclick="openEmailModal()" class="text-amber-300 hover:text-white font-bold transition">✉ แจ้งเตือนอีเมล</button>
       </div>
     </div>
   </div>
 
-  <!-- Header Navigation Bar -->
+  <!-- Header Navigation Bar (อัปเดตโลโก้มุมบนซ้าย) -->
   <header class="no-print sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-800 text-white flex flex-col items-center justify-center p-1 border-2 border-amber-300 shadow">
-          <span class="text-[10px] font-extrabold leading-none">NMU</span>
-          <span class="text-[9px] font-bold text-amber-300 leading-none">IRB</span>
-          <span class="text-[7px] text-emerald-200">สนธ.</span>
-        </div>
+        <!-- รูปโลโก้ใหม่ทางด้านบนซ้าย -->
+        <img 
+          src="Healthy Aging and Well-being in The City คีออส.png" 
+          alt="NMU Logo" 
+          class="h-12 w-auto object-contain shrink-0" 
+          onerror="this.onerror=null; this.src='https://via.placeholder.com/48x60?text=NMU';"
+        />
         <div>
           <h1 class="font-extrabold text-base sm:text-lg text-emerald-950 leading-tight">
             คณะกรรมการจริยธรรมในคน
@@ -200,7 +202,7 @@
         </div>
       </div>
 
-      <!-- Meeting Schedule & Announcements Section (ปรับปรุงข้อมูลตามไฟล์ Version 2.1_13.07.2569) -->
+      <!-- Meeting Schedule & Announcements Section -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Calendar Card -->
         <div class="lg:col-span-1 bg-gradient-to-br from-white to-amber-50/50 rounded-3xl p-6 border border-amber-200 shadow-sm space-y-4 flex flex-col justify-between">
@@ -993,7 +995,7 @@
                 </div>
               </div>
             </div>
-            <a href="#" onclick="alert('กำลังเปิดเอกสาร: คำสั่งมหาวิทยาลัย ที่ 654_2569'); return false;" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl font-extrabold text-xs shadow-xs text-center shrink-0">
+            <a href="#" onclick="alert('กำลังเปิดเอกสาร: คำสั่งมหาวิทยาลัย ที่ 654_2569'); return false;" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-extrabold text-xs shadow-xs text-center shrink-0">
               เปิดดูไฟล์ PDF ↗
             </a>
           </div>
@@ -1015,7 +1017,7 @@
                 </div>
               </div>
             </div>
-            <a href="#" onclick="alert('กำลังเปิดเอกสาร: คำสั่งมหาวิทยาลัย ที่ 1203_2569'); return false;" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl font-extrabold text-xs shadow-xs text-center shrink-0">
+            <a href="#" onclick="alert('กำลังเปิดเอกสาร: คำสั่งมหาวิทยาลัย ที่ 1203_2569'); return false;" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-extrabold text-xs shadow-xs text-center shrink-0">
               เปิดดูไฟล์ PDF ↗
             </a>
           </div>
@@ -1212,7 +1214,7 @@
     </div>
   </div>
 
-  <!-- Meeting Calendar Modal (อัปเดตข้อมูลครบ 13 ครั้ง ตาม Version 2.1_13.07.2569) -->
+  <!-- Meeting Calendar Modal -->
   <div id="modal-meeting-calendar" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs overflow-y-auto">
     <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl border-2 border-emerald-300 overflow-hidden">
       <div class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white p-6 relative flex items-start justify-between">
