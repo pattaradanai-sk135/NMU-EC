@@ -1675,11 +1675,10 @@
       }
     }
 
+   // หากต้องการให้ปุ่มด่วนแค่นำทางไปหน้าค้นหา (โดยไม่ใส่รหัสให้)
     function quickSearch(code) {
       switchTab('tracking');
       document.getElementById('trackingCodeInput').value = code;
-      document.getElementById('trackingPasswordInput').value = DEFAULT_PASSWORD;
-      executeSearchProject();
     }
 
     function submitRequest() {
