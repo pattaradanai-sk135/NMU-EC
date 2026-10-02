@@ -1807,52 +1807,52 @@ function closeCoaModal() {
 }
   </script>
 
-  <!-- Modal สำหรับเลือกดาวน์โหลดตัวอย่าง COA / COE -->
+ <!-- Modal เลือกแสดงตัวอย่าง COA / COE (ดูได้อย่างเดียว) -->
 <div id="coaModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
   <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 space-y-5 animate-in fade-in zoom-in duration-200">
     <div class="flex items-center justify-between pb-3 border-b border-slate-100">
       <div class="flex items-center gap-2">
-        <span class="p-2 bg-amber-100 text-amber-800 rounded-xl text-lg">📄</span>
-        <h3 class="font-bold text-slate-900 text-base">เลือกดาวน์โหลดตัวอย่างเอกสาร</h3>
+        <span class="p-2 bg-amber-100 text-amber-800 rounded-xl text-lg">👁️</span>
+        <h3 class="font-bold text-slate-900 text-base">เลือกเปิดดูตัวอย่างเอกสาร</h3>
       </div>
       <button onclick="closeCoaModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1">&times;</button>
     </div>
 
-    <p class="text-xs text-slate-500">กรุณาเลือกรูปแบบเอกสารรับรองโครงการวิจัยที่ต้องการดาวน์โหลด:</p>
+    <p class="text-xs text-slate-500">กรุณาเลือกรูปแบบเอกสารรับรองโครงการวิจัยที่ต้องการเปิดดูตัวอย่าง:</p>
 
     <div class="space-y-3">
-      <!-- ไฟล์ 1: COA -->
+      <!-- ไฟล์ 1: COA (เปิดดูในแท็บใหม่เท่านั้น) -->
       <a 
         href="9. แบบฟอร์มเอกสารรับรอง (COA) - Thai (Edit_Version 1.0.1_).pdf" 
-        download 
         target="_blank"
-        class="flex items-center justify-between p-4 bg-emerald-50/60 hover:bg-emerald-100/80 border border-emerald-200/80 rounded-2xl transition group"
+        rel="noopener noreferrer"
+        class="flex items-center justify-between p-4 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-2xl transition group"
       >
         <div class="space-y-0.5">
           <div class="flex items-center gap-2">
             <span class="px-2 py-0.5 bg-emerald-700 text-white text-[10px] font-bold rounded">COA</span>
             <span class="font-bold text-xs text-slate-900">แบบฟอร์มเอกสารรับรองโครงการวิจัย</span>
           </div>
-          <p class="text-[11px] text-slate-500">แบบฟอร์มเอกสารรับรอง (COA) - Thai Version 1.0.1</p>
+          <p class="text-[11px] text-slate-500">เอกสารรับรองโครงการวิจัย (COA)</p>
         </div>
-        <span class="text-emerald-700 group-hover:translate-x-1 transition-transform text-sm font-bold">⬇️️</span>
+        <span class="text-emerald-700 font-bold group-hover:translate-x-1 transition-transform">🔍 เปิดดู</span>
       </a>
 
-      <!-- ไฟล์ 2: COE -->
+      <!-- ไฟล์ 2: COE (เปิดดูในแท็บใหม่เท่านั้น) -->
       <a 
         href="17.1 แบบฟอร์มเอกสารรับรอง (COE) - Thai (Edit 2_Version 1.0.1_17.07.2569)-no highlight.pdf" 
-        download 
         target="_blank"
-        class="flex items-center justify-between p-4 bg-blue-50/60 hover:bg-blue-100/80 border border-blue-200/80 rounded-2xl transition group"
+        rel="noopener noreferrer"
+        class="flex items-center justify-between p-4 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-2xl transition group"
       >
         <div class="space-y-0.5">
           <div class="flex items-center gap-2">
             <span class="px-2 py-0.5 bg-blue-600 text-white text-[10px] font-bold rounded">COE</span>
             <span class="font-bold text-xs text-slate-900">เอกสารรับรองแบบยกเว้น</span>
           </div>
-          <p class="text-[11px] text-slate-500">Certificate of Exemption (COE) - Thai Version 1.0.1</p>
+          <p class="text-[11px] text-slate-500">Certificate of Exemption (COE)</p>
         </div>
-        <span class="text-blue-600 group-hover:translate-x-1 transition-transform text-sm font-bold">⬇️</span>
+        <span class="text-blue-600 font-bold group-hover:translate-x-1 transition-transform">🔍 เปิดดู</span>
       </a>
     </div>
 
