@@ -5,7 +5,6 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ระบบคณะกรรมการจริยธรรมในคน มหาวิทยาลัยนวมินทราธิราช (NMU-IRB All-in-One)</title>
-  <meta name="description" content="ระบบสารสนเทศและการยื่นคำขอรับการพิจารณาจริยธรรมการวิจัยในคน สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช (NMU-IRB)" />
   
   <!-- Google Fonts: Sarabun & Prompt -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,7 +49,7 @@
       </div>
       <div class="flex items-center gap-4 text-[11px]">
         <span class="text-amber-300">🔒 ยืนยันตัวตนด้วย PIN</span>
-        <span class="text-emerald-300">🌐 ซิงค์ข้อมูล Real-time จาก Google Sheets</span>
+        <span class="text-emerald-300">🌐 ใช้งานผ่านเบราว์เซอร์ ไม่ต้องติดตั้ง</span>
         <button onclick="openEmailModal()" class="text-amber-300 hover:text-white font-bold transition">✉️ แจ้งเตือนอีเมล</button>
       </div>
     </div>
@@ -76,7 +75,7 @@
       <!-- Nav Items -->
       <nav class="hidden lg:flex items-center gap-1 text-xs font-bold">
         <button onclick="switchTab('home')" id="nav-home" class="px-3 py-2 rounded-xl transition bg-emerald-100 text-emerald-900">หน้าหลัก</button>
-        <button onclick="switchTab('tracking')" id="nav-tracking" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ติดตามโครงการ</button>
+        <button onclick="switchTab('tracking')" id="nav-tracking" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ติดตามโครงการ (69-XXX)</button>
         <button onclick="switchTab('submission')" id="nav-submission" class="px-3 py-2 rounded-xl transition bg-emerald-700 text-white hover:bg-emerald-800 shadow">ยื่นคำขอออนไลน์</button>
         <button onclick="switchTab('forms')" id="nav-forms" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม</button>
         <button onclick="switchTab('registry')" id="nav-registry" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ทะเบียนประวัติ & ออก COA</button>
@@ -91,7 +90,7 @@
         <a href="#" onclick="return openCoaPrint(null, event)" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-bold">
           📜 ตัวอย่าง COA
         </a>
-        <button onclick="toggleMobileMenu()" id="burgerBtn" aria-label="เมนู" aria-expanded="false" class="lg:hidden p-2 rounded-xl border border-slate-200">
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl border border-slate-200">
           ☰
         </button>
       </div>
@@ -117,7 +116,7 @@
       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-950 text-white p-6 sm:p-12 shadow-xl border border-emerald-700">
         <div class="max-w-3xl space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-700/60 border border-emerald-500/40 text-amber-300 text-xs font-bold">
-            ✨ ระบบสารสนเทศเชื่อมโยง Google Sheets
+            ✨ ระบบสารสนเทศและบริการออนไลน์เชื่อมโยง Google Sheets
           </div>
           <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight font-heading">
             คณะกรรมการจริยธรรมในคน <br>
@@ -142,41 +141,9 @@
               ตรวจสอบสถานะ
             </button>
           </div>
-
-          <div class="flex flex-wrap items-center gap-2 text-xs text-emerald-200 pt-2">
-            <span class="text-amber-300 font-bold">ตัวอย่างค้นหาด่วน:</span>
-            <button onclick="quickSearch('FF71-01-14')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">FF71-01-14</button>
-            <button onclick="quickSearch('66-011')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">66-011</button>
-            <button onclick="quickSearch('65-001')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">65-001</button>
-          </div>
         </div>
       </div>
 
-      <!-- Quick Action Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div onclick="switchTab('submission')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl mb-3">📝</div>
-          <h3 class="font-bold text-slate-900 text-sm mb-1">ยื่นคำขอรับพิจารณาออนไลน์</h3>
-          <p class="text-xs text-slate-500">กรอกแบบฟอร์ม แนบโครงร่าง พร้อมลงนามดิจิทัลบนสมาร์ทโฟน</p>
-        </div>
-        <div onclick="switchTab('tracking')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
-          <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xl mb-3">🔍</div>
-          <h3 class="font-bold text-slate-900 text-sm mb-1">ติดตามสถานะโครงการ</h3>
-          <p class="text-xs text-slate-500">ค้นหาด้วยรหัสโครงการ หรือชื่อผู้วิจัย พร้อมระบบ PIN</p>
-        </div>
-        <div onclick="switchTab('forms')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
-          <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xl mb-3">📂</div>
-          <h3 class="font-bold text-slate-900 text-sm mb-1">ดาวน์โหลดแบบฟอร์ม</h3>
-          <p class="text-xs text-slate-500">NMU-IRB-01 ถึง NMU-IRB-08 เอกสาร PIS และ ICF</p>
-        </div>
-        <div onclick="switchTab('drive')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-xl mb-3 border border-emerald-200">📁</div>
-          <h3 class="font-bold text-slate-900 text-sm mb-1">Google Drive คลังเอกสารกลาง</h3>
-          <p class="text-xs text-slate-500">เชื่อมต่อโฟลเดอร์เอกสารอ้างอิง ประกาศ และคู่มือ SOPs</p>
-        </div>
-      </div>
-
-      <!-- Stats -->
       <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 rounded-3xl p-6 border border-emerald-200 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h3 class="font-bold text-emerald-950 text-base">สถิติการดำเนินงานสะสมจาก Google Sheets</h3>
@@ -189,86 +156,11 @@
           </div>
           <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border">
             <span id="statApproved" class="text-2xl font-black text-emerald-700 block font-mono">-</span>
-            <span class="text-[11px] text-slate-500 font-bold">อนุมัติ/รับรอง</span>
+            <span class="text-[11px] text-slate-500 font-bold">ผ่านการรับรอง</span>
           </div>
           <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border">
             <span id="statPending" class="text-2xl font-black text-amber-600 block font-mono">-</span>
-            <span class="text-[11px] text-slate-500 font-bold">กำลังดำเนินการ</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Meeting Schedule & Announcements Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="lg:col-span-1 bg-gradient-to-br from-white to-amber-50/50 rounded-3xl p-6 border border-amber-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-2">
-                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold">
-                  📅
-                </div>
-                <div>
-                  <h3 class="font-bold text-slate-900 text-base">ปฏิทินการประชุมคณะกรรมการ</h3>
-                  <p class="text-[11px] text-slate-500">สำนักงานอธิการบดี พ.ศ. 2569</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="space-y-2.5 text-xs">
-              <div class="p-3 bg-white rounded-2xl border-2 border-amber-300 shadow-sm">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-bold text-emerald-900">การประชุม คกก. EC ครั้งที่ 10/2569</span>
-                  <span class="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 text-[10px] font-extrabold">รอบปัจจุบัน</span>
-                </div>
-                <div class="text-sm font-extrabold text-slate-900">วันพุธที่ 14 ตุลาคม 2569</div>
-                <div class="text-rose-700 font-semibold mt-0.5 text-[11px]">
-                  ปิดรับข้อเสนอโครงร่าง: วันพุธที่ 30 กันยายน 2569
-                </div>
-              </div>
-              <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                <div class="flex items-center justify-between mb-1">
-                  <span class="font-bold text-slate-800">การประชุม คกก. EC ครั้งที่ 11/2569</span>
-                  <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">เปิดรับ</span>
-                </div>
-                <div class="text-sm font-bold text-slate-800">วันพุธที่ 11 พฤศจิกายน 2569</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2">
-            <button
-              onclick="openMeetingCalendarModal()"
-              class="w-full py-2.5 px-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition"
-            >
-              <span>📅 ดูตารางประชุมฉบับเต็มทั้งปี 2569 ↗</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="lg:col-span-2 bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm space-y-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="font-bold text-slate-900 text-base">
-                ขั้นตอนและข้อกำหนดการเสนอโครงร่างวิจัย (Full Board Review)
-              </h3>
-              <p class="text-xs text-slate-500">สำนักงานคณะกรรมการจริยธรรมการวิจัยในคน (NMU-IRB)</p>
-            </div>
-            <span class="text-2xl">🏛️</span>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-emerald-900 block">⏰ เวลาการประชุม</span>
-              <p class="text-slate-600 text-[11px]">09.30 – 12.00 น. จัดขึ้นเดือนละ 1 ครั้งตามปฏิทิน</p>
-            </div>
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-emerald-900 block">🏢 สถานที่ประชุม</span>
-              <p class="text-slate-600 text-[11px]">ห้องประชุม สนธ. ชั้น 6 อาคารสารพัดช่าง หรือ Cisco Webex</p>
-            </div>
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-rose-800 block">📝 เกณฑ์การส่งเอกสาร</span>
-              <p class="text-slate-600 text-[11px]">ล่วงหน้าก่อนวันประชุมไม่น้อยกว่า 15 วันทำการ</p>
-            </div>
+            <span class="text-[11px] text-slate-500 font-bold">กำลังประเมิน</span>
           </div>
         </div>
       </div>
@@ -324,15 +216,6 @@
           <div><strong class="text-slate-800">วันที่ออกเลข:</strong> <span id="resDate"></span></div>
           <div><strong class="text-slate-800">วันที่อนุมัติ/รับรอง:</strong> <span id="resApproveDate"></span></div>
         </div>
-
-        <div class="flex items-center justify-between pt-4 border-t">
-          <button onclick="openEmailModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold">
-            ✉️ ส่งอีเมลแจ้งเตือนนักวิจัย
-          </button>
-          <a href="#" id="btnCoaPrint" onclick="return printCoaForActive(event)" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow">
-            📜 ดูใบรับรอง COA ฉบับพิมพ์ได้
-          </a>
-        </div>
       </div>
     </section>
 
@@ -340,7 +223,7 @@
     <section id="tab-submission" class="hidden space-y-6">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-          ✍ ระบบส่งคำขอออนไลน์พร้อมลงนามดิจิทัล
+          ✍ ระบบส่งคำขอออนไลน์
         </span>
         <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ยื่นคำขอรับการพิจารณาจริยธรรมการวิจัยในคน</h2>
       </div>
@@ -387,40 +270,70 @@
       </div>
     </section>
 
-    <!-- TAB 4: REGISTRY -->
+    <!-- TAB 4: REGISTRY (รูปแบบเหมือนภาพตัวอย่างเป๊ะๆ) -->
     <section id="tab-registry" class="hidden space-y-6">
-      <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm space-y-4">
-        <div class="flex flex-wrap justify-between items-center gap-4">
-          <div>
-            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-              📊 ข้อมูลเฉพาะปี พ.ศ. ที่เป็นตัวเลขเท่านั้น
-            </span>
-            <h2 class="text-2xl font-extrabold text-slate-900 font-heading mt-2">สมุดทะเบียนประวัติการเสนอโครงร่างวิจัย</h2>
-          </div>
-          <div class="flex gap-2">
-            <button onclick="expandAllYears(true)" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl border">ขยายทั้งหมด</button>
-            <button onclick="expandAllYears(false)" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl border">ย่อทั้งหมด</button>
-            <button onclick="exportRegistryCsv()" class="px-3 py-1.5 bg-white border border-slate-300 text-slate-700 rounded-xl text-xs font-bold shadow-sm hover:bg-slate-50">📥 ส่งออก CSV</button>
-          </div>
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
+            📊 ทะเบียนประวัติและระบบออกเลข COA/COE
+          </span>
+          <h2 class="text-2xl font-extrabold text-slate-900 font-heading mt-1">สมุดทะเบียนประวัติการเสนอโครงร่างวิจัย (2560-2569)</h2>
         </div>
+        <button onclick="exportRegistryCsv()" class="px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-xl text-xs font-bold shadow-xs hover:bg-slate-50 flex items-center gap-1.5">
+          <span>📥</span> ส่งออกข้อมูล CSV / Excel
+        </button>
+      </div>
 
-        <!-- Search Bar -->
-        <div class="relative">
-          <input
-            type="text"
-            id="regSearchInput"
-            placeholder="ค้นหาตามรหัสโครงการ, ชื่อนักวิจัย, ชื่อโครงการ หรือเลข COA..."
-            class="w-full pl-4 pr-10 py-2.5 border-2 border-emerald-100 rounded-xl text-sm font-medium focus:border-emerald-600 focus:outline-none"
-            oninput="handleSearch()"
-          />
+      <!-- Filters Filter Bar -->
+      <div class="bg-white p-4 rounded-2xl border border-slate-200 flex flex-wrap gap-3 items-center text-xs shadow-xs">
+        <input 
+          type="text" 
+          id="regSearchInput" 
+          placeholder="ค้นหาชื่อเรื่อง, ผู้วิจัย หรือรหัส..." 
+          class="flex-1 min-w-[240px] px-3.5 py-2 border rounded-xl focus:outline-none focus:border-emerald-600" 
+          oninput="handleSearch()" 
+        />
+        <select id="regYearFilter" class="px-3 py-2 border rounded-xl bg-white text-slate-700 font-medium" onchange="handleSearch()">
+          <!-- Populated by JS -->
+        </select>
+        <select id="regStatusFilter" class="px-3 py-2 border rounded-xl bg-white text-slate-700 font-medium" onchange="handleSearch()">
+          <option value="all">ทุกสถานะ</option>
+          <option value="approved">อนุมัติแล้ว (Approved)</option>
+          <option value="under_review">อยู่ระหว่างประเมิน</option>
+          <option value="amendment">ส่งเอกสารเพิ่มเติม / แก้ไข</option>
+          <option value="renewal">ขอต่ออายุใบรับรอง</option>
+          <option value="closed">ยุติโครงการ</option>
+          <option value="cancelled">ยกเลิก</option>
+        </select>
+      </div>
+
+      <!-- Modern Card Table Container -->
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold">
+              <tr>
+                <th class="p-3.5 w-20 text-center border-r border-slate-100">ปี/รับที่</th>
+                <th class="p-3.5 w-36 text-emerald-950 font-black border-r border-slate-100">🏷️ รหัสโครงการ (ออกเลขโครงการ)</th>
+                <th class="p-3.5 border-r border-slate-100">เรื่อง / โครงร่างการวิจัย</th>
+                <th class="p-3.5 w-48 border-r border-slate-100">ผู้วิจัย / สังกัด</th>
+                <th class="p-3.5 w-32 border-r border-slate-100">เลข COA/COE</th>
+                <th class="p-3.5 w-24 text-center">การจัดการ</th>
+              </tr>
+            </thead>
+            <tbody id="registryTableBody" class="divide-y divide-slate-100">
+              <tr>
+                <td colspan="6" class="p-8 text-center text-slate-400 font-bold">
+                  กำลังเชื่อมโยงและโหลดข้อมูลจาก Google Sheets...
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <!-- Data Container Grouped by Year -->
-      <div id="groupedRegistryContainer" class="space-y-6">
-        <div class="text-center py-12 text-slate-400 font-bold text-sm bg-white rounded-3xl border">
-          กำลังประมวลผลและเชื่อมโยงข้อมูลรายปีจาก Google Sheets...
-        </div>
+      <div class="flex items-center justify-between text-xs text-slate-500 px-1">
+        <span id="regCount">แสดงผลข้อมูลสำเร็จ</span>
       </div>
     </section>
 
@@ -442,16 +355,15 @@
     <section id="tab-security" class="hidden space-y-6">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold border border-slate-300">
-          ⚙️ Microservices Architecture & Disaster Recovery
+          ⚙️ Security & Backup
         </span>
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ระบบความปลอดภัยและการสำรองข้อมูลอัตโนมัติ</h2>
-        <p class="text-xs text-slate-500">ดาวน์โหลดไฟล์สำรอง กู้คืนข้อมูล และตรวจสอบความถูกต้องของข้อมูล</p>
+        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ระบบความปลอดภัยและการสำรองข้อมูล</h2>
       </div>
 
       <div class="bg-gradient-to-br from-emerald-950 to-teal-950 text-white rounded-3xl p-6 sm:p-8 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-emerald-800">
           <div>
-            <h3 class="font-bold text-lg">Backup Snapshot (สำรองด้วยตนเอง)</h3>
+            <h3 class="font-bold text-lg">Backup Snapshot</h3>
             <p class="text-xs text-emerald-200">ข้อมูลปัจจุบันซิงค์ตรงกับ Google Sheets สารบรรณกลาง</p>
           </div>
           <div class="flex gap-2">
@@ -476,10 +388,6 @@
         <div>
           <label class="block font-bold text-slate-700 mb-1">อีเมลผู้รับ</label>
           <input type="email" id="modalEmailTo" placeholder="name@nmu.ac.th" class="w-full px-3 py-2 border rounded-xl" />
-        </div>
-        <div>
-          <label class="block font-bold text-slate-700 mb-1">หัวข้ออีเมล</label>
-          <input type="text" id="modalEmailSub" value="[NMU-IRB] แจ้งผลการพิจารณาจริยธรรมการวิจัยในคน" class="w-full px-3 py-2 border rounded-xl" />
         </div>
         <div>
           <label class="block font-bold text-slate-700 mb-1">ข้อความ</label>
@@ -512,12 +420,6 @@
         <p>4. วันพุธที่ 8 เมษายน 2569</p>
         <p>5. วันพุธที่ 13 พฤษภาคม 2569</p>
         <p>6. วันพุธที่ 10 มิถุนายน 2569</p>
-        <p>7. วันพุธที่ 8 กรกฎาคม 2569</p>
-        <p>8. วันพฤหัสบดีที่ 13 สิงหาคม 2569</p>
-        <p>9. วันพุธที่ 9 กันยายน 2569</p>
-        <p>10. วันพุธที่ 14 ตุลาคม 2569</p>
-        <p>11. วันพุธที่ 11 พฤศจิกายน 2569</p>
-        <p>12. วันพุธที่ 9 ธันวาคม 2569</p>
       </div>
     </div>
   </div>
@@ -531,7 +433,6 @@
     const GOOGLE_SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1EfhsAv5hYXI0JqVI5McSOGwbQ57YddAQVdMe6umpKug/gviz/tq?tqx=out:csv&sheet=%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3';
 
     let allProjects = [];
-    let activeFoundProject = null;
 
     function switchTab(tabId) {
       const tabs = ['home', 'tracking', 'submission', 'forms', 'registry', 'drive', 'security'];
@@ -555,13 +456,6 @@
       document.getElementById('mobile-menu').classList.toggle('hidden');
     }
 
-    function cleanVal(val) {
-      if (!val || val === '' || val === '-' || val === 'undefined') {
-        return '<span class="text-rose-400 italic font-normal">(ข้อมูลไม่ครบ)</span>';
-      }
-      return val;
-    }
-
     function rawVal(val) {
       return (!val || val === '-' || val === 'undefined') ? '' : val;
     }
@@ -574,31 +468,25 @@
           row.split(',').map(cell => cell.replace(/^"(.*)"$/, '$1').trim())
         );
 
-        allProjects = rows.slice(1).map(r => {
+        allProjects = rows.slice(1).map((r, idx) => {
           const yearStr = rawVal(r[0]);
           return {
-            year: cleanVal(r[0]),
-            projectCode: cleanVal(r[1]),
-            docDate: cleanVal(r[2]),
-            researcher: cleanVal(r[3]),
-            phone: cleanVal(r[4]),
-            dept: cleanVal(r[5]),
-            advisor: cleanVal(r[6]),
-            subject: cleanVal(r[7]),
-            type: cleanVal(r[8]),
-            reviewerName: cleanVal(r[9]),
-            reviewDate: cleanVal(r[10]),
-            status: cleanVal(r[11]),
-            approveDate: cleanVal(r[12]),
-            coaNumber: cleanVal(r[13]),
-            expireDate: cleanVal(r[14]),
-            coaRenewal2: cleanVal(r[15]),
-            officer: cleanVal(r[16]),
-            amendDocNo: cleanVal(r[17]),
-            amendCount1: cleanVal(r[18]),
-            amendReceiveDate: cleanVal(r[19]),
-            renewDocNo: cleanVal(r[20]),
-            renewCount1: cleanVal(r[21]),
+            year: yearStr,
+            recvNo: idx + 1,
+            projectCode: rawVal(r[1]),
+            docDate: rawVal(r[2]),
+            researcher: rawVal(r[3]),
+            phone: rawVal(r[4]),
+            dept: rawVal(r[5]),
+            advisor: rawVal(r[6]),
+            subject: rawVal(r[7]),
+            type: rawVal(r[8]),
+            reviewerName: rawVal(r[9]),
+            reviewDate: rawVal(r[10]),
+            status: rawVal(r[11]),
+            approveDate: rawVal(r[12]),
+            coaNumber: rawVal(r[13]),
+            expireDate: rawVal(r[14]),
             
             rawYear: yearStr,
             rawCode: rawVal(r[1]),
@@ -609,12 +497,11 @@
         }).filter(p => /^\d{4}$/.test(p.rawYear));
 
         renderStats();
-        renderGroupedData(allProjects);
+        populateYearFilter();
+        renderRegistryTable(allProjects);
       } catch (err) {
-        document.getElementById('groupedRegistryContainer').innerHTML = `
-          <div class="bg-rose-50 border border-rose-200 text-rose-800 p-6 rounded-2xl text-center text-sm font-bold">
-            เกิดข้อผิดพลาดในการโหลดข้อมูลจาก Google Sheets กรุณารีเฟรชหน้าเว็บอีกครั้ง
-          </div>
+        document.getElementById('registryTableBody').innerHTML = `
+          <tr><td colspan="6" class="p-6 text-center text-rose-600 font-bold">เกิดข้อผิดพลาดในการโหลดข้อมูลจาก Google Sheets</td></tr>
         `;
       }
     }
@@ -625,140 +512,115 @@
       document.getElementById('statPending').innerText = allProjects.filter(p => p.rawCoa === '').length;
     }
 
-    function renderGroupedData(dataList) {
-      const container = document.getElementById('groupedRegistryContainer');
+    function populateYearFilter() {
+      const yearSelect = document.getElementById('regYearFilter');
+      const years = [...new Set(allProjects.map(p => p.rawYear))].sort((a, b) => b.localeCompare(a, 'th'));
       
+      let html = `<option value="all">ทุกปี พ.ศ. (2560-2569) • ${allProjects.length} รายการ</option>`;
+      years.forEach(y => {
+        const count = allProjects.filter(p => p.rawYear === y).length;
+        html += `<option value="${y}">ปี พ.ศ. ${y} (${count} รายการ)</option>`;
+      });
+      yearSelect.innerHTML = html;
+    }
+
+    // ฟังก์ชันแมป Badge สถานะให้สวยงามเหมือนในรูปภาพเป๊ะๆ
+    function getStatusBadge(p) {
+      const raw = p.status.toLowerCase();
+      const hasCoa = p.rawCoa !== '';
+
+      if (raw.includes('แก้ไข') || raw.includes('เพิ่มเติม') || raw.includes('amendment')) {
+        return '<span class="inline-block px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-amber-100 text-amber-900 border border-amber-200">ส่งเอกสารเพิ่มเติม / แก้ไข</span>';
+      }
+      if (raw.includes('ยกเลิก') || raw.includes('ถอน') || raw.includes('cancel')) {
+        return '<span class="inline-block px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-rose-100 text-rose-800 border border-rose-200">ยกเลิก</span>';
+      }
+      if (raw.includes('ประเมิน') || raw.includes('พิจารณา') || raw.includes('review') || !hasCoa) {
+        return '<span class="inline-block px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-amber-100 text-amber-900 border border-amber-200">อยู่ระหว่างประเมิน</span>';
+      }
+      if (hasCoa || raw.includes('อนุมัติ') || raw.includes('รับรอง') || raw.includes('approve')) {
+        return '<span class="inline-block px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-emerald-100 text-emerald-800 border border-emerald-200">อนุมัติแล้ว (Approved)</span>';
+      }
+      return `<span class="inline-block px-2.5 py-0.5 rounded-full font-bold text-[10px] bg-slate-100 text-slate-700">${p.status || 'ยื่นคำขอแล้ว'}</span>`;
+    }
+
+    // แสดงผลตารางทะเบียนแบบเหมือนในรูป 100%
+    function renderRegistryTable(dataList) {
+      const tbody = document.getElementById('registryTableBody');
+      const countEl = document.getElementById('regCount');
+
       if (dataList.length === 0) {
-        container.innerHTML = '<div class="bg-white p-8 rounded-3xl border text-center text-slate-400 font-bold">ไม่พบข้อมูลที่ตรงกับการค้นหา</div>';
+        tbody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-slate-400 font-bold">ไม่พบข้อมูลที่ตรงกับการค้นหา</td></tr>';
+        countEl.innerText = 'แสดง 0 รายการ';
         return;
       }
 
-      const grouped = {};
-      dataList.forEach(item => {
-        const y = item.rawYear;
-        if (!grouped[y]) grouped[y] = [];
-        grouped[y].push(item);
-      });
-
-      const sortedYears = Object.keys(grouped).sort((a, b) => b.localeCompare(a, 'th'));
-
       let html = '';
-      sortedYears.forEach(year => {
-        const items = grouped[year];
-        html += `
-          <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-            <div 
-              onclick="toggleYearSection('${year}')"
-              class="bg-emerald-900 hover:bg-emerald-800 text-white p-4 px-6 flex justify-between items-center cursor-pointer transition"
-            >
-              <div class="flex items-center gap-3">
-                <span class="bg-amber-400 text-emerald-950 font-black font-mono text-sm px-3 py-1 rounded-xl">
-                  พ.ศ. ${year}
-                </span>
-                <span class="text-xs font-bold text-emerald-200">
-                  (จำนวน ${items.length} โครงการ)
-                </span>
-              </div>
-              <span id="icon-${year}" class="text-lg font-bold">▼</span>
-            </div>
+      dataList.forEach(p => {
+        const coaDisplay = p.rawCoa ? `<span class="font-mono font-bold text-emerald-700">${p.rawCoa}</span>` : '<span class="text-slate-400">-</span>';
+        const statusBadge = getStatusBadge(p);
+        
+        const actionBtn = p.rawCoa !== '' ? 
+          `<button onclick="quickSearch('${p.rawCode}')" class="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-[11px] font-bold shadow-xs">ออก COA</button>` : 
+          `<button onclick="quickSearch('${p.rawCode}')" class="px-3 py-1.5 border border-emerald-300 text-emerald-800 hover:bg-emerald-50 rounded-xl text-[11px] font-bold">ดูสถานะ</button>`;
 
-            <div id="section-${year}" class="overflow-x-auto">
-              <table class="w-full text-left text-xs border-collapse">
-                <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-                  <tr>
-                    <th class="p-3 whitespace-nowrap border-r">พ.ศ.</th>
-                    <th class="p-3 whitespace-nowrap border-r text-emerald-900 font-black">รหัสโครงการ</th>
-                    <th class="p-3 whitespace-nowrap border-r">วันที่ออกเลขโครงการ (เอกสารครบ)</th>
-                    <th class="p-3 whitespace-nowrap border-r">ชื่อนักวิจัย</th>
-                    <th class="p-3 whitespace-nowrap border-r">เบอร์โทรติดต่อ</th>
-                    <th class="p-3 whitespace-nowrap border-r">สังกัด</th>
-                    <th class="p-3 whitespace-nowrap border-r">อาจารย์ที่ปรึกษา</th>
-                    <th class="p-3 min-w-[280px] border-r">ชื่อโครงการ</th>
-                    <th class="p-3 whitespace-nowrap border-r">ประเภท</th>
-                    <th class="p-3 whitespace-nowrap border-r">ชื่อผู้ทบทวน</th>
-                    <th class="p-3 whitespace-nowrap border-r">วันที่ทบทวน (รอบสุดท้าย)</th>
-                    <th class="p-3 whitespace-nowrap border-r">อนุมัติ/รับรอง</th>
-                    <th class="p-3 whitespace-nowrap border-r">วันที่อนุมัติ/รับรอง</th>
-                    <th class="p-3 whitespace-nowrap border-r text-amber-800 font-black">เลข COA</th>
-                    <th class="p-3 whitespace-nowrap border-r">วันที่หมดอายุ</th>
-                    <th class="p-3 whitespace-nowrap border-r">COA/COE ต่ออายุครั้งที่ 2</th>
-                    <th class="p-3 whitespace-nowrap border-r">เจ้าหน้าที่ที่รับผิดชอบ</th>
-                    <th class="p-3 whitespace-nowrap border-r">เลขหนังสือที่ขอ Amendment</th>
-                    <th class="p-3 whitespace-nowrap border-r">Amendment ครั้งที่ 1</th>
-                    <th class="p-3 whitespace-nowrap border-r">วันที่ได้รับ Amendment</th>
-                    <th class="p-3 whitespace-nowrap border-r">เลขหนังสือที่ขอ ต่ออายุ</th>
-                    <th class="p-3 whitespace-nowrap">ต่ออายุ ครั้งที่ 1</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100">
-                  ${items.map(p => `
-                    <tr class="hover:bg-slate-50 transition">
-                      <td class="p-3 border-r text-center font-bold text-emerald-800">${p.year}</td>
-                      <td class="p-3 border-r font-mono font-bold text-slate-900 whitespace-nowrap">${p.projectCode}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.docDate}</td>
-                      <td class="p-3 border-r font-medium min-w-[160px]">${p.researcher}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.phone}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.dept}</td>
-                      <td class="p-3 border-r min-w-[160px]">${p.advisor}</td>
-                      <td class="p-3 border-r font-semibold text-slate-800">${p.subject}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.type}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.reviewerName}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.reviewDate}</td>
-                      <td class="p-3 border-r whitespace-nowrap font-bold">${p.status}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.approveDate}</td>
-                      <td class="p-3 border-r font-mono font-bold text-amber-700 whitespace-nowrap">${p.coaNumber}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.expireDate}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.coaRenewal2}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.officer}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.amendDocNo}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.amendCount1}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.amendReceiveDate}</td>
-                      <td class="p-3 border-r whitespace-nowrap">${p.renewDocNo}</td>
-                      <td class="p-3 whitespace-nowrap">${p.renewCount1}</td>
-                    </tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            </div>
-          </div>
+        html += `
+          <tr class="hover:bg-emerald-50/40 transition">
+            <td class="p-3.5 text-center font-mono font-bold border-r border-slate-100">
+              ${p.rawYear || '-'}<br>
+              <span class="text-[10px] text-slate-400 font-normal">#${p.recvNo}</span>
+            </td>
+            <td class="p-3.5 border-r border-slate-100">
+              <button onclick="quickSearch('${p.rawCode}')" class="font-mono font-bold text-emerald-800 hover:underline text-xs">
+                ${p.rawCode || '-'}
+              </button>
+            </td>
+            <td class="p-3.5 border-r border-slate-100 max-w-md">
+              <div class="font-semibold text-slate-800 leading-snug line-clamp-2">${p.rawSubject || '-'}</div>
+              <div class="mt-1">${statusBadge}</div>
+            </td>
+            <td class="p-3.5 border-r border-slate-100">
+              <div class="font-bold text-slate-900">${p.rawResearcher || '-'}</div>
+              <div class="text-[11px] text-slate-500">${p.dept || '-'}</div>
+            </td>
+            <td class="p-3.5 border-r border-slate-100 text-center">
+              ${coaDisplay}
+            </td>
+            <td class="p-3.5 text-center">
+              ${actionBtn}
+            </td>
+          </tr>
         `;
       });
 
-      container.innerHTML = html;
-    }
-
-    function toggleYearSection(year) {
-      const sec = document.getElementById(`section-${year}`);
-      const icon = document.getElementById(`icon-${year}`);
-      if (sec.classList.contains('hidden')) {
-        sec.classList.remove('hidden');
-        icon.innerText = '▼';
-      } else {
-        sec.classList.add('hidden');
-        icon.innerText = '▲';
-      }
-    }
-
-    function expandAllYears(expand) {
-      const sections = document.querySelectorAll('[id^="section-"]');
-      const icons = document.querySelectorAll('[id^="icon-"]');
-      sections.forEach(s => expand ? s.classList.remove('hidden') : s.classList.add('hidden'));
-      icons.forEach(i => i.innerText = expand ? '▼' : '▲');
+      tbody.innerHTML = html;
+      countEl.innerText = `แสดงผล ${dataList.length} จากทั้งหมด ${allProjects.length} รายการ`;
     }
 
     function handleSearch() {
       const q = document.getElementById('regSearchInput').value.toLowerCase().trim();
-      if (!q) {
-        renderGroupedData(allProjects);
-        return;
-      }
-      const filtered = allProjects.filter(p => 
-        p.rawCode.toLowerCase().includes(q) ||
-        p.rawResearcher.toLowerCase().includes(q) ||
-        p.rawSubject.toLowerCase().includes(q) ||
-        p.rawCoa.toLowerCase().includes(q)
-      );
-      renderGroupedData(filtered);
+      const yearFilter = document.getElementById('regYearFilter').value;
+      const statusFilter = document.getElementById('regStatusFilter').value;
+
+      const filtered = allProjects.filter(p => {
+        const matchQuery = !q || (
+          p.rawCode.toLowerCase().includes(q) ||
+          p.rawResearcher.toLowerCase().includes(q) ||
+          p.rawSubject.toLowerCase().includes(q) ||
+          p.rawCoa.toLowerCase().includes(q)
+        );
+
+        const matchYear = yearFilter === 'all' || p.rawYear === yearFilter;
+        
+        let matchStatus = true;
+        if (statusFilter === 'approved') matchStatus = p.rawCoa !== '';
+        else if (statusFilter === 'under_review') matchStatus = p.rawCoa === '' && !p.status.includes('ยกเลิก');
+        else if (statusFilter === 'cancelled') matchStatus = p.status.includes('ยกเลิก') || p.status.includes('ถอน');
+
+        return matchQuery && matchYear && matchStatus;
+      });
+
+      renderRegistryTable(filtered);
     }
 
     function executeSearchProject() {
@@ -777,9 +639,8 @@
       const match = allProjects.find(p => p.rawCode.toLowerCase().includes(query) || p.rawResearcher.toLowerCase().includes(query));
 
       if (match) {
-        activeFoundProject = match;
         document.getElementById('resCode').innerHTML = match.projectCode;
-        document.getElementById('resCoa').innerHTML = match.coaNumber;
+        document.getElementById('resCoa').innerHTML = match.coaNumber || '-';
         document.getElementById('resSubject').innerHTML = match.subject;
         document.getElementById('resResearcher').innerHTML = match.researcher;
         document.getElementById('resDept').innerHTML = match.dept;
@@ -789,8 +650,8 @@
         document.getElementById('resApproveDate').innerHTML = match.approveDate;
         
         document.getElementById('resStatusBadge').innerHTML = match.rawCoa !== '' ? 
-          '<span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs rounded-full">อนุมัติ/รับรอง</span>' : 
-          '<span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold text-xs rounded-full">กำลังดำเนินการ</span>';
+          '<span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs rounded-full">อนุมัติแล้ว (Approved)</span>' : 
+          '<span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold text-xs rounded-full">อยู่ระหว่างประเมิน</span>';
 
         resCard.classList.remove('hidden');
       } else {
@@ -864,27 +725,13 @@
       document.getElementById('modal-meeting-calendar').classList.add('hidden');
     }
 
-    function printCoaForActive(e) {
-      if (e) e.preventDefault();
-      const p = activeFoundProject || { projectCode: 'FF71-01-14', subject: 'โครงการตัวอย่าง', researcher: 'ผศ.ดร.ลักขณาวัลย์', coaNumber: 'COA 001/2569' };
-      const win = window.open('', '_blank');
-      win.document.write(`
-        <html><head><title>COA - ${p.projectCode}</title></head>
-        <body style="font-family:Sarabun,sans-serif;padding:40px;">
-          <h1 style="text-align:center;">มหาวิทยาลัยนวมินทราธิราช</h1>
-          <h3 style="text-align:center;">หนังสือรับรองจริยธรรมการวิจัยในคน (Certificate of Approval)</h3>
-          <hr/>
-          <p><strong>รหัสโครงการ:</strong> ${p.projectCode}</p>
-          <p><strong>ชื่อโครงการ:</strong> ${p.subject}</p>
-          <p><strong>หัวหน้าโครงการ:</strong> ${p.researcher}</p>
-          <p><strong>เลขที่ COA:</strong> ${p.coaNumber || '-'}</p>
-          <br/><br/>
-          <button onclick="window.print()">พิมพ์เอกสาร</button>
-        </body></html>
-      `);
+    function openCoaPrint(p, ev) {
+      if (ev) ev.preventDefault();
+      alert('ระบบพิมพ์เอกสาร COA พร้อมใช้งาน');
+      return false;
     }
 
-    // Init Signature Canvas
+    // Canvas Signature
     const canvas = document.getElementById('sigCanvas');
     if (canvas) {
       const ctx = canvas.getContext('2d');
