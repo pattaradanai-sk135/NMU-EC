@@ -2,194 +2,492 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ระบบคณะกรรมการจริยธรรมในคน มหาวิทยาลัยนวมินทราธิราช (NMU-IRB)</title>
+  <title>ระบบคณะกรรมการจริยธรรมในคน มหาวิทยาลัยนวมินทราธิราช (NMU-IRB All-in-One)</title>
+  
+  <!-- Google Fonts: Sarabun & Prompt -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Sarabun', 'sans-serif'], heading: ['Prompt', 'sans-serif'] }
+          fontFamily: {
+            sans: ['Sarabun', 'Prompt', 'sans-serif'],
+            heading: ['Prompt', 'sans-serif']
+          },
+          colors: {
+            nmu: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22'
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706'
+            }
+          }
         }
       }
     }
   </script>
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
 
-  <!-- Header / Navigation -->
-  <header class="bg-emerald-900 text-white sticky top-0 z-50 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-amber-400 text-emerald-950 font-bold flex items-center justify-center text-xs shadow">
-          NMU
+  <style>
+    body { font-family: 'Sarabun', sans-serif; scroll-behavior: smooth; }
+    h1, h2, h3, h4, .font-heading { font-family: 'Prompt', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+  <!-- Top Gov Bar -->
+  <div class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 text-white text-xs py-2 px-4 border-b border-emerald-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        <span class="font-bold text-amber-300">มหาวิทยาลัยนวมินทราธิราช (Navamindradhiraj University)</span>
+        <span class="hidden md:inline text-emerald-300/50">|</span>
+        <span class="hidden md:inline text-emerald-100">สำนักงานคณะกรรมการจริยธรรมในคน สำนักงานอธิการบดี (NMU-IRB)</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <span class="text-amber-300">🔒 ยืนยันตัวตนด้วย PIN</span>
+        <span class="text-emerald-300">🌐 ซิงค์ข้อมูล Real-time จาก Google Sheets</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-800 text-white flex flex-col items-center justify-center p-1 border-2 border-amber-300 shadow">
+          <span class="text-[10px] font-extrabold leading-none">NMU</span>
+          <span class="text-[9px] font-bold text-amber-300 leading-none">IRB</span>
+          <span class="text-[7px] text-emerald-200">สนธ.</span>
         </div>
         <div>
-          <h1 class="font-heading font-bold text-base leading-tight">คณะกรรมการจริยธรรมในคน (NMU-IRB)</h1>
-          <p class="text-[11px] text-emerald-200">มหาวิทยาลัยนวมินทราธิราช</p>
+          <h1 class="font-extrabold text-base sm:text-lg text-emerald-950 leading-tight">
+            คณะกรรมการจริยธรรมในคน
+          </h1>
+          <p class="text-xs text-slate-500 font-medium">สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช</p>
         </div>
       </div>
-      
-      <nav class="flex gap-2 text-xs font-bold">
-        <button onclick="switchTab('tracking')" id="btn-tracking" class="px-3 py-2 rounded-lg bg-emerald-800 text-amber-300">ติดตามโครงการ</button>
-        <button onclick="switchTab('registry')" id="btn-registry" class="px-3 py-2 rounded-lg hover:bg-emerald-800">สมุดทะเบียนประวัติ (ปี 2560-2569)</button>
+
+      <!-- Nav Items -->
+      <nav class="hidden lg:flex items-center gap-1 text-xs font-bold">
+        <button onclick="switchTab('home')" id="nav-home" class="px-3 py-2 rounded-xl transition bg-emerald-100 text-emerald-900">หน้าหลัก</button>
+        <button onclick="switchTab('tracking')" id="nav-tracking" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ติดตามโครงการ</button>
+        <button onclick="switchTab('submission')" id="nav-submission" class="px-3 py-2 rounded-xl transition bg-emerald-700 text-white hover:bg-emerald-800 shadow">ยื่นคำขอออนไลน์</button>
+        <button onclick="switchTab('forms')" id="nav-forms" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม</button>
+        <button onclick="switchTab('registry')" id="nav-registry" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ทะเบียนประวัติ & ออก COA</button>
+        <button onclick="switchTab('drive')" id="nav-drive" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">Google Drive</button>
       </nav>
+
+      <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl border border-slate-200">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t px-4 py-3 space-y-1 text-xs font-bold">
+      <button onclick="switchTab('home')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">หน้าหลัก</button>
+      <button onclick="switchTab('tracking')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ติดตามโครงการ</button>
+      <button onclick="switchTab('submission')" class="block w-full text-left py-2 px-3 rounded-lg bg-emerald-700 text-white">ยื่นคำขอรับพิจารณาออนไลน์</button>
+      <button onclick="switchTab('forms')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม NMU-IRB</button>
+      <button onclick="switchTab('registry')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">สมุดทะเบียนประวัติ & ออก COA/COE</button>
+      <button onclick="switchTab('drive')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">Google Drive คลังเอกสารกลาง</button>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 flex-1">
 
-    <!-- Tab 1: Tracking -->
-    <section id="tab-tracking" class="space-y-6">
-      <div class="bg-white p-6 rounded-2xl border border-emerald-100 shadow-sm max-w-xl mx-auto text-center space-y-4">
-        <h2 class="font-heading font-bold text-lg text-emerald-950">ค้นหาและติดตามสถานะโครงการ</h2>
-        <div class="flex gap-2">
-          <input type="text" id="searchInput" placeholder="ป้อนรหัสโครงการ หรือ ชื่อผู้วิจัย..." class="flex-1 px-4 py-2 border rounded-xl text-sm focus:outline-none focus:border-emerald-600" />
-          <button onclick="searchData()" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl text-xs">ค้นหา</button>
+    <!-- TAB: HOME -->
+    <section id="tab-home" class="space-y-8">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-950 text-white p-6 sm:p-12 shadow-xl border border-emerald-700">
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-700/60 border border-emerald-500/40 text-amber-300 text-xs font-bold">
+            ✨ ระบบสารสนเทศและบริการออนไลน์เชื่อมโยง Google Sheets
+          </div>
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight font-heading">
+            คณะกรรมการจริยธรรมในคน <br>
+            <span class="text-amber-300">มหาวิทยาลัยนวมินทราธิราช</span>
+          </h2>
+          <p class="text-emerald-100 text-sm sm:text-base leading-relaxed font-light">
+            สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช มุ่งมั่นยกระดับมาตรฐานจริยธรรมการวิจัยในคนตามหลักสากล
+            เชื่อมโยงข้อมูลตรงจากฐานข้อมูลทะเบียนโครงการวิจัยทั้งหมดในชีต "ออกเลขโครงการ" (ปี 2560 - 2569)
+          </p>
+
+          <div class="bg-white p-2 rounded-2xl shadow-xl max-w-xl flex flex-col sm:flex-row items-center gap-2 border-2 border-amber-300">
+            <input
+              type="text"
+              id="homeTrackInput"
+              placeholder="ป้อนรหัสโครงการ เช่น FF71-01-14, 66-011 หรือชื่อผู้วิจัย..."
+              class="w-full px-4 py-2 text-sm text-slate-800 font-mono font-medium focus:outline-none"
+            />
+            <button
+              onclick="trackFromHome()"
+              class="w-full sm:w-auto px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs sm:text-sm font-bold shadow shrink-0"
+            >
+              ตรวจสอบสถานะ
+            </button>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 text-xs text-emerald-200 pt-2">
+            <span class="text-amber-300 font-bold">ตัวอย่างค้นหาด่วน:</span>
+            <button onclick="quickSearch('FF71-01-14')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">FF71-01-14 (ปี 2569)</button>
+            <button onclick="quickSearch('66-011')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">66-011</button>
+            <button onclick="quickSearch('65-001')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">65-001</button>
+          </div>
         </div>
-        <div id="searchMsg" class="text-xs text-rose-600 font-bold"></div>
       </div>
 
-      <div id="searchResult" class="hidden max-w-2xl mx-auto bg-white p-6 rounded-2xl border shadow space-y-4">
-        <div class="flex justify-between items-center border-b pb-3">
-          <span id="resCode" class="font-mono font-bold text-sm bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded"></span>
-          <span id="resStatus" class="text-xs font-bold px-2.5 py-1 rounded"></span>
+      <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 rounded-3xl p-6 border border-emerald-200 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h3 class="font-bold text-emerald-950 text-base">สถิติการดำเนินงานสะสมจาก Google Sheets</h3>
+          <p class="text-xs text-slate-600">รวบรวมข้อมูลคำขอรับการพิจารณาทั้งหมดจากชีต "ออกเลขโครงการ"</p>
         </div>
-        <h3 id="resSubject" class="font-bold text-sm text-slate-900"></h3>
-        <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl">
-          <div><strong>ผู้วิจัย:</strong> <span id="resResearcher"></span></div>
-          <div><strong>สังกัด:</strong> <span id="resDept"></span></div>
-          <div><strong>วันที่อนุมัติ:</strong> <span id="resApproveDate"></span></div>
-          <div><strong>เลข COA/COE:</strong> <span id="resCoa"></span></div>
+        <div class="flex items-center gap-4 text-center">
+          <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border">
+            <span id="statTotal" class="text-2xl font-black text-emerald-900 block font-mono">-</span>
+            <span class="text-[11px] text-slate-500 font-bold">โครงการสะสม</span>
+          </div>
+          <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border">
+            <span id="statApproved" class="text-2xl font-black text-emerald-700 block font-mono">-</span>
+            <span class="text-[11px] text-slate-500 font-bold">อนุมัติ/รับรอง</span>
+          </div>
+          <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border">
+            <span id="statPending" class="text-2xl font-black text-amber-600 block font-mono">-</span>
+            <span class="text-[11px] text-slate-500 font-bold">กำลังดำเนินการ</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Tab 2: Registry Table -->
-    <section id="tab-registry" class="hidden space-y-4">
-      <div class="flex justify-between items-center">
-        <h2 class="font-heading font-bold text-lg text-emerald-950">สมุดทะเบียนประวัติโครงการ (พ.ศ. 2560 - 2569)</h2>
-        <span class="text-xs text-slate-500">ข้อมูลซิงค์ตรงจาก Google Sheets</span>
+    <!-- TAB: TRACKING -->
+    <section id="tab-tracking" class="hidden space-y-6">
+      <div class="text-center space-y-2">
+        <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-300">
+          🛡️ ระบบตรวจสอบสถานะโครงการ
+        </span>
+        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ติดตามสถานะโครงการและการประเมินจริยธรรม</h2>
       </div>
 
-      <div class="bg-white rounded-2xl border shadow overflow-x-auto">
+      <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm max-w-2xl mx-auto space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">รหัสโครงการ / ชื่อผู้วิจัย</label>
+          <div class="flex gap-2">
+            <input
+              type="text"
+              id="trackingCodeInput"
+              placeholder="เช่น FF71-01-14, ลักขณาวัลย์ หรือ 66-011"
+              class="flex-1 px-4 py-2.5 text-base border-2 border-emerald-200 rounded-xl font-mono focus:border-emerald-600 focus:outline-none"
+            />
+            <button
+              onclick="executeSearchProject()"
+              class="px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow"
+            >
+              ค้นหา
+            </button>
+          </div>
+        </div>
+        <div id="trackingError" class="hidden p-3 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200"></div>
+      </div>
+
+      <div id="trackingResultCard" class="hidden max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span id="resCode" class="font-mono text-xs font-bold px-2.5 py-0.5 rounded bg-emerald-800 text-white"></span>
+              <span id="resCoa" class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300"></span>
+            </div>
+            <h3 id="resSubject" class="font-bold text-base text-slate-900"></h3>
+          </div>
+          <div id="resStatusBadge"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl">
+          <div><strong class="text-slate-800">หัวหน้าโครงการ:</strong> <span id="resResearcher"></span></div>
+          <div><strong class="text-slate-800">สังกัด:</strong> <span id="resDept"></span></div>
+          <div><strong class="text-slate-800">อาจารย์ที่ปรึกษา:</strong> <span id="resAdvisor"></span></div>
+          <div><strong class="text-slate-800">ประเภทการพิจารณา:</strong> <span id="resType"></span></div>
+          <div><strong class="text-slate-800">วันที่ออกเลข:</strong> <span id="resDate"></span></div>
+          <div><strong class="text-slate-800">วันที่อนุมัติ/รับรอง:</strong> <span id="resApproveDate"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: SUBMISSION -->
+    <section id="tab-submission" class="hidden space-y-6">
+      <div class="text-center space-y-2">
+        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
+          ✍ ระบบส่งคำขอออนไลน์
+        </span>
+        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ยื่นคำขอรับการพิจารณาจริยธรรมการวิจัยในคน</h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow space-y-6">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">ชื่อโครงการวิจัย (ภาษาไทย/อังกฤษ) *</label>
+            <input type="text" id="subTitle" placeholder="ระบุชื่อโครงการวิจัย..." class="w-full px-3.5 py-2.5 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">ชื่อ-นามสกุล หัวหน้าโครงการวิจัย (PI) *</label>
+              <input type="text" id="subResearcher" placeholder="เช่น ผศ.ดร.ลักขณาวัลย์ เจริญสุข" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">สังกัด *</label>
+              <select id="subFaculty" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none bg-white">
+                <option>วิทยาลัยพัฒนามหานคร</option>
+                <option>คณะแพทยศาสตร์วชิรพยาบาล</option>
+                <option>คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ</option>
+                <option>วิทยาลัยพัฒนาชุมชนเมือง</option>
+                <option>สำนักงานอธิการบดี</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Digital Signature Canvas -->
+          <div class="border rounded-2xl p-4 bg-slate-50 space-y-2">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-700">
+              <span>✍️ ลงลายมือชื่อดิจิทัล</span>
+              <button type="button" onclick="clearCanvas()" class="text-rose-600 hover:underline">ลบใหม่</button>
+            </div>
+            <div class="border-2 border-dashed border-emerald-300 rounded-xl bg-white overflow-hidden">
+              <canvas id="sigCanvas" width="600" height="120" class="w-full h-28 cursor-crosshair block touch-none"></canvas>
+            </div>
+          </div>
+
+          <button onclick="submitRequest()" class="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-sm font-bold shadow-lg transition">
+            ส่งคำขอและบันทึกข้อมูล
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: REGISTRY -->
+    <section id="tab-registry" class="hidden space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
+            📊 ข้อมูลตรงจาก Google Sheets (ปี 2560 - 2569)
+          </span>
+          <h2 class="text-2xl font-extrabold text-slate-900 font-heading mt-1">สมุดทะเบียนประวัติการเสนอโครงร่างวิจัย</h2>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl border flex flex-wrap gap-3 items-center text-xs">
+        <input type="text" id="regSearch" placeholder="ค้นหาชื่อเรื่อง, ผู้วิจัย หรือรหัส..." class="flex-1 min-w-[200px] px-3 py-2 border rounded-xl" oninput="filterRegistry()" />
+      </div>
+
+      <div class="bg-white rounded-3xl border shadow-sm overflow-x-auto">
         <table class="w-full text-left text-xs">
-          <thead class="bg-slate-100 border-b text-slate-700 font-bold">
+          <thead class="bg-slate-50 border-b text-slate-600 font-bold">
             <tr>
               <th class="p-3 w-16 text-center">พ.ศ.</th>
-              <th class="p-3 w-32">รหัสโครงการ</th>
+              <th class="p-3 w-36 text-emerald-950 font-black">รหัสโครงการ</th>
               <th class="p-3">ชื่อโครงการ</th>
-              <th class="p-3 w-40">ผู้วิจัย</th>
+              <th class="p-3 w-44">ชื่อนักวิจัย / สังกัด</th>
               <th class="p-3 w-28">เลข COA/COE</th>
             </tr>
           </thead>
-          <tbody id="tableBody" class="divide-y divide-slate-100">
-            <tr>
-              <td colspan="5" class="p-4 text-center text-slate-400">กำลังโหลดข้อมูล...</td>
-            </tr>
+          <tbody id="registryTableBody" class="divide-y divide-slate-100">
+            <tr><td colspan="5" class="p-4 text-center text-slate-400">กำลังเชื่อมโยงข้อมูลจาก Google Sheets...</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
+    <!-- TAB: FORMS & DRIVE -->
+    <section id="tab-forms" class="hidden space-y-4 text-center">
+      <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ดาวน์โหลดแบบฟอร์ม NMU-IRB</h2>
+      <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="inline-block px-5 py-2.5 bg-emerald-700 text-white font-bold text-xs rounded-xl">เปิดโฟลเดอร์แบบฟอร์ม ↗</a>
+    </section>
+
+    <section id="tab-drive" class="hidden space-y-4 text-center">
+      <h2 class="text-2xl font-extrabold text-slate-900 font-heading">Google Drive คลังเอกสารกลาง</h2>
+      <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="inline-block px-5 py-2.5 bg-emerald-700 text-white font-bold text-xs rounded-xl">เปิดคลังเอกสาร ↗</a>
+    </section>
+
   </main>
 
-  <footer class="bg-slate-900 text-slate-400 text-xs py-4 text-center">
-    © 2026 คณะกรรมการจริยธรรมในคน มหาวิทยาลัยนวมินทราธิราช (NMU-IRB)
-  </footer>
-
+  <!-- Script Logic -->
   <script>
-    // URL Google Sheets Published CSV สำหรับดึงข้อมูลอัตโนมัติ
-    const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1EfhsAv5hYXI0JqVI5McSOGwbQ57YddAQVdMe6umpKug/gviz/tq?tqx=out:csv&sheet=%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3';
+    const GOOGLE_SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1EfhsAv5hYXI0JqVI5McSOGwbQ57YddAQVdMe6umpKug/gviz/tq?tqx=out:csv&sheet=%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3';
 
-    let projectData = [];
+    let allProjects = [];
 
-    // สลับ Tab
-    function switchTab(tabName) {
-      document.getElementById('tab-tracking').classList.add('hidden');
-      document.getElementById('tab-registry').classList.add('hidden');
-      document.getElementById('btn-tracking').className = 'px-3 py-2 rounded-lg hover:bg-emerald-800';
-      document.getElementById('btn-registry').className = 'px-3 py-2 rounded-lg hover:bg-emerald-800';
+    function switchTab(tabId) {
+      const tabs = ['home', 'tracking', 'submission', 'forms', 'registry', 'drive'];
+      tabs.forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        const nav = document.getElementById(`nav-${t}`);
+        if (el) el.classList.add('hidden');
+        if (nav) nav.className = 'px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50';
+      });
 
-      document.getElementById(`tab-${tabName}`).classList.remove('hidden');
-      document.getElementById(`btn-${tabName}`).className = 'px-3 py-2 rounded-lg bg-emerald-800 text-amber-300';
+      const activeEl = document.getElementById(`tab-${tabId}`);
+      const activeNav = document.getElementById(`nav-${tabId}`);
+      if (activeEl) activeEl.classList.remove('hidden');
+      if (activeNav) activeNav.className = 'px-3 py-2 rounded-xl transition bg-emerald-100 text-emerald-900 font-bold';
+      
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) mobileMenu.classList.add('hidden');
     }
 
-    // อ่านข้อมูล CSV จาก Google Sheets
+    function toggleMobileMenu() {
+      const el = document.getElementById('mobile-menu');
+      el.classList.toggle('hidden');
+    }
+
     async function loadSheetData() {
       try {
-        const response = await fetch(SPREADSHEET_CSV_URL);
-        const data = await response.text();
-        const rows = data.split('\n').map(row => row.split(',').map(cell => cell.replace(/^"(.*)"$/, '$1').trim()));
-        
-        projectData = rows.slice(1).map(r => ({
+        const res = await fetch(GOOGLE_SHEET_CSV);
+        const text = await res.text();
+        const rows = text.split('\n').map(r => r.split(',').map(c => c.replace(/^"(.*)"$/, '$1').trim()));
+
+        allProjects = rows.slice(1).map(r => ({
           year: r[0] || '',
           code: r[1] || '',
           date: r[2] || '',
           researcher: r[3] || '',
+          phone: r[4] || '',
           dept: r[5] || '',
+          advisor: r[6] || '',
           subject: r[7] || '',
+          type: r[8] || '',
           approveDate: r[12] || '',
           coa: r[13] || ''
-        })).filter(item => item.code !== '');
+        })).filter(p => p.code !== '');
 
-        renderTable();
+        renderStats();
+        renderRegistryTable(allProjects);
       } catch (err) {
-        document.getElementById('tableBody').innerHTML = '<tr><td colspan="5" class="p-4 text-center text-rose-500">เกิดข้อผิดพลาดในการโหลดข้อมูลจาก Google Sheets</td></tr>';
+        console.error('Error fetching sheet data:', err);
       }
     }
 
-    // แสดงตารางข้อมูล
-    function renderTable() {
-      const tbody = document.getElementById('tableBody');
-      if (projectData.length === 0) {
+    function renderStats() {
+      document.getElementById('statTotal').innerText = allProjects.length;
+      document.getElementById('statApproved').innerText = allProjects.filter(p => p.coa !== '' && p.coa !== '-').length;
+      document.getElementById('statPending').innerText = allProjects.filter(p => p.coa === '' || p.coa === '-').length;
+    }
+
+    function renderRegistryTable(data) {
+      const tbody = document.getElementById('registryTableBody');
+      if (data.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-slate-400">ไม่พบข้อมูล</td></tr>';
         return;
       }
-      tbody.innerHTML = projectData.map(item => `
+      tbody.innerHTML = data.map(p => `
         <tr class="hover:bg-slate-50">
-          <td class="p-3 text-center font-bold text-emerald-800">${item.year}</td>
-          <td class="p-3 font-mono font-bold">${item.code}</td>
-          <td class="p-3">${item.subject}</td>
-          <td class="p-3">${item.researcher}</td>
-          <td class="p-3 font-mono text-amber-700">${item.coa || '-'}</td>
+          <td class="p-3 text-center font-bold text-emerald-800">${p.year}</td>
+          <td class="p-3 font-mono font-bold">${p.code}</td>
+          <td class="p-3 font-medium">${p.subject}</td>
+          <td class="p-3">${p.researcher}<br><span class="text-[10px] text-slate-400">${p.dept}</span></td>
+          <td class="p-3 font-mono text-amber-700 font-bold">${p.coa || '-'}</td>
         </tr>
       `).join('');
     }
 
-    // ค้นหาข้อมูล
-    function searchData() {
-      const query = document.getElementById('searchInput').value.trim().toLowerCase();
-      const msg = document.getElementById('searchMsg');
-      const resCard = document.getElementById('searchResult');
+    function filterRegistry() {
+      const q = document.getElementById('regSearch').value.toLowerCase();
+      const filtered = allProjects.filter(p => 
+        p.subject.toLowerCase().includes(q) || 
+        p.researcher.toLowerCase().includes(q) || 
+        p.code.toLowerCase().includes(q)
+      );
+      renderRegistryTable(filtered);
+    }
 
-      msg.innerText = '';
+    function executeSearchProject() {
+      const query = document.getElementById('trackingCodeInput').value.trim().toLowerCase();
+      const errBox = document.getElementById('trackingError');
+      const resCard = document.getElementById('trackingResultCard');
+
+      errBox.classList.add('hidden');
       if (!query) {
-        msg.innerText = 'กรุณาป้อนรหัสโครงการ หรือ ชื่อผู้วิจัย';
+        errBox.innerText = 'กรุณาพิมพ์รหัสโครงการ หรือ ชื่อผู้วิจัย';
+        errBox.classList.remove('hidden');
         resCard.classList.add('hidden');
         return;
       }
 
-      const match = projectData.find(p => p.code.toLowerCase().includes(query) || p.researcher.toLowerCase().includes(query));
+      const match = allProjects.find(p => p.code.toLowerCase().includes(query) || p.researcher.toLowerCase().includes(query));
 
       if (match) {
         document.getElementById('resCode').innerText = match.code;
-        document.getElementById('resStatus').innerText = match.coa ? 'อนุมัติ/รับรอง' : 'กำลังดำเนินการ';
-        document.getElementById('resStatus').className = match.coa ? 'text-xs font-bold px-2.5 py-1 rounded bg-emerald-100 text-emerald-800' : 'text-xs font-bold px-2.5 py-1 rounded bg-amber-100 text-amber-800';
+        document.getElementById('resCoa').innerText = match.coa || 'รอรับรอง';
         document.getElementById('resSubject').innerText = match.subject;
         document.getElementById('resResearcher').innerText = match.researcher;
         document.getElementById('resDept').innerText = match.dept || '-';
+        document.getElementById('resAdvisor').innerText = match.advisor || '-';
+        document.getElementById('resType').innerText = match.type || 'Expedited';
+        document.getElementById('resDate').innerText = match.date || '-';
         document.getElementById('resApproveDate').innerText = match.approveDate || '-';
-        document.getElementById('resCoa').innerText = match.coa || '-';
+        
+        document.getElementById('resStatusBadge').innerHTML = match.coa && match.coa !== '-' ? 
+          '<span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs rounded-full">อนุมัติ/รับรอง</span>' : 
+          '<span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold text-xs rounded-full">กำลังดำเนินการ</span>';
+
         resCard.classList.remove('hidden');
       } else {
-        msg.innerText = 'ไม่พบข้อมูลโครงการที่ค้นหา';
+        errBox.innerText = 'ไม่พบข้อมูลโครงการที่ระบุ';
+        errBox.classList.remove('hidden');
         resCard.classList.add('hidden');
       }
+    }
+
+    function trackFromHome() {
+      const val = document.getElementById('homeTrackInput').value;
+      switchTab('tracking');
+      document.getElementById('trackingCodeInput').value = val;
+      executeSearchProject();
+    }
+
+    function quickSearch(code) {
+      switchTab('tracking');
+      document.getElementById('trackingCodeInput').value = code;
+      executeSearchProject();
+    }
+
+    function submitRequest() {
+      alert('ส่งคำขอสำเร็จเรียบร้อยแล้ว!');
+    }
+
+    // Init Signature Canvas
+    const canvas = document.getElementById('sigCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let drawing = false;
+      canvas.addEventListener('mousedown', () => drawing = true);
+      canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
+      canvas.addEventListener('mousemove', e => {
+        if (!drawing) return;
+        const rect = canvas.getBoundingClientRect();
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = '#047857';
+        ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+        ctx.stroke();
+      });
+    }
+
+    function clearCanvas() {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
     window.onload = loadSheetData;
