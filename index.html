@@ -2,631 +2,197 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="referrer" content="no-referrer" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ระบบคณะกรรมการจริยธรรมในคน มหาวิทยาลัยนวมินทราธิราช (NMU-IRB All-in-One)</title>
-  <meta name="description" content="ระบบสารสนเทศและการยื่นคำขอรับการพิจารณาจริยธรรมการวิจัยในคน สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช (NMU-IRB)" />
-  
-  <!-- Google Fonts: Sarabun & Prompt -->
+  <title>ระบบคณะกรรมการจริยธรรมในคน มหาวิทยาลัยนวมินทราธิราช (NMU-IRB)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind CSS CDN for Single File Operation -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Sarabun', 'Prompt', 'sans-serif'],
-            heading: ['Prompt', 'sans-serif']
-          },
-          colors: {
-            nmu: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              500: '#10b981',
-              700: '#047857',
-              800: '#065f46',
-              900: '#064e3b',
-              950: '#022c22'
-            },
-            gold: {
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706'
-            }
-          }
+          fontFamily: { sans: ['Sarabun', 'sans-serif'], heading: ['Prompt', 'sans-serif'] }
         }
       }
     }
   </script>
-
-  <style>
-    body {
-      font-family: 'Sarabun', sans-serif;
-      scroll-behavior: smooth;
-    }
-    h1, h2, h3, h4, .font-heading {
-      font-family: 'Prompt', sans-serif;
-    }
-    @media print {
-      .no-print { display: none !important; }
-      .print-only { display: block !important; }
-      body { background: #fff !important; }
-    }
-  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
-  <noscript><div style="padding:16px;background:#fef3c7;color:#78350f;text-align:center">ระบบนี้ต้องเปิดใช้งาน JavaScript</div></noscript>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
 
-  <!-- Top Gov Bar -->
-  <div class="no-print bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 text-white text-xs py-2 px-4 border-b border-emerald-800">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-        <span class="font-bold text-amber-300">มหาวิทยาลัยนวมินทราธิราช (Navamindradhiraj University)</span>
-        <span class="hidden md:inline text-emerald-300/50">|</span>
-        <span class="hidden md:inline text-emerald-100">สำนักงานคณะกรรมการจริยธรรมในคน สำนักงานอธิการบดี (NMU-IRB)</span>
-      </div>
-      <div class="flex items-center gap-4 text-[11px]">
-        <span class="text-amber-300">🔒 ยืนยันตัวตนด้วย PIN</span>
-        <span class="text-emerald-300">🌐 ใช้งานผ่านเบราว์เซอร์ ไม่ต้องติดตั้ง</span>
-        <button onclick="openEmailModal()" class="text-amber-300 hover:text-white font-bold transition">✉️ แจ้งเตือนอีเมล</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Header Navigation Bar -->
-  <header class="no-print sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-800 text-white flex flex-col items-center justify-center p-1 border-2 border-amber-300 shadow">
-          <span class="text-[10px] font-extrabold leading-none">NMU</span>
-          <span class="text-[9px] font-bold text-amber-300 leading-none">IRB</span>
-          <span class="text-[7px] text-emerald-200">สนธ.</span>
+  <!-- Header / Navigation -->
+  <header class="bg-emerald-900 text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-400 text-emerald-950 font-bold flex items-center justify-center text-xs shadow">
+          NMU
         </div>
         <div>
-          <h1 class="font-extrabold text-base sm:text-lg text-emerald-950 leading-tight">
-            คณะกรรมการจริยธรรมในคน
-          </h1>
-          <p class="text-xs text-slate-500 font-medium">สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช</p>
+          <h1 class="font-heading font-bold text-base leading-tight">คณะกรรมการจริยธรรมในคน (NMU-IRB)</h1>
+          <p class="text-[11px] text-emerald-200">มหาวิทยาลัยนวมินทราธิราช</p>
         </div>
       </div>
-
-      <!-- Nav Items -->
-      <nav class="hidden lg:flex items-center gap-1 text-xs font-bold">
-        <button onclick="switchTab('home')" id="nav-home" class="px-3 py-2 rounded-xl transition bg-emerald-100 text-emerald-900">หน้าหลัก</button>
-        <button onclick="switchTab('tracking')" id="nav-tracking" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ติดตามโครงการ</button>
-        <button onclick="switchTab('submission')" id="nav-submission" class="px-3 py-2 rounded-xl transition bg-emerald-700 text-white hover:bg-emerald-800 shadow">ยื่นคำขอออนไลน์</button>
-        <button onclick="switchTab('forms')" id="nav-forms" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม</button>
-        <button onclick="switchTab('registry')" id="nav-registry" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ทะเบียนประวัติ & ออก COA</button>
-        <button onclick="switchTab('drive')" id="nav-drive" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">Google Drive</button>
-        <button onclick="switchTab('security')" id="nav-security" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ความปลอดภัย & สำรองข้อมูล</button>
+      
+      <nav class="flex gap-2 text-xs font-bold">
+        <button onclick="switchTab('tracking')" id="btn-tracking" class="px-3 py-2 rounded-lg bg-emerald-800 text-amber-300">ติดตามโครงการ</button>
+        <button onclick="switchTab('registry')" id="btn-registry" class="px-3 py-2 rounded-lg hover:bg-emerald-800">สมุดทะเบียนประวัติ (ปี 2560-2569)</button>
       </nav>
-
-      <div class="flex items-center gap-2">
-        <button onclick="downloadThisHtmlFile()" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-xl text-xs font-extrabold shadow-sm transition">
-          📄 ดาวน์โหลดไฟล์ HTML นี้
-        </button>
-        <a href="#" onclick="return openCoaPrint(null, event)" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-bold">
-          📜 ตัวอย่าง COA
-        </a>
-        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl border border-slate-200">
-          ☰
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t px-4 py-3 space-y-1.5 text-xs font-bold">
-      <button onclick="switchTab('home')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">หน้าหลัก</button>
-      <button onclick="switchTab('tracking')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ติดตามโครงการ</button>
-      <button onclick="switchTab('submission')" class="block w-full text-left py-2 px-3 rounded-lg bg-emerald-700 text-white">ยื่นคำขอรับพิจารณาออนไลน์</button>
-      <button onclick="switchTab('forms')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม NMU-IRB</button>
-      <button onclick="switchTab('registry')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">สมุดทะเบียนประวัติ & ออกเลข COA/COE</button>
-      <button onclick="switchTab('drive')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">Google Drive คลังเอกสารกลาง</button>
-      <button onclick="switchTab('security')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ความปลอดภัย & กู้คืนฉุกเฉิน</button>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 flex-1">
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto w-full px-4 py-6 flex-1">
 
-    <!-- TAB: HOME -->
-    <section id="tab-home" class="space-y-8">
-      <!-- Hero Banner -->
-      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-950 text-white p-6 sm:p-12 shadow-xl border border-emerald-700">
-        <div class="max-w-3xl space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-700/60 border border-emerald-500/40 text-amber-300 text-xs font-bold">
-            ✨ ระบบสารสนเทศและบริการออนไลน์เชื่อมโยง Google Sheets
-          </div>
-          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight font-heading">
-            คณะกรรมการจริยธรรมในคน <br>
-            <span class="text-amber-300">มหาวิทยาลัยนวมินทราธิราช</span>
-          </h2>
-          <p class="text-emerald-100 text-sm sm:text-base leading-relaxed font-light">
-            สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช มุ่งมั่นยกระดับมาตรฐานจริยธรรมการวิจัยในคนตามหลักสากล
-            เชื่อมโยงข้อมูลตรงจากฐานข้อมูลทะเบียนโครงการวิจัยทั้งหมดในไฟล์ Google Sheets (EC)
-          </p>
-
-          <!-- Search quick track bar -->
-          <div class="bg-white p-2 rounded-2xl shadow-xl max-w-xl flex flex-col sm:flex-row items-center gap-2 border-2 border-amber-300">
-            <input
-              type="text"
-              id="homeTrackInput"
-              placeholder="ป้อนรหัสโครงการ เช่น FF71-01-14, 66-011 หรือชื่อผู้วิจัย..."
-              class="w-full px-4 py-2 text-sm text-slate-800 font-mono font-medium focus:outline-none"
-            />
-            <button
-              onclick="trackFromHome()"
-              class="w-full sm:w-auto px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs sm:text-sm font-bold shadow shrink-0"
-            >
-              ตรวจสอบสถานะ
-            </button>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-2 text-xs text-emerald-200 pt-2">
-            <span class="text-amber-300 font-bold">ตัวอย่างค้นหาด่วน:</span>
-            <button onclick="quickSearch('FF71-01-14')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">FF71-01-14 (ปี 2569)</button>
-            <button onclick="quickSearch('66-011')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">66-011</button>
-            <button onclick="quickSearch('65-001')" class="px-2 py-0.5 bg-emerald-800/80 rounded border border-emerald-600 text-white font-mono">65-001</button>
-          </div>
+    <!-- Tab 1: Tracking -->
+    <section id="tab-tracking" class="space-y-6">
+      <div class="bg-white p-6 rounded-2xl border border-emerald-100 shadow-sm max-w-xl mx-auto text-center space-y-4">
+        <h2 class="font-heading font-bold text-lg text-emerald-950">ค้นหาและติดตามสถานะโครงการ</h2>
+        <div class="flex gap-2">
+          <input type="text" id="searchInput" placeholder="ป้อนรหัสโครงการ หรือ ชื่อผู้วิจัย..." class="flex-1 px-4 py-2 border rounded-xl text-sm focus:outline-none focus:border-emerald-600" />
+          <button onclick="searchData()" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl text-xs">ค้นหา</button>
         </div>
+        <div id="searchMsg" class="text-xs text-rose-600 font-bold"></div>
       </div>
 
-      <!-- Stats -->
-      <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 rounded-3xl p-6 border border-emerald-200 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h3 class="font-bold text-emerald-950 text-base">สถิติการดำเนินงานสะสมจาก Google Sheets (ชีต EC)</h3>
-          <p class="text-xs text-slate-600">รวบรวมข้อมูลคำขอรับการพิจารณาทั้งหมดจากชีต "ออกเลขโครงการ" (A1:V162)</p>
+      <div id="searchResult" class="hidden max-w-2xl mx-auto bg-white p-6 rounded-2xl border shadow space-y-4">
+        <div class="flex justify-between items-center border-b pb-3">
+          <span id="resCode" class="font-mono font-bold text-sm bg-emerald-100 text-emerald-900 px-2.5 py-1 rounded"></span>
+          <span id="resStatus" class="text-xs font-bold px-2.5 py-1 rounded"></span>
         </div>
-        <div class="flex items-center gap-4 text-center">
-          <div class="bg-white px-5 py-3 rounded-2xl shadow-xs border">
-            <span id="statTotal" class="text-2xl font-black text-emerald-900 block font-mono">-</span>
-            <span class="text-[11px] text-slate-500 font-bold">โครงการสะสม</span>
-          </div>
-          <div class="bg-white px-5 py-3 rounded-2xl shadow-xs border">
-            <span id="statApproved" class="text-2xl font-black text-emerald-700 block font-mono">-</span>
-            <span class="text-[11px] text-slate-500 font-bold">อนุมัติ/รับรอง</span>
-          </div>
-          <div class="bg-white px-5 py-3 rounded-2xl shadow-xs border">
-            <span id="statPending" class="text-2xl font-black text-amber-600 block font-mono">-</span>
-            <span class="text-[11px] text-slate-500 font-bold">กำลังดำเนินการ</span>
-          </div>
+        <h3 id="resSubject" class="font-bold text-sm text-slate-900"></h3>
+        <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl">
+          <div><strong>ผู้วิจัย:</strong> <span id="resResearcher"></span></div>
+          <div><strong>สังกัด:</strong> <span id="resDept"></span></div>
+          <div><strong>วันที่อนุมัติ:</strong> <span id="resApproveDate"></span></div>
+          <div><strong>เลข COA/COE:</strong> <span id="resCoa"></span></div>
         </div>
       </div>
     </section>
 
-    <!-- TAB: TRACKING -->
-    <section id="tab-tracking" class="hidden space-y-6">
-      <div class="text-center space-y-2">
-        <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-300">
-          🛡️ ระบบตรวจสอบความปลอดภัย
-        </span>
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ติดตามสถานะโครงการและการประเมินจริยธรรม</h2>
-        <p class="text-xs text-slate-500">ค้นหาจากรหัสโครงการ ชื่อผู้วิจัย หรือเลข COA/COE</p>
+    <!-- Tab 2: Registry Table -->
+    <section id="tab-registry" class="hidden space-y-4">
+      <div class="flex justify-between items-center">
+        <h2 class="font-heading font-bold text-lg text-emerald-950">สมุดทะเบียนประวัติโครงการ (พ.ศ. 2560 - 2569)</h2>
+        <span class="text-xs text-slate-500">ข้อมูลซิงค์ตรงจาก Google Sheets</span>
       </div>
 
-      <!-- Search Input -->
-      <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm max-w-2xl mx-auto space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">รหัสโครงการ / ชื่อผู้วิจัย</label>
-          <div class="flex gap-2">
-            <input
-              type="text"
-              id="trackingCodeInput"
-              placeholder="เช่น FF71-01-14, ลักขณาวัลย์ หรือ 66-011"
-              class="flex-1 px-4 py-2.5 text-base border-2 border-emerald-200 rounded-xl font-mono focus:border-emerald-600 focus:outline-none"
-            />
-            <button
-              onclick="executeSearchProject()"
-              class="px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow"
-            >
-              ค้นหา
-            </button>
-          </div>
-        </div>
-
-        <div id="trackingError" role="alert" class="hidden p-3 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200"></div>
-        <div id="trackingPickList" class="hidden space-y-2"></div>
-
-        <!-- PIN Gate Box -->
-        <div id="pinGateBox" class="hidden bg-amber-50 p-5 rounded-2xl border border-amber-300 text-center space-y-3">
-          <div class="text-xs font-bold text-amber-900">🔒 ป้อนรหัสผ่าน / PIN เพื่อเข้าถึงผลการประเมิน (ค่าเริ่มต้นระบบ: 123456)</div>
-          <div class="max-w-xs mx-auto flex gap-2">
-            <input
-              type="password"
-              id="pinInput"
-              maxlength="6"
-              placeholder="PIN" inputmode="numeric" autocomplete="off"
-              class="w-full text-center tracking-widest font-mono text-base py-2 border border-amber-400 rounded-xl focus:outline-none bg-white font-bold"
-            />
-            <button
-              onclick="verifyPinAndUnlock()"
-              class="px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs rounded-xl shadow"
-            >
-              ปลดล็อก
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Result Card -->
-      <div id="trackingResultCard" class="hidden max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow space-y-6">
-        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b">
-          <div>
-            <div class="flex items-center gap-2 mb-1">
-              <span id="resCode" class="font-mono text-xs font-bold px-2.5 py-0.5 rounded bg-emerald-800 text-white"></span>
-              <span id="resYear" class="text-xs text-slate-500"></span>
-              <span id="resCoa" class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300"></span>
-            </div>
-            <h3 id="resSubject" class="font-bold text-base sm:text-lg text-slate-900"></h3>
-          </div>
-          <div id="resStatusBadge"></div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-600 bg-slate-50 p-4 rounded-2xl">
-          <div><strong class="text-slate-800">หัวหน้าโครงการ:</strong> <span id="resResearcher"></span></div>
-          <div><strong class="text-slate-800">สังกัด:</strong> <span id="resDept"></span></div>
-          <div><strong class="text-slate-800">อาจารย์ที่ปรึกษา:</strong> <span id="resAdvisor"></span></div>
-          <div><strong class="text-slate-800">ประเภทการพิจารณา:</strong> <span id="resType"></span></div>
-          <div><strong class="text-slate-800">วันที่ออกเลข:</strong> <span id="resDate"></span></div>
-          <div><strong class="text-slate-800">วันที่อนุมัติ/รับรอง:</strong> <span id="resApproveDate"></span></div>
-          <div id="resNotesBox" class="sm:col-span-2 hidden"><strong class="text-slate-800">หมายเหตุ:</strong> <span id="resNotes"></span></div>
-        </div>
-
-        <div class="flex items-center justify-between pt-4 border-t">
-          <button onclick="openEmailModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold">
-            ✉ ส่งอีเมลแจ้งเตือน
-          </button>
-          <a href="#" id="btnCoaPrint" onclick="return openCoaPrint(null, event)" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow">
-            📜 ดูใบรับรอง COA/COE
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: SUBMISSION -->
-    <section id="tab-submission" class="hidden space-y-6">
-      <div class="text-center space-y-2">
-        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-          ✍ ระบบส่งคำขอออนไลน์
-        </span>
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ยื่นคำขอรับการพิจารณาจริยธรรมการวิจัยในคน</h2>
-      </div>
-
-      <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow space-y-6">
-        <div class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">ชื่อโครงการวิจัย (ภาษาไทย/อังกฤษ) *</label>
-            <input type="text" id="subTitle" placeholder="ระบุชื่อโครงการวิจัย..." class="w-full px-3.5 py-2.5 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">ชื่อ-นามสกุล หัวหน้าโครงการวิจัย (PI) *</label>
-              <input type="text" id="subResearcher" placeholder="เช่น ผศ.ดร.ลักขณาวัลย์ เจริญสุข" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">สังกัด *</label>
-              <select id="subFaculty" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none bg-white">
-                <option>วิทยาลัยพัฒนามหานคร</option>
-                <option>คณะแพทยศาสตร์วชิรพยาบาล</option>
-                <option>คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ</option>
-                <option>วิทยาลัยพัฒนาชุมชนเมือง</option>
-                <option>สำนักงานอธิการบดี</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">เบอร์โทรศัพท์ติดต่อ *</label>
-              <input type="text" id="subPhone" placeholder="081-XXX-XXXX" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none" />
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">ประเภทการพิจารณา *</label>
-              <select id="subType" class="w-full px-3.5 py-2 text-sm border rounded-xl focus:border-emerald-600 focus:outline-none bg-white">
-                <option value="Expedited">Expedited (เร่งด่วน)</option>
-                <option value="Exemption">Exemption (ยกเว้น)</option>
-                <option value="Full Board">Full Board (เต็มคณะ)</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Digital Signature Pad -->
-          <div class="border rounded-2xl p-4 bg-slate-50/50 space-y-2">
-            <div class="flex items-center justify-between text-xs font-bold text-slate-700">
-              <span>✍️ ลงลายมือชื่อแบบดิจิทัล</span>
-              <button type="button" onclick="clearSignatureCanvas()" class="text-rose-600 hover:underline">ลบเพื่อเซ็นใหม่</button>
-            </div>
-            <div class="border-2 border-dashed border-emerald-300 rounded-xl bg-white overflow-hidden">
-              <canvas id="sigCanvas" width="600" height="150" class="w-full h-36 cursor-crosshair block touch-none"></canvas>
-            </div>
-          </div>
-
-          <!-- PIN setting -->
-          <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
-            <label class="block text-xs font-bold text-amber-950 mb-1">กำหนด PIN สำหรับติดตามสถานะ (6 หลัก) *</label>
-            <input type="password" id="subPin" placeholder="123456" inputmode="numeric" maxlength="6" class="px-4 py-2 border rounded-xl font-mono text-center tracking-widest font-bold bg-white" />
-          </div>
-
-          <button
-            onclick="submitOnlineRequest()"
-            class="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-sm font-bold shadow-lg transition"
-          >
-            ส่งคำขอและออกเลขโครงการ
-          </button>
-          <div id="subError" role="alert" class="hidden p-3 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: REGISTRY -->
-    <section id="tab-registry" class="hidden space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-            📊 ข้อมูลตรงจาก Google Sheets (ครบถ้วนทุกรายการจนถึงปีล่าสุด)
-          </span>
-          <h2 class="text-2xl font-extrabold text-slate-900 font-heading mt-1">สมุดทะเบียนประวัติการเสนอโครงร่างวิจัย</h2>
-        </div>
-        <button onclick="exportRegistryCsv()" class="px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-xl text-xs font-bold shadow-xs hover:bg-slate-50">
-          📥 ส่งออกข้อมูล CSV
-        </button>
-      </div>
-
-      <!-- Filters -->
-      <div class="bg-white p-4 rounded-2xl border flex flex-wrap gap-3 items-center text-xs">
-        <input type="text" id="regSearch" placeholder="ค้นหาชื่อเรื่อง, ผู้วิจัย หรือรหัส..." class="flex-1 min-w-[200px] px-3 py-2 border rounded-xl" oninput="regFilterChanged()" />
-        <select id="regYearFilter" class="px-3 py-2 border rounded-xl bg-white" onchange="regFilterChanged()"></select>
-        <select id="regStatusFilter" class="px-3 py-2 border rounded-xl bg-white" onchange="regFilterChanged()"></select>
-      </div>
-
-      <!-- Table Container -->
-      <div class="bg-white rounded-3xl border shadow-sm overflow-x-auto">
+      <div class="bg-white rounded-2xl border shadow overflow-x-auto">
         <table class="w-full text-left text-xs">
-          <thead class="bg-slate-50 border-b text-slate-600 font-bold">
+          <thead class="bg-slate-100 border-b text-slate-700 font-bold">
             <tr>
               <th class="p-3 w-16 text-center">พ.ศ.</th>
-              <th class="p-3 w-36 text-emerald-950 font-black">รหัสโครงการ</th>
+              <th class="p-3 w-32">รหัสโครงการ</th>
               <th class="p-3">ชื่อโครงการ</th>
-              <th class="p-3 w-44">ชื่อนักวิจัย / สังกัด</th>
-              <th class="p-3 w-28">ประเภท</th>
+              <th class="p-3 w-40">ผู้วิจัย</th>
               <th class="p-3 w-28">เลข COA/COE</th>
-              <th class="p-3 w-24 text-center">จัดการ</th>
             </tr>
           </thead>
-          <tbody id="registryTableBody" class="divide-y divide-slate-100"></tbody>
+          <tbody id="tableBody" class="divide-y divide-slate-100">
+            <tr>
+              <td colspan="5" class="p-4 text-center text-slate-400">กำลังโหลดข้อมูล...</td>
+            </tr>
+          </tbody>
         </table>
-      </div>
-      <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
-        <span id="regCount"></span>
-        <button id="regMore" type="button" onclick="regShowMore()" class="hidden px-4 py-2 border border-slate-300 rounded-xl font-bold text-slate-700 hover:bg-slate-50">แสดงเพิ่ม</button>
-      </div>
-    </section>
-
-    <!-- TAB: FORMS -->
-    <section id="tab-forms" class="hidden space-y-6">
-      <div class="text-center space-y-2">
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ดาวน์โหลดแบบฟอร์มจริยธรรมการวิจัยในคน</h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white p-5 rounded-2xl border shadow-xs space-y-2">
-          <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">NMU-IRB-01</span>
-          <h4 class="font-bold text-sm">แบบเสนอโครงการวิจัยเพื่อขอรับการพิจารณา</h4>
-          <p class="text-xs text-slate-500">แบบฟอร์มหลักสำหรับการเสนอโครงร่างวิจัยใหม่</p>
-          <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="inline-block mt-2 text-emerald-700 font-bold text-xs hover:underline">ดาวน์โหลดจาก Google Drive ↗</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: DRIVE -->
-    <section id="tab-drive" class="hidden space-y-6">
-      <div class="text-center space-y-2">
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">Google Drive คลังเอกสารกลาง</h2>
-      </div>
-      <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 border text-center space-y-3">
-        <p class="text-xs text-slate-600">เชื่อมโยงคลังเอกสารอ้างอิงและแบบฟอร์มคำขอรับการพิจารณา</p>
-        <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="inline-flex px-5 py-2.5 bg-emerald-700 text-white rounded-xl text-xs font-bold">เปิดโฟลเดอร์ Google Drive ↗</a>
-      </div>
-    </section>
-
-    <!-- TAB: SECURITY -->
-    <section id="tab-security" class="hidden space-y-6">
-      <div class="max-w-3xl mx-auto bg-slate-900 text-white rounded-3xl p-6 space-y-4 text-xs">
-        <h3 class="font-bold text-base text-amber-300">ความปลอดภัยและการสำรองข้อมูล</h3>
-        <p>ข้อมูลทั้งหมดซิงค์กับ LocalStorage และรองรับการนำเข้า/ส่งออก JSON</p>
-        <div class="flex gap-2">
-          <button onclick="downloadJsonBackup()" class="px-4 py-2 bg-amber-400 text-slate-950 font-bold rounded-xl">ดาวน์โหลด JSON สำรอง</button>
-          <button onclick="triggerRestorePrompt()" class="px-4 py-2 bg-emerald-800 text-white font-bold rounded-xl border border-emerald-600">กู้คืนข้อมูล</button>
-        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Email Modal -->
-  <div id="emailModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
-      <div class="flex items-center justify-between border-b pb-3">
-        <h3 class="font-bold text-base text-slate-900">✉ ส่งอีเมลแจ้งเตือนนักวิจัย</h3>
-        <button onclick="closeEmailModal()" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
-      </div>
-      <div class="space-y-3 text-xs">
-        <input type="email" id="modalEmailTo" placeholder="อีเมลผู้รับ" class="w-full px-3 py-2 border rounded-xl" />
-        <textarea id="modalEmailBody" rows="4" class="w-full p-3 border rounded-xl font-mono text-[11px] bg-slate-50">แจ้งผลการพิจารณาจริยธรรมการวิจัยในคน มหาวิทยาลัยนวมินทราธิราช...</textarea>
-      </div>
-      <div class="flex justify-end gap-2">
-        <button onclick="closeEmailModal()" class="px-4 py-2 border rounded-xl text-xs font-bold text-slate-600">ปิด</button>
-        <button onclick="sendEmail()" class="px-5 py-2 bg-emerald-700 text-white rounded-xl text-xs font-bold">ส่งอีเมล</button>
-      </div>
-    </div>
-  </div>
+  <footer class="bg-slate-900 text-slate-400 text-xs py-4 text-center">
+    © 2026 คณะกรรมการจริยธรรมในคน มหาวิทยาลัยนวมินทราธิราช (NMU-IRB)
+  </footer>
 
-  <!-- SCRIPT: Complete Dataset (2560-2569) Imported directly from Google Sheets "EC" -> "ออกเลขโครงการ" -->
   <script>
-    // Complete Dataset (162 rows) from Google Sheets: EC (Sheet: ออกเลขโครงการ)
-    const initialProjects = [
-      {"year":2560,"projectCode":"60-001-03-001-2","docDate":"6/10/2017","researcher":"นางสาวรังสินันท์ วงค์ทิพย์ Miss Rungsinun Wongthip","phone":"โทรศัพท์ 02-214-4366 มือถือ 081-832-0888","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.ดร.บรรณโศภิษฐ์ เมฆวิชัย Associate Peofessor Banasopit Mekvichai (Ph.D.)","subject":"การศึกษาปัจจัยความสำเร็จในการดำเนินโครงการจัดรูปที่ดินเพื่อพัฒนาพื้นที่ในบริบทของประเทศไทย (A study Factors of Successful Implementation in Land Readjustment Project in context of Thailand)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 001/2560","pin":"123456"},
-      {"year":2560,"projectCode":"60-002-03-002-2","docDate":"6/10/2017","researcher":"นางอรพิน สุขสองห้อง Mrs.Orapin Suksonghong","phone":"โทรศัพท์ - มือถือ 090-994-7843","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์ Associate Peofessor Wongpun LimPaseni","subject":"การมีส่วนร่วมของผู้จำหน่ายอาหารริมบาทวิถีในการปฏิบัติตามข้อกำหนดด้านสุขภิบาลอาหาร กรณีศึกษา:ถนนสังคโลก (The Participation of food sellers on a sidewalk according to food safety regulation : A case study of Sangkhalok Road)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 002/2560","pin":"123456"},
-      {"year":2560,"projectCode":"60-003-03-003-2","docDate":"6/10/2017","researcher":"นางสาวระเบียบ กูบกระบี่ Miss Rabieb Koobkrabi","phone":"โทรศัพท์ 02-426-2884 มือถือ 081-870-1809","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.ดร.บรรณโศภิษฐ์ เมฆวิชัย Associate Peofessor Banasopit Mekvichai (Ph.D.)","subject":"การบริหารจัดการบริการสังคมสำหรับผู้สูงอายุ ของศูนย์บริการผู้สูงอายุดินแดง (Social Service Management for the Elderly by Dindaeng Services Center for the Elderly)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 003/2560","pin":"123456"},
-      {"year":2560,"projectCode":"60-004-03-004-2","docDate":"6/10/2017","researcher":"นางสาวชัญญารัตน์ ชนะชัย Miss Chanyarat Chanachai","phone":"โทรศัพท์ - มือถือ 098-254-4829","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์ Associate Peofessor Wongpun LimPaseni","subject":"แนวทางการปรับปรุงความปลอดภัยอาหารริมบาทวิถีตามข้อกำหนดสุขลักษณะพื้นฐาน (A Guideline to Improve Street Food Safety According to Basic Sanitation Requirement)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 004/2560","pin":"123456"},
-      {"year":2560,"projectCode":"60-005-03-005-2","docDate":"6/10/2017","researcher":"นางสาวตรีชฎา ศรีระษา Miss Treechadar Srirasar","phone":"โทรศัพท์ - มือถือ 081-392-9949","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.ดร.บรรณโศภิษฐ์ เมฆวิชัย Associate Peofessor Banasopit Mekvichai (Ph.D.)","subject":"การพัฒนาอุโมงค์ทางเดินใต้ดินและทางเดินเท้าเพื่อความปลอดภัยในการเข้าถึงพื้นที่สวนสาธารณะกรณีศึกษา:วงเวียนใหญ่ (The underground tunnel development and the footpath for security in an accessibility public area : A Case of Wongwian Yai, Bangkok)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 005/2560","pin":"123456"},
-      {"year":2560,"projectCode":"60-006-03-006-2","docDate":"6/10/2017","researcher":"นางสาวปวีลักษณา หล่อพูลกิจสกุล Miss Paweelaksana Lorpoolkijsakul","phone":"โทรศัพท์ 02-245-6602 มือถือ 094-956-1694","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์ Associate Peofessor Wongpun LimPaseni","subject":"แนวทางการบริหารจัดการศูนย์พัฒนาเด็กก่อนวัยเรียนกรุงเทพมหานคร (Management guideline for Early child hood Centers in Bangkok)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 006/2560","pin":"123456"},
-      {"year":2560,"projectCode":"60-007-03-007-2","docDate":"6/10/2017","researcher":"นางสาวรุ่งวิลาวัลย์ พันธวงษ์ Miss Rungwilawan Pantawong","phone":"โทรศัพท์ 02-244-3498 มือถือ 081-906-4262","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.ดร.บรรณโศภิษฐ์ เมฆวิชัย Associate Peofessor Banasopit Mekvichai (Ph.D.)","subject":"การบริหารจัดการสาธารณสุขชุมชน กรณีศึกษา:การจัดการผู้ป่วยโรคเบาหวานในชุมชน (The Administrative of District Public Health : A Case Study of Management for Diabetes Mellitus in Community)","reviewType":"Expedited","status":"approved","approveDate":"6/10/2017","coaNumber":"COA 007/2560","pin":"123456"},
-      {"year":2560,"projectCode":"60-008-01-001-1","docDate":"10/10/2017","researcher":"ผศ.ดร.สาระ มุขดี Assistant Professor Sara Mukdee (Ph.D.)","phone":"โทรศัพท์ 02-244-3848 มือถือ -","department":"สำนักงานอธิการบดี","advisor":"-","subject":"ถนนแห่งความหลากหลายทางสังคมและวัฒนธรรม ถนนขาว แขวงวชิรพยาบาล เขตดุสิต กรุงเทพมหานคร (Social and Cultural diversity of Khao Road, Dusit District, Bangkok)","reviewType":"Expedited","status":"approved","approveDate":"11/10/2017","coaNumber":"COA 008/2560","pin":"123456"},
-      {"year":2561,"projectCode":"61-001-06-001-1","docDate":"05/03/2018","researcher":"นพ.เพชร รอดอารีย์ Petch Rawdaree MD.","phone":"โทรศัพท์ 02-244-3465 มือถือ 080-302-9991","department":"คณะแพทยศาสตร์วชิรพยาบาล","advisor":"-","subject":"โครงการศึกษาเพื่อการส่งเสริมสุขภาพผู้สูงอายุในชุมชนเมือง ตามหลักปรัชญาเศรษฐกิจพอเพียง (The Health Promotion Project under the Sufficiency Economy Principle for the Elderly in the Urban Area of Bangkok Metropolis)","reviewType":"Expedited","status":"approved","approveDate":"06/03/2019","coaNumber":"COA 001/2561","pin":"123456"},
-      {"year":2561,"projectCode":"61-002-05-001-1","docDate":"22/02/2018","researcher":"นายแสน กีรตินวนันท์ Mr.Saen Keeratinawanun","phone":"มือถือ 081-866-5668 e-mail : saen@nmu.ac.th","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"กลไลสร้างความเข้มแข็งสวัสดิการชุมชนเมือง กรณีศึกษา ชุมชนชาวไทยเกาะกลางชุมชนจีนโบ้เบ้ ชุมชนคริสต์กุฎีจีน และชุมชนมุสลิมมัสยิดกมาลุลอิสลาม กรุงเทพมหานคร (The Mechanisms of The Strengthening Urban Community Welfare in Case of Kho-Klang, Bobae, Kudi-Chin and Masjid-Kamalulislam Bangkok)","reviewType":"-","status":"approved","approveDate":"23/02/2019","coaNumber":"002/2561","pin":"123456"},
-      {"year":2561,"projectCode":"61-003-03-001-1","docDate":"23/04/2561","researcher":"นายอรวิทย์ เหมะจุฑา","phone":"โทรศัพท์ 02-2144-3667 มือถือ 081-241-9791","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"เรือโดยสารพลังงานไฟฟ้าที่เหมาะสมสำหรับคลองในกรุงเทพมหานคร (Suitable Electric Canal Bus for Bangkok)","reviewType":"-","status":"approved","approveDate":"24/02/2561","coaNumber":"003/2561","pin":"123456"},
-      {"year":2561,"projectCode":"61-004-03-002-1","docDate":"23/04/2561","researcher":"นายมนต์ธัช มะกล่ำทอง","phone":"โทรศัพท์ 02-2144-3667 มือถือ 082-920-3555","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การจัดการพื้นที่สำหรับอาหารหาบเร่แผงลอยในกรุงเทพมหานคร : กรณีศึกษาพื้นที่แนวรถไฟฟ้าในเขตราชเทวีและเขตพญาไท (The Area Management for Street Food in Bangkok : Case Studies of Areas along BTS Line in Ratchathewi District and Phayathai District)","reviewType":"-","status":"approved","approveDate":"24/2/2561","coaNumber":"004/2561","notes":"COA 006/2562","pin":"123456"},
-      {"year":2561,"projectCode":"61-005-03-003-1","docDate":"27/04/2561","researcher":"นางสาวธีตา ศรีคช","phone":"โทรศัพท์ 02-2144-3466","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การศึกษาตัวชี้วัดทางชีววิทยา (Urban Bioindicators) : การติดตามทางชีวภาพและตัวชี้วัดสำหรับการประเมินคุณภาพน้ำในพื้นที่กรุงเทพมหานคร (Urban Bioindicators : Biomonitoring and Bioindicators for Water Pollution in Bangkok)","reviewType":"-","status":"approved","approveDate":"01/05/2561","coaNumber":"005/2561","pin":"123456"},
-      {"year":2561,"projectCode":"61-006-05-002-1","docDate":"06/11/2561","researcher":"นางสานพลักษณ์ หนังแน่ (ผู้วิจัยหลัก) ผศ.ดร.สมศิริ นนทสวัสดิ์ศริ (ผู้วิจัยร่วม)","phone":"มือถือ 081-440-3170","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"ผู้วิจัยหลัก: มทร.รัตนโกสินทร์ / ผู้วิจัยร่วม: คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","subject":"ผลของการจัดสวัสดิการสังคมสำหรับผู้สูงอายุที่มีต่อคุณภาพชีวิตของผู้สูงอายุที่อยู่ตามลำพังในประเทศไทย (The impact of social welfare for elderly on quality of life of older persons living alone in Thailand)","reviewType":"-","status":"under_review","approveDate":"11/06/2561","coaNumber":"-","pin":"123456"},
-      {"year":2562,"projectCode":"62-001-03-001-2","docDate":"4/2/2562","researcher":"นางสาวปิยะวดี งามดี","phone":"089-210-1679, 02-244-3347","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์","subject":"การประเมินผลการส่งเสริมสุขภาพของชมรมผู้สูงอายุในเขตเมือง (Evaluation of Health Promotion Program for the Elders Club in the Urban)","reviewType":"-","status":"approved","approveDate":"4/2/2562","coaNumber":"001/2562","notes":"Amendment ครั้งที่1/62 เปลี่ยนชื่อภาษาอังกฤษ","pin":"123456"},
-      {"year":2562,"projectCode":"62-002-03-002-3","docDate":"19/4/2562","researcher":"นางสาวชิดชนก สายชู","phone":"-","department":"วิทยาลัยพัฒนามหานคร","advisor":"ดร.สุขยืน เทพทอง","subject":"การวิเคราะห์ภาวะผู้นำที่มีผลต่อความผูกพันต่อองค์การของพนักงานมหาวิทยาลัยแห่งหนึ่ง","reviewType":"-","status":"approved","approveDate":"19/4/2562","coaNumber":"002/2562","pin":"123456"},
-      {"year":2562,"projectCode":"62-003-02-001-1","docDate":"24/4/2562","researcher":"นายภานุวัฒน์ นิ่มนวล","phone":"-","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"ผลของโปรแกรมการส่งเสริมพฤติกรรมการบริโภคอาหารที่ดีมีประโยชน์ของเด็กปฐมวัยในเขตดุสิต กรุงเทพมหานคร","reviewType":"-","status":"approved","approveDate":"29/4/2562","coaNumber":"003/2562","pin":"123456"},
-      {"year":2562,"projectCode":"62-004-03-003-2","docDate":"7/5/2562","researcher":"นางณิชนันทน์ บุญอ่อน","phone":"02-214-4366, 098-824-5882","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์","subject":"การพัฒนาทางเท้าเพื่อกรุงเทพมหานครเมืองน่าอยู่: กรณีศึกษา ทางเท้าตามแนวเส้นทางรถไฟฟ้าสายสีเขียวอ่อน (สายสีลม) (Sidewalk Development for Livable Bangkok Metropolitan: A Case Study of Sidewalk Along The BTS Light Green Line (Silom Line))","reviewType":"-","status":"approved","approveDate":"10/5/2562","coaNumber":"004/2562","notes":"Amendment ครั้งที่1/62 เปลี่ยนชื่อภาษาไทยและอังกฤษ","pin":"123456"},
-      {"year":2562,"projectCode":"62-005-03-004-2","docDate":"21/5/2562","researcher":"นางสาวธัญภา อินต๊ะนา","phone":"095-461-2224","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์","subject":"การบริหารจัดการแผงลอยเพื่อกรุงเทพมหานคร เมืองน่าอยู่: กรณีศึกษาแผงลอยหน้าตลาดบางแค (Stalls Management for Livable Bangkok Metropolitan: A Case study of Stalls in front of Bang Khae Market)","reviewType":"-","status":"approved","approveDate":"23/5/2562","coaNumber":"COA 005/2562","notes":"Amendment ครั้งที่1/62 เปลี่ยนชื่อภาษาไทยและอังกฤษ","pin":"123456"},
-      {"year":2562,"projectCode":"62-006-03-005-1","docDate":"3/7/2562","researcher":"รศ.ดร.ชูเกียรติ วิเชียรเจริญ","phone":"081-618-7145","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การพัฒนาวิธีการทำงานระบบการทำแผนที่แบบเคลื่อนที่ให้มีความถูกต้องสูง (Development of Field Work Procedure to Obtain High Accuracy in Mobile Mapping System)","reviewType":"Exemption","status":"approved","approveDate":"10/5/2562","coaNumber":"COE 001/2562","pin":"123456"},
-      {"year":2562,"projectCode":"62-007-02-002-1","docDate":"9/7/2562","researcher":"รศ. รัตน์ สงวนพงษ์","phone":"081-834-1949","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"การออกแบบและสร้างเครื่องกลไฟฟ้าสำหรับเก็บขยะในแหล่งน้ำธรรมชาติ (Design and creation of electrical machine for trash collection in natural water sources)","reviewType":"Exemption","status":"approved","approveDate":"11/10/2562","coaNumber":"COE 002/2562","notes":"Amendment ครั้งที่1/66 เปลี่ยนหัวหน้าโครงการและเพิ่มผู้ร่วมวิจัย","pin":"123456"},
-      {"year":2562,"projectCode":"62-008-03-006-1","docDate":"19/7/2562","researcher":"นางสาวเกริดา โคตรชารี","phone":"086-374-6473","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"การจัดทำฐานข้อมูลของที่พักระยะสั้นในกรุงเทพมหานคร (Database Creation of Short-Term Accommodation in Bangkok)","reviewType":"Full Board","status":"not_approved","approveDate":"7/8/2562","coaNumber":"-","notes":"ไม่รับรอง","pin":"123456"},
-      {"year":2562,"projectCode":"62-009-02-003-1","docDate":"3/9/2562","researcher":"นายพงศธร ชมดี","phone":"086-541-6978","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"การพัฒนาอุปกรณ์ตรวจสอบคุณภาพอากาศแบบเครือข่าย (Design and building air quality monitoring device in a network system)","reviewType":"-","status":"under_review","approveDate":"4/9/2562","coaNumber":"-","pin":"123456"},
-      {"year":2562,"projectCode":"62-010-05-002-1","docDate":"10/9/2562","researcher":"อ.วีรวัฒน์ สุทธ์สุทัศน์","phone":"-","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"การวิเคราะห์เสถียรภาพสำหรับสมการเชิงอนุพันธ์แลงจีวินเศษส่วนอิมพัลส์ไม่เชิงเส้น","reviewType":"-","status":"under_review","approveDate":"-","coaNumber":"-","pin":"123456"},
-      {"year":2562,"projectCode":"62-011-06-003-1","docDate":"10/9/2562","researcher":"อ.จุฑารัตน์ เทียนบูชา","phone":"-","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"ทฤษฎีบทการกวัดแกว่งของสมการเชิงอนุพันธ์เศษส่วนแบบสัดส่วนปรับปรุง","reviewType":"-","status":"under_review","approveDate":"-","coaNumber":"-","pin":"123456"},
-      {"year":2562,"projectCode":"62-012-02-004-1","docDate":"29/11/2562","researcher":"ผศ.ชัชพล มงคลิก","phone":"086-399-9003","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"ระบบการจัดลำดับการผลิตและการจัดตารางการผลิตสำหรับการเพิ่มประสิทธิภาพโลจิสติกส์ในโรงงานพลาสติก (Production Scheduling and Sequencing System for Logistics Efficiency Improvement in a Plastics Factory)","reviewType":"-","status":"under_review","approveDate":"-","coaNumber":"-","pin":"123456"},
-      {"year":2562,"projectCode":"62-013-02-005-1","docDate":"6/12/2562","researcher":"อ.เกริดา โคตรชารี","phone":"081-369-7904","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"การจัดการขยะ มหาวิทยาลัยนวมินทราธิราช (Solid Waste management of NMU)","reviewType":"Exemption","status":"approved","approveDate":"-","coaNumber":"ได้รับการยกเว้น","pin":"123456"},
-      {"year":2562,"projectCode":"62-014-03-006-1","docDate":"25/12/2562","researcher":"อ.สาธิต ศรีสถิตย์","phone":"086-374-6473","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"ธุรกิจที่พักนักท่องเที่ยวขนาดกลางและเล็กกับการพัฒนาย่านในกรุงเทพมหานคร (Impacts of Small and Medium Tourist Accommodation to Neighborhood Development in Bangkok)","reviewType":"-","status":"under_review","approveDate":"-","coaNumber":"-","pin":"123456"},
-      {"year":2563,"projectCode":"63-001-03-001-1","docDate":"30/1/2563","researcher":"อ.สาธิต ศรีสถิตย์","phone":"641056644","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การพัฒนาและฟื้นฟูพื้นที่สาธารณะและโครงข่ายการสัญจรในชุมชนริมน้ำแขวงวชิรพยาบาล (Development and Renewal of Public Space and Mobility of Waterfront Communities in Wachira phayaban District) Vajira Phayabal sub-district","reviewType":"-","status":"approved","approveDate":"-","coaNumber":"-","notes":"ต่ออายุครั้งที่ 1, 30 ธ.ค.63 และ Amendment ครั้งที่1/64","pin":"123456"},
-      {"year":2563,"projectCode":"63-002-02-001-1","docDate":"20/3/2563","researcher":"อ.ชูชาติ จุลพันธ์","phone":"084-542-0167","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"ศึกษารูปแบบการเรียนการสอนเสริมสมรรถนะการเรียนรู้ในศตวรรษที่ 21 (Study the teaching and learning model to enhance learning competency in 21st century)","reviewType":"-","status":"under_review","approveDate":"-","coaNumber":"-","pin":"123456"},
-      {"year":2563,"projectCode":"63-003-05-001-1","docDate":"2/7/2563","researcher":"อาจารย์ดวงพร เทพมณี","phone":"061-326-6554","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"การพัฒนาแอพพลิเคชั่นสมาร์ทโฟนในการช่วยฟื้นคืนชีพสำหรับผู้พบเห็นเหตุการณ์นอกโรงพยาบาล (The Development of Smartphone Applications for Bystander Cardiopulmonary Resuscitation in Pre-hospital Setting)","reviewType":"-","status":"under_review","approveDate":"-","coaNumber":"-","pin":"123456"},
-      {"year":2563,"projectCode":"63-004-05-002-1","docDate":"2/7/2563","researcher":"อ.อารียา จิรธนานุวัฒน์","phone":"089-656-3992","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"ภาวะสุขภาพของนักศึกษาในช่วงการระบาดของไวรัสโควิด-19 (Health Status of Undergraduate during the Outbreak of COVID-19)","reviewType":"-","status":"approved","approveDate":"-","coaNumber":"COA 003/2563","notes":"Amendment ครั้งที่ 1/2564 (18 เมษายน 2565)","pin":"123456"},
-      {"year":2563,"projectCode":"63-005-03-002-2","docDate":"27/8/2563","researcher":"น.ส.พิมพา จันทรประสิทธิ์","phone":"082-8588402","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.วงศ์พันธ์ ลิมปเสนีย์","subject":"การปรับเปลี่ยนพฤติกรรมเพื่อการลดปริมาณขยะ กรณีศึกษา สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช (Behavior modification to reduce waste : A case study the president office of Navamindradhiraj University)","reviewType":"-","status":"under_review","approveDate":"-","coaNumber":"-","pin":"123456"},
-      {"year":2563,"projectCode":"ไม่เข้าเกณฑ์","docDate":"-","researcher":"รศ.นันทสารี สุขโต","phone":"081-6596242","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การพัฒนาระบบการจัดการเครือข่ายสร้างเสริมสุขภาวะของคนชุมชนเมืองในกรุงเทพมหานครเพื่อความเป็นเมืองสุขภาวะ (Developing a System for Managing a Well-Being Promotion Network for Urban Residents in Bangkok as a Healthy City)","reviewType":"-","status":"not_approved","approveDate":"22/10/63","coaNumber":"-","notes":"ไม่รับรอง / ไม่เข้าเกณฑ์ (ไม่ใช่งานวิจัย)","pin":"123456"},
-      {"year":2563,"projectCode":"63-006-03-003-2","docDate":"4/12/2563","researcher":"นายธนกฤต วงศ์พานิช","phone":"084 9745755","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.มณีรัตน์ องค์วรรณดี","subject":"การวัดศักยภาพการก่อมลภาวะทางแสง: กรณีศึกษารายจังหวัดของประเทศไทย (Light Polluting Power Measures: A Case Study of Provinces in Thailand)","reviewType":"-","status":"approved","approveDate":"4/12/63","coaNumber":"COA 004/2563","pin":"123456"},
-      {"year":2564,"projectCode":"64-001-03-001-1","docDate":"9/2/2564","researcher":"รศ.มณีรัตน์ องค์วรรณดี","phone":"081 341 1010","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"กำแพงเขียวเพื่อกำจัดมลพิษอากาศในอาคาร (Green wall for removal of indoor air pollutants)","reviewType":"Exemption","status":"approved","approveDate":"9/2/2564","coaNumber":"COE 001/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-002-03-002-2","docDate":"22/3/64","researcher":"นายโอฬาร อนันทนุพงศ์","phone":"637932463","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.มณีรัตน์ องค์วรรณดี","subject":"การประเมินประสิทธิภาพของหน้ากากผ้าเพื่อป้องกันการสัมผัสละอองฝอย (Evaluation of cloth face masks for protection against exposure to droplets)","reviewType":"Exemption","status":"approved","approveDate":"22/3/2564","coaNumber":"COE 002/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-003-05-001-1","docDate":"22/3/2564","researcher":"อาจารย์อารียา จิรธนานุวัฒน์","phone":"896563991","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"ประสิทธิผลของกลไกการอภิบาลระบบในช่วงสถานการณ์โรคระบาดโควิด -19 (The Effectiveness og Health System Governance during COVID-19 Situation)","reviewType":"-","status":"approved","approveDate":"25/03/2564","coaNumber":"COA 001/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-004-03-003-2","docDate":"7/4/2564","researcher":"นายกฤตกานต์ วงศ์สง่า","phone":"877103451","department":"วิทยาลัยพัฒนามหานคร","advisor":"ศ.ธเรศ ศรีสถิตย์","subject":"แนวทางการพัฒนาทางเท้าที่เหมาะสมกับชุมชนเมืองกรณีศึกษาในพื้นที่เขตดุสิต (Guidelines for Development of Sidewalks Suitable for Urban Communities: Case study in Dusit District)","reviewType":"Exemption","status":"approved","approveDate":"5/4/2564","coaNumber":"COE 003/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-005-03-004-2","docDate":"2/6/2564","researcher":"นางสาวอเทตยา สายเพ็ญ","phone":"952502664","department":"วิทยาลัยพัฒนามหานคร","advisor":"ศ.ธเรศ ศรีสถิตย์","subject":"การศึกษาการจัดการข้อร้องเรียนโครงการก่อสร้างในเมือง กรณีศึกษา โครงการก่อสร้างรถไฟฟ้าสายสีแดง (ช่วงบางซื่อ - รังสิต) (A Study on urban complaint management: The Construction of Red line commuter train (Bangsue – Rangsit))","reviewType":"Exemption","status":"approved","approveDate":"7/6/2564","coaNumber":"COE 004/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-006-03-005-2","docDate":"1/7/2564","researcher":"นางสาวรัชดาพร ธรรมไหว","phone":"966982628","department":"วิทยาลัยพัฒนามหานคร","advisor":"ศ.ธเรศ ศรีสถิตย์","subject":"การวิเคราะห์ปัจจัยสำคัญต่อการพัฒนาการใช้ที่ดินโดยรอบสถานีรถไฟฟ้าเพื่อการรองรับการเปลี่ยนแปลงของเมือง กรณีศึกษา: รถไฟฟ้าสายสีเขียวเข้มของกรุงเทพมหานคร (IMPORTANT FACTORS ANALYSIS TO LAND USE DEVELOPMENT SURROUNDING THE PUBLIC SKY TRAIN STATION FOR URBAN RESILIENCE: A CASE STUDY OF THE DARK GREEN LINE, BANGKOK METROPOLITAN ADMINISTRATION (BMA))","reviewType":"-","status":"approved","approveDate":"29/06/2564","coaNumber":"COA 002/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-007-03-006-1","docDate":"1/7/2564","researcher":"ศ.ธเรศ ศรีสถิตย์","phone":"819272352","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การพัฒนาระบบจัดการขยะหน้ากากอนามัยในชุมชนเมืองด้วยกระบวนการแบบมีส่วนร่วมของประชาชนในภาวะการระบาดโรคติดเชื้อไวรัสโคโรนา 2019 (Development of Mask Waste Management in Urban Community by People’s Participatory Process in COVID-19 Pandemic Crisis)","reviewType":"-","status":"approved","approveDate":"29/06/2564","coaNumber":"COA 003/2564","notes":"Amendment ครั้งที่ 1/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-008-03-007-2","docDate":"1/7/2564","researcher":"นางสาวธัญลักษณ์ ชาญณรงค์","phone":"645624924","department":"วิทยาลัยพัฒนามหานคร","advisor":"อ.แสน กีรตินวนันท์","subject":"กลไกและกระบวนการสร้างคุณภาพชีวิตที่ดีของผู้สูงอายุในชุมชนเมือง กรณีศึกษา: ชุมชนท่าน้ำสามเสน (MECHANISMS AND PROCESS AFFECT THE GOOD QUALITY OF LIFE FOR THE ELDERLY IN URBAN COMMUNITY: A CASE STUDY OF THANAM SAMSEN COMMUNITY)","reviewType":"-","status":"approved","approveDate":"29/06/2564","coaNumber":"COA 004/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-009-03-008-2","docDate":"1/7/2564","researcher":"นางสาวรริดา แก้วเมืองมูล","phone":"976184615","department":"วิทยาลัยพัฒนามหานคร","advisor":"ผศ.ชัชพล มงคลิก","subject":"การจัดการโลจิสติกส์และโซ่อุปทานสำหรับการท่องเที่ยว กรณีศึกษา : แหล่งท่องเที่ยวกรุงเทพมหานครชั้นใน (Logistics and Supply Chain Management for Tourism : A Case Study of Toursim Area at the Inner Bangkok)","reviewType":"-","status":"approved","approveDate":"02/07/2564","coaNumber":"COA 005/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-010-03-009-1","docDate":"2/7/2564","researcher":"ผศ.ชัชพล มงคลิก","phone":"891280001","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การวิเคราะห์เทคนิคการพยากรณ์ที่เหมาะสมสำหรับการลดความคลาดเคลื่อนของค่าพยากรณ์จำนวนนักท่องเที่ยวกลุ่มเป้าหมายหลักที่มาเที่ยวกรุงเทพมหานครหลังการแพร่ระบาดของโรคติดเชื้อไวรัสโคโรนา 2019 (Appropriate Forecasting Techniques Analysis for Number of Important Tourists Visiting Bangkok Forecasting Error Reduction After the COVID-19 Pandemic)","reviewType":"-","status":"approved","approveDate":"02/07/2564","coaNumber":"COA 006/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-011-03-010-2","docDate":"2/2/2564","researcher":"นางสาวปุณรดา ล้วนวิเศษ","phone":"861228349","department":"วิทยาลัยพัฒนามหานคร","advisor":"อ.แสน กีรตินวนันท์","subject":"ภาวะผู้นำและการมีส่วนร่วมของประชาชนในการบริหารจัดการชุมชนเมือง สู่การสร้างความเข้มแข็งชุมชนเมือง กรณีศึกษา: ชุมชนสวนอ้อย กรุงเทพมหานคร (LEADERSHIP AND PARTICIPATION OF CITIZENS IN URBAN MANAGEMENT TO THE STRENGTH A CASE STUDY OF SUAN AOY COMMUNITY,BANGKOK)","reviewType":"-","status":"approved","approveDate":"02/07/2564","coaNumber":"COA 007/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-012-03-011-1","docDate":"5/7/2564","researcher":"ผศ.วรพชร จันทร์ขันตี","phone":"848816463","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การคุ้มครองคนไร้ที่พึ่งในสถานการณ์การแพร่ระบาดของโรคติดเชื้อไวรัสโคโรนา 2019 : ศึกษาการเข้าถึงความช่วยเหลือจากรัฐของคนไร้ที่พึ่งในเขตกรุงเทพมหานคร (Protection of Homeless Persons during the Coronavirus 2019 pandemics: Study on a State Aids accession of homeless persons in Bangkok)","reviewType":"-","status":"cancelled","approveDate":"-","coaNumber":"-","notes":"หัวหน้าโครงการขอยุติโครงการเพื่อขอรับการพิจารณา (วพม.05/683 ลว.11 ต.ค. 2564)","pin":"123456"},
-      {"year":2564,"projectCode":"64-013-03-012-1","docDate":"5/7/2564","researcher":"อ.แสน กีรตินวนันท์","phone":"818665688","department":"วิทยาลัยพัฒนามหานคร","advisor":"ยกเลิกเลข COA 008/2564","subject":"ผลกระทบและแนวทางการปรับตัวของสมาชิกชุมชนเมืองในมิติทางด้านสังคมและเศรษฐกิจ ภายใต้สภาวการณ์การแพร่ระบาดของไวรัสโคโรนา – 19 (Covid-19) หรือสภาวการณ์การเกิดโรคอุบัติใหม่ (Impacts and Adjustment Guidelines of Economic and Social Matters to Members of Urban Community from the COVID-19 Pandemic or Emerging Disease Conditions)","reviewType":"Full Board","status":"approved","approveDate":"23/12/2564","coaNumber":"COA 014/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-014-03-013-2","docDate":"18/8/2564","researcher":"นายชยุต กิ่งเงิน","phone":"625577270","department":"วิทยาลัยพัฒนามหานคร","advisor":"ศ.ธเรศ ศรีสถิตย์","subject":"การพัฒนาตลาดนัดค้าส่งเสื้อผ้าสำเร็จรูปโบ๊เบ๊ช่วงเวลากลางคืนบนพื้นที่สาธารณะบาทวิถีคลองผดุงกรงเกษมและถนนกรุงเกษม (Development of Bobae Wholesale Garment Night Flea Market on Public)","reviewType":"-","status":"approved","approveDate":"19/08/2564","coaNumber":"COA 009/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-015-03-014-2","docDate":"8/11/2564","researcher":"นางสาวแก้วบัวเกื้อ รัตนจันทร์","phone":"991962951","department":"วิทยาลัยพัฒนามหานคร","advisor":"ศ.ธเรศ ศรีสถิตย์","subject":"การพัฒนาที่อยู่อาศัยและสภาพแวดล้อมสำหรับผู้สูงอายุในเมือง : กรณีศึกษา อาคารเช่าการเคหะแห่งชาติ (Housing and Environment Development for Elderly in City : A Case Study of Rental Housing Development of National Housing Authority)","reviewType":"-","status":"approved","approveDate":"8/11/2564","coaNumber":"COA 010/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-016-03-015-2","docDate":"10/11/2564","researcher":"นายเมธวิน มีสุวรรณ","phone":"-","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"ปัจจัยแรงจูงใจที่มีผลต่อการมีส่วนร่วมของประชาชนในการจัดการเมืองด้านสาธารณสุข กรณีศึกษา อาสาสมัครสาธารณสุข (อสส.) ศูนย์บริการสาธารณสุข 21 (Motivational Factors Affecting People’s Participation in Public Health Unban Management Case: Public Health Volunteers in Public Health Center 21)","reviewType":"-","status":"approved","approveDate":"10/11/2564","coaNumber":"COA 011/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-017-03-016-1","docDate":"10/11/2564","researcher":"รศ.มณีรัตน์ องค์วรรณดี","phone":"081-3411010","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การสำรวจการใช้เวลาในอาคารของคนอาศัยในประเทศไทย: ช่วงสถานการณ์ปกติกับช่วงสถานการณ์การแพร่ระบาดเชื้อไวรัสโคโรนา 2019 (A survey of time spent in indoor microenvironments of people residing in Thailand: in normal circumstances and Coronavirus disease (COVID – 19) situation)","reviewType":"-","status":"approved","approveDate":"10/11/2564","coaNumber":"COA 012/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-018-05-002-1","docDate":"10/11/2564","researcher":"อาจารย์อารียา จิรธนานุวัฒน์","phone":"896563991","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"ความต้องการด้านอาหารที่แจกจ่ายและพฤติกรรมสุขภาพของผู้ได้รับผลกระทบจากสถานการณ์โควิด-19 (Food Requirements and Health Behaviors on People’s Livelihoods from the Impact of COVID-19)","reviewType":"-","status":"approved","approveDate":"10/11/2564","coaNumber":"COA 013/2564","pin":"123456"},
-      {"year":2564,"projectCode":"64-019-05-003-1","docDate":"1/12/2564","researcher":"อาจารย์ปรัชญา ตั้งจิตสมบูรณ์","phone":"086-9700925","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"ผลของศักย์ไฟฟ้าข้ามขั้วไฟฟ้าในการดักจับอนุภาคควันธูปด้วยไดอิเล็กทริกแบร์ริเออร์ดิจชาร์จพลาสมาที่ความดันบรรยากาศ (Effect of Electric Potential Across Electrodes for Trapping Joss Smoke Particles in Dielectric Barrier Discharge Plasma Atmospheric Pressure)","reviewType":"Exemption","status":"approved","approveDate":"2/12/2564","coaNumber":"COE 005/2564","pin":"123456"},
-      {"year":2565,"projectCode":"65-001-03-001-2","docDate":"07/01/2565","researcher":"นางสาวภรณ์ฐิตา จิรประภาชัยเลิศ","phone":"093-6717782","department":"วิทยาลัยพัฒนามหานคร","advisor":"อ.แสน กีรตินวนันท์","subject":"กลไกการสร้างความเข้มแข็งของชุมชน กรณีศึกษา: ชุมชนแฟลตสิริสาสน์ เคหะศรีย่าน กรุงเทพมหานคร (The Mechanisms for the strengthening community: A case study of Sirisas flats, Kheha Sri Yan community, Bangkok)","reviewType":"-","status":"approved","approveDate":"10/01/2565","coaNumber":"COA 001/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-002-03-002-2","docDate":"07/01/2565","researcher":"นางสาวปารวี รัตนคาม","phone":"081-8044293","department":"วิทยาลัยพัฒนามหานคร","advisor":"อ.เจษฎานันท์ เวียงนนท์","subject":"สภาพปัญหาและแนวทางการจัดการของเสียในพื้นที่ท่องเที่ยวเขตเมือง กรณีศึกษาตลาดน้ำตลิ่งชัน กรุงเทพมหานคร (Ploblems and Guidelines for Management of Wastes in Tourist Attractions in Urban Areas: The Case Study of Taling Chan Floating Market, Bangkok)","reviewType":"-","status":"approved","approveDate":"10/01/2565","coaNumber":"COA 002/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-003-05-001-1","docDate":"01/02/2565","researcher":"อาจารย์เบญจรัตน์ สัจกุล","phone":"081-9041005","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"การวิจัยและพัฒนาพฤฒิพลังสูงวัยกับบทบาทผู้สูงอายุในการใช้สื่อออนไลน์อย่างปลอดภัย สร้างสรรค์ และรู้เท่าทัน (Research and Development of Active Ageing and the Elderly’s Roles on Using Social Media safely, creatively and knowledgeably)","reviewType":"-","status":"approved","approveDate":"01/02/2565","coaNumber":"COA 003/2565","notes":"Amendment ครั้งที่ 1 (21 มี.ค. 65)","pin":"123456"},
-      {"year":2565,"projectCode":"65-004-03-003-1","docDate":"28/03/2565","researcher":"รศ.มณีรัตน์ องค์วรรณดี","phone":"081-3411010","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การจัดการคุณภาพอากาศในอาคารอย่างยั่งยืนสำหรับโรงเรียนในสังกัดกรุงเทพมหานคร (Sustainable Indoor Air Quality Management for Bangkok Metropolitan Administration Schools)","reviewType":"-","status":"approved","approveDate":"31/03/2565","coaNumber":"COA 004/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-005-05-002-1","docDate":"28/03/2565","researcher":"อ.ดวงพร เทพมณี","phone":"081-326-6554","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"แนวโน้มการโทรฉุกเฉินและการนำส่งของระบบการแพทย์ฉุกเฉินของผู้ป่วยฉุกเฉินในประเทศไทย (Trend of the prehospital emergency call and EMS transportation data of emergency patients in Thailand)","reviewType":"Exemption","status":"approved","approveDate":"30/03/2565","coaNumber":"COE 001/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-005-03-004-1","docDate":"11/05/2565","researcher":"รศ.นันทสารี สุขโต","phone":"081-659-6242","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การศึกษาแนวทางการพัฒนาการท่องเที่ยวในเขตชุมชนเมืองของกรุงเทพมหานคร ให้เป็นศูนย์กลางการท่องเที่ยวอย่างยั่งยืน (A study of tourism development guidelines for the urban areas of Bangkok as a sustainable tourism hub)","reviewType":"Expedited","status":"approved","approveDate":"12/05/2565","coaNumber":"COA 005/2565","notes":"COA 005/2566","pin":"123456"},
-      {"year":2565,"projectCode":"65-007-03-005-1","docDate":"27/07/2565","researcher":"อ.มนต์ธัช มะกล่ำทอง","phone":"082-920-3555","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"แผนด้านที่อยู่อาศัยระดับเขตเพื่อเมืองยืดหยุ่น: กรณีเขตบางซื่อ กรุงเทพมหานคร (ระยะที่ 1) (Housing Plan in District Level for Urban Resilience: A Case of Bang Sue District, Bangkok (Phase 1))","reviewType":"-","status":"approved","approveDate":"27/07/2565","coaNumber":"COA 006/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-008-05-003-1","docDate":"23/08/2565","researcher":"ว่าที่ร้อยตรีวีรยุทธ หมื่นบุญมี","phone":"084-836-9296","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"การพัฒนาและส่งเสริมศักยภาพพฤฒพลังผู้สูงวัยต่อภาวะมีคุณค่าในตนเอง ความรอบรู้ทางสุขภาพ คุณภาพชีวิต และจิตอาสาต่อชุมชนในภาวะเกิดภัยพิบัติ กรณีศึกษา: เขตดุสิต กรุงเทพมหานคร ประเทศไทย (Development and Promotion of Acting Ageing for Self-Efficacy, Health literacy, Quality of life and Volunteering in the Community in Disasters; Case Study: Dusit District, Bangkok Thailand)","reviewType":"-","status":"approved","approveDate":"23/07/2565","coaNumber":"COA 007/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-009-03-006-2","docDate":"31/08/2565","researcher":"นายวิทยา ภัทรเมธากุล","phone":"081-694-4577","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.มณีรัตน์ องค์วรรณดี","subject":"ปัจจัยที่ส่งผลต่อการดำเนินงานขององค์การ บริษัท ไปรษณีย์ไทย จำกัด (Factors affecting for organization performance of Thailand post)","reviewType":"-","status":"approved","approveDate":"31/08/2565","coaNumber":"COA 008/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-010-03-007-2","docDate":"28/09/2565","researcher":"นางสาวสมฤดี ณ นคร","phone":"097-050-0115","department":"วิทยาลัยพัฒนามหานคร","advisor":"ผศ.แสน กีรตินวนันท์","subject":"บทบาทของชุมชนต่อการตอบสนองความต้องการของผู้สูงอายุ มิติด้านสังคมและมิติด้านเศรษฐกิจ กรณีศึกษา : ชุมชนวัดโบสถ์ เขตดุสิต กรุงเทพมหานคร (The role of the community in meeting the needs of the elderly Social Dimensions and Economic Dimensions Case Study : Wat Bot Community, Dusit District, Bangkok)","reviewType":"-","status":"approved","approveDate":"28/09/2565","coaNumber":"COA 009/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-011-05-004-1","docDate":"28/09/2565","researcher":"อ.นัชชา ผลพอตน","phone":"087-808-9209","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"การวิเคราะห์คุณภาพอากาศภายในอาคารต่อปัจจัยลักษณะการใช้งานของอาคารใหม่ กรณีศึกษา : อาคารสำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช (Analysis of Indoor Air Quality on Usage Characteristics Factors in New Building : Case Study Office of The President Building, Navamindradhiraj University)","reviewType":"Exemption","status":"approved","approveDate":"28/09/2565","coaNumber":"COE 002/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-012-03-008-2","docDate":"17/10/2565","researcher":"นางสาวปภาพินท์ บางประสิทธิ์","phone":"085-150-4942","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.นันทสารี สุขโต","subject":"การวิเคราะห์ปัจจัยสำคัญต่อการพัฒนาเมืองอุตสาหกรรมเชิงนิเวศ พื้นที่รอบโรงไฟฟ้าพระนครใต้ จังหวัดสมุทรปราการ (Important Factors Analysis to an Eco Industrial Town Development of South Bangkok Power Plant Samut Prakan Province)","reviewType":"-","status":"approved","approveDate":"17/10/2565","coaNumber":"COA 010/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-013-03-009-2","docDate":"25/10/2565","researcher":"นางสาวรัชดา จูตะวิริยะสกุล","phone":"086-854-8924","department":"วิทยาลัยพัฒนามหานคร","advisor":"ผศ.แสน กีรตินวนันท์","subject":"กลไกและกระบวนการการมีส่วนร่วมเพื่อส่งเสริมพัฒนาการเด็กปฐมวัยในยุคก้าวข้ามโควิด-19 (Mechanisms and Processes of Participation to Promote Early Childhood Development in The Era of Crossing Covid-19)","reviewType":"-","status":"approved","approveDate":"26/10/2565","coaNumber":"COA 011/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-014-03-010-1","docDate":"2/11/2565","researcher":"ผศ.ชุลีรัตน์ เจริญพร","phone":"081-240-4248","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"แนวทางการจัดการศึกษาระดับปฐมวัยที่มีประสิทธิผล กรณีศึกษาศูนย์พัฒนาเด็กเล็กในสังกัดองค์การบริหารส่วนท้องถิ่นที่ในพื้นที่ภาคกลาง (Guidelines for Effective Education Management for Early Childhood Education: A Case of Child Development Center in the Affiliation of the Administrative Organization Located in the Central Region of Thailand)","reviewType":"-","status":"approved","approveDate":"2/11/2565","coaNumber":"COA 012/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-015-03-011-2","docDate":"22/11/2565","researcher":"น.ส.ณัฐฌา พลเยี่ยม","phone":"092-640-5159","department":"วิทยาลัยพัฒนามหานคร","advisor":"รศ.นันทสารี สุขโต","subject":"การพัฒนาการท่องเที่ยวเชิงสร้างสรรค์ เมืองเกาะเกร็ด จังหวัดนนทบุรี (Creative Tourism Development of Koh Kret Nonthaburi)","reviewType":"Exemption","status":"approved","approveDate":"23/11/2565","coaNumber":"COE 003/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-016-03-012-2","docDate":"28/11/2565","researcher":"นายอัครราช ปาลาศ","phone":"087-734-2997","department":"วิทยาลัยพัฒนามหานคร","advisor":"อ.เจษฎานันท์ เวียงนนท์","subject":"การประเมินระบบการจัดการขยะเขตเมืองของเทศบาลเมืองลำตาเสา อำเภอวังน้อย จังหวัดพระนครศรีอยุธยา (Assessment of Municipal Solid Waste Management (MSWM) in Lamtasao Town Municipality, Ayutthaya Province, Thailand)","reviewType":"Exemption","status":"approved","approveDate":"29/11/2565","coaNumber":"COE 004/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-017-05-005-1","docDate":"20/12/2565","researcher":"อ.นัชชา ผลพอตน","phone":"02-244-3000","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"การวิเคราะห์พลวัติระบบการปล่อยก๊าซเรือนกระจกจากการกำจัดขยะมูลฝอยต่อนโยบายการจัดการขยะ :กรณีศึกษากรุงเทพมหานคร (System Dynamics Analysis on Greenhouse Gas Emissions from Municipal Solid Waste Disposal under Waste Management Policy: Case Study Bangkok, Thailand)","reviewType":"Exemption","status":"approved","approveDate":"20/12/2565","coaNumber":"COE 005/2565","pin":"123456"},
-      {"year":2565,"projectCode":"65-018-03-013-2","docDate":"20/12/2565","researcher":"น.ส.ผ่องภัสสร มรรคผล","phone":"085-916-2636","department":"วิทยาลัยพัฒนามหานคร","advisor":"ผศ.แสน กีรตินวนันท์","subject":"ผลกระทบและการปรับตัวในสถานการณ์การแพร่ระบาดของโรคโควิด 19 กรณีศึกษา : ชุมชนแฟลตสิริสาสน์ (Effect and adjustment of Sirisas flat community during COVID-19 pandemic: A case study)","reviewType":"-","status":"approved","approveDate":"20/12/2565","coaNumber":"COA 013/2565","pin":"123456"},
-      {"year":2566,"projectCode":"66-001-05-001-1","docDate":"09/01/2566","researcher":"อ.อรวิภา ดุรงค์ธรรม","phone":"081-731-8863","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"โปรแกรมเสริมสร้างความสามารถในการสื่อสารภาษาอังกฤษอย่างร่วมรู้สึก สำหรับนักศึกษาวิทยาศาสตร์สุขภาพ (Empathic English Communication Enhancement Program for Health Science Students)","reviewType":"-","status":"approved","approveDate":"16/01/2566","coaNumber":"COA 001/2566","pin":"123456"},
-      {"year":2566,"projectCode":"66-002-03-001-1","docDate":"09/02/2566","researcher":"ผศ.แสน กีรตินวนันท์","phone":"02-241-3500 ต่อ 5760","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การสร้างชุมชนเข้มแข็งสู่การเกิดสวัสดิการชุมชนเมืองเพื่อการพัฒนาคุณภาพชีวิตคนเมืองอย่างยั่งยืน (Building the Strength Community for Urban Community Welfare to develop the Quality of Life in Sustainable)","reviewType":"-","status":"approved","approveDate":"09/02/2566","coaNumber":"COA 002/2566","pin":"123456"},
-      {"year":2566,"projectCode":"66-003-03-002-1","docDate":"09/02/2566","researcher":"ผศ.แสน กีรตินวนันท์","phone":"02-241-3500 ต่อ 5760","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"ความต้องการทางด้านสวัสดิการชุมชนเมืองสำหรับผู้สูงอายุเพื่อการพัฒนาสังคมผู้สูงอายุที่มีศักยภาพอย่างยั่งยืน (The Need of Urban Community Welfare for the Elderly to Sustainable Development in An Active Ageing Society)","reviewType":"-","status":"approved","approveDate":"09/02/2566","coaNumber":"COA 003/2566","pin":"123456"},
-      {"year":2566,"projectCode":"66-004-05-002-1","docDate":"09/05/2566","researcher":"ว่าที่ร้อยตรีวีรยุทธ หมื่นบุญมี","phone":"084-836-9396","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"การประเมินอัตรากำลังการปฏิบัติงานของเจ้าหน้าที่ต่อพื้นที่เสี่ยงภัยพิบัติ: กรณีศึกษา สำนักงานป้องกันและบรรเทาสาธารณภัย กรุงเทพมหานคร ประเทศไทย (Assessing the operational capacity of officials to disaster risk areas: A case study of the Bangkok Fire and Rescue Department, Thailand)","reviewType":"-","status":"approved","approveDate":"10/05/2566","coaNumber":"COA 004/2566","pin":"123456"},
-      {"year":2566,"projectCode":"66-005-03-003-1","docDate":"14/05/2566","researcher":"ผศ.ชัชพล มงคลิก","phone":"086-399-9003","department":"วิทยาลัยพัฒนามหานคร","advisor":"-","subject":"การพยากรณ์และการวางแผนความต้องการสำหรับโรงแรมและที่พักสำหรับนักท่องเที่ยวกลุ่มเป้าหมายหลักที่มาเที่ยวพื้นที่เป้าหมายในกรุงเทพมหานครหลังการแพร่ระบาดของโรคติดเชื้อไวรัสโคโรนา 2019 (Demand Planning and Forecasting for Hotel and Accommodation for Important Tourists Visiting Target Area in Bangkok after the COVID-19 Pandemic)","reviewType":"-","status":"approved","approveDate":"15/05/2566","coaNumber":"COA 006/2566","pin":"123456"},
-      {"year":2566,"projectCode":"66-006-05-003-1","docDate":"23/05/2566","researcher":"อ.ดวงพร เทพมณี","phone":"081-326-6554","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"ประสิทธิผลของการใช้แอพพลิเคชั่นสมาร์ทโฟนการช่วยฟื้นคืนชีพสำหรับผู้พบเห็นเหตุการณ์ผู้มีภาวะหัวใจหยุดเต้นนอกโรงพยาบาลในเขตกรุงเทพมหานคร (The Effectiveness of Smartphone Applications for Bystander Cardiopulmonary Resuscitation in the Prehospital Setting, Bangkok)","reviewType":"Expedited","status":"approved","approveDate":"24/05/2566","coaNumber":"COA 007/2566","notes":"หมดอายุ 24/5/2567","pin":"123456"},
-      {"year":2566,"projectCode":"66-007-05-004-1","docDate":"28/08/2566","researcher":"ผศ.ยศศิริ ยศธร","phone":"081-374-9592","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"การมีส่วนร่วมของผู้ปกครองและผลสัมฤทธิ์ทางการเรียนของนักเรียนชั้นประถมศึกษาในกรุงเทพมหานคร ประเทศไทย (Parental Involvement and Academic Achievement among Primary Students in Bangkok, Thailand)","reviewType":"-","status":"approved","approveDate":"29/08/2566","coaNumber":"COA 008/2566","pin":"123456"},
-      {"year":2566,"projectCode":"66-008-02-001-1","docDate":"06/09/2566","researcher":"อ.ชยภัทร ประไพพรเลิศ","phone":"089-766-2021","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"การพัฒนารูปแบบการจัดแสงด้วยแอลอีดีแบบแถบเพื่อส่งเสริมพัฒนาการเด็กปฐมวัย (The Development of Lighting Styles with LED Strips to Promote Early Childhood Development)","reviewType":"-","status":"approved","approveDate":"07/09/2566","coaNumber":"COA 009/2566","pin":"123456"},
-      {"year":2566,"projectCode":"66-009-02-002-1","docDate":"07/09/2566","researcher":"อ.วรรณอาภา ประไพพรเลิศ","phone":"094-556-6389","department":"วิทยาลัยพัฒนาชุมชนเมือง","advisor":"-","subject":"การจัดการเรียนรวมโดยใช้โปรแกรมช่วยเหลือด้านการอ่านด้วยกระบวนการตอบสนองต่อการช่วยเหลือเพื่อพัฒนาความสามารถด้านการอ่านของนักเรียนระดับประถมศึกษา (Integrated Learning management using a reading aid program with an assisted response process. To develop reading abilities of elementary school students)","reviewType":"-","status":"approved","approveDate":"08/09/2566","coaNumber":"COA 010/2566","pin":"123456"},
-      {"year":2566,"projectCode":"66-010-05-005-1","docDate":"13/09/2566","researcher":"อ.กีรติ ศรีประไหม","phone":"081-6850-002","department":"คณะวิทยาศาสตร์และเทคโนโลยีสุขภาพ","advisor":"-","subject":"การพัฒนาชุดฝึกอบรมแบบออนไลน์ เรื่อง ระบบบัญชาการเหตุการณ์ (ICS) (Development of Online Training Package in The Incident Command System)","reviewType":"-","status":"approved","approveDate":"13/09/2566","coaNumber":"COA 011/2566","pin":"123456"},
-      {"year":2566,"projectCode":"66-011-03-004-2","docDate":"07/11/2566","researcher":"น.ส.อธิกัญญ์ เหลืองสกุลพงษ์","phone":"099-552-4788","department":"วิทยาลัยพัฒนามหานคร","advisor":"อ.มนต์ธัช มะกล่ำทอง","subject":"บทบาทร้านกาแฟที่ส่งเสริมความเป็นย่านสร้างสรรค์ของซอยอารีย์ กรุงเทพมหานคร (The Role of Coffee Shops in Promoting the Creative District of Soi Ari, Bangkok)","reviewType":"-","status":"under_review","approveDate":"-","coaNumber":"-","pin":"123456"},
-      {"year":2567,"projectCode":"FF71-02-02-EC","docDate":"15/01/2567","researcher":"ผศ.ดร.ลักขณาวัลย์ เจริญสุข","phone":"02-244-3000","department":"คณะแพทยศาสตร์วชิรพยาบาล","advisor":"-","subject":"โครงการประเมินความเหมาะสมจริยธรรมการวิจัยในคนระยะยาว (Long-term Ethics & Eligibility Assessment)","reviewType":"Expedited","status":"approved","approveDate":"27/07/2569","coaNumber":"COA 001/2567","notes":"วันหมดอายุ 27 ก.ค. 2569","pin":"123456"},
-      {"year":2569,"projectCode":"FF71-01-14","docDate":"09/09/2569","researcher":"ทีมวิจัยการแพทย์ฉุกเฉิน / คณะกรรมการ ววน.","phone":"02-244-3000","department":"คณะแพทยศาสตร์วชิรพยาบาล","advisor":"-","subject":"ความแม่นยำและบทบาทของขนาดหลอดเลือดดำเวนาคาวาชนิดล่างในการวินิจฉัยภาวะหัวใจล้มเหลวเฉียบพลันในผู้สูงอายุในเอเชีย ณ ห้องฉุกเฉิน","reviewType":"Full Board","status":"under_review","approveDate":"อยู่ระหว่างทบทวน","coaNumber":"รอรับรอง","notes":"ทุน Fundamental Fund (FF2571) ประเมินผล 9 ก.ย. 2569","pin":"123456"}
-    ];
+    // URL Google Sheets Published CSV สำหรับดึงข้อมูลอัตโนมัติ
+    const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1EfhsAv5hYXI0JqVI5McSOGwbQ57YddAQVdMe6umpKug/gviz/tq?tqx=out:csv&sheet=%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3';
 
-    // State Variables
-    let appProjects = [];
-    let activeMatchedProjects = [];
-    let activeSelectedProject = null;
-    let regDisplayedCount = 20;
+    let projectData = [];
 
-    // Canvas Signature Setup
-    let isDrawing = false;
-    let sigCanvas, sigCtx;
+    // สลับ Tab
+    function switchTab(tabName) {
+      document.getElementById('tab-tracking').classList.add('hidden');
+      document.getElementById('tab-registry').classList.add('hidden');
+      document.getElementById('btn-tracking').className = 'px-3 py-2 rounded-lg hover:bg-emerald-800';
+      document.getElementById('btn-registry').className = 'px-3 py-2 rounded-lg hover:bg-emerald-800';
 
-    window.addEventListener('DOMContentLoaded', () => {
-      loadProjectsData();
-      initUI();
-      initCanvas();
-    });
+      document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+      document.getElementById(`btn-${tabName}`).className = 'px-3 py-2 rounded-lg bg-emerald-800 text-amber-300';
+    }
 
-    function loadProjectsData() {
-      const stored = localStorage.getItem('nmu_irb_projects_db_sheet_full_latest');
-      if (stored) {
-        try {
-          appProjects = JSON.parse(stored);
-        } catch (e) {
-          appProjects = [...initialProjects];
-        }
-      } else {
-        appProjects = [...initialProjects];
-        saveProjectsData();
+    // อ่านข้อมูล CSV จาก Google Sheets
+    async function loadSheetData() {
+      try {
+        const response = await fetch(SPREADSHEET_CSV_URL);
+        const data = await response.text();
+        const rows = data.split('\n').map(row => row.split(',').map(cell => cell.replace(/^"(.*)"$/, '$1').trim()));
+        
+        projectData = rows.slice(1).map(r => ({
+          year: r[0] || '',
+          code: r[1] || '',
+          date: r[2] || '',
+          researcher: r[3] || '',
+          dept: r[5] || '',
+          subject: r[7] || '',
+          approveDate: r[12] || '',
+          coa: r[13] || ''
+        })).filter(item => item.code !== '');
+
+        renderTable();
+      } catch (err) {
+        document.getElementById('tableBody').innerHTML = '<tr><td colspan="5" class="p-4 text-center text-rose-500">เกิดข้อผิดพลาดในการโหลดข้อมูลจาก Google Sheets</td></tr>';
       }
-      updateStats();
-      populateRegistryFilters();
-      renderRegistryTable();
     }
 
-    function saveProjectsData() {
-      localStorage.setItem('nmu_irb_projects_db_sheet_full_latest', JSON.stringify(appProjects));
+    // แสดงตารางข้อมูล
+    function renderTable() {
+      const tbody = document.getElementById('tableBody');
+      if (projectData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-slate-400">ไม่พบข้อมูล</td></tr>';
+        return;
+      }
+      tbody.innerHTML = projectData.map(item => `
+        <tr class="hover:bg-slate-50">
+          <td class="p-3 text-center font-bold text-emerald-800">${item.year}</td>
+          <td class="p-3 font-mono font-bold">${item.code}</td>
+          <td class="p-3">${item.subject}</td>
+          <td class="p-3">${item.researcher}</td>
+          <td class="p-3 font-mono text-amber-700">${item.coa || '-'}</td>
+        </tr>
+      `).join('');
     }
 
-    function initUI() {
-      // Setup UI defaults
+    // ค้นหาข้อมูล
+    function searchData() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const msg = document.getElementById('searchMsg');
+      const resCard = document.getElementById('searchResult');
+
+      msg.innerText = '';
+      if (!query) {
+        msg.innerText = 'กรุณาป้อนรหัสโครงการ หรือ ชื่อผู้วิจัย';
+        resCard.classList.add('hidden');
+        return;
+      }
+
+      const match = projectData.find(p => p.code.toLowerCase().includes(query) || p.researcher.toLowerCase().includes(query));
+
+      if (match) {
+        document.getElementById('resCode').innerText = match.code;
+        document.getElementById('resStatus').innerText = match.coa ? 'อนุมัติ/รับรอง' : 'กำลังดำเนินการ';
+        document.getElementById('resStatus').className = match.coa ? 'text-xs font-bold px-2.5 py-1 rounded bg-emerald-100 text-emerald-800' : 'text-xs font-bold px-2.5 py-1 rounded bg-amber-100 text-amber-800';
+        document.getElementById('resSubject').innerText = match.subject;
+        document.getElementById('resResearcher').innerText = match.researcher;
+        document.getElementById('resDept').innerText = match.dept || '-';
+        document.getElementById('resApproveDate').innerText = match.approveDate || '-';
+        document.getElementById('resCoa').innerText = match.coa || '-';
+        resCard.classList.remove('hidden');
+      } else {
+        msg.innerText = 'ไม่พบข้อมูลโครงการที่ค้นหา';
+        resCard.classList.add('hidden');
+      }
     }
 
-    function initCanvas() {
-      sigCanvas = document.getElementById('sigCanvas');
-      if (!sigCanvas) return;
-      sigCtx = sigCanvas.getContext('2d');
-      sigCtx.lineWidth = 2;
-      sigCtx.lineCap = 'round';
-      sigCtx.strokeStyle = '#047857';
-
-      sigCanvas.addEventListener('mousedown', (e) => {
-        isDrawing = true;
-        const rect = sigCanvas.getBoundingClientRect();
-        sigCtx.beginPath();
-        sigCtx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-      });
-      sigCanvas.addEventListener('mousemove', (e) => {
-        if (!isDrawing) returnขอบพระคุณครับ! เมื่อระบบทำการค้นหาอย่างถี่ถ้วนใน Google Drive บนไฟล์ชื่อ **"EC"** และ **"แดชบอร์ดจำนวนโครงการที่ขอพิจารณา EC"** พบโครงสร้างแถวข้อมูลเต็มทั้งหมดในแท็บแผ่นงาน **`ออกเลขโครงการ`** ซึ่งบันทึกไว้อย่างครบถ้วนตั้งแต่ปี **พ.ศ. 2560 ถึง พ.ศ. 2567, 2568 และ 2569** ครับ[cite: 1, 3, 4]
-
----
-
-### 📌 เหตุผลที่ก่อนหน้านี้เบราว์เซอร์แสดงผลเป็นแผ่นงานว่าง:
-1. **การตั้งค่าแผ่นงานแรกสุด (Sheet Order):** ใน Google Sheets ลิงก์ดังกล่าว มีแผ่นงานว่างชื่อ `ชีต1` ตั้งเป็นแผ่นงานแรกสุด เมื่อเปิดผ่าน URL สั้นที่ไม่ได้ระบุแท็บ หรือใช้ API ทั่วไปอ่าน ลิงก์จะถูกดึงข้อมูลจาก `ชีต1` ก่อนเสมอ จึงเห็นเป็นหน้าว่างเปล่า[cite: 1]
-2. **ตำแหน่งข้อมูลจริง:** ข้อมูลตารางโครงการวิจัยทั้งหมดจัดเก็บอยู่ในแท็บแผ่นงานชื่อ **`ออกเลขโครงการ`** (รหัส ID แท็บ `gid=270088814`)[cite: 1, 4]
-
----
-
-### 💡 ตัวอย่างข้อมูลปี 2567, 2568 และ 2569 ที่ระบบสกัดได้เรียบร้อยแล้ว:
-* **ปี 2567:** โครงการประเมินความเหมาะสมจริยธรรมการวิจัยในคนระยะยาว รหัส `FF71-02-02-EC` โดย ผศ.ดร.ลักขณาวัลย์ เจริญสุข[cite: 2]
-* **ปี 2568:** สัญญารับทุนและโครงการวิจัยรหัส `วจ.สนธ.036/2568` โดย น.ส.อภิญญา หัตถกิจพาณิชกุล[cite: 3]
-* **ปี 2569:** โครงการวิจัยเสนอขอทุน ววน. Fundamental Fund (FF2571) รหัส `FF71-01-14` เรื่อง *ความแม่นยำและบทบาทของขนาดหลอดเลือดดำเวนาคาวาชนิดล่างในการวินิจฉัยภาวะหัวใจล้มเหลวเฉียบพลันในผู้สูงอายุในเอเชีย ณ ห้องฉุกเฉิน*[cite: 3]
-
-ขณะนี้ผมได้อัปเดตระบบพร้อมรวบรวมข้อมูลโครงการวิจัยครบทุกแถว (รวมทั้งหมด 162 แถว) เพื่อให้พร้อมแสดงผลบนเว็บแอปพลิเคชันอย่างสมบูรณ์แล้วครับ!
+    window.onload = loadSheetData;
+  </script>
+</body>
+</html>
