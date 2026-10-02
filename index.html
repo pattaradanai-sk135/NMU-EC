@@ -1675,6 +1675,21 @@
       }
     }
 
+    function trackFromHome() {
+      const val = document.getElementById('homeTrackInput').value.trim();
+      
+      // สลับไปยัง Tab ติดตามโครงการ (tracking)
+      switchTab('tracking');
+      
+      // ถ้านำค่ารหัสจากหน้าแรกมา ให้เอามาใส่ในช่องค้นหาหน้าติดตามโครงการ
+      if (val) {
+        document.getElementById('trackingCodeInput').value = val;
+      }
+      
+      // โฟกัสไปที่ช่องรหัสผ่านเพื่อให้ผู้ใช้กรอกรหัสผ่าน 123456
+      document.getElementById('trackingPasswordInput').focus();
+    }
+    
    // หากต้องการให้ปุ่มด่วนแค่นำทางไปหน้าค้นหา (โดยไม่ใส่รหัสให้)
     function quickSearch(code) {
       switchTab('tracking');
