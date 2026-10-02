@@ -49,7 +49,7 @@
       </div>
       <div class="flex items-center gap-4 text-[11px]">
         <span class="text-amber-300">🔒 ยืนยันตัวตนด้วย PIN</span>
-        <span class="text-emerald-300">🌐 ใช้งานผ่านเบราว์เซอร์ ไม่ต้องติดตั้ง</span>
+        <span class="text-emerald-300">🌐 ดึงข้อมูลตรง Real-time ด้วย Google JSON API</span>
         <button onclick="openEmailModal()" class="text-amber-300 hover:text-white font-bold transition">✉️ แจ้งเตือนอีเมล</button>
       </div>
     </div>
@@ -75,7 +75,7 @@
       <!-- Nav Items -->
       <nav class="hidden lg:flex items-center gap-1 text-xs font-bold">
         <button onclick="switchTab('home')" id="nav-home" class="px-3 py-2 rounded-xl transition bg-emerald-100 text-emerald-900">หน้าหลัก</button>
-        <button onclick="switchTab('tracking')" id="nav-tracking" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ติดตามโครงการ</button>
+        <button onclick="switchTab('tracking')" id="nav-tracking" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ติดตามโครงการ (69-XXX)</button>
         <button onclick="switchTab('submission')" id="nav-submission" class="px-3 py-2 rounded-xl transition bg-emerald-700 text-white hover:bg-emerald-800 shadow">ยื่นคำขอออนไลน์</button>
         <button onclick="switchTab('forms')" id="nav-forms" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม</button>
         <button onclick="switchTab('registry')" id="nav-registry" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ทะเบียนประวัติ & ออก COA</button>
@@ -87,9 +87,6 @@
         <button onclick="downloadThisHtmlFile()" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-xl text-xs font-extrabold shadow-sm transition">
           📄 ดาวน์โหลดไฟล์ HTML นี้
         </button>
-        <a href="#" onclick="return openCoaPrint(null, event)" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-bold">
-          📜 ตัวอย่าง COA
-        </a>
         <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl border border-slate-200">
           ☰
         </button>
@@ -131,7 +128,7 @@
             <input
               type="text"
               id="homeTrackInput"
-              placeholder="ป้อนรหัสโครงการ เช่น FF71-01-14, 66-011 หรือชื่อผู้วิจัย..."
+              placeholder="ป้อนรหัสโครงการ เช่น FF71-01-14, 69-001 หรือชื่อผู้วิจัย..."
               class="w-full px-4 py-2 text-sm text-slate-800 font-mono font-medium focus:outline-none"
             />
             <button
@@ -182,7 +179,7 @@
             <input
               type="text"
               id="trackingCodeInput"
-              placeholder="เช่น FF71-01-14, ลักขณาวัลย์ หรือ 66-011"
+              placeholder="เช่น FF71-01-14, ลักขณาวัลย์ หรือ 69-001"
               class="flex-1 px-4 py-2.5 text-base border-2 border-emerald-200 rounded-xl font-mono focus:border-emerald-600 focus:outline-none"
             />
             <button
@@ -324,7 +321,7 @@
             <tbody id="registryTableBody" class="divide-y divide-slate-100">
               <tr>
                 <td colspan="6" class="p-8 text-center text-slate-400 font-bold">
-                  กำลังเชื่อมโยงและโหลดข้อมูลจาก Google Sheets...
+                  กำลังเชื่อมโยงและโหลดข้อมูลจาก Google JSON API...
                 </td>
               </tr>
             </tbody>
@@ -355,7 +352,7 @@
     <section id="tab-security" class="hidden space-y-6">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold border border-slate-300">
-          ⚙️️ Security & Backup
+          ⚙ Security & Backup
         </span>
         <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ระบบความปลอดภัยและการสำรองข้อมูล</h2>
       </div>
@@ -408,7 +405,8 @@
 
   <!-- Script Logic -->
   <script>
-    const GOOGLE_SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1EfhsAv5hYXI0JqVI5McSOGwbQ57YddAQVdMe6umpKug/gviz/tq?tqx=out:csv&sheet=%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3';
+    // ดึงผ่าน Google JSON Endpoint แก้ปัญหาข้อมูลเว้นวรรค/ขึ้นบรรทัดใหม่หล่นหาย 100%
+    const GOOGLE_SHEET_JSON = 'https://docs.google.com/spreadsheets/d/1EfhsAv5hYXI0JqVI5McSOGwbQ57YddAQVdMe6umpKug/gviz/tq?tqx=out:json&sheet=%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3';
 
     let allProjects = [];
 
@@ -434,72 +432,71 @@
       document.getElementById('mobile-menu').classList.toggle('hidden');
     }
 
-    // ฟังก์ชันสำหรับ Parse CSV ที่ซับซ้อน ป้องกันปัญหาจุลภาคซ่อนอยู่ในข้อความ
-    function parseCSVLine(text) {
-      const regex = /(?!\s*$)\s*(?:'([^'\\]*(?:\\[\s\S][^'\\]*)*)'|"([^"\\]*(?:\\[\s\S][^"\\]*)*)"|([^,\s\"]*))\s*(?:,|$)/g;
-      const arr = [];
-      text.replace(regex, function(m0, m1, m2, m3) {
-        if (m1 !== undefined) arr.push(m1.replace(/\\'/g, "'"));
-        else if (m2 !== undefined) arr.push(m2.replace(/\\"/g, '"'));
-        else if (m3 !== undefined) arr.push(m3);
-        return '';
-      });
-      return arr;
-    }
-
-    function rawVal(val) {
-      return (!val || val === '-' || val === 'undefined' || val.trim() === '') ? '' : val.trim();
+    // ฟังก์ชันทำความสะอาดค่าจาก Google JSON
+    function cleanCell(cell) {
+      if (!cell) return '';
+      let val = cell.v !== undefined && cell.v !== null ? cell.v : (cell.f || '');
+      val = String(val).trim();
+      return (val === '-' || val === 'undefined') ? '' : val;
     }
 
     async function fetchAndRenderData() {
       try {
-        const response = await fetch(GOOGLE_SHEET_CSV);
-        const csvText = await response.text();
-        const lines = csvText.split(/\r\n|\n/);
-
+        const response = await fetch(GOOGLE_SHEET_JSON);
+        const text = await response.text();
+        
+        // ตัดข้อความส่วนเกินของ Google JSON response ออกให้เป็น JSON แท้
+        const jsonText = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+        const data = JSON.parse(jsonText);
+        
+        const rows = data.table.rows;
         allProjects = [];
-        lines.slice(1).forEach((line, idx) => {
-          if (!line.trim()) return;
-          const r = parseCSVLine(line);
-          const yearStr = rawVal(r[0]);
-          
+
+        rows.forEach((row, idx) => {
+          const cells = row.c || [];
+          const yearStr = cleanCell(cells[0]);
+
+          // ตรวจสอบเฉพาะแถวที่มีข้อมูล หรือเป็นปี พ.ศ. 4 หลัก
           if (yearStr) {
-            allProjects.push({
+            const item = {
               year: yearStr,
               recvNo: idx + 1,
-              projectCode: rawVal(r[1]),
-              docDate: rawVal(r[2]),
-              researcher: rawVal(r[3]),
-              phone: rawVal(r[4]),
-              dept: rawVal(r[5]),
-              advisor: rawVal(r[6]),
-              subject: rawVal(r[7]),
-              type: rawVal(r[8]),
-              reviewerName: rawVal(r[9]),
-              reviewDate: rawVal(r[10]),
-              status: rawVal(r[11]),
-              approveDate: rawVal(r[12]),
-              coaNumber: rawVal(r[13]),
-              expireDate: rawVal(r[14]),
+              projectCode: cleanCell(cells[1]),
+              docDate: cleanCell(cells[2]),
+              researcher: cleanCell(cells[3]),
+              phone: cleanCell(cells[4]),
+              dept: cleanCell(cells[5]),
+              advisor: cleanCell(cells[6]),
+              subject: cleanCell(cells[7]),
+              type: cleanCell(cells[8]),
+              reviewerName: cleanCell(cells[9]),
+              reviewDate: cleanCell(cells[10]),
+              status: cleanCell(cells[11]),
+              approveDate: cleanCell(cells[12]),
+              coaNumber: cleanCell(cells[13]),
+              expireDate: cleanCell(cells[14]),
               
               rawYear: yearStr,
-              rawCode: rawVal(r[1]),
-              rawResearcher: rawVal(r[3]),
-              rawSubject: rawVal(r[7]),
-              rawCoa: rawVal(r[13])
-            });
+              rawCode: cleanCell(cells[1]),
+              rawResearcher: cleanCell(cells[3]),
+              rawSubject: cleanCell(cells[7]),
+              rawCoa: cleanCell(cells[13])
+            };
+
+            allProjects.push(item);
           }
         });
 
-        // กรองเฉพาะที่มีข้อมูล หรือปี พ.ศ. ที่เป็นตัวเลข 4 หลัก
+        // กรองปี พ.ศ. ที่เป็นตัวเลข 4 หลัก
         allProjects = allProjects.filter(p => /^\d{4}$/.test(p.rawYear));
 
         renderStats();
         populateYearFilter();
         renderRegistryTable(allProjects);
       } catch (err) {
+        console.error('Fetch Error:', err);
         document.getElementById('registryTableBody').innerHTML = `
-          <tr><td colspan="6" class="p-6 text-center text-rose-600 font-bold">เกิดข้อผิดพลาดในการโหลดข้อมูลจาก Google Sheets</td></tr>
+          <tr><td colspan="6" class="p-6 text-center text-rose-600 font-bold">เกิดข้อผิดพลาดในการดึงข้อมูลจาก Google Sheets JSON API</td></tr>
         `;
       }
     }
@@ -523,7 +520,7 @@
     }
 
     function getStatusBadge(p) {
-      const raw = p.status.toLowerCase();
+      const raw = (p.status || '').toLowerCase();
       const hasCoa = p.rawCoa !== '';
 
       if (raw.includes('แก้ไข') || raw.includes('เพิ่มเติม') || raw.includes('amendment')) {
@@ -556,9 +553,8 @@
         const coaDisplay = p.rawCoa ? `<span class="font-mono font-bold text-emerald-700">${p.rawCoa}</span>` : '<span class="text-slate-400">-</span>';
         const statusBadge = getStatusBadge(p);
         
-        // แสดงข้อความเตือนอย่างชัดเจนหากคอลัมน์นั้นไม่มีข้อมูลใน Google Sheets
-        const subjectDisplay = p.rawSubject ? p.rawSubject : '<span class="text-rose-400 italic font-normal">(ไม่พบข้อมูลชื่อโครงการ)</span>';
-        const researcherDisplay = p.rawResearcher ? p.rawResearcher : '<span class="text-rose-400 italic font-normal">(ไม่พบข้อมูลผู้วิจัย)</span>';
+        const subjectDisplay = p.rawSubject ? p.rawSubject : '<span class="text-slate-400 italic font-normal">(ไม่มีข้อมูลชื่อโครงการ)</span>';
+        const researcherDisplay = p.rawResearcher ? p.rawResearcher : '<span class="text-slate-400 italic font-normal">(ไม่มีข้อมูลผู้วิจัย)</span>';
 
         const actionBtn = p.rawCoa !== '' ? 
           `<button onclick="quickSearch('${p.rawCode}')" class="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-[11px] font-bold shadow-xs">ออก COA</button>` : 
@@ -576,7 +572,7 @@
               </button>
             </td>
             <td class="p-3.5 border-r border-slate-100 max-w-md">
-              <div class="font-semibold text-slate-800 leading-snug">${subjectDisplay}</div>
+              <div class="font-semibold text-slate-800 leading-snug whitespace-pre-line">${subjectDisplay}</div>
               <div class="mt-1">${statusBadge}</div>
             </td>
             <td class="p-3.5 border-r border-slate-100">
@@ -641,8 +637,8 @@
       if (match) {
         document.getElementById('resCode').innerHTML = match.projectCode || '-';
         document.getElementById('resCoa').innerHTML = match.coaNumber || '-';
-        document.getElementById('resSubject').innerHTML = match.subject || '(ไม่พบข้อมูลชื่อโครงการ)';
-        document.getElementById('resResearcher').innerHTML = match.researcher || '(ไม่พบข้อมูลผู้วิจัย)';
+        document.getElementById('resSubject').innerHTML = match.subject || '(ไม่มีข้อมูลชื่อโครงการ)';
+        document.getElementById('resResearcher').innerHTML = match.researcher || '(ไม่มีข้อมูลผู้วิจัย)';
         document.getElementById('resDept').innerHTML = match.dept || '-';
         document.getElementById('resAdvisor').innerHTML = match.advisor || '-';
         document.getElementById('resType').innerHTML = match.type || '-';
@@ -716,12 +712,6 @@
     function sendEmail() {
       alert('ส่งอีเมลแจ้งเตือนเรียบร้อยแล้ว');
       closeEmailModal();
-    }
-
-    function openCoaPrint(p, ev) {
-      if (ev) ev.preventDefault();
-      alert('ระบบพิมพ์เอกสาร COA พร้อมใช้งาน');
-      return false;
     }
 
     // Canvas Signature
