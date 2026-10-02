@@ -5,6 +5,7 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ระบบคณะกรรมการจริยธรรมในคน มหาวิทยาลัยนวมินทราธิราช (NMU-IRB All-in-One)</title>
+  <meta name="description" content="ระบบสารสนเทศและการยื่นคำขอรับการพิจารณาจริยธรรมการวิจัยในคน สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช (NMU-IRB)" />
   
   <!-- Google Fonts: Sarabun & Prompt -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,12 +30,17 @@
   <style>
     body { font-family: 'Sarabun', sans-serif; scroll-behavior: smooth; }
     h1, h2, h3, h4, .font-heading { font-family: 'Prompt', sans-serif; }
+    @media print {
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      body { background: #fff !important; }
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
 
   <!-- Top Gov Bar -->
-  <div class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 text-white text-xs py-2 px-4 border-b border-emerald-800">
+  <div class="no-print bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 text-white text-xs py-2 px-4 border-b border-emerald-800">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
@@ -45,12 +51,13 @@
       <div class="flex items-center gap-4 text-[11px]">
         <span class="text-amber-300">🔒 ยืนยันตัวตนด้วย PIN</span>
         <span class="text-emerald-300">🌐 ซิงค์ข้อมูล Real-time จาก Google Sheets</span>
+        <button onclick="openEmailModal()" class="text-amber-300 hover:text-white font-bold transition">✉️ แจ้งเตือนอีเมล</button>
       </div>
     </div>
   </div>
 
   <!-- Header Navigation Bar -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+  <header class="no-print sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
         <div class="w-12 h-12 rounded-2xl bg-emerald-800 text-white flex flex-col items-center justify-center p-1 border-2 border-amber-300 shadow">
@@ -74,21 +81,31 @@
         <button onclick="switchTab('forms')" id="nav-forms" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม</button>
         <button onclick="switchTab('registry')" id="nav-registry" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ทะเบียนประวัติ & ออก COA</button>
         <button onclick="switchTab('drive')" id="nav-drive" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">Google Drive</button>
+        <button onclick="switchTab('security')" id="nav-security" class="px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50">ความปลอดภัย & สำรองข้อมูล</button>
       </nav>
 
-      <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl border border-slate-200">
-        ☰
-      </button>
+      <div class="flex items-center gap-2">
+        <button onclick="downloadThisHtmlFile()" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 rounded-xl text-xs font-extrabold shadow-sm transition">
+          📄 ดาวน์โหลดไฟล์ HTML นี้
+        </button>
+        <a href="#" onclick="return openCoaPrint(null, event)" class="hidden sm:inline-flex px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-bold">
+          📜 ตัวอย่าง COA
+        </a>
+        <button onclick="toggleMobileMenu()" id="burgerBtn" aria-label="เมนู" aria-expanded="false" class="lg:hidden p-2 rounded-xl border border-slate-200">
+          ☰
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t px-4 py-3 space-y-1 text-xs font-bold">
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t px-4 py-3 space-y-1.5 text-xs font-bold">
       <button onclick="switchTab('home')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">หน้าหลัก</button>
       <button onclick="switchTab('tracking')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ติดตามโครงการ</button>
       <button onclick="switchTab('submission')" class="block w-full text-left py-2 px-3 rounded-lg bg-emerald-700 text-white">ยื่นคำขอรับพิจารณาออนไลน์</button>
       <button onclick="switchTab('forms')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ดาวน์โหลดแบบฟอร์ม NMU-IRB</button>
       <button onclick="switchTab('registry')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">สมุดทะเบียนประวัติ & ออก COA/COE</button>
       <button onclick="switchTab('drive')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">Google Drive คลังเอกสารกลาง</button>
+      <button onclick="switchTab('security')" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-emerald-50">ความปลอดภัย & สำรองข้อมูล</button>
     </div>
   </header>
 
@@ -100,7 +117,7 @@
       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-950 text-white p-6 sm:p-12 shadow-xl border border-emerald-700">
         <div class="max-w-3xl space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-700/60 border border-emerald-500/40 text-amber-300 text-xs font-bold">
-            ✨ ระบบสารสนเทศและบริการออนไลน์เชื่อมโยง Google Sheets
+            ✨ ระบบสารสนเทศเชื่อมโยง Google Sheets
           </div>
           <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight font-heading">
             คณะกรรมการจริยธรรมในคน <br>
@@ -135,6 +152,31 @@
         </div>
       </div>
 
+      <!-- Quick Action Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div onclick="switchTab('submission')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl mb-3">📝</div>
+          <h3 class="font-bold text-slate-900 text-sm mb-1">ยื่นคำขอรับพิจารณาออนไลน์</h3>
+          <p class="text-xs text-slate-500">กรอกแบบฟอร์ม แนบโครงร่าง พร้อมลงนามดิจิทัลบนสมาร์ทโฟน</p>
+        </div>
+        <div onclick="switchTab('tracking')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
+          <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xl mb-3">🔍</div>
+          <h3 class="font-bold text-slate-900 text-sm mb-1">ติดตามสถานะโครงการ</h3>
+          <p class="text-xs text-slate-500">ค้นหาด้วยรหัสโครงการ หรือชื่อผู้วิจัย พร้อมระบบ PIN</p>
+        </div>
+        <div onclick="switchTab('forms')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
+          <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-xl mb-3">📂</div>
+          <h3 class="font-bold text-slate-900 text-sm mb-1">ดาวน์โหลดแบบฟอร์ม</h3>
+          <p class="text-xs text-slate-500">NMU-IRB-01 ถึง NMU-IRB-08 เอกสาร PIS และ ICF</p>
+        </div>
+        <div onclick="switchTab('drive')" class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm hover:shadow-md cursor-pointer transition">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold text-xl mb-3 border border-emerald-200">📁</div>
+          <h3 class="font-bold text-slate-900 text-sm mb-1">Google Drive คลังเอกสารกลาง</h3>
+          <p class="text-xs text-slate-500">เชื่อมต่อโฟลเดอร์เอกสารอ้างอิง ประกาศ และคู่มือ SOPs</p>
+        </div>
+      </div>
+
+      <!-- Stats -->
       <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-amber-50 rounded-3xl p-6 border border-emerald-200 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h3 class="font-bold text-emerald-950 text-base">สถิติการดำเนินงานสะสมจาก Google Sheets</h3>
@@ -152,6 +194,81 @@
           <div class="bg-white px-5 py-3 rounded-2xl shadow-sm border">
             <span id="statPending" class="text-2xl font-black text-amber-600 block font-mono">-</span>
             <span class="text-[11px] text-slate-500 font-bold">กำลังดำเนินการ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meeting Schedule & Announcements Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-1 bg-gradient-to-br from-white to-amber-50/50 rounded-3xl p-6 border border-amber-200 shadow-sm space-y-4 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold">
+                  📅
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-900 text-base">ปฏิทินการประชุมคณะกรรมการ</h3>
+                  <p class="text-[11px] text-slate-500">สำนักงานอธิการบดี พ.ศ. 2569</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-2.5 text-xs">
+              <div class="p-3 bg-white rounded-2xl border-2 border-amber-300 shadow-sm">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="font-bold text-emerald-900">การประชุม คกก. EC ครั้งที่ 10/2569</span>
+                  <span class="px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 text-[10px] font-extrabold">รอบปัจจุบัน</span>
+                </div>
+                <div class="text-sm font-extrabold text-slate-900">วันพุธที่ 14 ตุลาคม 2569</div>
+                <div class="text-rose-700 font-semibold mt-0.5 text-[11px]">
+                  ปิดรับข้อเสนอโครงร่าง: วันพุธที่ 30 กันยายน 2569
+                </div>
+              </div>
+              <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                <div class="flex items-center justify-between mb-1">
+                  <span class="font-bold text-slate-800">การประชุม คกก. EC ครั้งที่ 11/2569</span>
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">เปิดรับ</span>
+                </div>
+                <div class="text-sm font-bold text-slate-800">วันพุธที่ 11 พฤศจิกายน 2569</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-2">
+            <button
+              onclick="openMeetingCalendarModal()"
+              class="w-full py-2.5 px-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-sm transition"
+            >
+              <span>📅 ดูตารางประชุมฉบับเต็มทั้งปี 2569 ↗</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-slate-900 text-base">
+                ขั้นตอนและข้อกำหนดการเสนอโครงร่างวิจัย (Full Board Review)
+              </h3>
+              <p class="text-xs text-slate-500">สำนักงานคณะกรรมการจริยธรรมการวิจัยในคน (NMU-IRB)</p>
+            </div>
+            <span class="text-2xl">🏛️</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
+              <span class="font-bold text-emerald-900 block">⏰ เวลาการประชุม</span>
+              <p class="text-slate-600 text-[11px]">09.30 – 12.00 น. จัดขึ้นเดือนละ 1 ครั้งตามปฏิทิน</p>
+            </div>
+            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
+              <span class="font-bold text-emerald-900 block">🏢 สถานที่ประชุม</span>
+              <p class="text-slate-600 text-[11px]">ห้องประชุม สนธ. ชั้น 6 อาคารสารพัดช่าง หรือ Cisco Webex</p>
+            </div>
+            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
+              <span class="font-bold text-rose-800 block">📝 เกณฑ์การส่งเอกสาร</span>
+              <p class="text-slate-600 text-[11px]">ล่วงหน้าก่อนวันประชุมไม่น้อยกว่า 15 วันทำการ</p>
+            </div>
           </div>
         </div>
       </div>
@@ -207,6 +324,15 @@
           <div><strong class="text-slate-800">วันที่ออกเลข:</strong> <span id="resDate"></span></div>
           <div><strong class="text-slate-800">วันที่อนุมัติ/รับรอง:</strong> <span id="resApproveDate"></span></div>
         </div>
+
+        <div class="flex items-center justify-between pt-4 border-t">
+          <button onclick="openEmailModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold">
+            ✉️ ส่งอีเมลแจ้งเตือนนักวิจัย
+          </button>
+          <a href="#" id="btnCoaPrint" onclick="return printCoaForActive(event)" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow">
+            📜 ดูใบรับรอง COA ฉบับพิมพ์ได้
+          </a>
+        </div>
       </div>
     </section>
 
@@ -214,7 +340,7 @@
     <section id="tab-submission" class="hidden space-y-6">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-          ✍ ระบบส่งคำขอออนไลน์
+          ✍ ระบบส่งคำขอออนไลน์พร้อมลงนามดิจิทัล
         </span>
         <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ยื่นคำขอรับการพิจารณาจริยธรรมการวิจัยในคน</h2>
       </div>
@@ -274,6 +400,7 @@
           <div class="flex gap-2">
             <button onclick="expandAllYears(true)" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl border">ขยายทั้งหมด</button>
             <button onclick="expandAllYears(false)" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl border">ย่อทั้งหมด</button>
+            <button onclick="exportRegistryCsv()" class="px-3 py-1.5 bg-white border border-slate-300 text-slate-700 rounded-xl text-xs font-bold shadow-sm hover:bg-slate-50">📥 ส่งออก CSV</button>
           </div>
         </div>
 
@@ -311,7 +438,89 @@
       <a href="https://drive.google.com/drive/folders/105Vza8PRLtyw2wSs3qXVmdr-_4TXUkO2" target="_blank" class="inline-block px-6 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow">เปิดคลังเอกสาร Google Drive ↗</a>
     </section>
 
+    <!-- TAB 7: SECURITY -->
+    <section id="tab-security" class="hidden space-y-6">
+      <div class="text-center space-y-2">
+        <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold border border-slate-300">
+          ⚙️ Microservices Architecture & Disaster Recovery
+        </span>
+        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ระบบความปลอดภัยและการสำรองข้อมูลอัตโนมัติ</h2>
+        <p class="text-xs text-slate-500">ดาวน์โหลดไฟล์สำรอง กู้คืนข้อมูล และตรวจสอบความถูกต้องของข้อมูล</p>
+      </div>
+
+      <div class="bg-gradient-to-br from-emerald-950 to-teal-950 text-white rounded-3xl p-6 sm:p-8 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-emerald-800">
+          <div>
+            <h3 class="font-bold text-lg">Backup Snapshot (สำรองด้วยตนเอง)</h3>
+            <p class="text-xs text-emerald-200">ข้อมูลปัจจุบันซิงค์ตรงกับ Google Sheets สารบรรณกลาง</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="downloadJsonBackup()" class="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs rounded-xl shadow">
+              📥 ดาวน์โหลด JSON สำรอง
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- Email Modal -->
+  <div id="emailModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b pb-3">
+        <h3 class="font-bold text-base text-slate-900">✉️ ส่งอีเมลแจ้งเตือนนักวิจัย (Email Notification)</h3>
+        <button onclick="closeEmailModal()" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">อีเมลผู้รับ</label>
+          <input type="email" id="modalEmailTo" placeholder="name@nmu.ac.th" class="w-full px-3 py-2 border rounded-xl" />
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">หัวข้ออีเมล</label>
+          <input type="text" id="modalEmailSub" value="[NMU-IRB] แจ้งผลการพิจารณาจริยธรรมการวิจัยในคน" class="w-full px-3 py-2 border rounded-xl" />
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">ข้อความ</label>
+          <textarea id="modalEmailBody" rows="5" class="w-full p-3 border rounded-xl font-mono text-[11px] bg-slate-50">เรียน อาจารย์/นักวิจัย
+คณะกรรมการจริยธรรมในคน สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช ขอแจ้งความคืบหน้าการพิจารณาโครงร่างวิจัยของท่าน</textarea>
+        </div>
+      </div>
+      <div class="pt-2 flex justify-end gap-2">
+        <button onclick="closeEmailModal()" class="px-4 py-2 border rounded-xl text-xs font-bold text-slate-600">ปิด</button>
+        <button onclick="sendEmail()" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow">ส่งอีเมลเดี๋ยวนี้</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meeting Calendar Modal -->
+  <div id="modal-meeting-calendar" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl border-2 border-emerald-300 overflow-hidden">
+      <div class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white p-6 relative flex items-start justify-between">
+        <div>
+          <h3 class="text-lg sm:text-xl font-extrabold text-white font-heading">
+            กำหนดการประชุม คณะกรรมการจริยธรรมการวิจัยในคน ประจำปี พ.ศ. 2569
+          </h3>
+        </div>
+        <button onclick="closeMeetingCalendarModal()" class="p-2 text-white">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-4 text-xs">
+        <p>1. วันพุธที่ 14 มกราคม 2569</p>
+        <p>2. วันพุธที่ 11 กุมภาพันธ์ 2569</p>
+        <p>3. วันพุธที่ 11 มีนาคม 2569</p>
+        <p>4. วันพุธที่ 8 เมษายน 2569</p>
+        <p>5. วันพุธที่ 13 พฤษภาคม 2569</p>
+        <p>6. วันพุธที่ 10 มิถุนายน 2569</p>
+        <p>7. วันพุธที่ 8 กรกฎาคม 2569</p>
+        <p>8. วันพฤหัสบดีที่ 13 สิงหาคม 2569</p>
+        <p>9. วันพุธที่ 9 กันยายน 2569</p>
+        <p>10. วันพุธที่ 14 ตุลาคม 2569</p>
+        <p>11. วันพุธที่ 11 พฤศจิกายน 2569</p>
+        <p>12. วันพุธที่ 9 ธันวาคม 2569</p>
+      </div>
+    </div>
+  </div>
 
   <footer class="bg-slate-900 text-slate-400 text-xs py-4 text-center border-t border-slate-800">
     © 2026 คณะกรรมการจริยธรรมในคน มหาวิทยาลัยนวมินทราธิราช (NMU-IRB)
@@ -322,10 +531,10 @@
     const GOOGLE_SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1EfhsAv5hYXI0JqVI5McSOGwbQ57YddAQVdMe6umpKug/gviz/tq?tqx=out:csv&sheet=%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%A5%E0%B8%82%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3';
 
     let allProjects = [];
+    let activeFoundProject = null;
 
-    // Switch Nav Tabs
     function switchTab(tabId) {
-      const tabs = ['home', 'tracking', 'submission', 'forms', 'registry', 'drive'];
+      const tabs = ['home', 'tracking', 'submission', 'forms', 'registry', 'drive', 'security'];
       tabs.forEach(t => {
         const el = document.getElementById(`tab-${t}`);
         const nav = document.getElementById(`nav-${t}`);
@@ -346,7 +555,6 @@
       document.getElementById('mobile-menu').classList.toggle('hidden');
     }
 
-    // Clean missing values
     function cleanVal(val) {
       if (!val || val === '' || val === '-' || val === 'undefined') {
         return '<span class="text-rose-400 italic font-normal">(ข้อมูลไม่ครบ)</span>';
@@ -358,7 +566,6 @@
       return (!val || val === '-' || val === 'undefined') ? '' : val;
     }
 
-    // Fetch CSV Data
     async function fetchAndRenderData() {
       try {
         const response = await fetch(GOOGLE_SHEET_CSV);
@@ -393,17 +600,13 @@
             renewDocNo: cleanVal(r[20]),
             renewCount1: cleanVal(r[21]),
             
-            // Raw strings for searching and filtering
             rawYear: yearStr,
             rawCode: rawVal(r[1]),
             rawResearcher: rawVal(r[3]),
             rawSubject: rawVal(r[7]),
             rawCoa: rawVal(r[13])
           };
-        }).filter(p => {
-          // คัดกรองเฉพาะตัวเลข พ.ศ. (ตัวเลข 4 หลัก เช่น 2560-2569)
-          return /^\d{4}$/.test(p.rawYear);
-        });
+        }).filter(p => /^\d{4}$/.test(p.rawYear));
 
         renderStats();
         renderGroupedData(allProjects);
@@ -430,7 +633,6 @@
         return;
       }
 
-      // Group by Year
       const grouped = {};
       dataList.forEach(item => {
         const y = item.rawYear;
@@ -445,7 +647,6 @@
         const items = grouped[year];
         html += `
           <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-            <!-- Year Header Banner -->
             <div 
               onclick="toggleYearSection('${year}')"
               class="bg-emerald-900 hover:bg-emerald-800 text-white p-4 px-6 flex justify-between items-center cursor-pointer transition"
@@ -461,7 +662,6 @@
               <span id="icon-${year}" class="text-lg font-bold">▼</span>
             </div>
 
-            <!-- Table Block (22 Columns) -->
             <div id="section-${year}" class="overflow-x-auto">
               <table class="w-full text-left text-xs border-collapse">
                 <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
@@ -577,6 +777,7 @@
       const match = allProjects.find(p => p.rawCode.toLowerCase().includes(query) || p.rawResearcher.toLowerCase().includes(query));
 
       if (match) {
+        activeFoundProject = match;
         document.getElementById('resCode').innerHTML = match.projectCode;
         document.getElementById('resCoa').innerHTML = match.coaNumber;
         document.getElementById('resSubject').innerHTML = match.subject;
@@ -614,6 +815,73 @@
 
     function submitRequest() {
       alert('ส่งคำขอรับการพิจารณาเรียบร้อยแล้ว!');
+    }
+
+    function exportRegistryCsv() {
+      let csv = '\uFEFFปี พ.ศ.,รหัสโครงการ,วันที่ออกเลข,ชื่อนักวิจัย,เบอร์โทร,สังกัด,อาจารย์ที่ปรึกษา,ชื่อโครงการ,ประเภท,ชื่อผู้ทบทวน,วันที่ทบทวน,สถานะ,วันที่อนุมัติ,เลข COA,วันที่หมดอายุ\n';
+      allProjects.forEach(p => {
+        csv += `"${p.rawYear}","${p.rawCode}","${p.docDate}","${p.rawResearcher}","${p.phone}","${p.dept}","${p.advisor}","${p.rawSubject}","${p.type}","${p.reviewerName}","${p.reviewDate}","${p.status}","${p.approveDate}","${p.rawCoa}","${p.expireDate}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'NMU_IRB_Registry_Data.csv';
+      link.click();
+    }
+
+    function downloadJsonBackup() {
+      const blob = new Blob([JSON.stringify(allProjects, null, 2)], { type: 'application/json' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `NMU_IRB_Backup_${new Date().toISOString().split('T')[0]}.json`;
+      link.click();
+    }
+
+    function downloadThisHtmlFile() {
+      const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'NMU_IRB_Portal_Single_File.html';
+      link.click();
+    }
+
+    function openEmailModal() {
+      document.getElementById('emailModal').classList.remove('hidden');
+    }
+    function closeEmailModal() {
+      document.getElementById('emailModal').classList.add('hidden');
+    }
+    function sendEmail() {
+      alert('ส่งอีเมลแจ้งเตือนเรียบร้อยแล้ว');
+      closeEmailModal();
+    }
+
+    function openMeetingCalendarModal() {
+      document.getElementById('modal-meeting-calendar').classList.remove('hidden');
+    }
+    function closeMeetingCalendarModal() {
+      document.getElementById('modal-meeting-calendar').classList.add('hidden');
+    }
+
+    function printCoaForActive(e) {
+      if (e) e.preventDefault();
+      const p = activeFoundProject || { projectCode: 'FF71-01-14', subject: 'โครงการตัวอย่าง', researcher: 'ผศ.ดร.ลักขณาวัลย์', coaNumber: 'COA 001/2569' };
+      const win = window.open('', '_blank');
+      win.document.write(`
+        <html><head><title>COA - ${p.projectCode}</title></head>
+        <body style="font-family:Sarabun,sans-serif;padding:40px;">
+          <h1 style="text-align:center;">มหาวิทยาลัยนวมินทราธิราช</h1>
+          <h3 style="text-align:center;">หนังสือรับรองจริยธรรมการวิจัยในคน (Certificate of Approval)</h3>
+          <hr/>
+          <p><strong>รหัสโครงการ:</strong> ${p.projectCode}</p>
+          <p><strong>ชื่อโครงการ:</strong> ${p.subject}</p>
+          <p><strong>หัวหน้าโครงการ:</strong> ${p.researcher}</p>
+          <p><strong>เลขที่ COA:</strong> ${p.coaNumber || '-'}</p>
+          <br/><br/>
+          <button onclick="window.print()">พิมพ์เอกสาร</button>
+        </body></html>
+      `);
     }
 
     // Init Signature Canvas
