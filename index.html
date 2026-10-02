@@ -50,7 +50,7 @@
       <div class="flex items-center gap-4 text-[11px]">
         <span class="text-amber-300">🛡️ เข้ารหัสลับ AES-256</span>
         <span class="text-emerald-300">🌐 ดึงข้อมูล Real-time ด้วย Google JSON API</span>
-        <button onclick="openEmailModal()" class="text-amber-300 hover:text-white font-bold transition">✉️ แจ้งเตือนอีเมล</button>
+        <button onclick="openEmailModal()" class="text-amber-300 hover:text-white font-bold transition">✉️️ แจ้งเตือนอีเมล</button>
       </div>
     </div>
   </div>
@@ -605,7 +605,7 @@
       </div>
     </section>
 
-    <!-- TAB 5: FORMS (จำแนกตามโฟลเดอร์หลัก และรูปแบบไฟล์ Word / PDF) -->
+    <!-- TAB 5: FORMS -->
     <section id="tab-forms" class="hidden space-y-8">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
@@ -950,16 +950,79 @@
       </div>
     </section>
 
-    <!-- TAB 6: DRIVE (แสดงไฟล์ SOP บทที่ 1-8 จาก Google Drive แยกเป็นข้อๆ) -->
+    <!-- TAB 6: DRIVE (แสดงทั้งคำสั่งแต่งตั้งกรรมการ และ SOP บทที่ 1-8) -->
     <section id="tab-drive" class="hidden space-y-6">
       <div class="text-center space-y-2">
         <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
-          ☁️️ Google Drive Integration
+          ☁ Google Drive Integration
         </span>
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">Google Drive คลังเอกสารกลาง และคู่มือปฏิบัติงาน (SOP)</h2>
-        <p class="text-xs text-slate-500">รวมไฟล์คู่มือวิธีปฏิบัติงานมาตรฐาน (SOPs) แยกบท และคลังเอกสารอ้างอิงองค์กร</p>
+        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">Google Drive คลังเอกสารกลาง คำสั่งกรรมการ และคู่มือปฏิบัติงาน (SOP)</h2>
+        <p class="text-xs text-slate-500">รวมคำสั่งแต่งตั้งคณะกรรมการจริยธรรมฯ และไฟล์คู่มือวิธีปฏิบัติงานมาตรฐาน (SOPs) แยกบท</p>
       </div>
 
+      <!-- SECTION A: คำสั่งกรรมการ (เพิ่มใหม่ตามไฟล์ที่ส่งมา) -->
+      <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-amber-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between border-b pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-2xl shrink-0">⚖️</div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-base sm:text-lg">คำสั่งแต่งตั้งคณะกรรมการจริยธรรมการวิจัยในคน (คำสั่งกรรมการ)</h3>
+              <p class="text-xs text-slate-500">สำนักงานคณะกรรมการจริยธรรมการวิจัยในคน สำนักงานอธิการบดี</p>
+            </div>
+          </div>
+          <span class="px-3 py-1 bg-amber-50 text-amber-900 rounded-xl font-mono text-xs font-bold border border-amber-200">
+            พ.ศ. 2569
+          </span>
+        </div>
+
+        <div class="space-y-3">
+          <!-- ไฟล์คำสั่งที่ 1: ชุดหลัก -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-400 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl shrink-0">📜</span>
+              <div class="space-y-1">
+                <span class="font-bold text-slate-900 block text-xs sm:text-sm">
+                  คำสั่งมหาวิทยาลัยนวมินทราธิราช ที่ 654/2569
+                </span>
+                <p class="text-slate-600 text-[11px] font-medium">
+                  เรื่อง แต่งตั้งคณะกรรมการพิจารณาจริยธรรมการวิจัยในคน สำนักงานอธิการบดี (ชุดหลัก)
+                </p>
+                <div class="flex flex-wrap items-center gap-2 text-[10px] text-slate-500 pt-0.5">
+                  <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">ประธาน: ผศ.จักรพันธ์ ขัดชุ่มแสง</span>
+                  <span>• ลงวันที่ 16 มิถุนายน 2569</span>
+                </div>
+              </div>
+            </div>
+            <a href="#" onclick="alert('กำลังเปิดเอกสาร: คำสั่งมหาวิทยาลัย ที่ 654_2569'); return false;" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl font-extrabold text-xs shadow-xs text-center shrink-0">
+              เปิดดูไฟล์ PDF ↗
+            </a>
+          </div>
+
+          <!-- ไฟล์คำสั่งที่ 2: สมทบ -->
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-400 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl shrink-0">📜</span>
+              <div class="space-y-1">
+                <span class="font-bold text-slate-900 block text-xs sm:text-sm">
+                  คำสั่งมหาวิทยาลัยนวมินทราธิราช ที่ 1203/2569
+                </span>
+                <p class="text-slate-600 text-[11px] font-medium">
+                  เรื่อง แต่งตั้งคณะกรรมการพิจารณาจริยธรรมการวิจัยในคน สำนักงานอธิการบดี (สมทบ)
+                </p>
+                <div class="flex flex-wrap items-center gap-2 text-[10px] text-slate-500 pt-0.5">
+                  <span class="px-2 py-0.5 rounded bg-teal-100 text-teal-800 font-bold">กรรมการสมทบ 26 ท่าน</span>
+                  <span>• ลงวันที่ 14 กันยายน 2569</span>
+                </div>
+              </div>
+            </div>
+            <a href="#" onclick="alert('กำลังเปิดเอกสาร: คำสั่งมหาวิทยาลัย ที่ 1203_2569'); return false;" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-extrabold text-xs shadow-xs text-center shrink-0 rounded-xl font-bold">
+              เปิดดูไฟล์ PDF ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION B: SOP บทที่ 1-8 -->
       <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b pb-5">
           <div class="flex items-center gap-3">
@@ -1316,7 +1379,7 @@
         </div>
         <div class="flex items-center gap-2">
           <button onclick="window.print()" class="px-4 py-2 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 rounded-xl text-xs font-bold shadow-xs">
-            🖨️ พิมพ์กำหนดการ
+            🖨️️ พิมพ์กำหนดการ
           </button>
           <button onclick="closeMeetingCalendarModal()" class="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow-xs">
             ปิดหน้าต่าง
