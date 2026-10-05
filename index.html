@@ -1595,9 +1595,55 @@
       const activeNav = document.getElementById(`nav-${tabId}`);
       if (activeEl) activeEl.classList.remove('hidden');
       if (activeNav) activeNav.className = 'px-3 py-2 rounded-xl transition bg-emerald-100 text-emerald-900 font-bold';
-      
+
       const mobileMenu = document.getElementById('mobile-menu');
       if (mobileMenu) mobileMenu.classList.add('hidden');
+
+      // 🔒 สลับไปหน้าอื่นที่ไม่ใช่ registry ให้ล้างค่าสิทธิ์ทันที
+      if (tabId !== 'registry') {
+        resetRegistryAuth();
+      }
+    }
+
+    // รายชื่ออีเมลที่มีสิทธิ์ Admin
+    const ADMIN_EMAILS = [
+      'admin@nmu.ac.th',
+      'pattaradanal@nmu.ac.th',
+      'ec-office@nmu.ac.th'
+    ];
+
+    // ฟังก์ชันตรวจสอบอีเมล Admin
+    function verifyAdminEmail() {
+      const emailInput = document.getElementById('registryAdminEmailInput').value.trim().toLowerCase();
+      const errBox = document.getElementById('registryAuthError');
+      const lockBox = document.getElementById('registryLockBox');
+      const mainContent = document.getElementById('registryMainContent');
+
+      if (ADMIN_EMAILS.includes(emailInput)) {
+        if (errBox) errBox.classList.add('hidden');
+        if (lockBox) lockBox.classList.add('hidden');
+        if (mainContent) mainContent.classList.remove('hidden');
+      } else {
+        if (errBox) {
+          errBox.innerText = '❌ อีเมลนี้ไม่มีสิทธิ์เข้าถึงระบบผู้ดูแลระบบ';
+          errBox.classList.remove('hidden');
+        }
+      }
+    }
+
+    // ฟังก์ชัน Reset การเข้าสู่ระบบเมื่อเปลี่ยนหน้า
+    function resetRegistryAuth() {
+      const lockBox = document.getElementById('registryLockBox');
+      const mainContent = document.getElementById('registryMainContent');
+      const emailInput = document.getElementById('registryAdminEmailInput');
+      const errBox = document.getElementById('registryAuthError');
+
+      if (lockBox && mainContent) {
+        lockBox.classList.remove('hidden');
+        mainContent.classList.add('hidden');
+        if (emailInput) emailInput.value = '';
+        if (errBox) errBox.classList.add('hidden');
+      }
     }
 
     function toggleMobileMenu() {
