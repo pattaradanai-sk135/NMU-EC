@@ -1582,70 +1582,129 @@
 
     let allProjects = [];
 
-    function switchTab(tabId) {
-      const tabs = ['home', 'tracking', 'submission', 'forms', 'registry', 'drive', 'security'];
-      tabs.forEach(t => {
-        const el = document.getElementById(`tab-${t}`);
-        const nav = document.getElementById(`nav-${t}`);
-        if (el) el.classList.add('hidden');
-        if (nav) nav.className = 'px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50';
-      });
-
-      const activeEl = document.getElementById(`tab-${tabId}`);
-      const activeNav = document.getElementById(`nav-${tabId}`);
-      if (activeEl) activeEl.classList.remove('hidden');
-      if (activeNav) activeNav.className = 'px-3 py-2 rounded-xl transition bg-emerald-100 text-emerald-900 font-bold';
-
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileMenu) mobileMenu.classList.add('hidden');
-
-      // 🔒 สลับไปหน้าอื่นที่ไม่ใช่ registry ให้ล้างค่าสิทธิ์ทันที
-      if (tabId !== 'registry') {
-        resetRegistryAuth();
-      }
-    }
-
     // รายชื่ออีเมลที่มีสิทธิ์ Admin
-    const ADMIN_EMAILS = [
-      'admin@nmu.ac.th',
-      'pattaradanal@nmu.ac.th',
-      'ec-office@nmu.ac.th'
-    ];
+  const ADMIN_EMAILS = [
+    'admin@nmu.ac.th',
+    'pattaradanal@nmu.ac.th',
+    'ec-office@nmu.ac.th'
+  ];
 
-    // ฟังก์ชันตรวจสอบอีเมล Admin
-    function verifyAdminEmail() {
-      const emailInput = document.getElementById('registryAdminEmailInput').value.trim().toLowerCase();
-      const errBox = document.getElementById('registryAuthError');
-      const lockBox = document.getElementById('registryLockBox');
-      const mainContent = document.getElementById('registryMainContent');
+  let allProjects = [];
 
-      if (ADMIN_EMAILS.includes(emailInput)) {
-        if (errBox) errBox.classList.add('hidden');
-        if (lockBox) lockBox.classList.add('hidden');
-        if (mainContent) mainContent.classList.remove('hidden');
-      } else {
-        if (errBox) {
-          errBox.innerText = '❌ อีเมลนี้ไม่มีสิทธิ์เข้าถึงระบบผู้ดูแลระบบ';
-          errBox.classList.remove('hidden');
-        }
+  // 1. ฟังก์ชันสลับ Tab หน้าเว็บ
+  function switchTab(tabId) {
+    const tabs = ['home', 'tracking', 'submission', 'forms', 'registry', 'drive', 'security'];
+    
+    tabs.forEach(t => {
+      const el = document.getElementById(`tab-${t}`);
+      const nav = document.getElementById(`nav-${t}`);
+      if (el) el.classList.add('hidden');
+      if (nav) nav.className = 'px-3 py-2 rounded-xl transition text-slate-600 hover:bg-emerald-50';
+    });
+
+    const activeEl = document.getElementById(`tab-${tabId}`);
+    const activeNav = document.getElementById(`nav-${tabId}`);
+    if (activeEl) activeEl.classList.remove('hidden');
+    if (activeNav) activeNav.className = 'px-3 py-2 rounded-xl transition bg-emerald-100 text-emerald-900 font-bold';
+
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.classList.add('hidden');
+
+    // 🔒 หากสลับไปหน้าอื่นที่ไม่ใช่ registry ให้ Reset หน้าทะเบียนประวัติทันที
+    if (tabId !== 'registry') {
+      resetRegistryAuth();
+    }
+  }
+
+  // 2. ฟังก์ชันกดตรวจสอบสถานะจากหน้าแรก
+  function trackFromHome() {
+    const val = document.getElementById('homeTrackInput') ? document.getElementById('homeTrackInput').value.trim() : '';
+    switchTab('tracking');
+    if (val && document.getElementById('trackingCodeInput')) {
+      document.getElementById('trackingCodeInput').value = val;
+    }
+    if (document.getElementById('trackingPasswordInput')) {
+      document.getElementById('trackingPasswordInput').focus();
+    }
+  }
+
+  // 3. ฟังก์ชันยืนยันอีเมล Admin หน้า Registry
+  function verifyAdminEmail() {
+    const emailEl = document.getElementById('registryAdminEmailInput');
+    const errBox = document.getElementById('registryAuthError');
+    const lockBox = document.getElementById('registryLockBox');
+    const mainContent = document.getElementById('registryMainContent');
+
+    if (!emailEl) return;
+    const emailInput = emailEl.value.trim().toLowerCase();
+
+    if (ADMIN_EMAILS.includes(emailInput)) {
+      if (errBox) errBox.classList.add('hidden');
+      if (lockBox) lockBox.classList.add('hidden');
+      if (mainContent) mainContent.classList.remove('hidden');
+    } else {
+      if (errBox) {
+        errBox.innerText = '❌ อีเมลนี้ไม่มีสิทธิ์เข้าถึงระบบผู้ดูแลระบบ';
+        errBox.classList.remove('hidden');
       }
     }
+  }
 
-    // ฟังก์ชัน Reset การเข้าสู่ระบบเมื่อเปลี่ยนหน้า
-    function resetRegistryAuth() {
-      const lockBox = document.getElementById('registryLockBox');
-      const mainContent = document.getElementById('registryMainContent');
-      const emailInput = document.getElementById('registryAdminEmailInput');
-      const errBox = document.getElementById('registryAuthError');
+  // 4. ฟังก์ชัน ล็อกหน้า Registry คืนค่าเดิม
+  function resetRegistryAuth() {
+    const lockBox = document.getElementById('registryLockBox');
+    const mainContent = document.getElementById('registryMainContent');
+    const emailInput = document.getElementById('registryAdminEmailInput');
+    const errBox = document.getElementById('registryAuthError');
 
-      if (lockBox && mainContent) {
-        lockBox.classList.remove('hidden');
-        mainContent.classList.add('hidden');
-        if (emailInput) emailInput.value = '';
-        if (errBox) errBox.classList.add('hidden');
-      }
+    if (lockBox && mainContent) {
+      lockBox.classList.remove('hidden');
+      mainContent.classList.add('hidden');
+      if (emailInput) emailInput.value = '';
+      if (errBox) errBox.classList.add('hidden');
     }
+  }
 
+  // 5. ฟังก์ชันเปิด-ปิด Modal ตัวอย่าง COA/COE
+  const COA_FILE_URL = '9. แบบฟอร์มเอกสารรับรอง (COA) - Thai (Edit_Version 1.0.1_).pdf#toolbar=0';
+  const COE_FILE_URL = '17.1 แบบฟอร์มเอกสารรับรอง (COE) - Thai (Edit 2_Version 1.0.1_17.07.2569)-no highlight.pdf#toolbar=0';
+
+  function openCoaModal() {
+    const modal = document.getElementById('coaModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+      switchPdfView('coa');
+    }
+  }
+
+  function closeCoaModal() {
+    const modal = document.getElementById('coaModal');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function switchPdfView(type) {
+    const iframe = document.getElementById('pdfViewerIframe');
+    const btnCoa = document.getElementById('btnCoaTab');
+    const btnCoe = document.getElementById('btnCoeTab');
+
+    if (!iframe) return;
+
+    if (type === 'coa') {
+      iframe.src = COA_FILE_URL;
+      if (btnCoa) btnCoa.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition bg-emerald-700 text-white shadow-sm';
+      if (btnCoe) btnCoe.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900';
+    } else {
+      iframe.src = COE_FILE_URL;
+      if (btnCoe) btnCoe.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition bg-blue-600 text-white shadow-sm';
+      if (btnCoa) btnCoa.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 hover:text-slate-900';
+    }
+  }
+
+  function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.classList.toggle('hidden');
+  }
+    
     function toggleMobileMenu() {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     }
