@@ -556,14 +556,16 @@
     </section>
 
     <!-- TAB 2: TRACKING -->
-    <section id="tab-tracking" class="hidden space-y-6">
-      <div class="text-center space-y-2">
-        <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-300">
-          🛡️ ระบบตรวจสอบสถานะโครงการ
-        </span>
-        <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ติดตามสถานะโครงการและการประเมินจริยธรรม</h2>
-        <p class="text-xs text-slate-500">กรุณากรอกรหัสโครงการ/ชื่อผู้วิจัย พร้อมรหัสผ่านส่วนตัวเพื่อเข้าดูข้อมูล</p>
-      </div>
+<section id="tab-tracking" class="hidden space-y-6">
+  <!-- ครอบเนื้อหาทั้งหมดของ Tab Tracking เพื่อให้สลับรีเซ็ตได้ง่าย -->
+  <div id="trackingMainContent" class="space-y-6">
+    <div class="text-center space-y-2">
+      <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-300">
+        🛡️ ระบบตรวจสอบสถานะโครงการ
+      </span>
+      <h2 class="text-2xl font-extrabold text-slate-900 font-heading">ติดตามสถานะโครงการและการประเมินจริยธรรม</h2>
+      <p class="text-xs text-slate-500">กรุณากรอกรหัสโครงการ/ชื่อผู้วิจัย พร้อมรหัสผ่านส่วนตัวเพื่อเข้าดูข้อมูล</p>
+    </div>
 
       <!-- ฟอร์มกรอกรหัสผ่าน -->
       <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-sm max-w-2xl mx-auto space-y-4">
@@ -1589,10 +1591,10 @@
     'ec-office@nmu.ac.th'
   ];
 
-  // 1. ฟังก์ชันสลับ Tab หน้าเว็บ
+ // 1. ฟังก์ชันสลับ Tab หน้าเว็บ
   function switchTab(tabId) {
     const tabs = ['home', 'tracking', 'submission', 'forms', 'registry', 'drive', 'security'];
-    
+
     tabs.forEach(t => {
       const el = document.getElementById(`tab-${t}`);
       const nav = document.getElementById(`nav-${t}`);
@@ -1608,10 +1610,28 @@
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu) mobileMenu.classList.add('hidden');
 
-    // 🔒 หากสลับไปหน้าอื่นที่ไม่ใช่ registry ให้ Reset หน้าทะเบียนประวัติทันที
+    // 🔒 สลับไปหน้าอื่น ปิดและ Reset ข้อมูลของหน้า Registry
     if (tabId !== 'registry') {
       resetRegistryAuth();
     }
+
+    // 🔒 สลับไปหน้าอื่น เคลียร์ช่องกรอก/ผลลัพธ์ของหน้า Tracking
+    if (tabId !== 'tracking') {
+      resetTrackingForm();
+    }
+  }
+
+  // ฟังก์ชันเคลียร์ค่าหน้า Tracking (อย่าลืมเพิ่มฟังก์ชันนี้ไว้ในสคริปต์ด้วยครับ)
+  function resetTrackingForm() {
+    const codeInput = document.getElementById('trackingCodeInput');
+    const pwdInput = document.getElementById('trackingPasswordInput');
+    const errBox = document.getElementById('trackingAuthError');
+    const resultBox = document.getElementById('trackingResultBox');
+
+    if (codeInput) codeInput.value = '';
+    if (pwdInput) pwdInput.value = '';
+    if (errBox) errBox.classList.add('hidden');
+    if (resultBox) resultBox.classList.add('hidden');
   }
 
   // 2. ฟังก์ชันกดตรวจสอบสถานะจากหน้าแรก
