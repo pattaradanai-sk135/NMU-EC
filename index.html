@@ -391,50 +391,69 @@
           </a>
         </div>
 
-        <!-- ฝั่งขวา: ช่องทางติดต่อสำนักงาน -->
-        <div class="bg-emerald-900 rounded-3xl p-6 text-white shadow-sm flex flex-col justify-between space-y-4 border border-emerald-800">
+        <div class="bg-gradient-to-br from-slate-50 via-emerald-50/30 to-slate-100 rounded-3xl p-6 border border-emerald-100 shadow-sm flex flex-col justify-between space-y-4">
           <div>
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-emerald-900 block">⏰ เวลาการประชุม</span>
-              <p class="text-slate-600 text-[11px]">09.30 – 12.00 น. จัดขึ้นเดือนละ 1 ครั้งตามปฏิทิน</p>
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-3 border-b border-emerald-100/80 pb-3">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-xs">📋</div>
+                <h3 class="font-bold text-slate-900 text-base">ขั้นตอนและข้อกำหนดการเสนอโครงร่างวิจัย</h3>
+              </div>
+              <span class="text-xs text-emerald-800 font-semibold bg-emerald-100/80 px-2.5 py-1 rounded-lg border border-emerald-200">Full Board Review</span>
             </div>
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-emerald-900 block">🏢 สถานที่ประชุม</span>
-              <p class="text-slate-600 text-[11px]">ห้องประชุม สนธ. ชั้น 6 อาคารสารพัดช่าง หรือ Cisco Webex</p>
-            </div>
-            <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
-              <span class="font-bold text-rose-800 block">📝 เกณฑ์การส่งเอกสาร</span>
-              <p class="text-slate-600 text-[11px]">ล่วงหน้าก่อนวันประชุมไม่น้อยกว่า 15 วันทำการ</p>
-            </div>
-          </div>
 
-          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-2">
-            <span class="font-bold text-slate-900 block">เกณฑ์การพิจารณาและส่งเอกสาร:</span>
-            <ul class="list-disc list-inside space-y-1 text-slate-600 text-[11px] leading-relaxed">
-              <li>นักวิจัยจัดส่งเอกสารโครงร่างวิจัย (แบบเสนอ NMU-IRB-01, PIS, ICF) ผ่านระบบออนไลน์ของมหาวิทยาลัย</li>
-              <li>เอกสารที่ส่งหลังวันปิดรับข้อเสนอ จะถูกนำเสนอในรอบการประชุมประจำเดือนถัดไปโดยอัตโนมัติ</li>
-              <li>การพิจารณาแบบยกเว้น (Exempt) และแบบเร็ว (Expedited) ดำเนินการตลอดทั้งเดือนโดยไม่ต้องรอรอบประชุม</li>
-            </ul>
+            <!-- Cards Group 1: ข้อมูลการประชุม -->
+            <div class="grid grid-cols-1 gap-2.5 mb-4">
+              <!-- เวลาการประชุม -->
+              <div class="p-3 bg-white/90 rounded-2xl border border-slate-200/90 shadow-xs hover:border-emerald-300 transition flex items-start gap-3">
+                <div class="p-2 rounded-xl bg-emerald-50 text-emerald-700 text-base">⏰</div>
+                <div>
+                  <h4 class="font-bold text-slate-800 text-xs">เวลาการประชุม</h4>
+                  <p class="text-[11px] text-slate-600 font-medium">09.30 - 12.00 น. จัดขึ้นเดือนละ 1 ครั้งตามปฏิทิน</p>
+                </div>
+              </div>
+
+              <!-- สถานที่ประชุม -->
+              <div class="p-3 bg-white/90 rounded-2xl border border-slate-200/90 shadow-xs hover:border-emerald-300 transition flex items-start gap-3">
+                <div class="p-2 rounded-xl bg-emerald-50 text-emerald-700 text-base">🏢</div>
+                <div>
+                  <h4 class="font-bold text-slate-800 text-xs">สถานที่ประชุม</h4>
+                  <p class="text-[11px] text-slate-600 font-medium">ห้องประชุมสำนักงานอธิการบดี</p>
+                </div>
+              </div>
+
+              <!-- เกณฑ์การส่งเอกสาร -->
+              <div class="p-3 bg-white/90 rounded-2xl border border-slate-200/90 shadow-xs hover:border-emerald-300 transition flex items-start gap-3">
+                <div class="p-2 rounded-xl bg-amber-50 text-amber-700 text-base">📝</div>
+                <div>
+                  <h4 class="font-bold text-slate-800 text-xs">เกณฑ์การส่งเอกสาร</h4>
+                  <p class="text-[11px] text-amber-900 font-semibold">ล่วงหน้าก่อนวันประชุมไม่น้อยกว่า 15 วันทำการ</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Group 2: เกณฑ์การพิจารณาและส่งเอกสาร -->
+            <div class="p-3.5 bg-white/80 rounded-2xl border border-emerald-200/80 shadow-xs space-y-1.5">
+              <h4 class="font-bold text-emerald-950 text-xs flex items-center gap-1.5 border-b border-emerald-100 pb-1.5">
+                <span>💡</span> เกณฑ์การพิจารณาและส่งเอกสาร
+              </h4>
+              <ul class="text-[11px] text-slate-600 space-y-1 pl-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-600 font-bold">•</span>
+                  <span>นักวิจัยจัดส่งเอกสารโครงร่างวิจัย (แบบเสนอ NMU IRB-01, PIS, ICF) ผ่านระบบออนไลน์ของมหาวิทยาลัย</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-600 font-bold">•</span>
+                  <span>เอกสารที่ส่งหลังวันปิดรับข้อเสนอ จะถูกนำเสนอในรอบการประชุมประจำเดือนถัดไปโดยอัตโนมัติ</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-600 font-bold">•</span>
+                  <span>การพิจารณาแบบยกเว้น (Exempt) และแบบเร็ว (Expedited) ดำเนินการตลอดทั้งเดือนโดยไม่ต้องรอรอบประชุม</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-
-          <div class="space-y-3 pt-2">
-            <div class="p-3.5 bg-emerald-800/50 rounded-2xl border border-emerald-700/60 backdrop-blur-xs">
-              <div class="text-[11px] text-emerald-300 font-bold mb-0.5">อีเมลติดต่อทางการ</div>
-              <div class="text-base font-mono font-bold text-amber-300">ec.nmu@nmu.ac.th</div>
-              <div class="text-[10px] text-emerald-200/80 mt-0.5">ตอบกลับและส่งหนังสือแจ้งเตือนนักวิจัย</div>
-            </div>
-
-            <div class="p-3.5 bg-emerald-800/50 rounded-2xl border border-emerald-700/60 backdrop-blur-xs">
-              <div class="text-[11px] text-emerald-300 font-bold mb-0.5">โทรศัพท์สำนักงาน</div>
-              <div class="text-base font-mono font-bold text-white">02-244-3928 / 064-653-8296</div>
-              <div class="text-[10px] text-emerald-200/80 mt-0.5">จันทร์ - ศุกร์: 08.30 - 16.30 น.</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
 
       <!-- SECTION 2: ส่วนงานที่รองรับการยื่นคำขอ (กว้างเต็มแถว แถวละ 3-4 กล่อง อ่านง่ายพอดี) -->
       <div class="bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm space-y-4">
