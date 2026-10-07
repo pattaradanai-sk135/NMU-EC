@@ -2288,52 +2288,124 @@ function switchPdfView(type) {
   </div>
 </div>
 
-  <!-- ==================== MODAL POPUP ตารางประชุมฉบับเต็ม ==================== -->
+ <!-- ==================== MODAL POPUP ตารางประชุมฉบับเต็ม (ตามเอกสาร Version 2.1) ==================== -->
   <div id="calendar-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4 transition-opacity">
-    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 space-y-4 max-h-[90vh] flex flex-col">
+    <div class="bg-white rounded-3xl max-w-3xl w-full p-6 shadow-2xl border border-slate-100 space-y-4 max-h-[90vh] flex flex-col">
       
       <!-- Modal Header -->
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-base">📅</div>
+          <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-lg shadow-xs">📅</div>
           <div>
-            <h3 class="font-bold text-slate-900 text-base">ตารางการประชุมคณะกรรมการ EC ประจำปี 2569</h3>
-            <p class="text-xs text-slate-500">สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช (รวม 13 ครั้ง)</p>
+            <h3 class="font-bold text-slate-900 text-base sm:text-lg">ตารางการประชุมคณะกรรมการ EC ประจำปี 2569</h3>
+            <p class="text-xs text-slate-500">สำนักงานอธิการบดี มหาวิทยาลัยนวมินทราธิราช (ตามประกาศ Version 2.1)</p>
           </div>
         </div>
-        <button onclick="closeCalendarModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition flex items-center justify-center font-bold text-sm">✕</button>
+        <button onclick="closeCalendarModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
       </div>
 
-      <!-- Modal Body (ใส่รูปภาพตาราง หรือ รายการตารางทั้งหมด) -->
-      <div class="overflow-y-auto space-y-3 pr-1 text-xs text-slate-700">
-        <div class="p-3 bg-amber-50/60 rounded-xl border border-amber-200/60 text-amber-950 text-[11px] font-medium">
-          📌 หมายเหตุ: วันปิดรับวาระคือวันสุดท้ายของการยื่นเอกสารเสนอโครงร่างวิจัยล่วงหน้า
+      <!-- Modal Body (ตารางข้อมูลตรงตามเอกสาร) -->
+      <div class="space-y-3 text-xs text-slate-700">
+        <div class="p-3 bg-amber-50/80 rounded-xl border border-amber-200/80 text-amber-950 text-[11px] font-medium flex items-center gap-2">
+          <span>📌</span>
+          <span><strong>หมายเหตุ:</strong> ตั้งแต่ ก.ค. 2569 เป็นต้นไป ปรับวันปิดรับวาระเป็นทุกวันจันทร์ สัปดาห์ที่ 1 ของเดือน</span>
         </div>
 
-        <!-- ตัวอย่างตารางรายการประชุม -->
-        <div class="border border-slate-200 rounded-2xl overflow-hidden">
+        <div class="border border-slate-200 rounded-2xl overflow-hidden max-h-[55vh] overflow-y-auto shadow-inner">
           <table class="w-full text-left border-collapse">
-            <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+            <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200 sticky top-0 z-10">
               <tr>
-                <th class="p-3">ครั้งที่</th>
-                <th class="p-3">วันประชุม</th>
+                <th class="p-3 text-center w-24">ครั้งที่</th>
                 <th class="p-3">วันปิดรับวาระ</th>
-                <th class="p-3 text-center">สถานะ</th>
+                <th class="p-3">วันประชุม</th>
+                <th class="p-3 text-center w-24">สถานะ</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100 text-[11px]">
               <tr>
-                <td class="p-3 font-bold text-slate-900">1/2569</td>
-                <td class="p-3">วันพุธที่ 21 มกราคม 2569</td>
-                <td class="p-3 text-rose-600 font-medium">7 ธันวาคม 2568</td>
+                <td class="p-3 text-center font-bold text-slate-900">1/2569</td>
+                <td class="p-3 text-slate-500">7 มกราคม 2569</td>
+                <td class="p-3 font-medium">21 มกราคม 2569</td>
                 <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
               </tr>
-              <!-- สามารถเพิ่มรายการประชุมครั้งที่ 2 - 13 ตามจริงได้ที่นี่ -->
-              <tr class="bg-amber-50/50">
-                <td class="p-3 font-bold text-amber-950">11/2569</td>
-                <td class="p-3 font-bold text-amber-950">วันพุธที่ 21 ตุลาคม 2569</td>
-                <td class="p-3 text-rose-600 font-bold">7 กันยายน 2569</td>
-                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-bold text-[10px]">รอบปัจจุบัน</span></td>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">2/2569</td>
+                <td class="p-3 text-slate-500">4 กุมภาพันธ์ 2569</td>
+                <td class="p-3 font-medium">18 กุมภาพันธ์ 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">3/2569</td>
+                <td class="p-3 text-slate-500">4 กุมภาพันธ์ 2569</td>
+                <td class="p-3 font-medium">23 กุมภาพันธ์ 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">4/2569</td>
+                <td class="p-3 text-slate-500">4 มีนาคม 2569</td>
+                <td class="p-3 font-medium">18 มีนาคม 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">5/2569</td>
+                <td class="p-3 text-slate-500">1 เมษายน 2569</td>
+                <td class="p-3 font-medium text-amber-800">อังคารที่ 21 เมษายน 2569 <span class="text-[10px] text-slate-400 block">(เลื่อนจาก 15 เม.ย.)</span></td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
+              </tr>
+              <tr class="bg-rose-50/50">
+                <td class="p-3 text-center font-bold text-rose-800">-</td>
+                <td class="p-3 text-rose-600">6 พฤษภาคม 2569</td>
+                <td class="p-3 font-medium text-rose-700">20 พฤษภาคม 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 font-bold text-[10px]">งดประชุม</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">6/2569</td>
+                <td class="p-3 text-slate-500">3 มิถุนายน 2569</td>
+                <td class="p-3 font-medium">17 มิถุนายน 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">7/2569</td>
+                <td class="p-3 text-slate-500">3 มิถุนายน 2569</td>
+                <td class="p-3 font-medium">25 มิถุนายน 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">8/2569</td>
+                <td class="p-3 text-slate-500">1 กรกฎาคม 2569</td>
+                <td class="p-3 font-medium text-amber-800">ศุกร์ที่ 24 กรกฎาคม 2569 <span class="text-[10px] text-slate-400 block">(เลื่อนจาก 15 ก.ค.)</span></td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">9/2569</td>
+                <td class="p-3 text-slate-500">6 กรกฎาคม 2569</td>
+                <td class="p-3 font-medium text-amber-800">จันทร์ที่ 17 สิงหาคม 2569 <span class="text-[10px] text-slate-400 block">(เลื่อนจาก 19 ส.ค.)</span></td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">10/2569</td>
+                <td class="p-3 text-slate-500">3 สิงหาคม 2569</td>
+                <td class="p-3 font-medium">16 กันยายน 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[10px]">เสร็จสิ้น</span></td>
+              </tr>
+              <!-- รอบปัจจุบัน -->
+              <tr class="bg-amber-50/70 font-bold">
+                <td class="p-3 text-center text-amber-950">11/2569</td>
+                <td class="p-3 text-rose-600">7 กันยายน 2569</td>
+                <td class="p-3 text-amber-950">21 ตุลาคม 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-bold text-[10px] shadow-xs">รอบปัจจุบัน</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">12/2569</td>
+                <td class="p-3 text-slate-600 font-semibold">5 ตุลาคม 2569</td>
+                <td class="p-3 font-semibold">18 พฤศจิกายน 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">เปิดรับ</span></td>
+              </tr>
+              <tr>
+                <td class="p-3 text-center font-bold text-slate-900">13/2569</td>
+                <td class="p-3 text-slate-600 font-semibold">2 พฤศจิกายน 2569</td>
+                <td class="p-3 font-semibold">16 ธันวาคม 2569</td>
+                <td class="p-3 text-center"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold text-[10px]">รอบสิ้นปี</span></td>
               </tr>
             </tbody>
           </table>
@@ -2341,8 +2413,8 @@ function switchPdfView(type) {
       </div>
 
       <!-- Modal Footer -->
-      <div class="pt-2 border-t border-slate-100 flex justify-end gap-2">
-        <button onclick="closeCalendarModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition">
+      <div class="pt-2 border-t border-slate-100 flex justify-end">
+        <button onclick="closeCalendarModal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition cursor-pointer">
           ปิดหน้าต่าง
         </button>
       </div>
@@ -2350,7 +2422,7 @@ function switchPdfView(type) {
     </div>
   </div>
 
-  <!-- JavaScript สำหรับควบคุม Modal -->
+  <!-- JavaScript ควบคุม Modal -->
   <script>
     function openCalendarModal() {
       document.getElementById('calendar-modal').classList.remove('hidden');
