@@ -332,40 +332,40 @@
   </div>
 </section>
       
-      <!-- SECTION 1: ปฏิทินการประชุม & ช่องทางติดต่อ (แบ่ง 2 คอลัมน์กว้างๆ) -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- SECTION: ปฏิทินการประชุม & ช่องทางติดต่อ (จัดวางคู่กัน 2 คอลัมน์) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
         
-        <!-- กล่องที่ 1: ปฏิทินการประชุมคณะกรรมการ -->
-        <div class="bg-gradient-to-br from-white to-amber-50/50 rounded-3xl p-6 border border-amber-200 shadow-sm space-y-4 flex flex-col justify-between">
+        <!-- ฝั่งซ้าย: ปฏิทินการประชุมคณะกรรมการ -->
+        <div class="bg-gradient-to-br from-white to-amber-50/40 rounded-3xl p-6 border border-amber-200/80 shadow-sm flex flex-col justify-between space-y-4">
           <div>
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-2">
-                <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold">📅</div>
+            <div class="flex items-center justify-between mb-3 border-b border-amber-100 pb-3">
+              <div class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-lg shadow-xs">📅</div>
                 <div>
                   <h3 class="font-bold text-slate-900 text-base">ปฏิทินการประชุมคณะกรรมการ</h3>
-                  <p class="text-[11px] text-slate-500">สำนักงานอธิการบดี พ.ศ. ๒๕๖๙</p>
+                  <p class="text-xs text-slate-500">สำนักงานอธิการบดี พ.ศ. ๒๕๖๙</p>
                 </div>
               </div>
-              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-950 font-bold text-[10px] border border-amber-300">วาระ 6.1</span>
+              <span class="px-2.5 py-1 rounded-lg bg-amber-100 text-amber-950 font-bold text-[10px] border border-amber-300">วาระ 6.1</span>
             </div>
 
-            <div class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-200 text-[11px] text-emerald-950 mb-3">
-              <span class="font-bold block text-emerald-900">อ้างอิงกำหนดการประชุมทางการ:</span>
+            <div class="p-2.5 bg-emerald-50/80 rounded-xl border border-emerald-200/80 text-[11px] text-emerald-950 mb-3.5">
+              <span class="font-bold block text-emerald-900">📌 อ้างอิงกำหนดการประชุมทางการ:</span>
             </div>
 
             <div class="space-y-2.5 text-xs">
               <!-- Meeting 11/2569 -->
-              <div class="p-3 bg-white rounded-2xl border-2 border-amber-300 shadow-xs">
+              <div class="p-3 bg-white rounded-2xl border-2 border-amber-400 shadow-xs hover:border-amber-500 transition">
                 <div class="flex items-center justify-between mb-1">
                   <span class="font-bold text-emerald-900">การประชุม คกก. EC ครั้งที่ 11/2569</span>
-                  <span class="px-2 py-0.5 rounded-full bg-amber-500 text-slate-900 font-bold text-[10px]">รอบปัจจุบัน</span>
+                  <span class="px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-bold text-[10px]">รอบปัจจุบัน</span>
                 </div>
                 <div class="font-bold text-slate-900 text-sm">วันพุธที่ 21 ตุลาคม 2569</div>
                 <div class="text-[11px] text-rose-600 font-semibold mt-0.5">ปิดรับวาระ: วันจันทร์ที่ 7 กันยายน 2569</div>
               </div>
 
               <!-- Meeting 12/2569 -->
-              <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-xs">
+              <div class="p-3 bg-white/90 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-300 transition">
                 <div class="flex items-center justify-between mb-1">
                   <span class="font-bold text-slate-800">การประชุม คกก. EC ครั้งที่ 12/2569</span>
                   <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">เปิดรับ</span>
@@ -375,7 +375,7 @@
               </div>
 
               <!-- Meeting 13/2569 -->
-              <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-xs">
+              <div class="p-3 bg-white/90 rounded-2xl border border-slate-200 shadow-xs hover:border-emerald-300 transition">
                 <div class="flex items-center justify-between mb-1">
                   <span class="font-bold text-slate-800">การประชุม คกก. EC ครั้งที่ 13/2569</span>
                   <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold text-[10px]">รอบสิ้นปี</span>
@@ -386,33 +386,21 @@
             </div>
           </div>
 
-          <a href="#" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-xs rounded-2xl transition text-center block shadow-sm">
+          <a href="#" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-2xl transition text-center block shadow-sm mt-2">
             📄 ดูตารางประชุมฉบับเต็มทั้งปี 2569 (13 ครั้ง) ↗
           </a>
         </div>
 
-         <!-- Committee Information & Workflow -->
-        <div class="lg:col-span-2 bg-white rounded-3xl p-6 border border-emerald-100 shadow-sm space-y-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="font-bold text-slate-900 text-base">
-                ขั้นตอนและข้อกำหนดการเสนอโครงร่างวิจัย (Full Board Review)
-              </h3>
-              <p class="text-xs text-slate-500">
-                ตามมติการประชุม คกก. EC 
-              </p>
-            </div>
-            <span class="text-2xl">🏛️</span>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+        <!-- ฝั่งขวา: ช่องทางติดต่อสำนักงาน -->
+        <div class="bg-emerald-900 rounded-3xl p-6 text-white shadow-sm flex flex-col justify-between space-y-4 border border-emerald-800">
+          <div>
             <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
               <span class="font-bold text-emerald-900 block">⏰ เวลาการประชุม</span>
               <p class="text-slate-600 text-[11px]">09.30 – 12.00 น. จัดขึ้นเดือนละ 1 ครั้งตามปฏิทิน</p>
             </div>
             <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
               <span class="font-bold text-emerald-900 block">🏢 สถานที่ประชุม</span>
-              <p class="text-slate-600 text-[11px]">ห้องประชุม สำนักงานอธิการบดี</p>
+              <p class="text-slate-600 text-[11px]">ห้องประชุม สนธ. ชั้น 6 อาคารสารพัดช่าง หรือ Cisco Webex</p>
             </div>
             <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 space-y-1">
               <span class="font-bold text-rose-800 block">📝 เกณฑ์การส่งเอกสาร</span>
@@ -429,6 +417,23 @@
             </ul>
           </div>
         </div>
+      </div>
+
+          <div class="space-y-3 pt-2">
+            <div class="p-3.5 bg-emerald-800/50 rounded-2xl border border-emerald-700/60 backdrop-blur-xs">
+              <div class="text-[11px] text-emerald-300 font-bold mb-0.5">อีเมลติดต่อทางการ</div>
+              <div class="text-base font-mono font-bold text-amber-300">ec.nmu@nmu.ac.th</div>
+              <div class="text-[10px] text-emerald-200/80 mt-0.5">ตอบกลับและส่งหนังสือแจ้งเตือนนักวิจัย</div>
+            </div>
+
+            <div class="p-3.5 bg-emerald-800/50 rounded-2xl border border-emerald-700/60 backdrop-blur-xs">
+              <div class="text-[11px] text-emerald-300 font-bold mb-0.5">โทรศัพท์สำนักงาน</div>
+              <div class="text-base font-mono font-bold text-white">02-244-3928 / 064-653-8296</div>
+              <div class="text-[10px] text-emerald-200/80 mt-0.5">จันทร์ - ศุกร์: 08.30 - 16.30 น.</div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- SECTION 2: ส่วนงานที่รองรับการยื่นคำขอ (กว้างเต็มแถว แถวละ 3-4 กล่อง อ่านง่ายพอดี) -->
