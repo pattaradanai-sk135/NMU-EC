@@ -1482,6 +1482,31 @@
 
       </div>
     </div>
+
+<!-- ไฟล์ข้อปฏิบัติสำหรับผู้วิจัย (Version 2) -->
+      <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-400 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl shrink-0">📜</span>
+          <div class="space-y-1">
+            <span class="font-bold text-slate-900 block text-xs sm:text-sm">
+              ข้อปฏิบัติสำหรับผู้วิจัยในโครงการที่ผ่านการรับรองจริยธรรมการวิจัยในคน (Version 2)
+            </span>
+            <p class="text-slate-600 text-[11px] font-medium">
+              ตามมติที่ประชุมคณะกรรมการพิจารณาจริยธรรมการวิจัยในคน สำนักงานอธิการบดี ครั้งที่ 7/2569 (25 มิถุนายน 2569)
+            </p>
+            <div class="flex flex-wrap items-center gap-2 text-[10px] text-slate-500 pt-0.5">
+              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">ประกาศล่าสุด</span>
+              <span>• มติครั้งที่ 7/2569</span>
+              <span class="text-amber-700 font-semibold">• 🔒 ไม่อนุญาตให้ดาวน์โหลด</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ปุ่มเปิดดูไฟล์ PDF -->
+        <button onclick="openLocalPdfModal('researcher-guidelines-v2.pdf')" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shrink-0 cursor-pointer shadow-xs">
+          เปิดดูไฟล์ PDF ↗
+        </button>
+      </div>
       
       <!-- SECTION C: SOP บทที่ 1-8 -->
       <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
@@ -2590,7 +2615,58 @@ function switchPdfView(type) {
     function closeCalendarModal() {
       document.getElementById('calendar-modal').classList.add('hidden');
     }
+ <!-- ==================== MODAL VIEWER: ไฟล์ PDF บน GITHUB ==================== -->
+  <div id="local-pdf-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4 transition-opacity">
+    <div class="bg-white rounded-3xl max-w-4xl w-full p-6 shadow-2xl border border-slate-100 space-y-4 max-h-[95vh] flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-lg shadow-xs">📜</div>
+          <div>
+            <h3 class="font-bold text-slate-900 text-base">ข้อปฏิบัติสำหรับผู้วิจัยในโครงการที่ผ่านการรับรองจริยธรรมการวิจัยในคน (Version 2)</h3>
+            <p class="text-xs text-slate-500">มติที่ประชุมครั้งที่ 7/2569 (🔒 อ่านออนไลน์เท่านั้น)</p>
+          </div>
+        </div>
+        <button onclick="closeLocalPdfModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
+      </div>
+
+      <!-- Modal Body (PDF Viewer) -->
+      <div class="relative w-full h-[65vh] rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-inner">
+        <!-- Overlay ชั้นหน้า ป้องกันคลิกขวา -->
+        <div class="absolute inset-0 z-10 pointer-events-none" oncontextmenu="return false;"></div>
+        
+        <iframe 
+          id="local-pdf-frame"
+          src="" 
+          class="w-full h-full border-0">
+        </iframe>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[11px] text-slate-400">📌 สำนักงานคณะกรรมการจริยธรรมการวิจัยในคน (NMU-EC)</span>
+        <button onclick="closeLocalPdfModal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition cursor-pointer">
+          ปิดหน้าต่าง
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript ควบคุมการเปิดไฟล์ PDF บน GitHub -->
+  <script>
+    function openLocalPdfModal(fileName) {
+      // โหลดไฟล์ PDF พร้อมซ่อน Toolbar / Printing
+      const pdfPath = './' + fileName + '#toolbar=0&navpanes=0&scrollbar=1';
+      document.getElementById('local-pdf-frame').src = pdfPath;
+      document.getElementById('local-pdf-modal').classList.remove('hidden');
+    }
+
+    function closeLocalPdfModal() {
+      document.getElementById('local-pdf-modal').classList.add('hidden');
+      document.getElementById('local-pdf-frame').src = '';
+    }
   </script>
-  
 </body>
 </html>
