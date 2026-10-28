@@ -1483,30 +1483,67 @@
       </div>
     </div>
 
-<!-- ไฟล์ข้อปฏิบัติสำหรับผู้วิจัย (Version 2) -->
-      <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-400 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="flex items-start gap-3">
-          <span class="text-2xl shrink-0">📜</span>
-          <div class="space-y-1">
-            <span class="font-bold text-slate-900 block text-xs sm:text-sm">
-              ข้อปฏิบัติสำหรับผู้วิจัยในโครงการที่ผ่านการรับรองจริยธรรมการวิจัยในคน (Version 2)
-            </span>
-            <p class="text-slate-600 text-[11px] font-medium">
-              ตามมติที่ประชุมคณะกรรมการพิจารณาจริยธรรมการวิจัยในคน สำนักงานอธิการบดี ครั้งที่ 7/2569 (25 มิถุนายน 2569)
-            </p>
-            <div class="flex flex-wrap items-center gap-2 text-[10px] text-slate-500 pt-0.5">
-              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">ประกาศล่าสุด</span>
-              <span>• มติครั้งที่ 7/2569</span>
-              <span class="text-amber-700 font-semibold">• 🔒 ไม่อนุญาตให้ดาวน์โหลด</span>
+<!-- SECTION: ข้อปฏิบัติสำหรับผู้วิจัย (สไตล์กล่องใหญ่ครอบเหมือนระเบียบมหาวิทยาลัย) -->
+      <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-sm space-y-4 my-6">
+        
+        <!-- Header กล่องใหญ่ -->
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-2xl shrink-0 shadow-xs">
+              📜
+            </div>
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-base sm:text-lg">
+                ข้อปฏิบัติสำหรับผู้วิจัยในโครงการที่ผ่านการรับรองจริยธรรมการวิจัยในคน
+              </h3>
+              <p class="text-xs text-slate-500">
+                แนวทางความรับผิดชอบและขั้นตอนการดำเนินงานหลังได้รับการรับรอง
+              </p>
             </div>
           </div>
+          <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-xs border border-emerald-200 shrink-0">
+            1 ฉบับ
+          </span>
         </div>
-        
-        <!-- ปุ่มเปิดดูไฟล์ PDF (บรรทัด 1506) -->
-<button onclick="openNoticeModal()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shrink-0 cursor-pointer shadow-xs">
-  เปิดดูไฟล์ PDF ↗
-</button>
+
+        <!-- รายการเอกสารย่อยภายในกล่อง -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-400 transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shrink-0 shadow-2xs mt-0.5">
+              📜
+            </div>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px]">
+                  Version 2 (ล่าสุด)
+                </span>
+                <span class="text-[11px] text-slate-400">• มติครั้งที่ 7/2569</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">
+                ข้อปฏิบัติสำหรับผู้วิจัยในโครงการที่ผ่านการรับรองจริยธรรมการวิจัยในคน (Version 2)
+              </h4>
+              <p class="text-slate-500 text-[11px]">
+                ตามมติที่ประชุมคณะกรรมการพิจารณาจริยธรรมการวิจัยในคน สำนักงานอธิการบดี ครั้งที่ 7/2569 (25 มิถุนายน 2569)
+              </p>
+            </div>
+          </div>
+
+          <!-- ปุ่มเปิดไฟล์ PDF -->
+          <button onclick="viewResearcherGuidelines()" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shrink-0 cursor-pointer shadow-xs flex items-center justify-center gap-1.5 self-end sm:self-center">
+            <span>เปิดดูไฟล์ PDF</span>
+            <span>↗</span>
+          </button>
+        </div>
+
       </div>
+
+      <!-- สคริปต์เปิดไฟล์ PDF -->
+      <script>
+        function viewResearcherGuidelines() {
+          // เปิดไฟล์ PDF ที่อัปโหลดไว้บน GitHub Pages ในแท็บใหม่ทันที
+          window.open('./researcher-guidelines-v2.pdf', '_blank');
+        }
+      </script>
       
       <!-- SECTION C: SOP บทที่ 1-8 -->
       <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
