@@ -1401,100 +1401,108 @@
 
       </div>
 
-      <!-- SECTION B: ระเบียบมหาวิทยาลัยนวมินทราธิราช -->
-    <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-sm space-y-4">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-2xl shrink-0">📜</div>
-          <div>
-            <h3 class="font-bold text-slate-900 text-base sm:text-lg">ระเบียบมหาวิทยาลัยนวมินทราธิราช</h3>
-            <p class="text-xs text-slate-500">ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน</p>
+      <!-- SECTION B: ระเบียบมหาวิทยาลัยนวมินทราธิราช (ทั้ง 3 ฉบับ) -->
+      <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-sm space-y-4 my-6">
+        
+        <!-- Header กล่องใหญ่ -->
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-2xl shrink-0 shadow-xs">
+              📜
+            </div>
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-base sm:text-lg">
+                ระเบียบมหาวิทยาลัยนวมินทราธิราช
+              </h3>
+              <p class="text-xs text-slate-500">
+                ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน
+              </p>
+            </div>
           </div>
+          <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-xs border border-emerald-200 shrink-0">
+            3 ฉบับ
+          </span>
         </div>
-        <span class="px-3 py-1 bg-emerald-50 text-emerald-900 rounded-xl font-mono text-xs font-bold border border-emerald-200">
-          3 ฉบับ
-        </span>
-      </div>
 
-      <div class="space-y-3 pt-2">
-
-        <!-- รายการที่ 1: พ.ศ. 2558 -->
-        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-emerald-300 transition">
+        <!-- รายการที่ 1: ฉบับหลัก พ.ศ. 2558 -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-400 transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div class="flex items-start gap-3">
-            <div class="p-2.5 bg-white rounded-xl border border-slate-200 text-amber-800 text-xl font-bold shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shrink-0 shadow-2xs mt-0.5">
               📜
             </div>
             <div class="space-y-1">
               <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md">ฉบับหลัก</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px]">
+                  ฉบับหลัก
+                </span>
               </div>
-              <h4 class="text-xs font-bold text-slate-800">
+              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">
                 ระเบียบมหาวิทยาลัยนวมินทราธิราช ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน พ.ศ. ๒๕๕๘
               </h4>
-              <p class="text-[11px] text-slate-500">ประกาศ ณ วันที่ ๑๗ กันยายน พ.ศ. ๒๕๕๘]</p>
+              <p class="text-slate-500 text-[11px]">
+                ประกาศ ณ วันที่ ๑๗ กันยายน พ.ศ. ๒๕๕๘
+              </p>
             </div>
           </div>
-          <a 
-            href="./5. ระเบียบมหาวิทยาลัยนวมินทราธิราช ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน พ.ศ. 2558.PDF" 
-            target="_blank" 
-            class="w-full sm:w-auto px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-xs rounded-xl shadow-sm transition shrink-0 text-center flex items-center justify-center gap-1.5"
-          >
-            เปิดดูไฟล์ PDF ↗
-          </a>
+          <button onclick="openRegulationModal('v1')" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shrink-0 cursor-pointer shadow-xs flex items-center justify-center gap-1.5 self-end sm:self-center">
+            <span>เปิดดูไฟล์ PDF</span>
+            <span>↗</span>
+          </button>
         </div>
 
-        <!-- รายการที่ 2: ฉบับที่ 2 (พ.ศ. 2561) -->
-        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-emerald-300 transition">
+        <!-- รายการที่ 2: ฉบับที่ 2 พ.ศ. 2561 -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-400 transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div class="flex items-start gap-3">
-            <div class="p-2.5 bg-white rounded-xl border border-slate-200 text-amber-800 text-xl font-bold shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shrink-0 shadow-2xs mt-0.5">
               📜
             </div>
             <div class="space-y-1">
               <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-md">ฉบับที่ ๒</span>
+                <span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold text-[10px]">
+                  ฉบับที่ ๒
+                </span>
               </div>
-              <h4 class="text-xs font-bold text-slate-800">
+              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">
                 ระเบียบมหาวิทยาลัยนวมินทราธิราช ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน (ฉบับที่ ๒) พ.ศ. ๒๕๖๑
               </h4>
-              <p class="text-[11px] text-slate-500">ประกาศ ณ เดือนพฤษภาคม พ.ศ. ๒๕๖๑</p>
+              <p class="text-slate-500 text-[11px]">
+                ประกาศ ณ เดือนพฤษภาคม พ.ศ. ๒๕๖๑
+              </p>
             </div>
           </div>
-          <a 
-            href="./6. ระเบียบมหาวิทยาลัยนวมินทราธิราช ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน.pdf" 
-            target="_blank" 
-            class="w-full sm:w-auto px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-xs rounded-xl shadow-sm transition shrink-0 text-center flex items-center justify-center gap-1.5"
-          >
-            เปิดดูไฟล์ PDF ↗
-          </a>
+          <button onclick="openRegulationModal('v2')" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shrink-0 cursor-pointer shadow-xs flex items-center justify-center gap-1.5 self-end sm:self-center">
+            <span>เปิดดูไฟล์ PDF</span>
+            <span>↗</span>
+          </button>
         </div>
 
-        <!-- รายการที่ 3: ฉบับที่ 3 (พ.ศ. 2565) -->
-        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-emerald-300 transition">
+        <!-- รายการที่ 3: ฉบับที่ 3 พ.ศ. 2565 -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-400 transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div class="flex items-start gap-3">
-            <div class="p-2.5 bg-white rounded-xl border border-slate-200 text-amber-800 text-xl font-bold shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-lg shrink-0 shadow-2xs mt-0.5">
               📜
             </div>
             <div class="space-y-1">
               <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-md">ฉบับที่ ๓ (ล่าสุด)</span>
+                <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-bold text-[10px]">
+                  ฉบับที่ ๓ (ล่าสุด)
+                </span>
               </div>
-              <h4 class="text-xs font-bold text-slate-800">
+              <h4 class="font-bold text-slate-900 text-xs sm:text-sm">
                 ระเบียบมหาวิทยาลัยนวมินทราธิราช ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน (ฉบับที่ ๓) พ.ศ. ๒๕๖๕
               </h4>
-              <p class="text-[11px] text-slate-500">ประกาศ ณ เดือนมกราคม พ.ศ. ๒๕๖๕</p>
+              <p class="text-slate-500 text-[11px]">
+                ประกาศ ณ เดือนมกราคม พ.ศ. ๒๕๖๕
+              </p>
             </div>
           </div>
-          <a 
-            href="./7. ระเบียบมหาวิทยาลัยนวมินทราธิราช ว่าด้วยการดำเนินงานด้านจริยธรรมการวิจัยในคน2565.pdf" 
-            target="_blank" 
-            class="w-full sm:w-auto px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-xs rounded-xl shadow-sm transition shrink-0 text-center flex items-center justify-center gap-1.5"
-          >
-            เปิดดูไฟล์ PDF ↗
-          </a>
+          <button onclick="openRegulationModal('v3')" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shrink-0 cursor-pointer shadow-xs flex items-center justify-center gap-1.5 self-end sm:self-center">
+            <span>เปิดดูไฟล์ PDF</span>
+            <span>↗</span>
+          </button>
         </div>
 
       </div>
-    </div>
 
 <!-- SECTION: ข้อปฏิบัติสำหรับผู้วิจัย (สไตล์กล่องใหญ่ครอบเหมือนระเบียบมหาวิทยาลัย) -->
       <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-sm space-y-4 my-6">
@@ -2722,6 +2730,77 @@ function switchPdfView(type) {
     function closeOrderModal() {
       document.getElementById('order-pdf-modal').classList.add('hidden');
       document.getElementById('order-pdf-frame').src = '';
+    }
+  </script>
+
+  <!-- ==================== MODAL VIEWER: ระเบียบมหาวิทยาลัย ==================== -->
+  <div id="regulation-pdf-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4 transition-opacity">
+    <div class="bg-white rounded-3xl max-w-4xl w-full p-6 shadow-2xl border border-slate-100 space-y-4 max-h-[95vh] flex flex-col">
+      
+      <!-- Header Pop-up -->
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-lg shadow-xs">📜</div>
+          <div>
+            <h3 id="regulation-modal-title" class="font-bold text-slate-900 text-base">ระเบียบมหาวิทยาลัยนวมินทราธิราช</h3>
+            <p class="text-xs text-slate-500">ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน (🔒 อ่านออนไลน์เท่านั้น ไม่อนุญาตให้ดาวน์โหลด)</p>
+          </div>
+        </div>
+        <button onclick="closeRegulationModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
+      </div>
+
+      <!-- Viewer Container -->
+      <div class="relative w-full h-[65vh] rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-inner">
+        <!-- Overlay ชั้นหน้า ป้องกันการคลิกขวา -->
+        <div class="absolute inset-0 z-10 pointer-events-none" oncontextmenu="return false;"></div>
+        
+        <iframe 
+          id="regulation-pdf-frame"
+          src="" 
+          class="w-full h-full border-0">
+        </iframe>
+      </div>
+
+      <!-- Footer Pop-up -->
+      <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+        <span class="text-[11px] text-slate-400">📌 สำนักงานคณะกรรมการจริยธรรมการวิจัยในคน (NMU-EC)</span>
+        <button onclick="closeRegulationModal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition cursor-pointer">
+          ปิดหน้าต่าง
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript ควบคุมการดึงไฟล์ระเบียบมาแสดงใน Pop-up -->
+  <script>
+    function openRegulationModal(type) {
+      let fileName = '';
+      let title = '';
+
+      if (type === 'v1') {
+        fileName = '5. ระเบียบมหาวิทยาลัยนวมินทราธิราช ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน พ.ศ. ๒๕๕๘';
+        title = 'ระเบียบมหาวิทยาลัยนวมินทราธิราช พ.ศ. ๒๕๕๘ (ฉบับหลัก)';
+      } else if (type === 'v2') {
+        fileName = '6. ระเบียบมหาวิทยาลัยนวมินทราธิราช ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน (ฉบับที่ ๒) พ.ศ. ๒๕๖๑';
+        title = 'ระเบียบมหาวิทยาลัยนวมินทราธิราช (ฉบับที่ ๒) พ.ศ. ๒๕๖๑';
+      } else if (type === 'v3') {
+        fileName = '7. ระเบียบมหาวิทยาลัยนวมินทราธิราช ว่าด้วยการดำเนินการด้านจริยธรรมการวิจัยในคน (ฉบับที่ ๓) พ.ศ. ๒๕๖๕';
+        title = 'ระเบียบมหาวิทยาลัยนวมินทราธิราช (ฉบับที่ ๓) พ.ศ. ๒๕๖๕';
+      }
+
+      // ดึงไฟล์ผ่าน Google Docs Embed Viewer ซ่อนปุ่มดาวน์โหลด/พิมพ์
+      const rawPdfUrl = encodeURIComponent('https://pattaradanai-sk135.github.io/NMU-EC/' + fileName);
+      const viewerUrl = 'https://docs.google.com/viewer?url=' + rawPdfUrl + '&embedded=true';
+
+      document.getElementById('regulation-modal-title').textContent = title;
+      document.getElementById('regulation-pdf-frame').src = viewerUrl;
+      document.getElementById('regulation-pdf-modal').classList.remove('hidden');
+    }
+
+    function closeRegulationModal() {
+      document.getElementById('regulation-pdf-modal').classList.add('hidden');
+      document.getElementById('regulation-pdf-frame').src = '';
     }
   </script>
 
