@@ -1529,10 +1529,10 @@
           </div>
 
           <!-- ปุ่มเปิดไฟล์ PDF -->
-          <button onclick="viewResearcherGuidelines()" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shrink-0 cursor-pointer shadow-xs flex items-center justify-center gap-1.5 self-end sm:self-center">
-            <span>เปิดดูไฟล์ PDF</span>
-            <span>↗</span>
-          </button>
+         <!-- ปุ่มเปิด Pop-up ดูไฟล์ (ไม่ดาวน์โหลด) -->
+<button onclick="openGuidelinesModal()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl transition shrink-0 cursor-pointer shadow-xs">
+  เปิดดูไฟล์ PDF ↗
+</button>
         </div>
 
       </div>
@@ -2644,38 +2644,39 @@ function switchPdfView(type) {
     </div>
   </div>
 
-  <!-- ==================== MODAL VIEWER: ข้อปฏิบัติสำหรับผู้วิจัย (Version 2) ==================== -->
-  <div id="notice-pdf-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4 transition-opacity">
+  <!-- ==================== MODAL VIEWER: ข้อปฏิบัติสำหรับผู้วิจัย (VIEW-ONLY) ==================== -->
+  <div id="guidelines-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4 transition-opacity">
     <div class="bg-white rounded-3xl max-w-4xl w-full p-6 shadow-2xl border border-slate-100 space-y-4 max-h-[95vh] flex flex-col">
       
-      <!-- Modal Header -->
+      <!-- Header หน้าต่าง Pop-up -->
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
         <div class="flex items-center gap-2.5">
           <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-lg shadow-xs">📜</div>
           <div>
             <h3 class="font-bold text-slate-900 text-base">ข้อปฏิบัติสำหรับผู้วิจัยในโครงการที่ผ่านการรับรองจริยธรรมการวิจัยในคน (Version 2)</h3>
-            <p class="text-xs text-slate-500">มติที่ประชุมครั้งที่ 7/2569 (🔒 อ่านออนไลน์เท่านั้น)</p>
+            <p class="text-xs text-slate-500">มติที่ประชุมครั้งที่ 7/2569 (🔒 สำหรับดูออนไลน์เท่านั้น ไม่อนุญาตให้ดาวน์โหลด)</p>
           </div>
         </div>
-        <button onclick="closeNoticeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
+        <button onclick="closeGuidelinesModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition flex items-center justify-center font-bold text-sm cursor-pointer">✕</button>
       </div>
 
-      <!-- Modal Body (Viewer ดึงไฟล์จาก GitHub มาแสดงอย่างปลอดภัย) -->
+      <!-- Body แสดงเอกสารผ่าน Google Viewer (ซ่อนปุ่มดาวน์โหลด/พิมพ์) -->
       <div class="relative w-full h-[65vh] rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-inner">
         <!-- Overlay ชั้นหน้า ป้องกันการคลิกขวา -->
         <div class="absolute inset-0 z-10 pointer-events-none" oncontextmenu="return false;"></div>
         
         <iframe 
-          id="notice-pdf-frame"
+          id="guidelines-pdf-frame"
           src="" 
-          class="w-full h-full border-0">
+          class="w-full h-full border-0"
+          allow="autoplay">
         </iframe>
       </div>
 
-      <!-- Modal Footer -->
+      <!-- Footer หน้าต่าง Pop-up -->
       <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
         <span class="text-[11px] text-slate-400">📌 ฝ่ายส่งเสริมการวิจัย สำนักงานอธิการบดี NMU-EC</span>
-        <button onclick="closeNoticeModal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition cursor-pointer">
+        <button onclick="closeGuidelinesModal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition cursor-pointer">
           ปิดหน้าต่าง
         </button>
       </div>
@@ -2683,20 +2684,20 @@ function switchPdfView(type) {
     </div>
   </div>
 
-  <!-- JavaScript ควบคุมเปิด/ปิด Modal และดึงไฟล์ PDF จาก GitHub -->
+  <!-- สคริปต์ควบคุมการเปิด Pop-up -->
   <script>
-    function openNoticeModal() {
-      // ดึงไฟล์ PDF จาก GitHub Pages มาผ่าน Google Docs Viewer (ซ่อนปุ่มโหลด)
+    function openGuidelinesModal() {
+      // ดึงไฟล์ PDF จาก GitHub มาแสดงผ่าน Google Embed Viewer แบบซ่อนแถบดาวน์โหลด/พิมพ์
       const rawPdfUrl = encodeURIComponent('https://pattaradanai-sk135.github.io/NMU-EC/researcher-guidelines-v2.pdf');
-      const viewerUrl = 'https://docs.google.com/viewer?url=' + rawPdfUrl + '&embedded=true';
+      const embedViewerUrl = 'https://docs.google.com/viewer?url=' + rawPdfUrl + '&embedded=true';
       
-      document.getElementById('notice-pdf-frame').src = viewerUrl;
-      document.getElementById('notice-pdf-modal').classList.remove('hidden');
+      document.getElementById('guidelines-pdf-frame').src = embedViewerUrl;
+      document.getElementById('guidelines-modal').classList.remove('hidden');
     }
 
-    function closeNoticeModal() {
-      document.getElementById('notice-pdf-modal').classList.add('hidden');
-      document.getElementById('notice-pdf-frame').src = '';
+    function closeGuidelinesModal() {
+      document.getElementById('guidelines-modal').classList.add('hidden');
+      document.getElementById('guidelines-pdf-frame').src = '';
     }
   </script>
 </body>
