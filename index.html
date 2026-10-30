@@ -1145,84 +1145,267 @@
         </div>
       </div>
 
-      <!-- FOLDER 2: สำหรับนักศึกษา -->
-      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-amber-200 shadow-sm space-y-6">
+     <!-- ==================== FOLDER: สำหรับนักศึกษา ==================== -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-sm space-y-6">
+        
+        <!-- Folder Header พร้อมปุ่มเปิดโฟลเดอร์ Drive รวม Word/PDF -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
           <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-2xl shrink-0">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-2xl shrink-0">
               🎓
             </div>
             <div>
-              <h3 class="font-bold text-slate-900 text-base sm:text-lg">2. โฟลเดอร์: สำหรับนักศึกษา</h3>
+              <h3 class="font-bold text-slate-900 text-base sm:text-lg">โฟลเดอร์: สำหรับนักศึกษา</h3>
               <p class="text-xs text-slate-500">สำหรับนักศึกษาระดับปริญญาตรี ปริญญาโท ปริญญาเอก และแพทย์ฝึกหัด</p>
             </div>
           </div>
-          <span class="px-3 py-1 bg-amber-50 text-amber-950 rounded-xl font-mono text-xs font-bold border border-amber-200">
-            เอกสารต้องมีลายเซ็นอาจารย์ที่ปรึกษา
-          </span>
+          
+          <!-- ปุ่มทางลัดเปิดโฟลเดอร์ Google Drive รวม -->
+          <div class="flex items-center gap-2 shrink-0 self-start sm:self-center">
+            <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-xs border border-blue-200 transition flex items-center gap-1 shadow-2xs">
+              <span>📁 โฟลเดอร์ Word</span>
+              <span>↗</span>
+            </a>
+            <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-200 transition flex items-center gap-1 shadow-2xs">
+              <span>📁 โฟลเดอร์ PDF</span>
+              <span>↗</span>
+            </a>
+          </div>
         </div>
 
+        <!-- Document Grid (2 Columns) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-          <!-- File Item -->
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-300 transition flex items-center justify-between gap-3">
+
+          <!-- 1 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
             <div class="space-y-1">
-              <span class="font-bold text-slate-900 block">2. แบบคู่มือตรวจสอบความครบถ้วนของนักศึกษา</span>
-              <p class="text-[11px] text-slate-500">Checklist ตรวจสอบเอกสารเสนอจริยธรรมของนักศึกษา</p>
+              <span class="font-bold text-slate-900 block">1. ขอเสนอโครงร่างการวิจัยเพื่อขอรับการพิจารณาจริยธรรม</span>
+              <p class="text-[11px] text-slate-500">แบบฟอร์มหลักในการเสนอขอรับการพิจารณาจริยธรรม (กรณี นักศึกษา)</p>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
-              <a href="https://docs.google.com/document/d/1aGjxAQGaXpnVEzcjjNQxScBjonYB9aId/edit?usp=sharing&ouid=101775213658380094254&rtpof=true&sd=true" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-[11px]">Word</a>
-              <a href="https://drive.google.com/open?id=10yQhLmmD90STADEbdMsRmWQy6k5exaxf" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg text-[11px]">PDF</a>
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
             </div>
           </div>
 
-          <!-- File Item -->
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-300 transition flex items-center justify-between gap-3">
+          <!-- 2 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
             <div class="space-y-1">
-              <span class="font-bold text-slate-900 block">4. แบบสรุปโครงการวิจัย (Protocol summary) - นักศึกษา</span>
+              <span class="font-bold text-slate-900 block">2. แบบคู่มือตรวจสอบความครบถ้วนของโครงร่างการวิจัย</span>
+              <p class="text-[11px] text-slate-500">Checklist ตรวจสอบเอกสารเสนอขอจริยธรรมของนักศึกษา</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">3. แบบเสนอโครงการวิจัยเพื่อพิจารณาจริยธรรมแบบเร็ว</span>
+              <p class="text-[11px] text-slate-500">แบบฟอร์มขอรับการพิจารณา Expedited Review (นักศึกษา)</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">4. แบบสรุปโครงการวิจัย (Protocol summary)</span>
               <p class="text-[11px] text-slate-500">แบบสรุปเค้าโครงวิทยานิพนธ์/สารนิพนธ์</p>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
-              <a href="https://drive.google.com/open?id=1vgmHRmB81i6FqO85AICSn9tgMoKzt0Ny" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-[11px]">Word</a>
-              <a href="https://drive.google.com/open?id=1A-ZtlZpDbPHVqWa9E9cI5XwlVWoxODpK" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg text-[11px]">PDF</a>
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
             </div>
           </div>
 
-          <!-- File Item -->
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-300 transition flex items-center justify-between gap-3">
+          <!-- 5 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
             <div class="space-y-1">
-              <span class="font-bold text-slate-900 block">5. ปก (Front cover) & 6. สารบัญ (Index) - นักศึกษา</span>
-              <p class="text-[11px] text-slate-500">รูปแบบปกและสารบัญสำหรับงานวิจัยนักศึกษา</p>
+              <span class="font-bold text-slate-900 block">5. ปก (Front cover)</span>
+              <p class="text-[11px] text-slate-500">รูปแบบปกสำหรับงานวิจัยนักศึกษา</p>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
-              <a href="https://drive.google.com/open?id=1FNERB--w-UNO8UDdxRb9KDbcfJFe9iS7" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-[11px]">Word</a>
-              <a href="https://drive.google.com/open?id=1WAjWH8WrUJMAhk5a47vOlZs7HdQGfknL" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg text-[11px]">PDF</a>
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
             </div>
           </div>
 
-          <!-- File Item -->
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-300 transition flex items-center justify-between gap-3">
+          <!-- 6 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
             <div class="space-y-1">
-              <span class="font-bold text-slate-900 block">7. รายละเอียดโครงการการวิจัย (นักศึกษา)</span>
+              <span class="font-bold text-slate-900 block">6. สารบัญ (Index)</span>
+              <p class="text-[11px] text-slate-500">รูปแบบสารบัญสำหรับงานวิจัยนักศึกษา</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 7 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">7. รายละเอียดโครงการวิจัย</span>
               <p class="text-[11px] text-slate-500">โครงร่างวิทยานิพนธ์ฉบับสมบูรณ์ที่ผ่านการอนุมัติแล้ว</p>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
-              <a href="https://drive.google.com/open?id=19xU4PgHrxnBz6HSRlyeefW6HnQHf9B5S" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-[11px]">Word</a>
-              <a href="https://drive.google.com/open?id=1ULJEC8w2ublfjrse-56JPvnwuAEYY5BF" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg text-[11px]">PDF</a>
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
             </div>
           </div>
 
-          <!-- File Item -->
-          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-amber-300 transition flex items-center justify-between gap-3">
+          <!-- 8.1 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
             <div class="space-y-1">
-              <span class="font-bold text-slate-900 block">9. เอกสารชี้แจงผู้เข้าร่วมการวิจัย (นักศึกษา)</span>
-              <p class="text-[11px] text-slate-500">เอกสาร PIS สำหรับผู้เข้าร่วมการวิจัยในโครงการนักศึกษา</p>
+              <span class="font-bold text-slate-900 block">8.1 หนังสือแสดงเจตนายินยอม (อายุ 7-12 ปี)</span>
+              <p class="text-[11px] text-slate-500">หนังสือยินยอมเข้าร่วมการวิจัยสำหรับอาสาสมัครเด็กเล็ก</p>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
-              <a href="https://drive.google.com/open?id=1WpjpGuYsVd91c-RE7kKyoZCSFA6dEAn_" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-[11px]">Word</a>
-              <a href="https://drive.google.com/open?id=16iPdRuhNEv7HEc7lnmmI0jH7b00FK6Xv" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg text-[11px]">PDF</a>
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
             </div>
           </div>
+
+          <!-- 8.2 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">8.2 หนังสือแสดงเจตนายินยอม (อายุ 13-17 ปี)</span>
+              <p class="text-[11px] text-slate-500">หนังสือยินยอมเข้าร่วมการวิจัยสำหรับอาสาสมัครเยาวชน</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 8.3 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">8.3 หนังสือแสดงเจตนายินยอม (อายุ 18 ปีขึ้นไป)</span>
+              <p class="text-[11px] text-slate-500">หนังสือยินยอมเข้าร่วมการวิจัยสำหรับอาสาสมัครผู้ใหญ่</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 9 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">9. เอกสารชี้แจงผู้เข้าร่วมการวิจัย (กรณีมีความเสี่ยง)</span>
+              <p class="text-[11px] text-slate-500">เอกสาร PIS สำหรับอาสาสมัครในโครงการนักศึกษา</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 10 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">10. ตัวอย่างเครื่องมือวิจัย</span>
+              <p class="text-[11px] text-slate-500">แบบสอบถาม/แบบสัมภาษณ์/แบบบันทึกข้อมูล</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 11 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">11. ประวัติผู้วิจัยและผู้ร่วมวิจัย</span>
+              <p class="text-[11px] text-slate-500">แบบฟอร์มประวัติและผลงานนักศึกษา/อาจารย์ที่ปรึกษา</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 12.1 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">12.1 บันทึกข้อความ-ขอเปลี่ยนแปลงรายละเอียดโครงการ</span>
+              <p class="text-[11px] text-slate-500">แบบฟอร์มยื่นขอแก้ไขเปลี่ยนแปลงโครงการ (Amendment)</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 12.2 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">12.2 ตารางขอเปลี่ยนแปลงรายละเอียดโครงการวิจัย</span>
+              <p class="text-[11px] text-slate-500">ตารางเปรียบเทียบข้อความเดิมและข้อความที่ขอแก้ไข</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 13 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">13. แบบรายงานความก้าวหน้าโครงการวิจัย</span>
+              <p class="text-[11px] text-slate-500">แบบฟอร์มรายงานความก้าวหน้าการดำเนินงานวิจัย</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 14 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">14. บันทึกข้อความ-ขอต่ออายุ</span>
+              <p class="text-[11px] text-slate-500">แบบฟอร์มขอขยายเวลารับรองจริยธรรมโครงการวิจัย</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 15 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">15. แบบรายงานความก้าวหน้าโครงการวิจัย</span>
+              <p class="text-[11px] text-slate-500">รายงานฉบับสมบูรณ์/สรุปผลการดำเนินงานวิจัย</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
+          <!-- 16 -->
+          <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition flex items-center justify-between gap-3">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-900 block">16. แบบแจ้งปิดโครงการวิจัย</span>
+              <p class="text-[11px] text-slate-500">แบบฟอร์มขอยุติหรือปิดโครงการวิจัยเสร็จสิ้น</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="https://drive.google.com/drive/folders/1gPKez9VKFiC2XVEmlgir8vB2NPa_vok0" target="_blank" class="px-2.5 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition">Word</a>
+              <a href="https://drive.google.com/drive/folders/16A-Xs5PKNNp2nHqhG8HpUEHxcYICwCNy" target="_blank" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition">PDF</a>
+            </div>
+          </div>
+
         </div>
+
       </div>
 
       <!-- ==================== FOLDER 3: สำหรับบุคคลภายนอก ==================== -->
