@@ -980,18 +980,20 @@
         <p class="text-xs text-slate-500">เลือกดาวน์โหลดแบบฟอร์มตามประเภทกลุ่มผู้ยื่นคำขอ และรูปแบบไฟล์ที่ต้องการ (Word / PDF)</p>
       </div>
 
-      <!-- FOLDER 1: สำหรับอาจารย์ , บุคลากร -->
-      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-sm space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
+      <!-- Folder Header โฟลเดอร์ 1 (แบบมี Badge บอกจำนวนรายการ) -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
           <div class="flex items-center gap-3">
             <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-2xl shrink-0">
               👨‍🏫
             </div>
             <div>
-              <h3 class="font-bold text-slate-900 text-base sm:text-lg">1. โฟลเดอร์: สำหรับอาจารย์ , บุคลากร</h3>
+              <h3 class="font-bold text-slate-900 text-base sm:text-lg">1. โฟลเดอร์: สำหรับอาจารย์, บุคลากร</h3>
               <p class="text-xs text-slate-500">สำหรับอาจารย์ นักวิจัย และบุคลากรสังกัดมหาวิทยาลัยนวมินทราธิราช</p>
             </div>
           </div>
+          
+          
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
           <!-- File Item -->
@@ -1142,24 +1144,27 @@
       </div>
           </div>
 
-     <!-- Folder Header แบบใหม่ (นำโฟลเดอร์รวมออก เปลี่ยนเป็นป้ายเตือนลายเซ็น) -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-2xl shrink-0">
-              🎓
-            </div>
-            <div>
-              <h3 class="font-bold text-slate-900 text-base sm:text-lg">โฟลเดอร์: สำหรับนักศึกษา</h3>
-              <p class="text-xs text-slate-500">สำหรับนักศึกษาระดับปริญญาตรี ปริญญาโท ปริญญาเอก และแพทย์ฝึกหัด</p>
-            </div>
+     <!-- ==================== FOLDER: สำหรับนักศึกษา ==================== -->
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-200 shadow-sm space-y-6 my-6">
+      
+      <!-- Folder Header แบบใหม่ -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-2xl shrink-0">
+            🎓
           </div>
-          
-          <!-- Badge ข้อความเตือนเรื่องลายเซ็นอาจารย์ที่ปรึกษา -->
-          <span class="px-3.5 py-1.5 rounded-xl bg-amber-50 text-amber-800 font-bold text-xs border border-amber-200 shadow-2xs shrink-0 self-start sm:self-center flex items-center gap-1.5">
-            <span>⚠️</span>
-            <span>ต้องมีลายเซ็นอาจารย์ที่ปรึกษา</span>
-          </span>
+          <div>
+            <h3 class="font-bold text-slate-900 text-base sm:text-lg">โฟลเดอร์: สำหรับนักศึกษา</h3>
+            <p class="text-xs text-slate-500">สำหรับนักศึกษาระดับปริญญาตรี ปริญญาโท ปริญญาเอก และแพทย์ฝึกหัด</p>
+          </div>
         </div>
+        
+        <!-- Badge ข้อความเตือนเรื่องลายเซ็นอาจารย์ที่ปรึกษา -->
+        <span class="px-3.5 py-1.5 rounded-xl bg-amber-50 text-amber-800 font-bold text-xs border border-amber-200 shadow-2xs shrink-0 self-start sm:self-center flex items-center gap-1.5">
+          <span>⚠️</span>
+          <span>ต้องมีลายเซ็นอาจารย์ที่ปรึกษา</span>
+        </span>
+      </div>
 
         <!-- Document Grid (2 Columns) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
